@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class Ai{  
 	//
-    private static com.rockzhai.ai.DrawingPanel panel=new com.rockzhai.ai.DrawingPanel(700,700);
+    private static DrawingPanel panel=new DrawingPanel(700,700);
     private static Graphics g=panel.getGraphics();  
     public static boolean isBlack=false;//标志棋子的颜色  
     public static int[][] chessBoard=new int[17][17]; //棋盘棋子的摆放情况：0无子，1黑子，－1白子  

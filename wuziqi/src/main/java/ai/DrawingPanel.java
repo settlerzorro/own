@@ -1,4 +1,4 @@
-package com.rockzhai.ai;
+package ai;
 
 
 /**
