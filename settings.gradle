@@ -1,0 +1,3 @@
+include ':android', ':myapplication', ':myapplication', ':myapplication', ':myapplication'
+
+
