@@ -25,6 +25,7 @@
         <module>spider</module>
         <module>sanguosha</module>
         <module>enmsUpload</module>
+        <module>kafka</module>
     </modules>
 
 
