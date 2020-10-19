@@ -10,7 +10,7 @@ import java.util.Properties;
 
 /******************************************************
  ****** @ClassName   : Consumer.java
- ****** @author      : milo ^ ^
+ ****** @author      : zhangshuai
  ****** @date        : 2018 03 14 15:50
  ****** @version     : v1.0.x
  *******************************************************/

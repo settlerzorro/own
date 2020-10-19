@@ -7,7 +7,7 @@ import java.util.Properties;
 
 /******************************************************
  ****** @ClassName   : Producer.java
- ****** @author      : milo ^ ^
+ ****** @author      : zhangshuai
  ****** @date        : 2018 03 14 11:34
  ****** @version     : v1.0.x
  *******************************************************/
