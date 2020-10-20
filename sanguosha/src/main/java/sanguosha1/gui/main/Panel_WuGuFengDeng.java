@@ -1,0 +1,209 @@
+package sanguosha1.gui.main;
+
+import sanguosha1.card.AbstractCard;
+import sanguosha1.data.constant.Const_UI;
+import sanguosha1.data.enums.Colors;
+import sanguosha1.player.AbstractPlayer;
+import sanguosha1.service.ModuleManagement;
+import sanguosha1.service.ViewManagement;
+import sanguosha1.util.ImgUtil;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * ����ȷ�ǡ���ѡ�����
+ * 
+ * @author user
+ * 
+ */
+public class Panel_WuGuFengDeng extends JPanel {
+	private static final long serialVersionUID = 5486612841656799384L;
+	// �Ƶ���ʾ�ߴ�
+	private static final int CARDWIDTH = 100;
+	private static final int CARDHEIGHT = 150;
+	// ���������
+	JPanel me = this;
+	// Ƕ�����
+	JPanel jp_cards = new JPanel();
+	// �����ļ���
+	List<Card4select> cards = new ArrayList<Card4select>();
+	// ѡ����
+	AbstractPlayer player;
+
+	public Panel_WuGuFengDeng(AbstractPlayer firstPlayer) {
+		this.player = firstPlayer;
+		cerateUI();
+		start();
+	}
+
+	/**
+	 * ��ʼѡ��
+	 */
+	private void start() {
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				AbstractPlayer p = player;
+				List<AbstractCard> list = new ArrayList<AbstractCard>();
+				for (int i = 0; i < cards.size(); i++) {
+					list.add(cards.get(i).c);
+				}
+				do {
+					AbstractCard sc = p.toSelectCard(list);
+					removePanel(sc);
+					list.remove(sc);
+					p.getAction().addCardToHandCard(sc);
+					// p.refreshView();
+					p = p.getNextPlayer();
+					try {
+						Thread.sleep(999);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} while (p != player);
+				Panel_Main pm = (Panel_Main) me.getParent();
+				pm.remove(me);
+				pm.repaint();
+				ViewManagement.getInstance().refreshAll();
+			}
+		}).start();
+	}
+
+	/*
+	 * �����ƣ�����Ӧ�����ɾ��
+	 */
+	private void removePanel(AbstractCard c) {
+		for (int i = 0; i < cards.size(); i++) {
+			if (cards.get(i).c == c) {
+				cards.get(i).beSelected();
+			}
+		}
+	}
+
+	private void cerateUI() {
+		this.setLayout(null);
+		GridLayout gl = new GridLayout(2, 4);
+		gl.setHgap(10);
+		jp_cards.setLayout(gl);
+		jp_cards.setOpaque(false);
+		jp_cards.setLocation(20, 20);
+		this.setSize(CARDWIDTH * 5 + 50, CARDHEIGHT * 2 + 50);
+		jp_cards.setSize(CARDWIDTH * 5, CARDHEIGHT * 2);
+
+		for (int i = 0; i < 8; i++) {
+			Card4select cs = null;
+			if (i >= ModuleManagement.getInstance().getPlayerList().size()) {
+				cs = new Card4select(null);
+			} else {
+				cs = new Card4select(ModuleManagement.getInstance()
+						.getOneCard());
+				cards.add(cs);
+			}
+			jp_cards.add(cs);
+		}
+		add(jp_cards);
+	}
+
+	/**
+	 * ���Ʊ���
+	 */
+	public void paintComponent(Graphics g) {
+		g.drawImage(ImgUtil.getJpgImgByName("bg_selectcard"), 0, 0, getWidth(),
+				getHeight(), null);
+	}
+
+	/**
+	 * ��ʾ�Ƶ����
+	 */
+	class Card4select extends JPanel {
+		private static final long serialVersionUID = 4454271542267174856L;
+		AbstractCard c;
+		boolean finish;
+
+		public Card4select(AbstractCard c) {
+			this.setSize(CARDWIDTH, CARDHEIGHT);
+			this.c = c;
+			if (c != null) {
+				this.setCursor(new Cursor(Cursor.HAND_CURSOR));
+				this.addMouseListener(ml);
+				this.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+			}
+		}
+
+		/**
+		 * ����
+		 */
+		public void disableIt() {
+			setCursor(Cursor.getDefaultCursor());
+			removeMouseListener(ml);
+		}
+
+		/**
+		 * �Ѿ���ѡ��
+		 */
+		public void beSelected() {
+			finish = true;
+			this.repaint();
+		}
+
+		/**
+		 * ����
+		 */
+		public void paint(Graphics g) {
+			// super.paintComponent(g);
+			if (finish) {
+				drawUnable(g);
+			}
+			if (c != null) {
+				g.drawImage(c.showImg(), 0, 0, getWidth(), getHeight(), null);
+				// ���ƻ�ɫ
+				Image color = c.getColorImg();
+				g.drawImage(color, 5, 5, 20, 20, null);
+				if (c.getColor() == Colors.FANGKUAI
+						|| c.getColor() == Colors.HONGXIN) {
+					g.setColor(Color.RED);
+				} else {
+					g.setColor(Color.BLACK);
+				}
+				g.setFont(new Font(g.getFont().getName(), Font.BOLD, 18));
+				g.drawString(c.getNumberToString(), 7, 40);
+			}
+		}
+
+		MouseListener ml = new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				finish = true;
+				repaint();
+				for (Card4select cs : cards) {
+					cs.disableIt();
+				}
+				// player.getAction().addCardToHandCard(c);
+				player.getState().setSelectCard(c);
+			}
+
+		};
+
+		/**
+		 * ���Ʋ�����
+		 * 
+		 * @param g
+		 */
+		private void drawUnable(Graphics g) {
+			Graphics2D g2 = (Graphics2D) g;
+			g2.setColor(Color.darkGray);
+			g2.fillRect(0, 0, CARDWIDTH + 20, CARDHEIGHT + 20);
+			g2
+					.setComposite(AlphaComposite.SrcOver
+							.derive(Const_UI.CARD_UNABLE));
+		}
+	}
+}
