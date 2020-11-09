@@ -1,5 +1,9 @@
 package sanguosha1.skills.action;
 
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.base.Card_Sha;
 import sanguosha1.data.constant.Const_Game;
@@ -12,21 +16,18 @@ import sanguosha1.player.impl.P_Action;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.LockingSkillIF;
 
-import javax.swing.*;
-import java.util.List;
-
 /**
- * ï¿½ï¿½ï¿½Ç¡ï¿½ï¿½ï¿½ï¿½ë¡¿
+ * ´óÇÇ¡¾Á÷Àë¡¿
  * 
  * @author user
  * 
  */
 public class DaQiao_liuli extends P_Action implements LockingSkillIF {
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ¶ªÆúµÄÅÆ
 	AbstractCard cardThrow;
-	// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½
+	// Á÷ÀëµÄÄ¿±ê
 	AbstractPlayer target;
-	// ï¿½ï¿½ï¿½ï¿½
+	// Ð×ÊÖ
 	AbstractPlayer pSha;
 	Panel_Control pc;
 	Panel_HandCards ph;
@@ -36,15 +37,15 @@ public class DaQiao_liuli extends P_Action implements LockingSkillIF {
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´ï¿½Ø±ï¿½É±ï¿½ï¿½ï¿½Ð¶ï¿½
+	 * ÖØÐ´»Ø±ÜÉ±µÄÅÐ¶Ï
 	 */
 	@Override
 	public boolean avoidSha(AbstractPlayer murder, Card_Sha card) {
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½
+		//ÎÞÊÖÅÆÔòÍË³ö
 		if(player.getState().getCardList().isEmpty())return false;
 		pSha = murder;
-		// Ñ¯ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
-		// Ñ¡ï¿½ï¿½ È·ï¿½ï¿½
+		// Ñ¯ÎÊÊÇ·ñÁ÷Àë
+		// Ñ¡ÈË È·¶¨
 		if (player.getState().isAI()) {
 			cardThrow = player.getState().getCardList().get(0);
 			target = player.getNextPlayer();
@@ -56,7 +57,7 @@ public class DaQiao_liuli extends P_Action implements LockingSkillIF {
 			//SwingUtilities.invokeLater(ask);
 			ViewManagement.getInstance().ask(player, getName());
 			while (player.getState().getRes() == 0) {
-				// ï¿½ï¿½ï¿½È·ï¿½Ï¼ï¿½ï¿½Ü·ï¿½ï¿½ï¿½
+				// Èç¹ûÈ·ÈÏ¼¼ÄÜ·¢¶¯
 				if (player.getState().getRes() == Const_Game.OK) {
 					player.getProcess().setSkilling(true);
 					player.getState().setRes(0);
@@ -67,7 +68,7 @@ public class DaQiao_liuli extends P_Action implements LockingSkillIF {
 					return false;
 				}
 			}
-			// ï¿½ï¿½ï¿½ë¼¼ï¿½ï¿½ Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½
+			// ½øÈë¼¼ÄÜ Ñ¡Ôñ²ÎÊý
 			SwingUtilities.invokeLater(run);
 			while (true) {
 				if (player.getState().getRes() == Const_Game.OK) {
@@ -100,19 +101,19 @@ public class DaQiao_liuli extends P_Action implements LockingSkillIF {
 
 	private void execute(AbstractPlayer murder, Card_Sha csha) {
 		cardThrow.throwIt(player);
-		// ï¿½ï¿½Ï¢
+		// ÐÅÏ¢
 		ViewManagement.getInstance().printBattleMsg(
-				player.getInfo().getName() + "ï¿½ï¿½"
-						+ csha.toString() + "ï¿½ï¿½ï¿½ï¿½ï¿½"
+				player.getInfo().getName() + "½«"
+						+ csha.toString() + "Á÷Àë¸ø"
 						+ target.getInfo().getName());
-		// ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½
+		// ²âÊÔ»­Ïß
 		SwingUtilities.invokeLater(draw);
 		csha.executeSha(murder, target);
 	}
 
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½ï¿½";
+		return "Á÷Àë";
 	}
 
 
@@ -121,12 +122,12 @@ public class DaQiao_liuli extends P_Action implements LockingSkillIF {
 		@Override
 		public void run() {
 			ViewManagement.getInstance().getPrompt().show_Message(
-					"ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ä¿ï¿½ï¿½");
+					"ÇëÑ¡Ôñ¶ªÆúµÄÅÆ£¬²¢Ñ¡ÔñÄ¿±ê");
 			ph.remindToUseALL();
 			ph.enableOKAndCancel();
 			ph.getTarget().setLimit(1);
 			ph.setTargetCheck(false);
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½
+			// ¿ª·ÅÉä³ÌÄÚµÄÈËÎï
 			List<Panel_Player> list = ph.getMain().getPlayers();
 			for (Panel_Player pp : list) {
 				if (!pp.getPlayer().getState().isDead()

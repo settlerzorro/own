@@ -5,7 +5,7 @@ import sanguosha1.player.impl.P_Trigger;
 import sanguosha1.skills.LockingSkillIF;
 
 /**
- * ï¿½ï¿½ï¿½ï¿½Ó¢ï¿½ï¿½ï¿½ï¿½ï¿½Ç¡ï¿½
+ * »ÆÔÂÓ¢¡¾¼¯ÖÇ¡¿
  * @author user
  *
  */
@@ -14,8 +14,8 @@ public class HuangYueYing_jizhi extends P_Trigger implements LockingSkillIF{
 		this.player = p;
 	}
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¢ï¿½ï¿½
-	 * ï¿½ï¿½Ð´Ê¹ï¿½Ã½ï¿½ï¿½Ò´ï¿½ï¿½ï¿½
+	 * ¡¾»ÆÔÂÓ¢¡¿
+	 * ÖØÐ´Ê¹ÓÃ½õÄÒ´¥·¢
 	 */
 	@Override
 	public void afterMagic() {
@@ -25,7 +25,7 @@ public class HuangYueYing_jizhi extends P_Trigger implements LockingSkillIF{
 
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½ï¿½";
+		return "¼¯ÖÇ";
 	}
 
 }

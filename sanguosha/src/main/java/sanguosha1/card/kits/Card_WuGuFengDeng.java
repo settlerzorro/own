@@ -1,14 +1,15 @@
 package sanguosha1.card.kits;
 
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.gui.main.Panel_Control;
 import sanguosha1.gui.main.Panel_WuGuFengDeng;
 import sanguosha1.player.AbstractPlayer;
 
-import javax.swing.*;
-import java.util.List;
-
 /**
- * ï¿½ï¿½È·ï¿½ï¿½
+ * Îå¹È·áµÇ
  * 
  * @author user
  * 
@@ -22,8 +23,8 @@ public class Card_WuGuFengDeng extends AbstractKitCard {
 		if(p.getState().isAI()){
 			//TODO
 		}else{
-			//ï¿½ï¿½Ê¾Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½
-			//ï¿½ß³ï¿½ï¿½ï¿½Í£
+			//ÏÔÊ¾Ñ¡ÔñÃæ°åµÈ´ý´¦Àí
+			//Ïß³ÌÔÝÍ£
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
 				public void run() {

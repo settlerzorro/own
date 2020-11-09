@@ -1,5 +1,10 @@
 package sanguosha1.card.kits;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.CardIF;
 import sanguosha1.data.constant.Const_Game;
@@ -10,24 +15,20 @@ import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ModuleManagement;
 import sanguosha1.service.ViewManagement;
 
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½á¹©Ò»Ð©ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½Í¨ï¿½Ã·ï¿½ï¿½ï¿½
+ * ³éÏó½õÄÒÀà Ìá¹©Ò»Ð©½õÄÒÅÆµÄÍ¨ÓÃ·½·¨
  * 
  * @author user
  * 
  */
 public abstract class AbstractKitCard extends AbstractCard {
-	// ï¿½Ç·ï¿½ï¿½ï¿½Ð¸
+	// ÊÇ·ñ±»ÎÞÐ¸
 	protected boolean isWuXie;
-	// ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½UIï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½
+	// Íæ¼Ò¿ØÖÆÀ¸£¬ÓëUIµÄÁ¬½Óµã
 	protected Panel_Control pc;
 
 	/*
-	 * Ä¿ï¿½ê¼¯ï¿½ï¿½ ï¿½ï¿½Òªï¿½Ç·ï¿½Ö¹ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ß³Ì²ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½Ç¿ï¿½ï¿½finalï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ð©ï¿½ï¿½ï¿½â£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * Ä¿±ê¼¯ºÏ Ö÷ÒªÊÇ·ÀÖ¹³öÏÖ¶àÏß³Ì²Ù×÷Ê±ºò£¬×÷Îª²ÎÊýµÄÍæ¼ÒÁÐ±í±»Ç¿ÖÆfinalºó¿ÉÄÜÒý·¢Ò»Ð©ÎÊÌâ£¬ËùÒÔÁÙÊ±½¨Á¢Ò»¸ö¼¯ºÏÀ´´æ´¢ Ò²¿ÉÄÜÊÇÎÒ¶àÂÇÁË
 	 */
 	protected List<AbstractPlayer> targetPlayers;
 
@@ -39,14 +40,14 @@ public abstract class AbstractKitCard extends AbstractCard {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ç°ï¿½Ä³ï¿½Ê¼ï¿½ï¿½
+	 * ½õÄÒÊ¹ÓÃÇ°µÄ³õÊ¼»¯
 	 */
 	protected void initKit() {
 		isWuXie = false;
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´use
+	 * ÖØÐ´use
 	 */
 	@Override
 	public void use(AbstractPlayer p, List<AbstractPlayer> players) {
@@ -58,10 +59,10 @@ public abstract class AbstractKitCard extends AbstractCard {
 	}
 
 	/**
-	 * Ñ¯ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½É»ï¿½
+	 * Ñ¯ÎÊÎÞÐ¸¿É»÷
 	 * 
-	 * ï¿½ï¿½Ð¸ï¿½É»ï¿½ï¿½ï¿½Êµï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½Ò»ï¿½ï¿½booleanÖµï¿½ï¿½Ê¾ï¿½Ç·ï¿½ï¿½ï¿½Ð¸ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½Ê³ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½booleanÖµÈ¡ï¿½ï¿½
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½booleanÖµï¿½Ð¶ï¿½ï¿½Ç·ñ·¢¶ï¿½Ð§ï¿½ï¿½
+	 * ÎÞÐ¸¿É»÷µÄÊµÏÖ·½·¨£º ½õÄÒÅÆÖÐ¶¼ÓÐÒ»¸öbooleanÖµ±íÊ¾ÊÇ·ñ±»ÎÞÐ¸ Õâ¸ö·½·¨ÓÃÀ´Ñ¯ÎÊ³¡ÉÏÊÇ·ñÓÐÎÞÐ¸£¬Èç¹û´ò³öÎÞÐ¸Ôò½«booleanÖµÈ¡·´
+	 * ½õÄÒ×îÖÕ½«ÔÚ×ÓÀà¾ßÌåÊµÏÖÊ±ºò¸ù¾ÝbooleanÖµÅÐ¶¨ÊÇ·ñ·¢¶¯Ð§¹û
 	 * 
 	 * @param p
 	 * @param players
@@ -69,12 +70,12 @@ public abstract class AbstractKitCard extends AbstractCard {
 	public void askWuXieKeJi(AbstractPlayer p, List<AbstractPlayer> players) {
 		if (hasWuxiekejiInBattle()) {
 			p.refreshView();
-			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸");
-			// Ñ¯ï¿½ï¿½ï¿½ï¿½Ð¸
+			System.out.println("³¡ÉÏÓÐÎÞÐ¸");
+			// Ñ¯ÎÊÎÞÐ¸
 			List<AbstractPlayer> askPlayers = ModuleManagement.getInstance()
 					.getPlayerList();
 			for (int i = 0; i < askPlayers.size(); i++) {
-				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½Ð¸
+				// Èç¹ûÓÐÈË³öÎÞÐ¸
 				if (askPlayers.get(i).getRequest().requestWuXie()) {
 					isWuXie = true;
 					break;
@@ -84,7 +85,7 @@ public abstract class AbstractKitCard extends AbstractCard {
 	}
 
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½
+	 * ³¡ÉÏÊÇ·ñÓÐÎÞÐ¸´æÔÚ
 	 */
 	protected boolean hasWuxiekejiInBattle() {
 		for (AbstractPlayer p : ModuleManagement.getInstance().getPlayerList()) {
@@ -95,17 +96,17 @@ public abstract class AbstractKitCard extends AbstractCard {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ ï¿½ó²¿·Ö¿ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ ï¿½ï¿½Ð©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç¡¢ï¿½ï¿½Ð¸ï¿½ï¿½
+	 * ½õÄÒÀàµÄ»æÖÆ ´ó²¿·Ö¿ÉÒÔÊ¹ÓÃÕâ¸öÄ£°å ÓÐÐ©ÀýÍâµÄÐèÒªÖØÐ´£¬ÈçÉÁµç¡¢ÎÞÐ¸µÈ
 	 */
 	@Override
 	protected void drawEffect(final AbstractPlayer p,
 			List<AbstractPlayer> players) {
-		//ï¿½ï¿½Ä¿ï¿½ï¿½Ä½ï¿½ï¿½ï¿½
+		//ÓÐÄ¿±êµÄ½õÄÒ
 		if (targetType == CardIF.SELECT) {
 			final AbstractPlayer tmp = players.get(0);
 			ViewManagement.getInstance().printBattleMsg(
-					p.getInfo().getName() + "ï¿½ï¿½" + tmp.getInfo().getName()
-							+ "Ê¹ï¿½ï¿½ï¿½ï¿½" + this.toString());
+					p.getInfo().getName() + "¶Ô" + tmp.getInfo().getName()
+							+ "Ê¹ÓÃÁË" + this.toString());
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
 				public void run() {
@@ -114,9 +115,9 @@ public abstract class AbstractKitCard extends AbstractCard {
 					PaintService.drawLine(p, tmp);
 				}
 			});
-			//ï¿½ï¿½Ä¿ï¿½ï¿½Ä½ï¿½ï¿½ï¿½
+			//ÎÞÄ¿±êµÄ½õÄÒ
 		}else{
-			ViewManagement.getInstance().printBattleMsg(p.getInfo().getName()+"Ê¹ï¿½ï¿½ï¿½ï¿½"+getName());
+			ViewManagement.getInstance().printBattleMsg(p.getInfo().getName()+"Ê¹ÓÃÁË"+getName());
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
 				public void run() {

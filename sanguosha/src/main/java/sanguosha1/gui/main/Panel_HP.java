@@ -1,18 +1,22 @@
 package sanguosha1.gui.main;
 
+import java.awt.GridLayout;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import sanguosha1.data.constant.Const_UI;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.util.ImgUtil;
 
-import javax.swing.*;
-import java.awt.*;
-
 /**
- * Ñªï¿½ï¿½ï¿½ï¿½
- * --ï¿½ï¿½ï¿½ï¿½
- * --ï¿½ï¿½Ç°Ñªï¿½ï¿½
- * --ï¿½ï¿½Ñª
- * --ï¿½ï¿½Ñª
+ * ÑªÌõ°å
+ * --ÉÏÏÞ
+ * --µ±Ç°ÑªÁ¿
+ * --¼ÓÑª
+ * --¿ÛÑª
  * @author user
  *
  */
@@ -21,17 +25,17 @@ public class Panel_HP extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 259553919601970080L;
-	//ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+	//ÈËÎïÄ£ÐÍ
 	AbstractPlayer player;
-	//Ñªï¿½ï¿½Í¼ï¿½ï¿½
+	//Ñª²ÛÍ¼Ïñ
 	Image mhp = ImgUtil.getPngImgByName("hp2");
-	//Ñªï¿½ï¿½Í¼ï¿½ï¿½
+	//Ñª¿ìÍ¼Ïñ
 	Image hp = ImgUtil.getPngImgByName("hp");
-	//Ñªï¿½Û±ï¿½Ç©ï¿½ï¿½ï¿½ï¿½
+	//Ñª²Û±êÇ©Êý×é
 	JLabel[] hps ;
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ¹¹ÔìÆ÷
 	 * @param p
 	 */
 	public Panel_HP(AbstractPlayer p){
@@ -40,7 +44,7 @@ public class Panel_HP extends JPanel{
 		this.setOpaque(false);
 		this.setSize(Const_UI.HPPANEL_WIDTH	,Const_UI.HPPANEL_HEIGHT);
 		this.setLayout(new GridLayout(5,1));
-		//ï¿½ï¿½ï¿½ï¿½Ñªï¿½Û±ï¿½Ç©
+		//¼ÓÔØÑª²Û±êÇ©
 		for (int i = 0; i < p.getInfo().getMaxHP(); i++) {
 			hps[i] = new JLabel(new ImageIcon(mhp));
 			this.add(hps[i]);
@@ -51,7 +55,7 @@ public class Panel_HP extends JPanel{
 	}
 	
 	/**
-	 * Ë¢ï¿½ï¿½Ñªï¿½ï¿½
+	 * Ë¢ÐÂÑªÌõ
 	 */
 	public void refresh(){
 		for (int i = 0; i < player.getInfo().getMaxHP(); i++) {

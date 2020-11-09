@@ -1,5 +1,9 @@
 package sanguosha1.gui;
 
+import java.util.List;
+
+import javax.swing.JFrame;
+
 import sanguosha1.Main;
 import sanguosha1.data.constant.Const_UI;
 import sanguosha1.data.enums.GameOver;
@@ -10,11 +14,8 @@ import sanguosha1.gui.select.Panel_Select;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ModuleManagement;
 
-import javax.swing.*;
-import java.util.List;
-
 /**
- * ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ÓÎÏ·Ö÷´°Ìå
  * 
  * @author user
  * 
@@ -25,10 +26,10 @@ public class Frame_Main extends JFrame {
 	public static Frame_Main me;
 	public static GameThread gt;
 	public static boolean isGameOver;
-	// ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ÓÎÏ·Ö÷Ãæ°å
 	public static Panel_Main main;
 	
-	//Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Ñ¡ÈËÃæ°å
 	Panel_Select select;
 	AbstractPlayer boss;
 
@@ -42,43 +43,43 @@ public class Frame_Main extends JFrame {
 		gt.start();
 	}
 	
-	//ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½
+	//¼ÓÔØÑ¡ÈËÃæ°å
 	private void createSelectUI(){
-		System.out.println("ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+		System.out.println("¿ªÊ¼´´½¨Ãæ°å");
 		select = new Panel_Select();
 	}
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//¼ÓÔØÖ÷Ãæ°å
 	public void loadMain(){
 		remove(select);
 		repaint();
 		init();
 		//createUI();
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ´´½¨Ö÷Õ½¶·Ãæ°å
 		main = new Panel_Main();
 		add(main);
 		startThread();
 	}
-	// ï¿½ï¿½ï¿½ï¿½UIï¿½ï¿½ï¿½ï¿½
+	// ´´½¨UI½çÃæ
 	private void createUI() {
-		System.out.println("ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
-		this.setTitle("ï¿½ï¿½ï¿½ï¿½É±"+"--"+Main.version);
+		System.out.println("¿ªÊ¼´´½¨´°Ìå");
+		this.setTitle("Èý¹úÉ±"+"--"+Main.version);
 		this.setSize(Const_UI.FRAME_WIDTH, Const_UI.FRAME_HEIGHT);
 		this.setDefaultCloseOperation(3);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setLayout(null);
 		this.add(select);
-		System.out.println("×¼ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½");
+		System.out.println("×¼±¸ÏÔÊ¾´°Ìå");
 		Main.isFinished = true;
 		
 		this.setVisible(true);
-		System.out.println("ï¿½ï¿½ï¿½");
+		System.out.println("Íê³É");
 	}
 
 	private void init() {
 		List<AbstractPlayer> players = ModuleManagement.getInstance()
 				.getPlayerList();
-		// Ñ°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½
+		// Ñ°ÕÒÖ÷¹«²¢³õÊ¼»¯
 		for (int i = 0; i < players.size(); i++) {
 			if (players.get(i).getState().getId() == Identity.ZHUGONG) {
 				boss = players.get(i);
@@ -90,7 +91,7 @@ public class Frame_Main extends JFrame {
 	}
 
 	/**
-	 * ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½Ä»Øºï¿½
+	 * ¿ªÊ¼½øÈëÓÎÏ·µÄ»ØºÏ
 	 */
 	public void startGame() {
 		isGameOver = false;
@@ -98,18 +99,18 @@ public class Frame_Main extends JFrame {
 	}
 
 	/**
-	 * ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ³õÊ¼»¯Ö÷¹«
 	 */
 	private void initBoss(AbstractPlayer boss) {
-		// ï¿½ï¿½1ï¿½ï¿½Ñª
+		// ¼Ó1µãÑª
 		boss.getInfo().setMaxHP(boss.getInfo().getMaxHP() + 1);
 		boss.getState().setCurHP(boss.getInfo().getMaxHP());
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ¼ÓÔØÖ÷¹«¼¼
 
 	}
 
 	/**
-	 * ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½
+	 * ÓÎÏ·½áÊø
 	 */
 	public  void gameOver(final GameOver type) {
 		isGameOver = true;
@@ -152,12 +153,12 @@ public class Frame_Main extends JFrame {
 	}
 
 	/**
-	 * ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ß³ï¿½
+	 * ÓÎÏ·Ö÷Ïß³Ì
 	 */
 	class GameThread extends Thread {
 		public void run() {
 			startGame();
-			System.out.println("ï¿½ï¿½Ï·ï¿½ß³Ì½ï¿½ï¿½ï¿½");
+			System.out.println("ÓÎÏ·Ïß³Ì½áÊø");
 		}
 
 	}

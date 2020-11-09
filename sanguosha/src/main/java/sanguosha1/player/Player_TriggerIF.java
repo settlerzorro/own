@@ -3,49 +3,49 @@ package sanguosha1.player;
 import sanguosha1.card.AbstractCard;
 
 /**
- * Ò»Ð©ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+ * Ò»Ð©´¥·¢ÊÂ¼þ
  * @author user
  *
  */
 public interface Player_TriggerIF {
 
-	//Ê¹ï¿½ï¿½É±ï¿½ï¿½ï¿½ï¿½
+	//Ê¹ÓÃÉ±´¥·¢
 	void afterSha();
 	
-	//Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Ê¹ÓÃÉÁ´¥·¢
 	void afterShan();
 	
-	//Ê¹ï¿½ï¿½ï¿½Ò´ï¿½ï¿½ï¿½
+	//Ê¹ÓÃÌÒ´¥·¢
 	void afterTao();
 	
-	//ï¿½ï¿½Ñªï¿½ï¿½ï¿½ï¿½
+	//¼ÓÑª´¥·¢
 	void afterAddHP();
 	
-	//ï¿½ï¿½Ñªï¿½ï¿½ï¿½ï¿½
+	//¿ÛÑª´¥·¢
 	void afterLoseHP(AbstractPlayer murderer);
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ´ï¿½ï¿½ï¿½
+	//»ñµÃÊÖÅÆ´¥·¢
 	void afterGetHandCard();
 	
-	//ï¿½ï¿½Ê§ï¿½ï¿½ï¿½Æ´ï¿½ï¿½ï¿½
+	//¶ªÊ§ÊÖÅÆ´¥·¢
 	void afterLoseHandCard();
 	
-	//ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//»ñµÃ×°±¸´¥·¢
 	void afterLoadEquipmentCard();
 	
-	//ï¿½ï¿½Ê§×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//¶ªÊ§×°±¸´¥·¢
 	void afterUnloadEquipmentCard();
 	
-	//Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Æ´ï¿½ï¿½ï¿½
+	//Ã»ÓÐÊÖÅÆ´¥·¢
 	void afterNullCards();
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Æºó´¥·ï¿½
+	//·­³öÅÐ¶¨ÅÆºó´¥·¢
 	void afterCheck(AbstractCard c, boolean result);
 	
-	//Ê¹ï¿½Ã½ï¿½ï¿½Ò´ï¿½ï¿½ï¿½
+	//Ê¹ÓÃ½õÄÒ´¥·¢
 	void afterMagic();
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ËÀÍö´¥·¢
 	void afterDead();
 	
 }

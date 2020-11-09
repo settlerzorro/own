@@ -5,8 +5,8 @@ import sanguosha1.player.impl.P_Action;
 import sanguosha1.skills.LockingSkillIF;
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¡ï¿½ï¿½ï¿½Ë«ï¿½ï¿½ 
- * ï¿½ï¿½ï¿½ï¿½É±/ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½Òª2ï¿½ï¿½ï¿½ï¿½/É±
+ * ÂÀ²¼¼¼ÄÜ¡¾ÎÞË«¡¿ 
+ * µ±³öÉ±/¾ö¶·Ê±ºò£¬Ä¿±êÐèÒª2ÕÅÉÁ/É±
  * 
  * @author user
  * 
@@ -19,7 +19,7 @@ public class Lvbu_wushuang extends P_Action implements LockingSkillIF{
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´É±
+	 * ÖØÐ´É±
 	 */
 	@Override
 	public boolean sha(AbstractPlayer p) {
@@ -35,15 +35,15 @@ public class Lvbu_wushuang extends P_Action implements LockingSkillIF{
 				flag = false;
 			}
 		}
-		// ï¿½ï¿½ï¿½ï¿½
+		// ¿ª¹Ø
 		player.getState().setUsedSha(true);
-		// ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+		// µ÷ÓÃ´¥·¢ÊÂ¼þ
 		player.getTrigger().afterSha();
 		return flag;
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½
+	 * ÖØÐ´¾ö¶·
 	 */
 	@Override
 	public boolean jueDou(AbstractPlayer p) {
@@ -61,6 +61,6 @@ public class Lvbu_wushuang extends P_Action implements LockingSkillIF{
 
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½Ë«";
+		return "ÎÞË«";
 	}
 }

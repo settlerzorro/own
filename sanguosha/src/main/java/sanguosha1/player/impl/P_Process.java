@@ -1,5 +1,8 @@
 package sanguosha1.player.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.DelayKitIF;
 import sanguosha1.command.Command_ThrowCards;
@@ -11,16 +14,13 @@ import sanguosha1.gui.main.Panel_HandCards;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.player.PlayerIF;
 import sanguosha1.player.Player_ProcessIF;
-import sanguosha1.service.AI.AIProcessService;
 import sanguosha1.service.ModuleManagement;
 import sanguosha1.service.ViewManagement;
+import sanguosha1.service.AI.AIProcessService;
 import sanguosha1.skills.SkillIF;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * ï¿½ï¿½×°ï¿½ï¿½Òµï¿½6ï¿½ï¿½ï¿½ØºÏµÄ¶ï¿½ï¿½ï¿½
+ * ·â×°Íæ¼ÒµÄ6¸ö»ØºÏµÄ¶¯×÷
  * 
  * @author user
  * 
@@ -36,7 +36,7 @@ public class P_Process implements Player_ProcessIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * ½øÈë
 	 */
 	public void start() {
 		init();
@@ -53,13 +53,13 @@ public class P_Process implements Player_ProcessIF {
 		}
 		pass();
 	}
-	//ï¿½ï¿½Ê¼ï¿½ï¿½
+	//³õÊ¼»¯
 	private void init(){
 		player.setSkip(false);
 		player.getState().setExtDamage(0);
 		player.getState().setUsedSha(false);
 		player.getState().getEquipment().initAll();
-		// ï¿½ï¿½ï¿½Ü³ï¿½Ê¼ï¿½ï¿½
+		// ¼¼ÄÜ³õÊ¼»¯
 		List<SkillIF> skills = player.getState().getSkill();
 		if (!skills.isEmpty()) {
 			for (int i = 0; i < skills.size(); i++) {
@@ -67,19 +67,19 @@ public class P_Process implements Player_ProcessIF {
 			}
 		}
 	}
-	// ï¿½ØºÏ¿ï¿½Ê¼
+	// »ØºÏ¿ªÊ¼
 	public void stage_begin() {
 		player.setStageNum(PlayerIF.STAGE_BEGIN);
 		ModuleManagement.getInstance().getBattle().clear();
-		ViewManagement.getInstance().printMsg( player.getInfo().getName() + "ï¿½ï¿½Ê¼");
+		ViewManagement.getInstance().printMsg( player.getInfo().getName() + "¿ªÊ¼");
 		player.refreshView();
 	}
 
-	// ï¿½Ð¶ï¿½ï¿½×¶ï¿½
+	// ÅÐ¶¨½×¶Î
 	public void stage_check() {
 		player.setStageNum(PlayerIF.STAGE_CHECK);
-		ViewManagement.getInstance().printMsg( player.getInfo().getName() + "ï¿½Ð¶ï¿½");
-		//ï¿½ï¿½È¡ï¿½Ð¶ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½
+		ViewManagement.getInstance().printMsg( player.getInfo().getName() + "ÅÐ¶¨");
+		//»ñÈ¡ÅÐ¶¨ÅÆ¼¯ºÏ
 		List<AbstractCard> list = new ArrayList<AbstractCard>();
 		for (int i = 0; i <player.getState().getCheckedCardList().size(); i++) {
 			list.add(player.getState().getCheckedCardList().get(i));
@@ -96,13 +96,13 @@ public class P_Process implements Player_ProcessIF {
 		}
 	}
 
-	// ï¿½ï¿½ï¿½Æ½×¶ï¿½
+	// ÃþÅÆ½×¶Î
 	public void stage_addCards() {
 		player.setStageNum(PlayerIF.STAGE_ADDCARDS);
-		ViewManagement.getInstance().printMsg( player.getInfo().getName() + "ï¿½ï¿½ï¿½ï¿½");
+		ViewManagement.getInstance().printMsg( player.getInfo().getName() + "ÃþÅÆ");
 		/*System.out.println(player.getState().getId().toString()
-				+ player.getInfo().getName() + "ï¿½ï¿½ï¿½ï¿½");*/
-		//ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½
+				+ player.getInfo().getName() + "ÃþÅÆ");*/
+		//»æÖÆ¶¯»­
 		/*SwingUtilities.invokeLater(new Runnable() {
 			
 			@Override
@@ -116,7 +116,7 @@ public class P_Process implements Player_ProcessIF {
 		player.refreshView();
 	}
 
-	// ï¿½ï¿½ï¿½Æ½×¶ï¿½
+	// ³öÅÆ½×¶Î
 	public void stage_useCards() {
 		if(!canUseCard){
 			canUseCard = true;
@@ -128,21 +128,21 @@ public class P_Process implements Player_ProcessIF {
 		}
 		player.setStageNum(PlayerIF.STAGE_USECARDS);
 		player.refreshView();
-		ViewManagement.getInstance().printMsg( player.getInfo().getName() + "ï¿½ï¿½ï¿½ï¿½");
+		ViewManagement.getInstance().printMsg( player.getInfo().getName() + "³öÅÆ");
 		/*
 		System.out.println(player.getState().getId().toString()
-				+ player.getInfo().getName() + "ï¿½ï¿½ï¿½ï¿½");*/
+				+ player.getInfo().getName() + "³öÅÆ");*/
 		while (!player.isSkip()) {
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½Ê±ï¿½ï¿½
+			// µ±°´ÏÂÈ·¶¨Ê±ºò
 			if (player.getState().getRes() == Const_Game.OK) {
 				Panel_Control pc = (Panel_Control) player.getPanel();
 				Panel_HandCards ph = pc.getHand();
-				Thread t = new Thread(new Command_UseCard(ph), "ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½");
+				Thread t = new Thread(new Command_UseCard(ph), "³öÅÆÏß³Ì");
 				t.start();
 				player.getState().setRes(0);
 
 			}
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½Í£ï¿½ï¿½Ç°ï¿½ß³Ì£ï¿½ï¿½È¼ï¿½ï¿½ï¿½Ê©ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½Ù¼ï¿½ï¿½ï¿½
+			// Èç¹û·¢¶¯¼¼ÄÜ£¬ÔÝÍ£µ±Ç°Ïß³Ì£¬µÈ¼¼ÄÜÊ©·ÅÍê±Ï£¬ÔÙ¼ÌÐø
 			if (player.getState().getRes() == Const_Game.SKILL) {
 				Thread t = new Thread((Runnable) player.getState().getSkill()
 						.get(0));
@@ -157,7 +157,7 @@ public class P_Process implements Player_ProcessIF {
 					}
 				}
 			}
-			// ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
+			// ÆäËûÖÐ¶Ï
 			if (isSkilling||player.getState().isRequest) {
 				synchronized (this) {
 					try {
@@ -168,7 +168,7 @@ public class P_Process implements Player_ProcessIF {
 					}
 				}
 			}
-			//ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½
+			//ÓÎÏ·½áÊø
 			if(Frame_Main.isGameOver){
 				//pass();
 				break;
@@ -176,7 +176,7 @@ public class P_Process implements Player_ProcessIF {
 		}
 	}
 
-	// ï¿½ï¿½ï¿½Æ½×¶ï¿½
+	// ÆúÅÆ½×¶Î
 	public void stage_throwCrads() {
 		if (player.getState().isAI) {
 			AIProcess.stage_throwCrads();
@@ -184,11 +184,11 @@ public class P_Process implements Player_ProcessIF {
 		}
 		Panel_Control pc = (Panel_Control) player.getPanel();
 		player.setStageNum(PlayerIF.STAGE_THROWCRADS);
-		ViewManagement.getInstance().printMsg( player.getInfo().getName() + "ï¿½ï¿½ï¿½ï¿½");
+		ViewManagement.getInstance().printMsg( player.getInfo().getName() + "ÆúÅÆ");
 		/*System.out.println(player.getState().getId().toString()
-				+ player.getInfo().getName() + "ï¿½ï¿½ï¿½ï¿½");*/
+				+ player.getInfo().getName() + "ÆúÅÆ");*/
 		player.refreshView();
-		// ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½
+		// ¼ì²âÊÇ·ñÐèÒªÆúÅÆ
 		if (player.getState().getCardList().size() <= player.getState()
 				.getCurHP())
 			return;
@@ -225,19 +225,19 @@ public class P_Process implements Player_ProcessIF {
 		}
 	}
 
-	// ï¿½ØºÏ½ï¿½ï¿½ï¿½
+	// »ØºÏ½áÊø
 	public void stage_end() {
 		/*if (player.getState().isAI) {
 			AIProcess.stage_end();
 			return;
 		}*/
 		player.setStageNum(PlayerIF.STAGE_END);
-		ViewManagement.getInstance().printMsg(player.getInfo().getName() + "ï¿½ï¿½ï¿½ï¿½");
+		ViewManagement.getInstance().printMsg(player.getInfo().getName() + "½áÊø");
 		/*System.out.println(player.getState().getId().toString()
-				+ player.getInfo().getName() + "ï¿½ï¿½ï¿½ï¿½");
+				+ player.getInfo().getName() + "½áÊø");
 		player.refreshView();*/
 	}
-	//ï¿½Â¼Ò¿ï¿½Ê¼
+	//ÏÂ¼Ò¿ªÊ¼
 	private void pass(){
 		if(Frame_Main.isGameOver){
 			return;

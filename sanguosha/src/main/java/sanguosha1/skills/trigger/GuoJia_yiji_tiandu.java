@@ -1,5 +1,10 @@
 package sanguosha1.skills.trigger;
 
+import java.util.Arrays;
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.data.constant.Const_Game;
 import sanguosha1.gui.main.Panel_Control;
@@ -10,57 +15,53 @@ import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.LockingSkillIF;
 import sanguosha1.skills.SkillMultiIF;
 
-import javax.swing.*;
-import java.util.Arrays;
-import java.util.List;
-
 /**
- * ï¿½ï¿½ï¿½Î¡ï¿½ï¿½Å¼Æ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ê¡ï¿½
+ * ¹ù¼Î¡¾ÒÅ¼Æ¡¿¡¾Ìì¶Ê¡¿
  * 
  * @author user
  * 
  */
 public class GuoJia_yiji_tiandu extends P_Trigger implements LockingSkillIF,SkillMultiIF {
-	//ï¿½ï¿½Ê§ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½
+	//ËðÊ§»ñµÃµÄÅÆÊý
 	private static final int NUMBER = 2;
 	//AbstractPlayer player;
-	//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//¼ÇÂ¼¸ø³öÈ¥µÄÅÆÊý
 	int n ;
-	//ï¿½ï¿½ï¿½UIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Ïà¹ØUIÃæ°åµÄÒýÓÃ
 	Panel_Control pc;
 	Panel_HandCards ph;
 
-	//ï¿½ï¿½ï¿½Ü¼ï¿½ï¿½ï¿½
-	private static final String[] names = {"ï¿½Å¼ï¿½","ï¿½ï¿½ï¿½"};
+	//¼¼ÄÜ¼¯ºÏ
+	private static final String[] names = {"ÒÅ¼Æ","Ìì¶Ê"};
 	
 	public GuoJia_yiji_tiandu(AbstractPlayer p) {
 		this.player = p;
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ë´ï¿½ï¿½ï¿½
+	 * ÖØÐ´ÊÜÉË´¥·¢
 	 */
 	@Override
 	public void afterLoseHP(AbstractPlayer murderer) {
 		super.afterLoseHP(murderer);
-		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ß³ï¿½Îªï¿½ï¿½" + Thread.currentThread().getName());
-		// ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½ï¿½
+		System.out.println("´¥·¢£¡µ±Ç°Ïß³ÌÎª£º" + Thread.currentThread().getName());
+		// »ñµÃNÕÅÅÆ
 		for (int i = 0; i < NUMBER; i++) {
 			player.getAction().addOneCardFromList();
 		}
 		player.refreshView();
-		//ï¿½ï¿½ï¿½ï¿½ï¿½AI
+		//Èç¹ûÊÇAI
 		if(player.getState().isAI()){
 			//TODO
 			return;
 		}
 		pc = (Panel_Control) player.getPanel();
 		ph = pc.getHand();
-		//ï¿½ï¿½×¡
+		//Ëø×¡
 		player.getProcess().setSkilling(true);
-		//ï¿½ï¿½Ê¾
+		//ÏÔÊ¾
 		SwingUtilities.invokeLater(run);
-		// ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½
+		// µÈ´ý´¦Àí
 		player.getState().setRes(0);
 		n=0;
 		while (true) {
@@ -72,7 +73,7 @@ public class GuoJia_yiji_tiandu extends P_Trigger implements LockingSkillIF,Skil
 					n++;
 				}
 				toP.refreshView();
-				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½
+				// Èç¹û¶¼¸øÁË£¬ÔòÌø³öÑ­»·
 				if (n >= NUMBER) {
 					ViewManagement.getInstance().getPrompt().clear();
 					break;
@@ -95,25 +96,25 @@ public class GuoJia_yiji_tiandu extends P_Trigger implements LockingSkillIF,Skil
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´ï¿½Ð¶ï¿½ï¿½ó´¥·ï¿½
-	 * ï¿½ï¿½È¡ï¿½Ð¶ï¿½ï¿½ï¿½
+	 * ÖØÐ´ÅÐ¶¨ºó´¥·¢
+	 * »ñÈ¡ÅÐ¶¨ÅÆ
 	 */
 	@Override
 	public void afterCheck(AbstractCard c, boolean result) {
-		ViewManagement.getInstance().printMsg(player.getInfo().getName()+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Æ£ï¿½"+c.toString());
+		ViewManagement.getInstance().printMsg(player.getInfo().getName()+"»ñµÃÁËÅÐ¶¨ÅÆ£º"+c.toString());
 		player.getAction().addCardToHandCard(c);
 	}
 
 	@Override
 	public String getName() {
-		return "ï¿½Å¼ï¿½";
+		return "ÒÅ¼Æ";
 	}
 	
 	private Runnable run = new Runnable() {
 
 		@Override
 		public void run() {
-			// ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			// ÏÔÊ¾¸øµÄÅÆ
 			pc.getHand().unableToUseCard();
 			int size = pc.getHand().getCards().size();
 			for (int i = 1; i <= NUMBER - n; i++) {
@@ -121,7 +122,7 @@ public class GuoJia_yiji_tiandu extends P_Trigger implements LockingSkillIF,Skil
 				pc.getHand().setSelectLimit(NUMBER);
 			}
 			pc.getHand().enableToClick();
-			ViewManagement.getInstance().getPrompt().show_Message("ï¿½ï¿½Ñ¡ï¿½ï¿½Ä¿ï¿½ê´«ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½");
+			ViewManagement.getInstance().getPrompt().show_Message("ÇëÑ¡ÔñÄ¿±ê´«µÝ£¬»òÕßÈ¡Ïû");
 		}
 	};
 

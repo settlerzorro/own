@@ -7,9 +7,8 @@ import sanguosha1.player.impl.P_Action;
 import sanguosha1.service.ModuleManagement;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.LockingSkillIF;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½Ü¡ï¿½ï¿½ï¿½ï¿½ï¡¿
+ * Âí³¬¼¼ÄÜ¡¾ÌúÆï¡¿
  * 
  * @author user
  *
@@ -21,19 +20,19 @@ public class MaChao_tieji extends P_Action implements LockingSkillIF{
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´É±
-	 * ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½Ò£ï¿½Ö±ï¿½Ó¿ï¿½Ñª
+	 * ÖØÐ´É±
+	 * ÅÐ¶¨£¬Èç¹ûÎªºìÌÒ£¬Ö±½Ó¿ÛÑª
 	 */
 	@Override
 	public boolean sha(AbstractPlayer p) {
 		AbstractCard cc = ModuleManagement.getInstance().showOneCheckCard();
-		//ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Îªï¿½ï¿½ï¿½ï¿½
+		//Èç¹ûÅÐ¶¨ÎªºìÌÒ
 		if(player.getFunction().checkRollCard(cc, Colors.HONGXIN)){
-			ViewManagement.getInstance().printBattleMsg(player.getInfo().getName()+getName()+"ï¿½ï¿½Ð§");
+			ViewManagement.getInstance().printBattleMsg(player.getInfo().getName()+getName()+"ÉúÐ§");
 			p.getAction().loseHP(1+player.getState().getExtDamage(), player);
-			//ï¿½ï¿½ï¿½ï¿½
+			//¿ª¹Ø
 			player.getState().setUsedSha(true);
-			//ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+			//µ÷ÓÃ´¥·¢ÊÂ¼þ
 			player.getTrigger().afterSha();
 			return true;
 		}else{
@@ -43,6 +42,6 @@ public class MaChao_tieji extends P_Action implements LockingSkillIF{
 
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½ï¿½";
+		return "ÌúÆï";
 	}
 }

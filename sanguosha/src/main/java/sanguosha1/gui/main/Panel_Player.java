@@ -1,5 +1,21 @@
 package sanguosha1.gui.main;
 
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import sanguosha1.card.DelayKitIF;
 import sanguosha1.data.constant.Const_UI;
 import sanguosha1.data.types.Target;
@@ -7,16 +23,9 @@ import sanguosha1.player.AbstractPlayer;
 import sanguosha1.player.PlayerIF;
 import sanguosha1.util.ImgUtil;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½
+ * ÆäËûÍæ¼ÒµÄÏÔÊ¾Ãæ°å
  * 
  * @author user
  * 
@@ -26,39 +35,39 @@ public class Panel_Player extends JPanel implements RefreshbleIF,PaintEffectIF {
 	 * 
 	 */
 	private static final long serialVersionUID = 6279313069197776880L;
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ×ÜÃæ°åµÄÒýÓÃ
 	Panel_Main main;
-	// ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+	// ¶ÔÓ¦µÄÍæ¼ÒÄ£ÐÍ
 	AbstractPlayer player;
-	//ï¿½ï¿½ï¿½ï¿½
+	//¼àÌý
 	MouseListener listener ;
-	// Ñªï¿½ï¿½
+	// ÑªÌõ
 	Panel_HP hp;
-	// ï¿½ï¿½ï¿½ï¿½Ð¤ï¿½ï¿½
+	// ÈËÎïÐ¤Ïñ
 	JLabel jl_img = new JLabel();
-	// ï¿½ï¿½Ý°ï¿½
+	// Éí·Ý°å
 	Panel_Id pn_id = new Panel_Id(this);
-	// ï¿½ï¿½ï¿½Æ°ï¿½
+	// ÊÖÅÆ°å
 	CardNum num;
-	// ×°ï¿½ï¿½ï¿½ï¿½
+	// ×°±¸À¸
 	Panel_Equipments pn_eq ;
-	// ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+	// ÈËÎïÍ¼Ïñ
 	BufferedImage img;
 	BufferedImage bfimg;
-	// ï¿½ï¿½ï¿½×´Ì¬
+	// Ãæ°å×´Ì¬
 	public static final int DEAD = -1;
 	public static final int NORMAL = 0;
 	public static final int DISABLE = 1;
 	public static final int SELECTED = 2;
 	int PanelState;
-	// Ð§ï¿½ï¿½×´Ì¬
+	// Ð§¹û×´Ì¬
 	public static final int DOING = 3;
 	public static final int HURT = 4;
 	
 	int effectState;
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ¹¹ÔìÆ÷
 	 * 
 	 * @param p
 	 * @param main
@@ -71,51 +80,51 @@ public class Panel_Player extends JPanel implements RefreshbleIF,PaintEffectIF {
 		this.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		//this.setBackground(Color.gray);
 		this.setOpaque(false);
-		//×¢ï¿½ï¿½ï¿½ï¿½ï¿½
+		//×¢²á¼àÌý
 		this.listener = new ClickPlayer();
 		//this.addMouseListener(new Click());
 		img = (BufferedImage) p.getInfo().getHeadImg();
 		bfimg = img.getSubimage(0, 0, img.getWidth(), img.getHeight() / 2);
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//Éí·ÝÃæ°å
 		pn_id.setLocation(getWidth() - pn_id.getWidth(), 0);
 		this.add(pn_id);
-		//Ñªï¿½ï¿½
+		//ÑªÌõ
 		hp = new Panel_HP(p);
 		this.add(hp);
 		hp.setLocation(this.getWidth() - hp.getWidth(), this.getHeight() / 3);
-		//ï¿½ï¿½ï¿½ï¿½Ð¤ï¿½ï¿½
+		//ÈËÎïÐ¤Ïñ
 		this.add(jl_img);
-		//×°ï¿½ï¿½ï¿½ï¿½
+		//×°±¸À¸
 		pn_eq = new Panel_Equipments(p,null,16);
 		pn_eq.setSize(getWidth()-35, getHeight()/2);
 		pn_eq.setLocation(18, getHeight()/2-10);
 		this.add(pn_eq);
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//ÊÖÅÆÊý
 		num = new CardNum();
 		this.add(num);
-		//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+		//³õÊ¼¿ÉÓÃ
 		enableToUse();
 	}
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * »æÖÆ
 	 */
 	public void paint(Graphics g) {
 		//super.paint(g);
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//Èç¹ûËÀÍö
 		if(player.getState().isDead()){
 			drawDead(g,Const_UI.PANEL_UNABLE);
 			PanelState = DEAD;
 			pn_id.showAfterDead();
 		}
-		//ï¿½ï¿½ï¿½ï¿½Ú»Øºï¿½ï¿½ï¿½
+		//Èç¹ûÔÚ»ØºÏÖÐ
 		if(player.getStageNum()!=PlayerIF.STAGE_END){
 			g.drawImage(ImgUtil.getPngImgByName("bd_cur"), 0, 0, this.getWidth(),this.getHeight(),null);
 		}
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
+		//Èç¹ûÔÚÏìÓ¦
 		if(player.getState().isRequest()){
 			g.drawImage(ImgUtil.getPngImgByName("bd_select"), 0, 0, this.getWidth(),this.getHeight(),null);
 		}
-		//ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ß¿ï¿½
+		//»æÖÆÑ¡Ôñ±ß¿ò
 		switch (PanelState) {
 		case NORMAL:
 			break;
@@ -127,14 +136,14 @@ public class Panel_Player extends JPanel implements RefreshbleIF,PaintEffectIF {
 		case DISABLE:
 			drawDead(g,.5f);
 		}
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+		//»æÖÆÈËÎïÍ¼Ïñ
 		g.drawImage(bfimg, 10, 20, this.getWidth() - 20, this.getHeight() / 3,
 				null);
 		g.drawImage(ImgUtil.getPngImgByName("headborder"), 0, 0, this
 				.getWidth(), this.getHeight(), null);
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//»æÖÆ×Ó×é¼þ
 		super.paintChildren(g);
-		//ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
+		//»æÖÆÅÐ¶¨Çø
 		if(!player.getState().getCheckedCardList().isEmpty()){
 			for (int i = 0; i < player.getState().getCheckedCardList().size(); i++) {
 			DelayKitIF d = (DelayKitIF) player.getState().getCheckedCardList().get(i);
@@ -146,7 +155,7 @@ public class Panel_Player extends JPanel implements RefreshbleIF,PaintEffectIF {
 		g.dispose();
 	}
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * ½ûÓÃ
 	 */
 	public void disableToUse(){
 		if(PanelState==DEAD)return;
@@ -156,7 +165,7 @@ public class Panel_Player extends JPanel implements RefreshbleIF,PaintEffectIF {
 		repaint();
 	}
 	/**
-	 * ï¿½ï¿½Ì¬ï¿½ï¿½
+	 * ³£Ì¬»¯
 	 */
 	public void setNormal(){
 		if(PanelState==DEAD)return;
@@ -166,7 +175,7 @@ public class Panel_Player extends JPanel implements RefreshbleIF,PaintEffectIF {
 		repaint();
 	}
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * ¿ÉÓÃ
 	 */
 	public void enableToUse(){
 		if(PanelState==DEAD)return;
@@ -176,7 +185,7 @@ public class Panel_Player extends JPanel implements RefreshbleIF,PaintEffectIF {
 		repaint();
 	}
 	/**
-	 * Êµï¿½ï¿½Ë¢ï¿½Â·ï¿½ï¿½ï¿½
+	 * ÊµÏÖË¢ÐÂ·½·¨
 	 */
 	@Override
 	public void refresh() {
@@ -189,7 +198,7 @@ public class Panel_Player extends JPanel implements RefreshbleIF,PaintEffectIF {
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
+	 * »æÖÆËÀÍö×´Ì¬
 	 * @return
 	 */
 	public void drawDead(Graphics g,float f){
@@ -198,13 +207,13 @@ public class Panel_Player extends JPanel implements RefreshbleIF,PaintEffectIF {
 		g2.fillRect(0, 0, this.getWidth(), this.getHeight());
 		g2.setComposite(AlphaComposite.SrcOver.derive(f));
 	}
-	// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+	// »ñÈ¡ÈËÎïÄ£ÐÍ
 	public AbstractPlayer getPlayer() {
 		return player;
 	}
 
 	/*
-	 * ï¿½Ú²ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÄÚ²¿Àà Êó±êµã»÷¼àÌý
 	 */
 	class ClickPlayer extends MouseAdapter {
 
@@ -231,7 +240,7 @@ public class Panel_Player extends JPanel implements RefreshbleIF,PaintEffectIF {
 	}
 
 	/*
-	 * ï¿½Ú²ï¿½ï¿½ï¿½ ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÄÚ²¿Àà ÏÔÊ¾Íæ¼ÒÊÖÅÆÊý
 	 */
 	class CardNum extends JPanel {
 		/**
@@ -254,9 +263,9 @@ public class Panel_Player extends JPanel implements RefreshbleIF,PaintEffectIF {
 
 		public void paint(Graphics g) {
 			super.paint(g);
-			// ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½
+			// »æÖÆ±³¾°
 			g.drawImage(backImg, 0, 0, this.getWidth(), this.getHeight(), null);
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			// ¸üÐÂÊÖÅÆÊý
 			num = player.getState().getCardList().size();
 			jl.setText(String.valueOf(num));
 			super.paintChildren(g);

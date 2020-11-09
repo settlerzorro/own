@@ -1,6 +1,6 @@
 package sanguosha1.data.enums;
 /**
- * ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ö½ï¿½ï¿½
+ * ÓÎÏ·½áÊøµÄ¼¸ÖÖ½á¹û
  * @author user
  *
  */
@@ -12,11 +12,11 @@ public enum GameOver {
 	public String getWinner(){
 		switch(this){
 		case FANZEI_WIN:
-			return "ï¿½ï¿½ï¿½ï¿½Ê¤";
+			return "·´ÔôÊ¤";
 		case ZHUGONG_WIN:
-			return "ï¿½ï¿½ï¿½ï¿½Ê¤";
+			return "Ö÷¹«Ê¤";
 		case NEIJIAN_WIN:
-			return "ï¿½Ú¼ï¿½Ê¤";
+			return "ÄÚ¼éÊ¤";
 		}
 		return "";
 	}
@@ -24,11 +24,11 @@ public enum GameOver {
 	public String getWords(){
 		switch(this){
 		case FANZEI_WIN:
-			return "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ìµ±ï¿½ï¿½";
+			return "²ÔÌìÒÑËÀ£¬»ÆÌìµ±Á¢";
 		case ZHUGONG_WIN:
-			return "ï¿½â½­É½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½";
+			return "Õâ½­É½£¬Ê¼ÖÕÊÇÎÒµÄ";
 		case NEIJIAN_WIN:
-			return "ï¿½ï¿½ï¿½Â´ï¿½ï¿½Æ£ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+			return "ÌìÏÂ´óÊÆ£¬ÎªÎÒËù¿Ø";
 		}
 		return "";
 	}

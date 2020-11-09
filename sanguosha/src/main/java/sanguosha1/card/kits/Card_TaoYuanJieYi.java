@@ -1,15 +1,16 @@
 package sanguosha1.card.kits;
 
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.gui.main.PaintService;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ViewManagement;
 
-import javax.swing.*;
-import java.util.List;
-
 /**
- * ï¿½ï¿½Ô°ï¿½ï¿½ï¿½ï¿½
+ * ÌÒÔ°½áÒå
  * @author user
  *
  */
@@ -21,7 +22,7 @@ public class Card_TaoYuanJieYi extends AbstractCard{
 	public void use(final AbstractPlayer p, List<AbstractPlayer> players) {
 		super.use(p, players);
 		
-		ViewManagement.getInstance().printBattleMsg(p.getInfo().getName()+"Ê¹ï¿½ï¿½"+this.name);
+		ViewManagement.getInstance().printBattleMsg(p.getInfo().getName()+"Ê¹ÓÃ"+this.name);
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {

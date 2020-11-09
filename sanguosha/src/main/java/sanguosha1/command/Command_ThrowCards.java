@@ -4,7 +4,7 @@ import sanguosha1.gui.main.Panel_HandCards;
 import sanguosha1.service.ViewManagement;
 
 /**
- * ï¿½ï¿½ï¿½ï¿½
+ * ÆúÅÆ
  * 
  * @author user
  * 

@@ -1,6 +1,6 @@
 package sanguosha1.data.enums;
 
-//я┐╜я┐╜я┐╜я┐╜ф╜ля┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜├╢я┐╜я┐╜
+//═ц╝╥╬ф╜л╦∙╩Ї╩╞┴ж├╢╛┘
 public enum Country {
 	WU, SHU, WEI, QUN
 }

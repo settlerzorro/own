@@ -1,5 +1,10 @@
 package sanguosha1.card.changed;
 
+import java.awt.Image;
+import java.lang.reflect.InvocationTargetException;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.DelayKitIF;
 import sanguosha1.card.VirtualCardIF;
@@ -11,12 +16,8 @@ import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ModuleManagement;
 import sanguosha1.service.ViewManagement;
 
-import javax.swing.*;
-import java.awt.*;
-import java.lang.reflect.InvocationTargetException;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½Ö²ï¿½Ë¼ï¿½ï¿½
+ * ÐéÄâµÄ¡¾ÀÖ²»Ë¼Êñ¡¿
  * @author user
  *
  */
@@ -43,8 +44,8 @@ public class Virtual_LeBuSiShu extends Card_LeBuSiShu implements VirtualCardIF,D
 	public void use(final AbstractPlayer p, final AbstractPlayer toP) {
 		//final AbstractPlayer target = players.get(0);
 		owner = toP;
-		//ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½Ð§ï¿½ï¿½
-		ViewManagement.getInstance().printBattleMsg(p.getInfo().getName()+"ï¿½ï¿½"+toP.getInfo().getName()+"Ê¹ï¿½ï¿½ï¿½Ë¡ï¿½ï¿½ï¿½É«ï¿½ï¿½");
+		//ÏÔÊ¾ÐÅÏ¢¼°»æÖÆµÈÐ§¹û
+		ViewManagement.getInstance().printBattleMsg(p.getInfo().getName()+"¶Ô"+toP.getInfo().getName()+"Ê¹ÓÃÁË¡¾¹úÉ«¡¿");
 		try {
 			SwingUtilities.invokeAndWait(new Runnable() {
 				
@@ -58,9 +59,9 @@ public class Virtual_LeBuSiShu extends Card_LeBuSiShu implements VirtualCardIF,D
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
-		//ï¿½Æ¶ï¿½ï¿½Õ»ï¿½
+		//ÅÆ¶ÑÊÕ»Ø
 		ModuleManagement.getInstance().getGcList().remove(this);
-		//Ä¿ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//Ä¿±êÅÐ¶¨ÇøÌí¼Ó
 		toP.getState().getCheckedCardList().add(this);
 		p.refreshView();
 		toP.refreshView();
@@ -78,7 +79,7 @@ public class Virtual_LeBuSiShu extends Card_LeBuSiShu implements VirtualCardIF,D
 		if(flag){			
 			ViewManagement.getInstance().printBattleMsg(getName()+"Ê§Ð§");
 		}else{
-			ViewManagement.getInstance().printBattleMsg(getName()+"ï¿½ï¿½Ð§");
+			ViewManagement.getInstance().printBattleMsg(getName()+"ÉúÐ§");
 		}
 		owner.getProcess().setCanUseCard(flag);
 		owner.getState().getCheckedCardList().remove(this);
@@ -91,7 +92,7 @@ public class Virtual_LeBuSiShu extends Card_LeBuSiShu implements VirtualCardIF,D
 
 	@Override
 	public String getShowNameInPanel() {
-		return "ï¿½ï¿½";
+		return "ÀÖ";
 	}
 
 	@Override
@@ -101,6 +102,6 @@ public class Virtual_LeBuSiShu extends Card_LeBuSiShu implements VirtualCardIF,D
 	}
 	
 	public String getName(){
-		return "ï¿½Ö²ï¿½Ë¼ï¿½ï¿½";
+		return "ÀÖ²»Ë¼Êñ";
 	}
 }

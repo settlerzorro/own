@@ -5,9 +5,8 @@ import sanguosha1.player.AbstractPlayer;
 import sanguosha1.player.impl.P_Process;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.LockingSkillIF;
-
 /**
- * ï¿½ï¿½ï¿½Ò¡ï¿½ï¿½ï¿½ï¿½Â¡ï¿½
+ * ÐíñÒ¡¾ÂãÒÂ¡¿
  */
 public class XuChu_luoyi extends P_Process implements LockingSkillIF{
 	final int extDamage = 1 ;
@@ -17,8 +16,8 @@ public class XuChu_luoyi extends P_Process implements LockingSkillIF{
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½
-	 * ï¿½Ëºï¿½+1
+	 * ·¢¶¯¼¼ÄÜÔòÃþ1ÕÅÅÆ
+	 * ÉËº¦+1
 	 */
 	@Override
 	public void stage_addCards() {
@@ -27,12 +26,12 @@ public class XuChu_luoyi extends P_Process implements LockingSkillIF{
 			super.stage_addCards();
 			return;
 		}
-		//Ñ¯ï¿½ï¿½
+		//Ñ¯ÎÊ
 		//SwingUtilities.invokeLater(run);
 		ViewManagement.getInstance().ask(player, getName());
 		while(true){
 			if(player.getState().getRes() == Const_Game.OK){				
-				ViewManagement.getInstance().printBattleMsg(player.getInfo().getName()+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â£ï¿½");
+				ViewManagement.getInstance().printBattleMsg(player.getInfo().getName()+"·¢¶¯ÂãÒÂ£¡");
 				ViewManagement.getInstance().getPrompt().clear();
 				player.getAction().addOneCardFromList();
 				player.getState().setExtDamage(extDamage);
@@ -50,6 +49,6 @@ public class XuChu_luoyi extends P_Process implements LockingSkillIF{
 
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½ï¿½";
+		return "ÂãÒÂ";
 	}	
 }

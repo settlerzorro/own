@@ -1,5 +1,22 @@
 package sanguosha1.gui.main;
 
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.data.constant.Const_UI;
 import sanguosha1.data.enums.Colors;
@@ -8,32 +25,24 @@ import sanguosha1.service.ModuleManagement;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.util.ImgUtil;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½È·ï¿½Ç¡ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ¡¾Îå¹È·áµÇ¡¿µÄÑ¡ÔñÃæ°å
  * 
  * @author user
  * 
  */
 public class Panel_WuGuFengDeng extends JPanel {
 	private static final long serialVersionUID = 5486612841656799384L;
-	// ï¿½Æµï¿½ï¿½ï¿½Ê¾ï¿½ß´ï¿½
+	// ÅÆµÄÏÔÊ¾³ß´ç
 	private static final int CARDWIDTH = 100;
 	private static final int CARDHEIGHT = 150;
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ×ÜÃæ°åÒýÓÃ
 	JPanel me = this;
-	// Ç¶ï¿½ï¿½ï¿½ï¿½ï¿½
+	// Ç¶Ì×Ãæ°å
 	JPanel jp_cards = new JPanel();
-	// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
+	// ÅÆÃæ°åµÄ¼¯ºÏ
 	List<Card4select> cards = new ArrayList<Card4select>();
-	// Ñ¡ï¿½ï¿½ï¿½ï¿½
+	// Ñ¡ÔñÕß
 	AbstractPlayer player;
 
 	public Panel_WuGuFengDeng(AbstractPlayer firstPlayer) {
@@ -43,7 +52,7 @@ public class Panel_WuGuFengDeng extends JPanel {
 	}
 
 	/**
-	 * ï¿½ï¿½Ê¼Ñ¡ï¿½ï¿½
+	 * ¿ªÊ¼Ñ¡Ôñ
 	 */
 	private void start() {
 		new Thread(new Runnable() {
@@ -78,7 +87,7 @@ public class Panel_WuGuFengDeng extends JPanel {
 	}
 
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
+	 * ¸ù¾ÝÅÆ£¬½«¶ÔÓ¦µÄÃæ°åÉ¾³ý
 	 */
 	private void removePanel(AbstractCard c) {
 		for (int i = 0; i < cards.size(); i++) {
@@ -113,7 +122,7 @@ public class Panel_WuGuFengDeng extends JPanel {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½
+	 * »æÖÆ±³¾°
 	 */
 	public void paintComponent(Graphics g) {
 		g.drawImage(ImgUtil.getJpgImgByName("bg_selectcard"), 0, 0, getWidth(),
@@ -121,7 +130,7 @@ public class Panel_WuGuFengDeng extends JPanel {
 	}
 
 	/**
-	 * ï¿½ï¿½Ê¾ï¿½Æµï¿½ï¿½ï¿½ï¿½
+	 * ÏÔÊ¾ÅÆµÄÃæ°å
 	 */
 	class Card4select extends JPanel {
 		private static final long serialVersionUID = 4454271542267174856L;
@@ -139,7 +148,7 @@ public class Panel_WuGuFengDeng extends JPanel {
 		}
 
 		/**
-		 * ï¿½ï¿½ï¿½ï¿½
+		 * ½ûÓÃ
 		 */
 		public void disableIt() {
 			setCursor(Cursor.getDefaultCursor());
@@ -147,7 +156,7 @@ public class Panel_WuGuFengDeng extends JPanel {
 		}
 
 		/**
-		 * ï¿½Ñ¾ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
+		 * ÒÑ¾­±»Ñ¡Ôñ
 		 */
 		public void beSelected() {
 			finish = true;
@@ -155,7 +164,7 @@ public class Panel_WuGuFengDeng extends JPanel {
 		}
 
 		/**
-		 * ï¿½ï¿½ï¿½ï¿½
+		 * »æÖÆ
 		 */
 		public void paint(Graphics g) {
 			// super.paintComponent(g);
@@ -164,7 +173,7 @@ public class Panel_WuGuFengDeng extends JPanel {
 			}
 			if (c != null) {
 				g.drawImage(c.showImg(), 0, 0, getWidth(), getHeight(), null);
-				// ï¿½ï¿½ï¿½Æ»ï¿½É«
+				// »æÖÆ»¨É«
 				Image color = c.getColorImg();
 				g.drawImage(color, 5, 5, 20, 20, null);
 				if (c.getColor() == Colors.FANGKUAI
@@ -193,7 +202,7 @@ public class Panel_WuGuFengDeng extends JPanel {
 		};
 
 		/**
-		 * ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ï¿½ï¿½
+		 * »æÖÆ²»¿ÉÓÃ
 		 * 
 		 * @param g
 		 */

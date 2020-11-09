@@ -4,16 +4,16 @@ import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ViewManagement;
 
 /**
- * AIÌ¨ï¿½ï¿½ï¿½ï¿½
+ * AIÌ¨´ÊÀà
  * @author user
  *
  */
 public class AISpeakService {
 	/**
-	 * ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÖÒ³¼ÅçÖ÷¹«
 	 */
 	public static void sayFuckBoss(AbstractPlayer speaker){
-		String word = "[AI]"+speaker.getInfo().getName()+":ï¿½ï¿½ï¿½SBï¿½ï¿½ï¿½ï¿½";
+		String word = "[AI]"+speaker.getInfo().getName()+":Äã¸öSBÖ÷¹«";
 		ViewManagement.getInstance().printChatMsg(word);
 	}
 }

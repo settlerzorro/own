@@ -1,5 +1,8 @@
 package sanguosha1.player.impl;
 
+import java.lang.reflect.Constructor;
+import java.util.List;
+
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.player.Player_ActionIF;
 import sanguosha1.player.Player_FunctionIF;
@@ -8,38 +11,35 @@ import sanguosha1.skills.LockingSkillIF;
 import sanguosha1.skills.SkillIF;
 import sanguosha1.util.ConfigFileReadUtil;
 
-import java.lang.reflect.Constructor;
-import java.util.List;
-
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ¾ßÌåµÄÍæ¼ÒÀà
  * 
  * @author user
  * 
  */
 public class Player extends AbstractPlayer {
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½info ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ¹¹ÔìÆ÷ ¸ù¾Ýinfo ¹¹½¨Ò»¸ö¾ßÌåÈËÎï
 	 */
 	public Player(String name) {
-		// ï¿½ï¿½È¡ï¿½ï¿½Ï¢
+		// »ñÈ¡ÐÅÏ¢
 		this.info = ConfigFileReadUtil.getInfoFromXML(name);
-		// ï¿½ï¿½Ê¼ï¿½ï¿½
+		// ³õÊ¼»¯
 		initial();
-		// ï¿½ï¿½ï¿½ë¼¼ï¿½ï¿½
+		// ÔØÈë¼¼ÄÜ
 		loadSkills(name);
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ë¼¼ï¿½ï¿½
+	 * ÔØÈë¼¼ÄÜ
 	 * 
 	 */
 	@SuppressWarnings("unchecked")
 	public void loadSkills(String name) {
-		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+		// »ñÈ¡¼¼ÄÜÁÐ±í
 		List<String> list = ConfigFileReadUtil.getSkillListFromXML(name);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// µü´ú½âÎö¼¼ÄÜ
 		for (String s : list) {
 			s=s.trim();
 			String type = s.split(",")[0];
@@ -48,19 +48,19 @@ public class Player extends AbstractPlayer {
 				Constructor con = Class.forName(clazz).getConstructor(
 						AbstractPlayer.class);
 				Object obj = con.newInstance(this);
-				//ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				//Èç¹ûÊÇ´¥·¢ÀàÐÍ
 				if (type.equals("trigger")) {
 					setTrigger((Player_TriggerIF) obj);
 				}
-				//ï¿½ï¿½ï¿½ï¿½Ç»Øºï¿½ï¿½ï¿½
+				//Èç¹ûÊÇ»ØºÏÐÍ
 				if(type.equals("process")){
 					setProcess((P_Process) obj);
 				}
-				//ï¿½ï¿½ï¿½ï¿½Ç¶ï¿½ï¿½ï¿½ï¿½ï¿½
+				//Èç¹ûÊÇ¶¯×÷ÐÍ
 				if(type.equals("action")){
 					setAction((Player_ActionIF) obj);
 				}				
-				//ï¿½ï¿½ï¿½ï¿½Çºï¿½ï¿½ï¿½ï¿½ï¿½
+				//Èç¹ûÊÇº¯ÊýÐÍ
 				if(type.equals("function")){
 					setFunction((Player_FunctionIF) obj);
 				}
@@ -70,11 +70,11 @@ public class Player extends AbstractPlayer {
 					//this.info.lockingSkill = ls.getName();
 				}
 			} catch (Exception e) {
-				System.out.println(getInfo().getName() + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+				System.out.println(getInfo().getName() + "¼¼ÄÜÔØÈë´íÎó");
 				e.printStackTrace();
 			}
 		}
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//ÔØÈëÖ÷¶¯¼¼ÄÜ
 		for (int i = 0; i < getInfo().getSkillName().size(); i++) {			
 			String strSkillName = this.getInfo().getSkillName().get(i);
 			if(strSkillName!=null){
@@ -84,7 +84,7 @@ public class Player extends AbstractPlayer {
 					getState().getSkill().add(skill);
 				} catch (Exception e) {
 					e.printStackTrace();
-					System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£");
+					System.out.println("ÔØÈëÖ÷¶¯¼¼ÄÜÒì³£");
 				}
 			}
 		}

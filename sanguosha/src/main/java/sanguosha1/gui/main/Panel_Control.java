@@ -1,16 +1,20 @@
 package sanguosha1.gui.main;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.image.BufferedImage;
+import java.util.List;
+
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+
 import sanguosha1.data.constant.Const_UI;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.util.ImgUtil;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.util.List;
-
 /**
- * ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * Íæ¼Ò¿ØÖÆÃæ°å
  * @author user
  *
  */
@@ -20,31 +24,31 @@ public class Panel_Control extends JPanel implements RefreshbleIF,PaintEffectIF{
 	 * 
 	 */
 	private static final long serialVersionUID = -1048990093893639234L;
-	//ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+	//ÈËÎïÄ£ÐÍ
 	AbstractPlayer player ;
-	//Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Í·ÏñÇøÓò
 	Panel_HeadImg img;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ÊÖÅÆÇøÓò
 	Panel_HandCards hand ;
-	//×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//×°±¸ÇøÓò
 	Panel_Equipments eq;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//×ÜÃæ°åµÄÒýÓÃ
 	Panel_Main main ;
-	//ï¿½ï¿½ï¿½ï¿½Í¼
+	//±³¾°Í¼
 	BufferedImage bgimg = ImgUtil.getJpgImgByName("bg_control");
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ¹¹ÔìÆ÷
 	 * @param p
 	 */
 	public Panel_Control(AbstractPlayer p,Panel_Main main){
 		this.main = main;
 		this.player = p;
-		//Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//Í·ÏñÇøÓò
 		img = new Panel_HeadImg(p ,this);
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//ÊÖÅÆÇøÓò
 		hand = new Panel_HandCards(p,main);
-		//×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//×°±¸ÇøÓò
 		eq = new Panel_Equipments(p,this,18);
 		
 		this.setLayout(null);
@@ -84,7 +88,7 @@ public class Panel_Control extends JPanel implements RefreshbleIF,PaintEffectIF{
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ¸üÐÂÆäËûÍæ¼ÒÃæ°å
 	 */
 	public void playersRefresh(){
 		List<Panel_Player> list = getMain().getPlayers();
@@ -93,7 +97,7 @@ public class Panel_Control extends JPanel implements RefreshbleIF,PaintEffectIF{
 		}
 	}
 	/**
-	 * Êµï¿½ï¿½Ë¢ï¿½Â·ï¿½ï¿½ï¿½
+	 * ÊµÏÖË¢ÐÂ·½·¨
 	 */
 	@Override
 	public void refresh() {
@@ -141,7 +145,7 @@ public class Panel_Control extends JPanel implements RefreshbleIF,PaintEffectIF{
 
 	
 
-	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+	//»ñÈ¡ÈËÎïÄ£ÐÍ
 	public AbstractPlayer getPlayer() {
 		return player;
 	}

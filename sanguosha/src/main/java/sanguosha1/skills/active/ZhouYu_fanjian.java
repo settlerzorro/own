@@ -1,5 +1,10 @@
 package sanguosha1.skills.active;
 
+import java.util.List;
+import java.util.Random;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.data.constant.Const_Game;
 import sanguosha1.data.enums.Colors;
@@ -10,12 +15,8 @@ import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.SkillIF;
 
-import javax.swing.*;
-import java.util.List;
-import java.util.Random;
-
 /**
- * ï¿½ï¿½è¤¡ï¿½ï¿½ï¿½ï¿½ä¡¿
+ * ÖÜè¤¡¾·´¼ä¡¿
  * 
  * @author user
  * 
@@ -39,27 +40,27 @@ public class ZhouYu_fanjian implements Runnable, SkillIF {
 				if(ph.getTarget().isEmpty()){
 					player.getState().setRes(0);
 					ph.enableOKAndCancel();
-					System.out.println("ï¿½ï¿½Ä¿ï¿½ê·µï¿½ï¿½");
+					System.out.println("ÎÞÄ¿±ê·µ»Ø");
 					continue;
 				}else{
 					AbstractPlayer toP = ph.getTarget().getList().get(0);
-					ViewManagement.getInstance().printBattleMsg(player.getInfo().getName()+"ï¿½ï¿½ï¿½ï¿½"+toP.getInfo().getName());
+					ViewManagement.getInstance().printBattleMsg(player.getInfo().getName()+"·´¼ä"+toP.getInfo().getName());
 					sleep(1000);
-					//AIÑ¡ï¿½ï¿½É«
+					//AIÑ¡Ôñ»¨É«
 					int indexAI = new Random().nextInt(4);
 					Colors c_AI = colors[indexAI]; 
-					ViewManagement.getInstance().printBattleMsg(toP.getInfo().getName()+"ï¿½Â»ï¿½É«Îªï¿½ï¿½"+c_AI.toString());
+					ViewManagement.getInstance().printBattleMsg(toP.getInfo().getName()+"²Â»¨É«Îª£º"+c_AI.toString());
 					sleep(300);
-					//AIÑ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					//AIÑ¡ÔñÊÖÅÆ
 					int n = new Random().nextInt(player.getState().getCardList().size());
 					AbstractCard card_AI =  player.getState().getCardList().get(n);
-					//ViewManagement.getInstance().printBattleMsg(toP.getInfo().getName()+"Ñ¡ï¿½ï¿½ï¿½ï¿½"+card_AI.toString());
-					//ï¿½ï¿½ï¿½ï¿½
+					//ViewManagement.getInstance().printBattleMsg(toP.getInfo().getName()+"Ñ¡ÔñÁË"+card_AI.toString());
+					//¸øÅÆ
 					card_AI.passToPlayer(player, toP);
 					sleep(300);
-					//ï¿½ï¿½ï¿½Ý»ï¿½É«ï¿½ï¿½ï¿½ï¿½
+					//¸ù¾Ý»¨É«½áËã
 					if(c_AI != card_AI.getColor()){
-						ViewManagement.getInstance().printBattleMsg(toP.getInfo().getName()+"ï¿½Â´ï¿½");
+						ViewManagement.getInstance().printBattleMsg(toP.getInfo().getName()+"²Â´í");
 						toP.getAction().loseHP(1, null);
 					}
 					toP.refreshView();
@@ -81,7 +82,7 @@ public class ZhouYu_fanjian implements Runnable, SkillIF {
 
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½ï¿½";
+		return "·´¼ä";
 	}
 
 	@Override
@@ -104,19 +105,19 @@ public class ZhouYu_fanjian implements Runnable, SkillIF {
 			ph.unableToUseCard();
 			ph.disableClick();
 			ph.enableOKAndCancel();
-			// ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
+			// ¿ª·ÅÑ¡Ôñ
 			List<Panel_Player> list = ph.getMain().getPlayers();
 			for (Panel_Player pp : list) {
 				if (!pp.getPlayer().getState().isDead()) {
 					pp.enableToUse();
 				}
 			}
-			ViewManagement.getInstance().getPrompt().show_Message("ï¿½ï¿½Ñ¡ï¿½ï¿½Ä¿ï¿½ï¿½");
+			ViewManagement.getInstance().getPrompt().show_Message("ÇëÑ¡ÔñÄ¿±ê");
 		}
 	};
 	
 	/*
-	 * Í£ï¿½Ù¼ï¿½ï¿½
+	 * Í£¶Ù¼ä¸ô
 	 */
 	private void sleep(int t){
 		try {

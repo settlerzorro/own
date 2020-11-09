@@ -1,21 +1,21 @@
 package sanguosha1.service.AI;
 
-import sanguosha1.card.AbstractCard;
-import sanguosha1.player.AbstractPlayer;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import sanguosha1.card.AbstractCard;
+import sanguosha1.player.AbstractPlayer;
+
 /**
- * AIï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Æµï¿½Ê±ï¿½ï¿½ï¿½ï¿½ÐµÄ¿ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½
+ * AIÔÚ×¼±¸³öÄ³ÕÅÅÆµÄÊ±ºò½øÐÐµÄ¿ÉÓÃÄ¿±ê¼ì²â
  * @author user
  *
  */
 public class AITargetCheckService {
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	 * ï¿½ï¿½Ã¿ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½Ä¿ï¿½ï¿½ï¿½Ð±ï¿½
+	 * ¸ù¾Ý×¼±¸³öµÄÅÆ
+	 * »ñµÃ¿ÉÒÔ¶ÔÆäÊ¹ÓÃµÄÄ¿±êÁÐ±í
 	 * @param player
 	 * @param c
 	 * @return

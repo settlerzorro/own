@@ -9,8 +9,8 @@ import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.LockingSkillIF;
 
 /**
- * ï¿½Äºîªï¿½ï¿½ï¿½Ü¡ï¿½ï¿½ï¿½ï¿½Ò¡ï¿½
- * ï¿½ï¿½ï¿½Ëºï¿½ï¿½Ëºï¿½ï¿½ï¿½Ô´ï¿½Ğ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½Ñªï¿½ï¿½ï¿½ï¿½ï¿½ß¶ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ÏÄºîª¼¼ÄÜ¡¾¸ÕÁÒ¡¿
+ * ÊÜÉËºó£¬ÉËº¦À´Ô´ÅĞ¶¨£¬Èô²»ÎªºìÔò¿Û1µãÑª£¬»òÕß¶ªÆú2ÕÅÊÖÅÆ
  * @author user
  *
  */
@@ -20,19 +20,19 @@ public class XiaHouDun_ganglie extends P_Trigger implements LockingSkillIF{
 		this.player = p;
 	}
 	/**
-	 * ï¿½ï¿½Ğ´ï¿½ï¿½ï¿½Ë´ï¿½ï¿½ï¿½
+	 * ÖØĞ´ÊÜÉË´¥·¢
 	 */
 	@Override
 	public void afterLoseHP(AbstractPlayer murderer) {
 		AbstractCard cc = ModuleManagement.getInstance().showOneCheckCard();
 		if(player.getFunction().checkRollCard(cc, Colors.HEITAO,Colors.FANGKUAI,Colors.MEIHUA)){
 			murderer.getAction().loseHP(1, null);
-			ViewManagement.getInstance().printChatMsg("["+player.getInfo().getName()+"]"+"ï¿½ó±²£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+			ViewManagement.getInstance().printChatMsg("["+player.getInfo().getName()+"]"+"Êó±²£¬¾¹¸ÒÉËÎÒ");
 		}
 	}
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½ï¿½";
+		return "¸ÕÁÒ";
 	}
 	
 	

@@ -1,5 +1,19 @@
 package sanguosha1.util;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Properties;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -9,14 +23,8 @@ import sanguosha1.data.enums.Country;
 import sanguosha1.gui.select.ProxyPlayer;
 import sanguosha1.player.impl.P_Info;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
-
 /**
- * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
+ * ¶ÁÈ¡ÅäÖÃÐÅÏ¢µÄÀà
  * 
  * @author user
  * 
@@ -25,16 +33,16 @@ import java.util.Properties;
 public class ConfigFileReadUtil {
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ð¶ï¿½È¡Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	 * ´ÓÅäÖÃÎÄ¼þÖÐ¶ÁÈ¡Ö¸¶¨ÈËÎïµÄÐÅÏ¢
 	 * 
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
 	public static P_Info getInfoFromXML(String playerName) {
 		P_Info info = new P_Info();
-		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½Úµï¿½
+		// »ñÈ¡¸ù½Úµã
 		Element root = getRoot("config/character.xml");
-		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½Úµï¿½ï¿½Âµï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
+		// »ñÈ¡¸ù½ÚµãÏÂµÄÖ¸¶¨ÈËÎï½Úµã
 		Element e = null;
 		for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
 			Element elm = (Element) it.next();
@@ -45,27 +53,27 @@ public class ConfigFileReadUtil {
 			}
 		}
 		
-		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½Úµï¿½
+		// »ñÈ¡ÈËÎï½ÚµãÏÂËùÓÐ×Ó½Úµã
 		String str_name = e.element("name").getText();
 		String str_sex = e.element("sex").getText();
 		String str_country = e.element("country").getText();
 		String str_maxhp = e.element("maxhp").getText();
 		String str_img = e.element("headimg").getText();
 		String str_immuneCard = e.element("immuneCard").getText();
-		// ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½×°ï¿½ï¿½Ò»ï¿½ï¿½infoï¿½ï¿½ï¿½ï¿½
+		// ½«ÐÅÏ¢·â×°³ÉÒ»¸öinfo·µ»Ø
 		info = new P_Info();
-		// ï¿½ï¿½ï¿½ï¿½
+		// ÐÕÃû
 		info.setName(str_name);
-		// ï¿½Ô±ï¿½
+		// ÐÔ±ð
 		// info.setSex(Integer.parseInt(str_sex) == 1 ? true : false);
 		info.setSex(Boolean.valueOf(str_sex));
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ËùÊôÊÆÁ¦
 		info.setCountry(Enum.valueOf(Country.class, str_country));
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ÉúÃüÉÏÏÞ
 		info.setMaxHP(Integer.parseInt(str_maxhp));
-		// Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// Í·ÏñÃû³Æ
 		info.setHeadImg(ImgUtil.getJpgImgByName(str_img));
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ÃâÒßÅÆ
 		List<Integer> cards = new ArrayList<Integer>();
 		String[] ss = str_immuneCard.split(",");
 		for (int i = 0; i < ss.length; i++) {
@@ -75,7 +83,7 @@ public class ConfigFileReadUtil {
 		}
 
 		info.setImmuneCard(cards);
-		// ï¿½ï¿½ï¿½ï¿½
+		// ¼¼ÄÜ
 		Element eSkill = e.element("skill");
 		for (Iterator<Element> it = eSkill.elementIterator(); it.hasNext();) {
 			Element elm = (Element) it.next();
@@ -97,8 +105,8 @@ public class ConfigFileReadUtil {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	 * ï¿½ï¿½È¡ï¿½ä½«ï¿½Ð±ï¿½
+	 * ¡¾ÔÝÊ±·ÏÆú¡¿
+	 * ¶ÁÈ¡Îä½«ÁÐ±í
 	 */
 	public static Properties getCharacterList() {
 		Properties p = new Properties();
@@ -118,7 +126,7 @@ public class ConfigFileReadUtil {
 	}
 
 	/**
-	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ð±ï¿½
+	 * ¶ÁÈ¡ÅÆÁÐ±í
 	 */
 	public static Properties getCardList() {
 		Properties p = new Properties();
@@ -134,7 +142,7 @@ public class ConfigFileReadUtil {
 	}
 
 	/**
-	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+	 * ¶ÁÈ¡²âÊÔÊ±ºò¶îÍâÌí¼ÓµÄÅÆÁÐ±í
 	 */
 	public static Properties getTestCardList(){
 
@@ -151,14 +159,14 @@ public class ConfigFileReadUtil {
 	
 	}
 	/**
-	 * ï¿½ï¿½XMLï¿½Ð»ï¿½È¡ï¿½ä½«ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+	 * ´ÓXMLÖÐ»ñÈ¡Îä½«µÄ¼¼ÄÜÁÐ±í
 	 */
 	@SuppressWarnings("unchecked")
 	public static List<String> getSkillListFromXML(String playerName) {
 		List<String> skillList = new ArrayList<String>();
 		Element root = getRoot("config/character.xml");
 		
-		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½Úµï¿½ï¿½Âµï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
+		// »ñÈ¡¸ù½ÚµãÏÂµÄÖ¸¶¨ÈËÎï½Úµã
 		Element e = null;
 		for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
 			Element elm = (Element) it.next();
@@ -180,7 +188,7 @@ public class ConfigFileReadUtil {
 
 	
 	/**
-	 * ï¿½ï¿½XMLï¿½Ð»ï¿½È¡ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ´ÓXMLÖÐ»ñÈ¡ËùÓÐ´úÀí¶ÔÏó
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
@@ -198,7 +206,7 @@ public class ConfigFileReadUtil {
 	}
 	
 	/**
-	 * ï¿½ï¿½xmlï¿½Ð¶ï¿½È¡ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	 * ´ÓxmlÖÐ¶ÁÈ¡ÅÆµÄÅäÖÃÐÅÏ¢
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
@@ -211,7 +219,7 @@ public class ConfigFileReadUtil {
 			Element elm = (Element) it.next();
 			String code = elm.attribute("id").getText();
 			int codeInt = Integer.parseInt(code);
-			//ï¿½ï¿½âµ½Æ¥ï¿½ï¿½
+			//¼ì²âµ½Æ¥Åä
 			if (codeInt == id) {
 				//class
 				clazz = elm.attribute("class").getText();
@@ -229,7 +237,7 @@ public class ConfigFileReadUtil {
 				p.put("needRange", needRange);
 				p.put("img", img);
 				p.put("ef_img", ef_img);
-				//ï¿½ï¿½ï¿½ï¿½
+				//ÎäÆ÷
 				String cardType = elm.attribute("cardtype").getText();
 				if(cardType.equals("equipment")){
 					String att = elm.element("att").getText();
@@ -246,7 +254,7 @@ public class ConfigFileReadUtil {
 	}
 	
 	/*
-	 * ï¿½Ú²ï¿½Í¨ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Úµï¿½
+	 * ÄÚ²¿Í¨ÓÃ·½·¨£º»ñÈ¡¸ù½Úµã
 	 */
 	private static Element getRoot(String fileName){
 		SAXReader reader = new SAXReader();
@@ -262,7 +270,7 @@ public class ConfigFileReadUtil {
 		} catch (DocumentException e1) {
 			e1.printStackTrace();
 		}
-		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½Úµï¿½
+		// »ñÈ¡¸ù½Úµã
 		Element root = doc.getRootElement();
 		return root;
 	}

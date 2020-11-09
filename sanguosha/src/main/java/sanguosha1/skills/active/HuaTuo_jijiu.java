@@ -1,5 +1,7 @@
 package sanguosha1.skills.active;
 
+import javax.swing.SwingUtilities;
+
 import sanguosha1.data.constant.Const_Game;
 import sanguosha1.data.enums.Colors;
 import sanguosha1.data.enums.ErrorMessageType;
@@ -9,8 +11,6 @@ import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.MessageManagement;
 import sanguosha1.skills.ChangeCardIF;
 import sanguosha1.skills.SkillIF;
-
-import javax.swing.*;
 
 /**
  * ��٢�����ȡ�

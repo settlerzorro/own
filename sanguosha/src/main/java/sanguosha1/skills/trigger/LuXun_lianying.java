@@ -5,7 +5,7 @@ import sanguosha1.player.impl.P_Trigger;
 import sanguosha1.skills.LockingSkillIF;
 
 /**
- * Â½Ñ·ï¿½ï¿½ï¿½ï¿½Óªï¿½ï¿½
+ * Â½Ñ·¡¾Á¬Óª¡¿
  * @author user
  *
  */
@@ -15,20 +15,20 @@ public class LuXun_lianying extends P_Trigger implements LockingSkillIF{
 	}
 	
 	/**
-	 * ï¿½ï¿½Ð´ï¿½ï¿½Ê§ï¿½ï¿½ï¿½Æ´ï¿½ï¿½ï¿½
+	 * ÖØÐ´¶ªÊ§ÊÖÅÆ´¥·¢
 	 */
 	@Override
 	public void afterLoseHandCard() {
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+		//Èç¹ûÎÞÅÆÔòÃþÒ»ÕÅ
 		if(player.getState().getCardList().isEmpty()){
 			player.getAction().addOneCardFromList();
-			System.out.println("ï¿½Æ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÜµÄ£ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÜµÄ£ï¿½");
+			System.out.println("ÅÆ²»ÊÇÍòÄÜµÄ£¬Ã»ÅÆÊÇÍòÍò²»ÄÜµÄ£¡");
 		}
 	}
 	
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½Óª";
+		return "Á¬Óª";
 	}
 
 }

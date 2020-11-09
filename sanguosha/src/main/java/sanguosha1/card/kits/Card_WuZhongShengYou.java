@@ -1,14 +1,14 @@
 package sanguosha1.card.kits;
 
+import java.util.List;
+
 import sanguosha1.gui.main.Panel_HandCards;
 import sanguosha1.gui.main.Panel_Player;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ViewManagement;
 
-import java.util.List;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ÎÞÖÐÉúÓÐ
  * 
  * @author user
  * 
@@ -22,10 +22,10 @@ public class Card_WuZhongShengYou extends AbstractKitCard {
 	public void use(AbstractPlayer p, List<AbstractPlayer> players) {
 		super.use(p, players);
 
-		// ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½return
+		// Èç¹ûÎÞÐ¸£¬Ôòreturn
 		askWuXieKeJi(p, players);
 		if (isWuXie) {
-			ViewManagement.getInstance().printBattleMsg(getName() + "ï¿½ï¿½Ð§");
+			ViewManagement.getInstance().printBattleMsg(getName() + "ÎÞÐ§");
 			ViewManagement.getInstance().refreshAll();
 			return;
 		}
@@ -36,7 +36,7 @@ public class Card_WuZhongShengYou extends AbstractKitCard {
 	}
 
 	/**
-	 * Ä¿ï¿½ï¿½ï¿½ï¿½
+	 * Ä¿±ê¼ì²â
 	 */
 	@Override
 	public void targetCheck(Panel_HandCards ph) {

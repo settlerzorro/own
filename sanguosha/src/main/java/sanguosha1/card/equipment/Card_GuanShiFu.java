@@ -1,14 +1,15 @@
 package sanguosha1.card.equipment;
 
+import java.lang.reflect.InvocationTargetException;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.data.constant.Const_Game;
 import sanguosha1.data.enums.Colors;
 import sanguosha1.gui.main.Panel_Control;
 import sanguosha1.gui.main.Panel_HandCards;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ViewManagement;
-
-import javax.swing.*;
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * ��ʯ��

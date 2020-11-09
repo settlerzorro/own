@@ -3,16 +3,16 @@ package sanguosha1.card;
 import sanguosha1.player.AbstractPlayer;
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½Æ½Ó¿ï¿½
- * ï¿½á¹©ï¿½ï¿½Ò»Ğ©ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½
+ * ĞéÄâÅÆ½Ó¿Ú
+ * Ìá¹©¸øÒ»Ğ©ÈËÎïµÄ±äÅÆ¼¼ÄÜÊ¹ÓÃ
  * @author user
  *
  */
 public interface VirtualCardIF {
-	//ï¿½ï¿½È¡ï¿½ï¿½Êµï¿½ï¿½
+	//»ñÈ¡ÕæÊµÅÆ
 	AbstractCard getRealCard();
-	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½Öµ
+	//»ñÈ¡¸ÃĞéÄâÅÆµÄÌæ´úÖµ
 	int getCardType();
-	//ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½
+	//Ö÷¶¯Ê¹ÓÃ
 	void use(AbstractPlayer p, AbstractPlayer toP);
 }

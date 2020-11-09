@@ -1,5 +1,11 @@
 package sanguosha1.card.equipment;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.base.Card_Sha;
 import sanguosha1.card.changed.Combo_Sha;
@@ -11,11 +17,6 @@ import sanguosha1.gui.main.Panel_HandCards;
 import sanguosha1.gui.main.Panel_Player;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ViewManagement;
-
-import javax.swing.*;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * �ɰ���ì

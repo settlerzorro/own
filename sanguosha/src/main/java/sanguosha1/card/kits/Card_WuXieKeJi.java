@@ -1,14 +1,15 @@
 package sanguosha1.card.kits;
 
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.EffectCardIF;
 import sanguosha1.gui.main.PaintService;
 import sanguosha1.player.AbstractPlayer;
 
-import javax.swing.*;
-import java.util.List;
-
 /**
- * ï¿½ï¿½Ð¸ï¿½É»ï¿½
+ * ÎÞÐ¸¿É»÷
  * @author user
  *
  */
@@ -16,7 +17,7 @@ public class Card_WuXieKeJi extends AbstractKitCard implements EffectCardIF{
 	public Card_WuXieKeJi(){}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * Ö÷¶¯´ò³ö
 	 */
 	@Override
 	public void use(AbstractPlayer p, List<AbstractPlayer> players) {
@@ -24,19 +25,19 @@ public class Card_WuXieKeJi extends AbstractKitCard implements EffectCardIF{
 	}
 
 	/**
-	 * ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½
+	 * ÏìÓ¦´ò³ö
 	 */
 	@Override
 	public boolean requestUse(final AbstractPlayer p, List<AbstractPlayer> players) {
 		super.requestUse(p, players);
 		drawRequestEffect(p);
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½Ð¸ ï¿½ï¿½this.iswuxie == true ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸Ó¦ï¿½Ã·ï¿½ï¿½ï¿½false;
+		//Èç¹ûÓÐÈË³öÎÞÐ¸ Ôòthis.iswuxie == true ÄÇÃ´±¾´ÎÎÞÐ¸Ó¦¸Ã·µ»Øfalse;
 		askWuXieKeJi(p, players);
 		return !isWuXie;
 	}
 	
 	/*
-	 * ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ä»ï¿½ï¿½ï¿½
+	 * ÏìÓ¦³öÅÆÊ±ºòµÄ»æÖÆ
 	 */
 	private void drawRequestEffect(final AbstractPlayer p){
 		SwingUtilities.invokeLater(new Runnable() {

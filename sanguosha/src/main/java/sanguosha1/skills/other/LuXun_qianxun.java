@@ -4,10 +4,10 @@ import sanguosha1.player.AbstractPlayer;
 import sanguosha1.skills.LockingSkillIF;
 
 /**
- * Â½Ñ·ï¿½ï¿½Ç«Ñ·ï¿½ï¿½
- * ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½Ç£ï¿½ï¿½ï¿½ï¿½Ö²ï¿½Ë¼ï¿½ï¿½
- * ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ÎªÒ»ï¿½ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½
- * ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½<immuneCard>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ÆµÄ¾ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+ * Â½Ñ·¡¾Ç«Ñ·¡¿
+ * ÃâÒßË³ÊÖÇ£ÑòºÍÀÖ²»Ë¼Êñ
+ * Õâ¸öÀàÖ»ÊÇ×÷ÎªÒ»¸ö±êÊ¶ÓÃ
+ * ¾ßÌåµÄÊµÏÖÊÇÔÚÅäÖÃÎÄ¼þÖÐ<immuneCard>ÀïÃæÌîÐ´ÅÆµÄ¾ßÌåÊýÖµ
  * @author user
  *
  */

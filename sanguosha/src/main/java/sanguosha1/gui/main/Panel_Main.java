@@ -1,53 +1,60 @@
 package sanguosha1.gui.main;
 
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.border.TitledBorder;
+
 import sanguosha1.data.constant.Const_UI;
 import sanguosha1.gui.Frame_Debug;
 import sanguosha1.service.ModuleManagement;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.util.ImgUtil;
 
-import javax.swing.*;
-import javax.swing.border.TitledBorder;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½
+ * Ö÷Ãæ°å
  * @author user
  *
  */
 public class Panel_Main extends JPanel {
 	private static final long serialVersionUID = 5373403541536774127L;
 	
-	//ï¿½ï¿½Ò¹ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Íæ¼Ò¹ÜÀíÀà
 	ModuleManagement pmgr = ModuleManagement.getInstance();
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//¿ØÖÆÀ¸Ãæ°å
 	Panel_Control contrl = new Panel_Control(pmgr.getPlayerList().get(0),this);
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ÆäËûÍæ¼ÒµÄÃæ°å×é
 	List<Panel_Player>  players = new ArrayList<Panel_Player>();
-	//Õ½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Õ½³¡Ãæ°å
 	Panel_Battlefield bf = Panel_Battlefield.getInstance();
-	//ï¿½ï¿½ï¿½ï¿½Í¼
+	//±³¾°Í¼
 	BufferedImage bgimg = ImgUtil.getJpgImgByName("bg");
-	//ï¿½ï¿½Ï·ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½
+	//ÓÎÏ·ÏûÏ¢Ãæ°å
 	JTextArea msg = new JTextArea();
 	JScrollPane jsp = new JScrollPane(msg);
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½
+	//ÁÄÌìÐÅÏ¢Ãæ°å
 	JTextArea msgChat = new JTextArea();
 	JScrollPane jspChat = new JScrollPane(msgChat);
-	//ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½
+	//ÌáÊ¾ÐÅÏ¢Ãæ°å
 	Panel_Prompt prompt = new Panel_Prompt();
-	//Õ½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½
+	//Õ½³¡ÏûÏ¢ÏÔÊ¾Ãæ°å
 	Panel_Message message = new Panel_Message();
-	//debugï¿½ï¿½ï¿½ï¿½
+	//debug´°¿Ú
 	Frame_Debug fDebug ;
-	//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
+	//ÊÇ·ñ½áÊø
 	boolean isGameOver;
 
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * ¹¹Ôì
 	 */
 	public Panel_Main() {
 		this.setSize(Const_UI.FRAME_WIDTH,Const_UI.FRAME_HEIGHT);
@@ -56,16 +63,16 @@ public class Panel_Main extends JPanel {
 		
 		this.add(contrl);
 		pmgr.getPlayerList().get(0).setPanel(contrl);
-		//ï¿½ï¿½Óµï¿½È«ï¿½ï¿½Ë¢ï¿½ï¿½ï¿½Ð±ï¿½
+		//Ìí¼Óµ½È«¾ÖË¢ÐÂÁÐ±í
 		ViewManagement.getInstance().getRefreshList().add(contrl);
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//´´½¨ÆäËûÍæ¼ÒÃæ°å
 		for (int i = 0; i < pmgr.getPlayerList().size()-1; i++) {
 			Panel_Player pp = new Panel_Player(pmgr.getPlayerList().get(i+1),this);
 			players.add(pp);
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//ÉèÖÃÍæ¼Ò¹ØÁªµÄÃæ°å
 			pmgr.getPlayerList().get(i+1).setPanel(pp);
 			this.add(players.get(i));
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Ë¢ï¿½ï¿½Í¨Öª
+			//½«Íæ¼ÒÃæ°åÌí¼Óµ½¹ÜÀíÀàÓÃÀ´»ñÈ¡Ë¢ÐÂÍ¨Öª
 			ViewManagement.getInstance().getRefreshList().add(players.get(i));
 			
 		}
@@ -83,13 +90,13 @@ public class Panel_Main extends JPanel {
 		PaintService.createMain(this);
 		validate();
 		
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¡¿
-		//debugï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½ï¿½Ä²é¿´ï¿½Æ¶ï¿½ï¿½Ðµï¿½ï¿½ÆºÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¤ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Äºï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Îªï¿½Ë¸ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½Ô£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//¡¾¿´ÕâÀï¡¿
+		//debug´°¿Ú£¬¿ÉÒÔ·½±ãµÄ²é¿´ÅÆ¶ÑÖÐµÄÅÆºÍ³¡ÉÏËùÓÐÈËµÄÊÖÅÆ
+		//Èç¹ûÄúÓÐÐËÈ¤×ÅÊÖÐÞ¸ÄºÍÀ©Õ¹±¾ÏîÄ¿£¬ÎªÁË¸ü·½±ãµÄ²âÊÔ£¬½¨ÒéÆôÓÃÏÂÃæÕâ¾ä
 		//if(fDebug==null)fDebug = new Frame_Debug();
 	}
 	/**
-	 * ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½
+	 * ÉèÖÃ¸÷¸öÏûÏ¢Ãæ°å
 	 */
 	private void setMsgPanels() {
 		ViewManagement.getInstance().setMsg(msg);
@@ -107,7 +114,7 @@ public class Panel_Main extends JPanel {
 		jsp.setSize(180, Const_UI.PLAYER_PANEL_HEIGHT);
 		jsp.setOpaque(false);
 		jsp.getViewport().setOpaque(false);
-		TitledBorder tb1 =BorderFactory.createTitledBorder("ï¿½ï¿½Ï·ï¿½ï¿½Ï¢ï¿½ï¿½");
+		TitledBorder tb1 =BorderFactory.createTitledBorder("ÓÎÏ·ÐÅÏ¢£º");
 		tb1.setTitleColor(Color.white);
 		jsp.setBorder(tb1);
 		jsp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -115,7 +122,7 @@ public class Panel_Main extends JPanel {
 		jspChat.setSize(180, Const_UI.PLAYER_PANEL_HEIGHT);
 		jspChat.setOpaque(false);
 		jspChat.getViewport().setOpaque(false);
-		TitledBorder tb2 = BorderFactory.createTitledBorder("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½");
+		TitledBorder tb2 = BorderFactory.createTitledBorder("ÁÄÌìÐÅÏ¢£º");
 		tb2.setTitleColor(Color.white);
 		jspChat.setBorder(tb2);
 		jspChat.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -125,7 +132,7 @@ public class Panel_Main extends JPanel {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½
+	 * ÆäËûÃæ°åµÄ²¼¾Ö
 	 */
 	private void setPosition() {
 		if(players.get(3)!=null)players.get(3).setLocation(0, 230);
@@ -149,7 +156,7 @@ public class Panel_Main extends JPanel {
 		
 	}
 	/*
-	 * ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * »æÖÆ²»¿ÉÓÃ
 	 * 
 	 * @param g
 	 */
@@ -160,7 +167,7 @@ public class Panel_Main extends JPanel {
 		g2.setComposite(AlphaComposite.SrcOver.derive(Const_UI.CARD_UNABLE));
 	}
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ·µ»ØÕ½³¡ÇøÓòµÄÒýÓÃ
 	 * @return
 	 */
 	public Panel_Battlefield getBf() {

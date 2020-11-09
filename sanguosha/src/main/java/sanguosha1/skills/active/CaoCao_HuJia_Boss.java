@@ -1,5 +1,7 @@
 package sanguosha1.skills.active;
 
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.data.constant.Const_Game;
 import sanguosha1.gui.main.Panel_Control;
@@ -7,10 +9,8 @@ import sanguosha1.gui.main.Panel_HandCards;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.skills.SkillIF;
 
-import javax.swing.*;
-
 /**
- * ï¿½Ü²Ù¡ï¿½ï¿½ï¿½ï¿½Ý¡ï¿½
+ * ²Ü²Ù¡¾»¤¼Ý¡¿
  * @author user
  *
  */
@@ -35,7 +35,7 @@ public class CaoCao_HuJia_Boss implements Runnable,SkillIF{
 		while(true){
 
 			if (player.getState().getRes() == Const_Game.OK) {
-				// ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½
+				// Èç¹ûÓÐÍ¬ÊÆÁ¦
 				for (AbstractPlayer p : player.getSameCountryPlayers()) {
 					if (p.getRequest().requestShan()) {
 						AbstractCard c = p.getState().getUsedCard().get(0);
@@ -43,7 +43,7 @@ public class CaoCao_HuJia_Boss implements Runnable,SkillIF{
 						
 							player.getState().setRes(Const_Game.SHAN);
 							try {
-								//ï¿½ï¿½Í£1ï¿½ï¿½È·ï¿½ï¿½ï¿½ÅºÅ±ï¿½ï¿½ï¿½ï¿½Üµï¿½
+								//ÔÝÍ£1ÃëÈ·±£ÐÅºÅ±»½ÓÊÜµ½
 								Thread.sleep(1000);
 							} catch (InterruptedException e) {
 								e.printStackTrace();
@@ -52,7 +52,7 @@ public class CaoCao_HuJia_Boss implements Runnable,SkillIF{
 						break;
 					}
 				}
-				//ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½
+				//Èç¹ûÃ»ÈËÉÁ
 				player.getState().setRes(Const_Game.REDO);
 				return;
 			}
@@ -64,7 +64,7 @@ public class CaoCao_HuJia_Boss implements Runnable,SkillIF{
 	}
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½ï¿½";
+		return "»¤¼Ý";
 	}
 	
 	@Override

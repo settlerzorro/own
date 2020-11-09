@@ -1,5 +1,7 @@
 package sanguosha1.skills.process;
 
+import javax.swing.SwingUtilities;
+
 import sanguosha1.data.constant.Const_Game;
 import sanguosha1.gui.main.Panel_Control;
 import sanguosha1.gui.main.Panel_GuanXing;
@@ -8,17 +10,15 @@ import sanguosha1.player.impl.P_Process;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.LockingSkillIF;
 
-import javax.swing.*;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¡ï¿½
+ * Öî¸ðÁÁ¡¾¹ÛÐÇ¡¿
  * @author user
  *
  */
 public class ZhuGe_GuanXing extends P_Process implements LockingSkillIF {
-	//ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Íæ¼Ò¿ØÖÆÀ¸ÒýÓÃ
 	Panel_Control pc;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//¹ÛÐÇÃæ°åÒýÓÃ
 	Panel_GuanXing pg;
 	
 	public ZhuGe_GuanXing(AbstractPlayer p) {
@@ -26,14 +26,14 @@ public class ZhuGe_GuanXing extends P_Process implements LockingSkillIF {
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´ï¿½ØºÏ¿ï¿½Ê¼
+	 * ÖØÐ´»ØºÏ¿ªÊ¼
 	 */
 	@Override
 	public void stage_begin() {
 		if(player.getState().isAI())return;
 		pc = (Panel_Control) player.getPanel();
 		super.stage_begin();
-		//Ñ¯ï¿½ï¿½ï¿½Ç·ñ·¢¶ï¿½ï¿½ï¿½ï¿½ï¿½
+		//Ñ¯ÎÊÊÇ·ñ·¢¶¯¼¼ÄÜ
 		SwingUtilities.invokeLater(ask);
 		while(true){
 			if(player.getState().getRes() == Const_Game.OK){
@@ -47,7 +47,7 @@ public class ZhuGe_GuanXing extends P_Process implements LockingSkillIF {
 				return;
 			}
 		}
-		//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½
+		//ÏÔÊ¾Ãæ°å
 		SwingUtilities.invokeLater(showPanel);
 		try {
 			Thread.sleep(200);
@@ -56,7 +56,7 @@ public class ZhuGe_GuanXing extends P_Process implements LockingSkillIF {
 		}
 		while(true){
 			if(player.getState().getRes() == Const_Game.OK){
-				//È·ï¿½ï¿½
+				//È·¶¨
 				if(pg==null){
 					player.getState().setRes(0);
 					continue;
@@ -71,13 +71,13 @@ public class ZhuGe_GuanXing extends P_Process implements LockingSkillIF {
 
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½ï¿½";
+		return "¹ÛÐÇ";
 	}
 	
 	Runnable ask = new Runnable() {
 		@Override
 		public void run() {
-			ViewManagement.getInstance().getPrompt().show_Message("ï¿½Ç·ñ·¢¶ï¿½"+getName());
+			ViewManagement.getInstance().getPrompt().show_Message("ÊÇ·ñ·¢¶¯"+getName());
 			pc.getHand().unableToUseCard();
 			pc.getHand().enableOKAndCancel();
 		}
@@ -92,7 +92,7 @@ public class ZhuGe_GuanXing extends P_Process implements LockingSkillIF {
 			pc.getHand().unableToUseCard();
 			pc.getHand().disableClick();
 			pg.setLocation(200, pc.getMain().getHeight() / 9);
-			//ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½Å¥
+			//¿ª·ÅÈ·¶¨°´Å¥
 			pc.getHand().enableOKAndCancel();
 			player.getState().setRes(0);
 		}

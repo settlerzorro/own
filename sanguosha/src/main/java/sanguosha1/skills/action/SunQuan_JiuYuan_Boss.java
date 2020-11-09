@@ -5,7 +5,7 @@ import sanguosha1.player.impl.P_Action;
 import sanguosha1.skills.LockingSkillIF;
 
 /**
- * ��Ȩ����Ԯ��
+ * 孙权技能【救援】
  * @author user
  *
  */
@@ -15,9 +15,7 @@ public class SunQuan_JiuYuan_Boss extends P_Action implements LockingSkillIF{
 		super(p);
 	}
 
-	/**
-	 * ��д����������
-	 */
+
 	@Override
 	public void taoSave(AbstractPlayer p) {
 		super.taoSave(p);
@@ -28,6 +26,6 @@ public class SunQuan_JiuYuan_Boss extends P_Action implements LockingSkillIF{
 
 	@Override
 	public String getName() {
-		return "��Ԯ";
+		return "救援";
 	}
 }

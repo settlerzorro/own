@@ -5,16 +5,16 @@ import sanguosha1.player.AbstractPlayer;
 import sanguosha1.player.Player_TriggerIF;
 
 /**
- * ï¿½ï¿½Ò´ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½
+ * Íæ¼Ò´¥·¢µÄÊµÏÖÀà
  * @author user
  *
  */
 public class P_Trigger implements Player_TriggerIF {
-	//ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+	//ÈËÎïÄ£ÐÍ
 	protected AbstractPlayer player;
 	
 	public P_Trigger(){}
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//¹¹ÔìÆ÷
 	public P_Trigger(AbstractPlayer p){
 		this.player = p;
 	}
@@ -54,8 +54,8 @@ public class P_Trigger implements Player_TriggerIF {
 		
 	}
 	/**
-	 * É±ï¿½ó´¥·ï¿½
-	 * Ä¬ï¿½Ï¿ï¿½ï¿½Ø¹Ø±ï¿½
+	 * É±ºó´¥·¢
+	 * Ä¬ÈÏ¿ª¹Ø¹Ø±Õ
 	 */
 	@Override
 	public void afterSha() {
@@ -80,7 +80,7 @@ public class P_Trigger implements Player_TriggerIF {
 		
 	}
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ËÀÍö´¥·¢
 	 */
 	@Override
 	public void afterDead() {
@@ -94,9 +94,9 @@ public class P_Trigger implements Player_TriggerIF {
 	}
 	
 	/**
-	 * ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½
-	 * ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
-	 * ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½
+	 * ÅÐ¶¨´¥·¢
+	 * ²ÎÊý1£ºÅÐ¶¨ÅÆ
+	 * ²ÎÊý2£ºÅÐ¶¨½á¹û
 	 */
 	@Override
 	public void afterCheck(AbstractCard c,boolean result) {

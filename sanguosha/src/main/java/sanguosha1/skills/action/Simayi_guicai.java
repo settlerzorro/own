@@ -1,5 +1,7 @@
 package sanguosha1.skills.action;
 
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.data.constant.Const_Game;
 import sanguosha1.gui.main.Panel_Control;
@@ -10,10 +12,8 @@ import sanguosha1.service.ModuleManagement;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.LockingSkillIF;
 
-import javax.swing.*;
-
 /**
- * Ë¾ï¿½ï¿½Ü²ï¿½ï¿½ï¿½ï¿½Å¡ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
+ * Ë¾ÂíÜ²¡¾¹í²Å¡¿ ¸ü¸ÄÅÐ¶¨ÅÆ
  * 
  * @author user
  * 
@@ -26,7 +26,7 @@ public class Simayi_guicai extends P_Action implements LockingSkillIF {
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
+	 * ÖØÐ´´¦ÀíÅÐ¶¨ÅÆ
 	 */
 	@Override
 	public AbstractCard dealWithCheckCard(AbstractCard c) {
@@ -72,10 +72,10 @@ public class Simayi_guicai extends P_Action implements LockingSkillIF {
 
 	private void changeCard(AbstractCard c, AbstractCard newCard) {
 		ViewManagement.getInstance().printMsg(
-				player.getInfo().getName() + "ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½" + newCard.toString());
-		// Ô­ï¿½Èµï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½Óµï¿½
+				player.getInfo().getName() + "¸ü¸ÄÅÐ¶¨ÅÆ" + newCard.toString());
+		// Ô­ÏÈµÄÅÐ¶¨ÅÆÈÓµô
 		c.gc();
-		// Õ½ï¿½ï¿½ï¿½ï¿½Ê¾
+		// Õ½³¡ÏÔÊ¾
 		ModuleManagement.getInstance().getBattle().addOneCard(newCard);
 		player.getAction().removeCard(newCard);
 		player.refreshView();
@@ -83,7 +83,7 @@ public class Simayi_guicai extends P_Action implements LockingSkillIF {
 
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½";
+		return "¹í²Å";
 	}
 
 	Runnable select = new Runnable() {
@@ -92,7 +92,7 @@ public class Simayi_guicai extends P_Action implements LockingSkillIF {
 		public void run() {
 			Panel_HandCards ph = pc.getHand();
 			ViewManagement.getInstance().getPrompt().show_Message(
-					"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½æ»»ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½");
+					"Äú¿ÉÒÔÑ¡Ôñ1ÕÅÅÆÌæ»»ÅÐ¶¨£¬»òÕßÈ¡Ïû");
 			ph.remindToUseALL();
 			ph.disableClick();
 			ph.enableOKAndCancel();

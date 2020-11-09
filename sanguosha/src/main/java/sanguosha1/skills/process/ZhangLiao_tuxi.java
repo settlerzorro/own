@@ -1,5 +1,10 @@
 package sanguosha1.skills.process;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.data.constant.Const_Game;
 import sanguosha1.gui.main.Panel_Control;
 import sanguosha1.gui.main.Panel_Player;
@@ -9,12 +14,8 @@ import sanguosha1.player.impl.P_Process;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.LockingSkillIF;
 
-import javax.swing.*;
-import java.lang.reflect.InvocationTargetException;
-import java.util.List;
-
 /**
- * ï¿½ï¿½ï¿½É¡ï¿½Í»Ï®ï¿½ï¿½
+ * ÕÅÁÉ¡¾Í»Ï®¡¿
  * 
  * @author user
  * 
@@ -27,12 +28,12 @@ public class ZhangLiao_tuxi extends P_Process implements LockingSkillIF {
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Æ½×¶ï¿½
+	 * ÖØÐ´ÃþÅÆ½×¶Î
 	 */
 	@Override
 	public void stage_addCards() {
 		if(player.getState().isAI())return;
-		//Ñ¯ï¿½ï¿½ï¿½Ç·ñ·¢¶ï¿½ï¿½ï¿½ï¿½ï¿½
+		//Ñ¯ÎÊÊÇ·ñ·¢¶¯¼¼ÄÜ
 		SwingUtilities.invokeLater(ask);
 		pc = (Panel_Control) player.getPanel();
 		while(true){
@@ -45,7 +46,7 @@ public class ZhangLiao_tuxi extends P_Process implements LockingSkillIF {
 				return;
 			}
 		}
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
+		//¿ª·ÅÍæ¼ÒÑ¡Ôñ
 		SwingUtilities.invokeLater(run);
 		while(true){
 			if(player.getState().getRes() == Const_Game.OK &!pc.getHand().getTarget().isEmpty()){
@@ -62,7 +63,7 @@ public class ZhangLiao_tuxi extends P_Process implements LockingSkillIF {
 		while (true) {
 			if (player.getState().getRes() == Const_Game.OK) {
 				ViewManagement.getInstance().printBattleMsg(
-						player.getInfo().getName() + "ï¿½ï¿½ï¿½ï¿½" + getName());
+						player.getInfo().getName() + "·¢¶¯" + getName());
 				ViewManagement.getInstance().getPrompt().clear();
 				try {
 					SwingUtilities.invokeAndWait(new Runnable() {
@@ -113,21 +114,21 @@ public class ZhangLiao_tuxi extends P_Process implements LockingSkillIF {
 		public void run() {
 			pc.getHand().unableToUseCard();
 			pc.getHand().disableClick();
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
+			// ¿ª·ÅÍæ¼ÒÑ¡Ôñ
 			List<Panel_Player> list = pc.getHand().getMain().getPlayers();
 			for (Panel_Player pp : list) {
 				if (!pp.getPlayer().getState().isDead()) {
 					pp.enableToUse();
 				}
 			}
-			ViewManagement.getInstance().getPrompt().show_Message("ï¿½ï¿½Ñ¡ï¿½ï¿½Ä¿ï¿½ï¿½");
+			ViewManagement.getInstance().getPrompt().show_Message("ÇëÑ¡ÔñÄ¿±ê");
 		}
 	};
 	
 	Runnable ask = new Runnable() {
 		@Override
 		public void run() {
-			ViewManagement.getInstance().getPrompt().show_Message("ï¿½Ç·ñ·¢¶ï¿½"+getName());
+			ViewManagement.getInstance().getPrompt().show_Message("ÊÇ·ñ·¢¶¯"+getName());
 			pc.getHand().unableToUseCard();
 			pc.getHand().enableOKAndCancel();
 		}

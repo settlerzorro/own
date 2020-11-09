@@ -1,17 +1,17 @@
 package sanguosha1.service.AI;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.player.PlayerIF;
 import sanguosha1.service.UsableCardCheckService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 
 /**
- * AIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * AI¿ØÖÆÀà
  * 
  * @author user
  * 
@@ -20,24 +20,24 @@ public class AIProcessService {
 	AbstractPlayer p;
 	UsableCardCheckService check = new UsableCardCheckService();
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+	 * ¹¹ÔìÆ÷ ´«ÈëÒ»¸öÈËÎïÄ£ÐÍ
 	 * @param p
 	 */
 	public AIProcessService(AbstractPlayer p){
 		this.p = p;
 	}
 	
-	// ï¿½ØºÏ¿ï¿½Ê¼
+	// »ØºÏ¿ªÊ¼
 	public void stage_begin() {
 		p.setStageNum(PlayerIF.STAGE_BEGIN);
 	}
 
-	// ï¿½Ð¶ï¿½ï¿½×¶ï¿½
+	// ÅÐ¶¨½×¶Î
 	public void stage_check() {
 		p.setStageNum(PlayerIF.STAGE_CHECK);
 	}
 
-	// ï¿½ï¿½ï¿½Æ½×¶ï¿½
+	// ÃþÅÆ½×¶Î
 	public void stage_addCards() {
 		p.setStageNum(PlayerIF.STAGE_ADDCARDS);
 		p.getAction().addOneCardFromList();
@@ -46,9 +46,9 @@ public class AIProcessService {
 	}
 
 	/**
-	 *  ï¿½ï¿½ï¿½Æ½×¶ï¿½
-	 *  ï¿½ï¿½ï¿½È¡1ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
-	 *  ï¿½Ð¶ï¿½ï¿½Æµï¿½Ê¹ï¿½ï¿½Ã¿Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÑ¡ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ò¼ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½Ï·Ç¿Õ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡Ò»ï¿½ï¿½ï¿½ï¿½
+	 *  ³öÅÆ½×¶Î
+	 *  Ëæ»úÈ¡1ÕÅÄÜÓÃµÄÊÖÅÆ£¬¼ì²âÊÇ·ñÄÜÓÃ£¬Èô¿ÉÓÃÔòÏÂÒ»²½
+	 *  ÅÐ¶ÏÅÆµÄÊ¹ÓÃÃ¿Ä¿±êÀàÐÍ£¬Èç¹ûÊÇÒªÑ¡ÔñµÄ£¬Ôò½¨Á¢Ò»¸ö¿ÉÑ¡Íæ¼Ò¼¯ºÏ£¬Èô¸Ã¼¯ºÏ·Ç¿Õ£¬ÔòËæ»úÑ¡Ò»¸ö£»
 	 *  TODO
 	 */
 	public void stage_useCards() {
@@ -58,13 +58,13 @@ public class AIProcessService {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		//ï¿½ï¿½ï¿½Ô½×¶ï¿½ Ä¿ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Îªï¿½Â¼ï¿½
+		//²âÊÔ½×¶Î Ä¿±êÔÝÊ±ÉèÖÃÎªÏÂ¼Ò
 		//List<AbstractPlayer> list = new ArrayList<AbstractPlayer>();
-		//ï¿½ï¿½ï¿½ï¿½AIÄ¿ï¿½ï¿½ï¿½âº¯ï¿½ï¿½
+		//²âÊÔAIÄ¿±ê¼ì²âº¯Êý
 		/*List<AbstractPlayer> list = AITargetCheckService.getEnableTargets(player, c)
 		
 		list.add(p.getNextPlayer());*/
-		//ï¿½ï¿½È¡1ï¿½Å¿ï¿½ï¿½Ãµï¿½ï¿½ï¿½
+		//»ñÈ¡1ÕÅ¿ÉÓÃµÄÅÆ
 		List<AbstractCard> listA = check.getAvailableCard(p.getState().getCardList(), p);
 		AbstractCard c = null;
 		if(listA.size()>0){
@@ -80,7 +80,7 @@ public class AIProcessService {
 		}
 	}
 
-	// ï¿½ï¿½ï¿½Æ½×¶ï¿½
+	// ÆúÅÆ½×¶Î
 	public void stage_throwCrads() {
 		try {
 			Thread.sleep(500);
@@ -88,7 +88,7 @@ public class AIProcessService {
 			e.printStackTrace();
 		}
 		p.setStageNum(PlayerIF.STAGE_THROWCRADS);
-		System.out.println(p.getState().getId().toString()+p.getInfo().getName()+"ï¿½ï¿½ï¿½ï¿½");
+		System.out.println(p.getState().getId().toString()+p.getInfo().getName()+"ÆúÅÆ");
 		while(p.getState().getCardList().size()>p.getState().getCurHP()){
 			p.getState().getCardList().get(0).throwIt(p);
 		}
@@ -96,11 +96,11 @@ public class AIProcessService {
 	
 	}
 
-	// ï¿½ØºÏ½ï¿½ï¿½ï¿½
+	// »ØºÏ½áÊø
 	public void stage_end() {
 		p.setStageNum(PlayerIF.STAGE_END);
-		//ViewManagement.getInstance().printMsg(p.getState().getId().toString()+p.getInfo().getName()+"ï¿½ï¿½ï¿½ï¿½");
-		System.out.println(p.getState().getId().toString()+p.getInfo().getName()+"ï¿½ï¿½ï¿½ï¿½");
+		//ViewManagement.getInstance().printMsg(p.getState().getId().toString()+p.getInfo().getName()+"½áÊø");
+		System.out.println(p.getState().getId().toString()+p.getInfo().getName()+"½áÊø");
 	}
 
 }

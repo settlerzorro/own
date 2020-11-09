@@ -1,5 +1,28 @@
 package sanguosha1.gui.select;
 
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
+
 import sanguosha1.data.constant.Const_UI;
 import sanguosha1.gui.Frame_Main;
 import sanguosha1.player.AbstractPlayer;
@@ -8,17 +31,8 @@ import sanguosha1.service.ModuleManagement;
 import sanguosha1.util.ConfigFileReadUtil;
 import sanguosha1.util.ImgUtil;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Ñ¡ï¿½ï¿½ï¿½ä½«ï¿½ï¿½ï¿½ï¿½Ä½ï¿½ï¿½ï¿½
+ * Ñ¡ÔñÎä½«ÈËÎïµÄ½çÃæ
  * 
  * @author user
  * 
@@ -27,33 +41,33 @@ public class Panel_Select extends JPanel {
 
 	private static final long serialVersionUID = -8505197231593797314L;
 	final int grid = 5;
-	//ï¿½ï¿½Õ½ï¿½ï¿½
+	//³öÕ½Õß
 	public static List<AbstractPlayer> list = new ArrayList<AbstractPlayer>();
-	// ï¿½ï¿½ï¿½ï¿½Í¼
+	// ±³¾°Í¼
 	BufferedImage bgimg = ImgUtil.getJpgImgByName("bg");
-	// ï¿½ï¿½Ç°Ñ¡ï¿½ï¿½Ä±ß¿ï¿½
+	// µ±Ç°Ñ¡ÔñµÄ±ß¿ò
 	Border border = BorderFactory.createLineBorder(Color.green, 5);
-	// ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
+	// ÏÔÊ¾ÇøÓò
 	JPanel showPanel = new JPanel();
 	JScrollPane jsp;
-	// Ñ¡ï¿½ï¿½ï¿½ï¿½
+	// Ñ¡ÔñÇø
 	MySelectPanel selectPanel = new MySelectPanel();
 	Pane_ProxyPlayer[] pps = new Pane_ProxyPlayer[5];
 	Pane_ProxyPlayer curPP;
-	// Ñ¡ï¿½ï¿½ï¿½Î±ï¿½
+	// Ñ¡ÔñÓÎ±ê
 	int index;
-	//ï¿½ï¿½Å¥ï¿½ï¿½ï¿½
-	ClickPanel cp1 = new ClickPanel("ï¿½ï¿½ï¿½ï¿½",0);
-	ClickPanel cp2 = new ClickPanel("ï¿½ï¿½Õ½",1);
+	//°´Å¥Ãæ°å
+	ClickPanel cp1 = new ClickPanel("³·Ïú",0);
+	ClickPanel cp2 = new ClickPanel("³öÕ½",1);
 	
 	public Panel_Select() {
 		this.setSize(Const_UI.FRAME_WIDTH, Const_UI.FRAME_HEIGHT);
 		this.setLocation(0, 0);
 		this.setLayout(null);
-		// ï¿½ï¿½Ó°ï¿½ï¿½ß¶ï¿½
+		// ¿ÉÓ°Ïì¸ß¶È
 		showPanel.setPreferredSize(new Dimension(Const_UI.PROXYWIDTH * 5,
 				Const_UI.PROXYHEIGHT * 1));
-		//ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½
+		//¿ÉÓ°Ïì¿í¶È
 		showPanel.setLayout(new GridLayout(0, 7, 2, 2));
 		showPanel.setBackground(Color.black);
 		loadProxyPlayers();
@@ -65,9 +79,9 @@ public class Panel_Select extends JPanel {
 		jsp.setOpaque(false);
 		jsp.getVerticalScrollBar().setUnitIncrement(20);
 		jsp.getHorizontalScrollBar().setBlockIncrement(80);
-		TitledBorder tb = BorderFactory.createTitledBorder("ï¿½ã½«Ì¨");
+		TitledBorder tb = BorderFactory.createTitledBorder("µã½«Ì¨");
 		tb.setTitlePosition(TitledBorder.TOP);
-		Font font = new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 30);
+		Font font = new Font("¿¬Ìå", Font.BOLD, 30);
 		tb.setTitleFont(font);
 		tb.setTitleColor(Color.white);
 		jsp.setBorder(tb);
@@ -78,7 +92,7 @@ public class Panel_Select extends JPanel {
 		selectPanel.setSize(Const_UI.PROXYWIDTH * 6+20, Const_UI.PROXYHEIGHT + 50);
 		selectPanel.setLocation(10, jsp.getHeight() + 20);
 		selectPanel.setOpaque(false);
-		TitledBorder tb2 = BorderFactory.createTitledBorder("ï¿½ï¿½Õ½ï¿½ï¿½");
+		TitledBorder tb2 = BorderFactory.createTitledBorder("²ÎÕ½Õß");
 		tb2.setTitleFont(font);
 		tb2.setTitleColor(Color.white);
 		tb2.setBorder(null);
@@ -106,7 +120,7 @@ public class Panel_Select extends JPanel {
 	}
 
 	/*
-	 * ï¿½ï¿½ï¿½Æµï¿½Ç°Ñ¡ï¿½ï¿½
+	 * »æÖÆµ±Ç°Ñ¡Ôñ
 	 */
 	private void paintCurPP() {
 		for (Pane_ProxyPlayer pp : pps) {
@@ -116,7 +130,7 @@ public class Panel_Select extends JPanel {
 	}
 
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ä½«
+	 * ¼ÓÔØÎä½«
 	 */
 	private void loadProxyPlayers() {
 		List<ProxyPlayer> list = ConfigFileReadUtil.getProxyPlayersFromXML();
@@ -128,14 +142,14 @@ public class Panel_Select extends JPanel {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * »æÖÆ
 	 */
 	public void paintComponent(Graphics g) {
 		g.drawImage(bgimg, 0, 0, this.getWidth(), this.getHeight(), null);
 	}
 
 	/**
-	 * Ñ¡ï¿½ï¿½1ï¿½ï¿½
+	 * Ñ¡Ôñ1¸ö
 	 */
 	public void selectOne(ProxyPlayer player) {
 		pps[index].setPp(player);
@@ -144,7 +158,7 @@ public class Panel_Select extends JPanel {
 			index++;
 			paintCurPP();
 		} else {
-			// ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½
+			// ¿ª·ÅÈ·¶¨
 			cp2.enbaleUse();
 		}
 	}
@@ -164,7 +178,7 @@ public class Panel_Select extends JPanel {
 	};
 
 	/**
-	 * ï¿½ï¿½Å¥ï¿½ï¿½ï¿½
+	 * °´Å¥Ãæ°å
 	 */
 	class ClickPanel extends JPanel {
 		private static final long serialVersionUID = 6842906804807502608L;
@@ -179,7 +193,7 @@ public class Panel_Select extends JPanel {
 		public ClickPanel(String name, int type) {
 			this.setSize(140, 60);
 			this.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			Font f = new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 40);
+			Font f = new Font("¿¬Ìå", Font.BOLD, 40);
 			text.setFont(f);
 			text.setForeground(Color.white);
 			text.setText(name);
@@ -248,7 +262,7 @@ public class Panel_Select extends JPanel {
 					String id = pp.getPp().getId();
 					AbstractPlayer p = new Player(id);
 					list.add(0,p);
-					System.out.println("ï¿½ï¿½ï¿½ï¿½"+p.getInfo().getName());
+					System.out.println("¼ÓÔØ"+p.getInfo().getName());
 				}
 				ModuleManagement.reset();
 				Frame_Main.me.loadMain();
@@ -257,7 +271,7 @@ public class Panel_Select extends JPanel {
 		};
 
 		/*
-		 * ï¿½ï¿½ï¿½ï¿½
+		 * ¼àÌý
 		 */
 		class MyClickListen extends MouseAdapter {
 

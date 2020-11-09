@@ -1,5 +1,10 @@
 package sanguosha1.card.kits;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.EffectCardIF;
 import sanguosha1.gui.main.Panel_HandCards;
@@ -9,12 +14,8 @@ import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ModuleManagement;
 import sanguosha1.service.ViewManagement;
 
-import javax.swing.*;
-import java.lang.reflect.InvocationTargetException;
-import java.util.List;
-
 /**
- * ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½
+ * ¹ýºÓ²ðÇÅ
  * 
  * @author user
  * 
@@ -28,18 +29,18 @@ public class Card_GuoHeChaiQiao extends AbstractKitCard implements EffectCardIF{
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´use ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ò»ï¿½ï¿½ É¾ï¿½ï¿½
+	 * ÖØÐ´use ÔÚÄ¿±êÍæ¼ÒµÄËùÓÐÅÆÖÐÑ¡ÔñÒ»ÕÅ É¾³ý
 	 */
 	@Override
 	public void use(final AbstractPlayer p, List<AbstractPlayer> players) {
 		super.use(p, players);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ´¥·¢¼¼ÄÜ
 		p.getTrigger().afterMagic();
 
-		// ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½return
+		// Èç¹ûÎÞÐ¸£¬Ôòreturn
 		askWuXieKeJi(p, players);
 		if (isWuXie) {
-			ViewManagement.getInstance().printBattleMsg(getName() + "ï¿½ï¿½Ð§");
+			ViewManagement.getInstance().printBattleMsg(getName() + "ÎÞÐ§");
 			ViewManagement.getInstance().refreshAll();
 			return;
 		}
@@ -58,7 +59,7 @@ public class Card_GuoHeChaiQiao extends AbstractKitCard implements EffectCardIF{
 			// pc = (Panel_Control)p.getPanel();
 			ps = new Panel_SelectCard(p, targetPlayers.get(0),
 					Panel_SelectCard.CHAI);
-			// ï¿½ï¿½Ê¾Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½
+			// ÏÔÊ¾Ñ¡ÔñÃæ°åµÈ´ý´¦Àí
 			try {
 				SwingUtilities.invokeAndWait(run);
 			} catch (InterruptedException e) {
@@ -71,15 +72,15 @@ public class Card_GuoHeChaiQiao extends AbstractKitCard implements EffectCardIF{
 		}
 	}
 	/**
-	 * ï¿½ï¿½Ð´Ä¿ï¿½ï¿½ï¿½ï¿½
+	 * ÖØÐ´Ä¿±ê¼ì²â
 	 */
 	@Override
 	public void targetCheck(Panel_HandCards ph) {
-		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+		// ±éÀú ¼ì²â
 		List<Panel_Player> list = ph.getMain().getPlayers();
 		for (int i = 0; i < list.size(); i++) {
 			Panel_Player pp = list.get(i);
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½
+			// Èç¹ûÎÞÊÖÅÆ»òÕß×°±¸ÅÆ
 			if (pp.getPlayer().getState().getCardList().isEmpty()
 					&& pp.getPlayer().getState().getEquipment().isEmpty()) {
 				pp.disableToUse();

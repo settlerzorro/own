@@ -1,5 +1,11 @@
 package sanguosha1.card.base;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.EffectCardIF;
 import sanguosha1.card.equipment.AbstractWeaponCard;
@@ -10,13 +16,8 @@ import sanguosha1.gui.main.Panel_Player;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ViewManagement;
 
-import javax.swing.*;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * ï¿½ï¿½É±ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½
+ * ¡°É±¡±ÅÆµÄÀà
  * 
  * @author user
  * 
@@ -28,19 +29,19 @@ public class Card_Sha extends AbstractCard implements EffectCardIF{
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´useï¿½ï¿½ï¿½ï¿½
+	 * ÖØÐ´use·½·¨
 	 */
 	@Override
 	public void use(final AbstractPlayer p, List<AbstractPlayer> players) {
 		super.use(p, players);
-		System.out.println("Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+players.size());
+		System.out.println("Ä¿±êÊý£º"+players.size());
 		List<AbstractPlayer> list = new ArrayList<AbstractPlayer>(players);
 		for (int i = 0; i < list.size(); i++) {
 			final AbstractPlayer tmp = list.get(i);
-			// ï¿½ï¿½ï¿½ï¿½É±ï¿½ï¿½Ð§ï¿½ï¿½
+			// »æÖÆÉ±µÄÐ§¹û
 			ViewManagement.getInstance().printBattleMsg(
-					p.getInfo().getName() + "ï¿½ï¿½" + tmp.getInfo().getName()
-					+ "Ê¹ï¿½ï¿½ï¿½ï¿½É±" );
+					p.getInfo().getName() + "¶Ô" + tmp.getInfo().getName()
+					+ "Ê¹ÓÃÁËÉ±" );
 			try {
 				SwingUtilities.invokeAndWait(new Runnable() {
 					@Override
@@ -57,7 +58,7 @@ public class Card_Sha extends AbstractCard implements EffectCardIF{
 			}
 			//drawEffect(p, players);
 			executeSha(p, tmp);
-			// Ë¢ï¿½ï¿½
+			// Ë¢ÐÂ
 			tmp.refreshView();
 
 		}
@@ -65,17 +66,17 @@ public class Card_Sha extends AbstractCard implements EffectCardIF{
 	}
 
 	/**
-	 * Ö´ï¿½ï¿½É±ï¿½Æµï¿½É±ï¿½ï¿½ï¿½ï¿½
+	 * Ö´ÐÐÉ±ÅÆµÄÉ±Á÷³Ì
 	 */
 	public void executeSha(AbstractPlayer p, AbstractPlayer toP) {
 		if (!toP.getAction().avoidSha(p,this)) {
-			// ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ß´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É±
+			// Èç¹ûÊ¹ÓÃÕß´øÎäÆ÷£¬Ôòµ÷ÓÃÎäÆ÷µÄÉ±
 			AbstractWeaponCard awc = (AbstractWeaponCard) p.getState()
 					.getEquipment().getWeapons();
 			if (awc != null) {
 				awc.shaWithEquipment(p, toP, this);
 			} else {
-				// ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½
+				// ÅÐ¶¨·À¾ß
 				ArmorIF am = (ArmorIF) toP.getState().getEquipment().getArmor();
 				if (am == null || !am.check(this, toP)) {
 					p.getAction().sha(toP);
@@ -86,21 +87,21 @@ public class Card_Sha extends AbstractCard implements EffectCardIF{
 	}
 	
 	/**
-	 * Ê¹ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½
+	 * Ê¹ÓÃÄ¿±ê¼ì²â
 	 */
 	@Override
 	public  void targetCheck(Panel_HandCards ph) {
 
-		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+		// ±éÀú ¼ì²â
 		List<Panel_Player> list = ph.getMain().getPlayers();
 		for (int i = 0; i < list.size(); i++) {
 			Panel_Player pp = list.get(i);
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//Èç¹ûËÀÍö
 			if(pp.getPanelState()==Panel_Player.DEAD||pp.getPanelState()==Panel_Player.DISABLE){
 				System.out.println("this is dead");
 				continue;
 			}
-			// ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½
+			// Èç¹ûÐèÒªÉä³Ì
 			if (!this.isInRange(ph.getPlayer(), pp.getPlayer())) {
 				pp.disableToUse();
 				continue;
@@ -111,7 +112,7 @@ public class Card_Sha extends AbstractCard implements EffectCardIF{
 	}
 
 	/**
-	 * ï¿½Ð¶ï¿½userï¿½Ç·ï¿½ï¿½Ü¶ï¿½targetÊ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÅÐ¶ÏuserÊÇ·ñÄÜ¶ÔtargetÊ¹ÓÃÕâÕÅÅÆ
 	 */
 	@Override
 	public boolean targetCheck4SinglePlayer(AbstractPlayer user,

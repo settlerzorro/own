@@ -1,21 +1,21 @@
 package sanguosha1.card;
 
-import sanguosha1.player.AbstractPlayer;
-
 import java.util.List;
 
+import sanguosha1.player.AbstractPlayer;
+
 /**
- * ï¿½ï¿½ï¿½ï¿½Æ½Ó¿ï¿½
+ * ×éºÏÅÆ½Ó¿Ú
  * @author user
  *
  */
 public interface ComboCardIF {
 
-	//ï¿½ï¿½È¡ï¿½ï¿½Êµï¿½ï¿½
+	//»ñÈ¡ÕæÊµÅÆ
 	List<AbstractCard> getRealCards();
-	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½Öµ
+	//»ñÈ¡¸ÃÐéÄâÅÆµÄÌæ´úÖµ
 	int getCardType();
-	//ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½
+	//Ö÷¶¯Ê¹ÓÃ
 	void use(AbstractPlayer p, AbstractPlayer toP);
 
 }

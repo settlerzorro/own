@@ -1,16 +1,16 @@
 package sanguosha1.card;
 
+import java.lang.reflect.Constructor;
+import java.util.Properties;
+
 import sanguosha1.card.equipment.AbstractEquipmentCard;
 import sanguosha1.data.enums.Colors;
 import sanguosha1.data.enums.EquipmentType;
 import sanguosha1.util.ConfigFileReadUtil;
 import sanguosha1.util.ImgUtil;
 
-import java.lang.reflect.Constructor;
-import java.util.Properties;
-
 /**
- * ï¿½ÆµÄ¹ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ÅÆµÄ¹¤³§Àà
  * 
  * @author user
  * 
@@ -18,8 +18,8 @@ import java.util.Properties;
 public class CardFactory {
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Îªï¿½Ä¼ï¿½ï¿½Ð¶ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ key = id value = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Öµï¿½ï¿½ï¿½Íµï¿½ï¿½Ö·ï¿½ï¿½ï¿½
-	 * valueï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼Ó¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½
+	 * ¶ÔÍâÊä³öÒ»ÕÅÅÆ ²ÎÊýÎªÎÄ¼þÖÐ¶ÁÈ¡À´µÄÒ»¸ö¼üÖµ¶Ô key = id value = °üº¬»¨É«ÊýÖµÀàÐÍµÄ×Ö·û´®
+	 * value½âÎö³É3¸ö²ÎÊý£¬µ÷ÓÃ¼Ó¹¤·½·¨²úÉú1ÕÅÅÆ
 	 */
 	public static AbstractCard newCard(String key, String value) {
 		int id = Integer.parseInt(key);
@@ -54,9 +54,9 @@ public class CardFactory {
 		return res;
 	}
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ ï¿½Ú²ï¿½ï¿½Ó¹ï¿½
-	 * ï¿½ï¿½2013ï¿½ï¿½6ï¿½ï¿½11ï¿½Õ¿ï¿½Ê¼ ï¿½ï¿½ï¿½Ã¡ï¿½
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½XMLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¡ï¿½
+	 * ´´½¨Ò»ÕÅÅÆ ÄÚ²¿¼Ó¹¤
+	 * ¡¾2013Äê6ÔÂ11ÈÕ¿ªÊ¼ ÆúÓÃ¡¿
+	 * ¡¾½ñºóÓÉXML¿ØÖÆÉú³É¡¿
 	 * @return
 	 */
 	/*private static AbstractCard createCard(int type, int id, int number,
@@ -119,8 +119,8 @@ public class CardFactory {
 	}*/
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½typeï¿½ï¿½ï¿½ï¿½Öµ
-	 * ï¿½ï¿½È¡XMLï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Æµï¿½Êµï¿½ï¿½
+	 * ¸ù¾ÝtypeÀàÐÍÖµ
+	 * ¶ÁÈ¡XMLÖÐµÄÅäÖÃÐÅÏ¢£¬ÀûÓÃ·´ÉäÉú³ÉÒ»ÕÅÅÆµÄÊµÀý
 	 */
 	@SuppressWarnings("unchecked")
 	public static AbstractCard newCard(int typeID){
@@ -135,7 +135,7 @@ public class CardFactory {
 		boolean needRange = Boolean.parseBoolean((String) p.get("needRange"));
 		String img = (String) p.get("img");
 		String ef_img = (String) p.get("ef_img");
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+		//´´½¨²¢¸³Öµ
 		try {
 			Constructor con = Class.forName(clazz).getConstructor();
 			 obj= con.newInstance();
@@ -143,7 +143,7 @@ public class CardFactory {
 			e.printStackTrace();
 		}
 		c = (AbstractCard)obj;
-		//×°ï¿½ï¿½
+		//×°±¸
 		if(c instanceof AbstractEquipmentCard){
 			int att = Integer.parseInt((String)p.get("att"));
 			int def = Integer.parseInt((String)p.get("def"));
@@ -171,7 +171,7 @@ public class CardFactory {
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½id ï¿½ï¿½Öµ ï¿½ï¿½É« ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½
+	 * ¸ù¾Ýid ÊýÖµ »¨É« ´´½¨Ò»ÕÅÅÆÖ¸¶¨ÀàÐÍµÄÅÆ
 	 */
 	public static AbstractCard newCard(int id,int num,Colors color,int typeID){
 		AbstractCard c = newCard(typeID);

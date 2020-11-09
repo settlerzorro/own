@@ -1,36 +1,39 @@
 package sanguosha1.gui.main;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JPanel;
+
 /**
- * Õ½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+ * Õ½³¡ÏûÏ¢Ãæ°åÏÔÊ¾
  * 
  * @author user
  * 
  */
 public class Panel_Message extends JPanel {
 	private static final long serialVersionUID = -2483544218392211358L;
-	// private String message = "ï¿½ï¿½ï¿½ï¿½--";
-	// ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Nï¿½ï¿½
+	// private String message = "²âÊÔ--";
+	// ×î¶àÏÔÊ¾NÌõ
 	//private static final int SIZE = 3;
 	private List<String> strList = new ArrayList<String>();
 	private Font font;
-	// ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Äµï¿½Ç°ï¿½ï¿½
+	// ¶¨Ê±Çå³ýµÄµ±Ç°Ãë
 	private int time = 0;
 
 	public Panel_Message() {
 		// this.setBorder(BorderFactory.createLineBorder(Color.blue, 1));
 		this.setSize(500, 100);
 		this.setOpaque(false);
-		this.font = new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 30);
+		this.font = new Font("¿¬Ìå", Font.BOLD, 30);
 		clsThread.start();
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * »æÖÆ
 	 */
 	public void paintComponent(Graphics g) {
 		g.setFont(font);
@@ -42,10 +45,10 @@ public class Panel_Message extends JPanel {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ï¢ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È½ï¿½ï¿½È³ï¿½
+	 * ÏòÃæ°åÖÐÌí¼ÓÒ»ÌõÏûÏ¢ Èç¹û³¬ÔØÔòÏÈ½øÏÈ³ö
 	 */
 	public void addMessage(final String msg) {
-		// ï¿½ï¿½ï¿½Â¼ï¿½Ê±
+		// ÖØÐÂ¼ÆÊ±
 		time = 0;
 		strList.add(msg);
 		/*if (strList.size() > SIZE) {
@@ -55,7 +58,7 @@ public class Panel_Message extends JPanel {
 	}
 
 	/**
-	 * ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
+	 * ¶¨Ê±ÇåÀíµÄÏß³Ì
 	 */
 	private Thread clsThread = new Thread() {
 		@Override

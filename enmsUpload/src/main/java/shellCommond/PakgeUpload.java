@@ -4,8 +4,13 @@ package shellCommond;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class PakgeUpload {
+
     public static void main(String[] args) throws Exception{
         upload();
     }
@@ -23,7 +28,7 @@ public class PakgeUpload {
             TestUpload2.setHost(str);
             TestUpload2.clearLog = false;
             TestUpload2.reStart_Enms_2 = false;
-            upload2.doShell("D:/gitRepository");
+            upload2.doShell("D:/ideaProjects");
             System.exit(0);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "提示框", JOptionPane.ERROR_MESSAGE);

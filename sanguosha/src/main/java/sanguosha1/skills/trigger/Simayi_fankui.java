@@ -1,17 +1,17 @@
 package sanguosha1.skills.trigger;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.player.impl.P_Trigger;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.LockingSkillIF;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Ë¾ï¿½ï¿½Ü²ï¿½ï¿½ï¿½Ü¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
+ * Ë¾ÂíÜ²¼¼ÄÜ¡¾·´À¡¡¿
+ * ÊÜÉËºó´ÓÉËº¦À´Ô´´¦ÊÕÒ»ÕÅÅÆ
  * @author user
  *
  */
@@ -22,7 +22,7 @@ public class Simayi_fankui extends P_Trigger implements LockingSkillIF{
 		this.player = p;
 	}
 	/**
-	 * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ë´ï¿½ï¿½ï¿½
+	 * ÖØÐ´ÊÜÉË´¥·¢
 	 */
 	@Override
 	public void afterLoseHP(AbstractPlayer murderer) {
@@ -31,18 +31,18 @@ public class Simayi_fankui extends P_Trigger implements LockingSkillIF{
 		List<AbstractCard> listHand = murderer.getState().getCardList();
 		//EquipmentCardIF[] listEq = murderer.getState().getEquipmentList();
 		if(listHand.size()>0)list.addAll(listHand);
-		//Ñ¡ï¿½ï¿½Ò»ï¿½ï¿½
+		//Ñ¡ÔñÒ»ÕÅ
 		if(list.size()==0){
 			return;
 		}else{
-			ViewManagement.getInstance().printBattleMsg(player.getInfo().getName()+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¡ï¿½"+getName()+"ï¿½ï¿½");
+			ViewManagement.getInstance().printBattleMsg(player.getInfo().getName()+"·¢¶¯¼¼ÄÜ¡¾"+getName()+"¡¿");
 			player.getAction().addCardToHandCard(list.get(0));
 			murderer.getAction().removeCard(list.get(0));
 		}
 	}
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½ï¿½";
+		return "·´À¡";
 	}
 	
 	

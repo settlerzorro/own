@@ -1,35 +1,35 @@
 package sanguosha1.player.impl;
 
-import sanguosha1.data.enums.Country;
-
-import java.awt.*;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
+import sanguosha1.data.enums.Country;
+
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
- * ï¿½ï¿½×°ï¿½ï¿½ÒµÄ»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
+ * Íæ¼ÒĞÅÏ¢Àà
+ * ·â×°Íæ¼ÒµÄ»ù±¾ĞÅÏ¢Êı¾İ
  * @author user
  *
  */
 public class P_Info {
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ÈËÎïÃû³Æ
 	protected String name ;
-	//Ñªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ÑªÁ¿ÉÏÏŞ
 	protected int maxHP;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ ï¿½ï¿½-ï¿½Ğ£ï¿½ï¿½ï¿½-Å®
+	//ÈËÎïĞÔ±ğ Õæ-ÄĞ£»¼Ù-Å®
 	protected boolean sex;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ËùÊôÊÆÁ¦
 	protected Country country ;
-	//Í·ï¿½ï¿½
+	//Í·Ïñ
 	protected Image headImg;
-	//ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½
+	//ÃâÒßµÄÅÆ
 	protected List<Integer> immuneCard = new ArrayList<Integer>();
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½ï¿½ï¿½
+	//Ö÷¶¯¼¼ÄÜµÄÀàÃû
 	protected List<String> skillName = new ArrayList<String>();
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Ëø¶¨¼¼ÀàÃû
 	protected List<String> lockingSkill = new ArrayList<String>();
 	
 

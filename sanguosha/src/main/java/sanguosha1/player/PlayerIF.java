@@ -2,14 +2,14 @@ package sanguosha1.player;
 
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½Ä½Ó¿ï¿½
+ * Íæ¼ÒÀàµÄ½Ó¿Ú
  * @author user
  *
  */
 public interface PlayerIF {
 	/**
-	 * 6ï¿½×¶ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½
-	 * ï¿½ï¿½ï¿½Ô±ï¿½Ê¾ï¿½ï¿½Ò´ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½×¶ï¿½
+	 * 6½×¶Î×´Ì¬³£Á¿
+	 * ÓÃÒÔ±íÊ¾Íæ¼Ò´¦ÓÚÄÄ¸ö½×¶Î
 	 */
 	public static final int STAGE_BEGIN = 1; 
 	public static final int STAGE_CHECK = 2; 
@@ -18,11 +18,11 @@ public interface PlayerIF {
 	public static final int STAGE_THROWCRADS = 5; 
 	public static final int STAGE_END = 6; 
 	
-	//ï¿½ï¿½ï¿½ë¼¼ï¿½ï¿½
+	//ÔØÈë¼¼ÄÜ
 	void loadSkills(String name) ;
-	//Ö´ï¿½Ð»Øºï¿½
+	//Ö´ÐÐ»ØºÏ
 	void process();
-	//Ë¢ï¿½Â¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Ë¢ÐÂ¹ØÁªµÄÃæ°å
 	void refreshView();
 	
 }

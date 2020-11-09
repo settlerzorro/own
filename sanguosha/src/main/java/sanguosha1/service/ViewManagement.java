@@ -1,21 +1,27 @@
 package sanguosha1.service;
 
-import sanguosha1.gui.main.*;
-import sanguosha1.player.AbstractPlayer;
-
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+
+import sanguosha1.gui.main.Panel_Control;
+import sanguosha1.gui.main.Panel_HandCards;
+import sanguosha1.gui.main.Panel_Message;
+import sanguosha1.gui.main.Panel_Prompt;
+import sanguosha1.gui.main.RefreshbleIF;
+import sanguosha1.player.AbstractPlayer;
+
 /**
- * ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ÂµÈ²ï¿½ï¿½ï¿½
+ * ÊÓÍ¼¹ÜÀíÀà °üº¬ÓÎÏ·×é¼þµÄË¢ÐÂµÈ²Ù×÷
  * 
  * @author user
  * 
  */
 public class ViewManagement {
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// µ¥Àý¹¹Ôì
 	private static ViewManagement instance;
 
 	private ViewManagement() {
@@ -29,25 +35,25 @@ public class ViewManagement {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * ÖØÖÃ
 	 */
 	public static void reset() {
 		instance = new ViewManagement();
 	}
 
-	// ï¿½ï¿½Ë¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ¿ÉË¢ÐÂ×é¼þ¼¯ºÏ
 	List<RefreshbleIF> refreshList = new ArrayList<RefreshbleIF>();
-	// ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½
+	// ÏûÏ¢Ãæ°å
 	JTextArea msg;
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ÁÄÌìÃæ°å
 	JTextArea msgChat;
-	// ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
+	// ÌáÊ¾ÐÅÏ¢
 	Panel_Prompt prompt;
-	// Õ½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½
+	// Õ½³¡ÏûÏ¢Ãæ°å
 	Panel_Message message;
 
 	/**
-	 * Í¨Öªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½
+	 * Í¨ÖªËùÓÐ×é¼þË¢ÐÂ
 	 */
 	public void refreshAll() {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -56,7 +62,7 @@ public class ViewManagement {
 			public void run() {
 				for (int i = 0; i < refreshList.size(); i++) {
 					refreshList.get(i).refresh();
-					// System.out.println(i+"Ë¢ï¿½ï¿½");
+					// System.out.println(i+"Ë¢ÐÂ");
 				}
 				printChatMsg("refresh!");
 			}
@@ -64,7 +70,7 @@ public class ViewManagement {
 	}
 
 	/**
-	 * ï¿½ï¿½Ó¡ï¿½ï¿½Ï¢
+	 * ´òÓ¡ÏûÏ¢
 	 */
 	public void printMsg(String str) {
 		msg.append(str + "\n");
@@ -73,18 +79,18 @@ public class ViewManagement {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢×·ï¿½ï¿½
+	 * ÁÄÌìÐÅÏ¢×·¼Ó
 	 * 
 	 * @return
 	 */
 	public void printChatMsg(String msg) {
-		// msgChat.append("ï¿½ï¿½AIï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½Ë¸ï¿½ï¿½ËµÃ£ï¿½ï¿½á²»ï¿½ï¿½ï¿½æ°¡"+"\n");
+		// msgChat.append("¡¾AIËïÈ¨¡¿µÀ£ºÎÒÈ¥ÄãÂèÁË¸ö±ËµÃ£¡»á²»»áÍæ°¡"+"\n");
 		msgChat.append(msg + "\n");
 		msgChat.setCaretPosition(msgChat.getText().length());
 	}
 
 	/**
-	 * Õ½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ê¾ Õ½ï¿½ï¿½ï¿½ï¿½Ï¢Ä¬ï¿½ï¿½Í¬Ê±ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * Õ½³¡ÐÅÏ¢ÏÔÊ¾ Õ½³¡ÐÅÏ¢Ä¬ÈÏÍ¬Ê±ÔÚÏûÏ¢Ãæ°å³öÏÖ
 	 * 
 	 * @return
 	 */
@@ -95,7 +101,7 @@ public class ViewManagement {
 	}
 
 	/**
-	 * Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ñ·¢¶ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * Ñ¯ÎÊÍæ¼ÒÊÇ·ñ·¢¶¯¼¼ÄÜ
 	 * 
 	 * @return
 	 */
@@ -106,7 +112,7 @@ public class ViewManagement {
 				Panel_Control pc = (Panel_Control) player.getPanel();
 				Panel_HandCards ph = pc.getHand();
 				ViewManagement.getInstance().getPrompt().show_Message(
-						"ï¿½Ç·ñ·¢¶ï¿½" +skillName);
+						"ÊÇ·ñ·¢¶¯" +skillName);
 				ph.unableToUseCard();
 				ph.enableOKAndCancel();
 

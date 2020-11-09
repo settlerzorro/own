@@ -1,15 +1,17 @@
 package sanguosha1.gui.start;
 
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JFrame;
+
 import sanguosha1.Main;
 import sanguosha1.util.ImgUtil;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-
 
 /**
- * ï¿½ï¿½ï¿½ë´°ï¿½ï¿½
+ * ÔØÈë´°Ìå
  * @author user
  *
  */
@@ -23,7 +25,7 @@ public class Frame_Load extends JFrame{
 		img = ImgUtil.getJpgImgByName("loadimg");
 		setUI();
 		Runnable run = new Runnable() {
-
+			
 			@Override
 			public void run() {
 				showIt();
@@ -32,7 +34,7 @@ public class Frame_Load extends JFrame{
 		new Thread(run).start();
 	}
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½UI
+	 * ÉèÖÃUI
 	 */
 	public void setUI(){
 		setBounds(new Rectangle(450, 300));
@@ -42,7 +44,7 @@ public class Frame_Load extends JFrame{
 		setVisible(true);
 	}
 	/**
-	 * ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½
+	 * »æÖÆ±³¾°
 	 */
 	public void paint(Graphics g){
 		//super.paint(g);
@@ -51,12 +53,10 @@ public class Frame_Load extends JFrame{
 		}
 	}
 	/**
-	 * Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ö±ï¿½ï¿½Ê¾
+	 * Î´¼ÓÔØÍê³ÉÔòÒ»Ö±ÏÔÊ¾
 	 */
 	public void showIt(){
-		while(!Main.isFinished){
-
-		}
+		while(!Main.isFinished){}
 		setVisible(false);
 		dispose();
 	}

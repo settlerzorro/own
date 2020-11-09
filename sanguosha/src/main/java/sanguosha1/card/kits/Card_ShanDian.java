@@ -1,13 +1,13 @@
 package sanguosha1.card.kits;
 
+import java.util.List;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.DelayKitIF;
 import sanguosha1.data.enums.Colors;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ModuleManagement;
 import sanguosha1.service.ViewManagement;
-
-import java.util.List;
 
 /**
  * ����

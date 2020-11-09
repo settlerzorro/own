@@ -1,17 +1,20 @@
 package sanguosha1.gui.main;
 
+import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import sanguosha1.data.constant.Const_UI;
 import sanguosha1.data.enums.Identity;
 import sanguosha1.util.ImgUtil;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 
 /**
- * ï¿½ï¿½Ê¾(Ñ¡ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½ï¿½
+ * ÏÔÊ¾(Ñ¡Ôñ)Íæ¼ÒÉí·ÝµÄÃæ°å
  * @author user
  *
  */
@@ -20,15 +23,15 @@ public class Panel_Id extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = -474307825678140295L;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//¹ØÁªµÄÍæ¼ÒÃæ°å
 	Panel_Player panel ;
-	//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½
+	//ÏÔÊ¾°æ¿é
 	JLabel jl_show = new JLabel(new ImageIcon(ImgUtil.getPngImgByName("id_null")));
-	//ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½
+	//ÖÒ³¼·´ÔôÄÚ¼é
 	JLabel jl_Zhong =new JLabel(new ImageIcon(ImgUtil.getPngImgByName("id_zhong")));
 	JLabel jl_Fan = new JLabel(new ImageIcon(ImgUtil.getPngImgByName("id_fan")));
 	JLabel jl_Nei = new JLabel(new ImageIcon(ImgUtil.getPngImgByName("id_nei")));
-	//ï¿½ï¿½ï¿½ï¿½
+	//¿ª¹Ø
 	boolean isOpen;
 	
 	public Panel_Id(Panel_Player pp){
@@ -40,7 +43,7 @@ public class Panel_Id extends JPanel{
 		jl_show.addMouseListener(new clickOpen());
 		//this.open();
 	}
-	//ï¿½ï¿½
+	//´ò¿ª
 	public void open(){
 		add(jl_Zhong);
 		add(jl_Fan);
@@ -50,7 +53,7 @@ public class Panel_Id extends JPanel{
 		addListener();
 		isOpen = true;
 	}
-	//ï¿½ï¿½ï¿½ï¿½
+	//ÊÕËõ
 	public void close(){
 		remove(jl_Zhong);
 		remove(jl_Fan);
@@ -59,7 +62,7 @@ public class Panel_Id extends JPanel{
 		validate();
 		isOpen = false;
 	}  
-	//×¢ï¿½ï¿½ï¿½ï¿½ï¿½
+	//×¢²á¼àÌý
 	public void addListener(){
 		jl_Zhong.addMouseListener(new clickSelect(jl_Zhong));
 		jl_Fan.addMouseListener(new clickSelect(jl_Fan));
@@ -67,7 +70,7 @@ public class Panel_Id extends JPanel{
 	}
 	
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¼ï¿½ï¿½ï¿½
+	 * µã»÷¸ü»»Éí·Ý¼àÌý
 	 */
 	class clickSelect extends MouseAdapter{
 		JLabel jl ;
@@ -83,7 +86,7 @@ public class Panel_Id extends JPanel{
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+	 * ËÀÍöºóÏÔÊ¾
 	 */
 	public void showAfterDead(){
 		Identity id = panel.getPlayer().getState().getId();
@@ -101,7 +104,7 @@ public class Panel_Id extends JPanel{
 	}
 	
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½ò¿ª¼ï¿½ï¿½ï¿½
+	 * µã»÷´ò¿ª¼àÌý
 	 */
 	class clickOpen extends MouseAdapter{
 		public void mousePressed(MouseEvent e) {

@@ -3,7 +3,7 @@ package sanguosha1.service;
 import sanguosha1.data.enums.ErrorMessageType;
 
 /**
- * 锟斤拷息锟斤拷锟斤拷锟斤拷
+ * 消息管理类
  * @author user
  *
  */
@@ -12,16 +12,16 @@ public class MessageManagement {
 		String msg = null;
 		switch (emt){
 		case cannotUseNow:
-			msg = "未锟斤拷锟斤拷锟斤拷时锟斤拷";
+			msg = "未到发动时机";
 			break;
 		case cannotUseCause_FullHP:
-			msg = "锟斤拷血锟斤拷锟斤拷锟斤拷使锟斤拷";
+			msg = "满血，不能使用";
 			break;
 		case hasUsed:
-			msg = "锟窖撅拷使锟矫癸拷锟斤拷锟睫凤拷锟劫达拷使锟斤拷";
+			msg = "已经使用过，无法再次使用";
 			break;
 		case hasUsed_Sha:
-			msg = "锟窖撅拷锟斤拷锟斤拷杀";
+			msg = "已经出过杀";
 			break;
 		}
 		ViewManagement.getInstance().printChatMsg(msg);

@@ -1,5 +1,7 @@
 package sanguosha1.skills.active;
 
+import javax.swing.SwingUtilities;
+
 import sanguosha1.data.constant.Const_Game;
 import sanguosha1.data.enums.Colors;
 import sanguosha1.data.enums.ErrorMessageType;
@@ -9,11 +11,9 @@ import sanguosha1.service.MessageManagement;
 import sanguosha1.skills.ChangeCardIF;
 import sanguosha1.skills.SkillIF;
 
-import javax.swing.*;
-
 /**
- * ï¿½ç¼§ï¿½ï¿½ï¿½Ü¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * ï¿½ï¿½É«ï¿½Æ¿ï¿½ï¿½Ôµï¿½ï¿½ï¿½ï¿½ï¿½
+ * Õç¼§¼¼ÄÜ¡¾Çã¹ú¡¿
+ * ºÚÉ«ÅÆ¿ÉÒÔµ±×öÉÁ
  * @author user
  *
  */
@@ -34,7 +34,7 @@ public class Zhenji_qingguo implements Runnable ,SkillIF,ChangeCardIF{
 			return;
 		}
 		final Panel_Control pc = (Panel_Control) player.getPanel();
-		//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ðºï¿½É«ï¿½ï¿½
+		//ÏÔÊ¾ËùÓÐºÚÉ«ÅÆ
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
@@ -45,11 +45,11 @@ public class Zhenji_qingguo implements Runnable ,SkillIF,ChangeCardIF{
 				pc.repaint();
 			}
 		});
-		//ï¿½È´ï¿½Ñ¡ï¿½ï¿½
+		//µÈ´ýÑ¡Ôñ
 		while(true){
 			if(player.getState().getRes()==Const_Game.OK){
 				//AbstractCard c = pc.getHand().getSelectedList().get(0).getCard();
-				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				// ¸üÐÂÊÖÅÆ
 				pc.getHand().updateCards();
 				player.getState().setRes(getResultType());
 				break;
@@ -64,7 +64,7 @@ public class Zhenji_qingguo implements Runnable ,SkillIF,ChangeCardIF{
 
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½";
+		return "Çã¹ú";
 	}
 
 	@Override

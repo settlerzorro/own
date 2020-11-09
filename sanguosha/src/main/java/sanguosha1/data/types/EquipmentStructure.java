@@ -3,12 +3,12 @@ package sanguosha1.data.types;
 import sanguosha1.card.equipment.AbstractEquipmentCard;
 
 /**
- * ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½á¹¹
- * ×°ï¿½ï¿½ï¿½á¹¹
- * --ï¿½ï¿½ï¿½ï¿½
- * --ï¿½ï¿½ï¿½ï¿½
- * --ï¿½ï¿½1ï¿½ï¿½
- * --ï¿½ï¿½1ï¿½ï¿½
+ * ×Ô¶¨ÒåµÄÊý¾Ý½á¹¹
+ * ×°±¸½á¹¹
+ * --ÎäÆ÷
+ * --·À¾ß
+ * --¼Ó1Âí
+ * --¼õ1Âí
  * @author user
  *
  */
@@ -23,7 +23,7 @@ public class EquipmentStructure {
 	}
 
 	/**
-	 * ï¿½ØºÏ³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½
+	 * »ØºÏ³õÊ¼»¯ËùÓÐ×°±¸
 	 */
 	public void initAll(){
 		if(weapons!=null)weapons.beginInit();
@@ -31,20 +31,20 @@ public class EquipmentStructure {
 	}
 	
 	/**
-	 * ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÊÇ·ñÓÐÎäÆ÷
 	 */
 	public boolean hasWeapons(){
 		return weapons!=null;
 	}
 	/**
-	 * ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÊÇ·ñÓÐÂë
 	 */
 	public boolean hasHorse(){
 		return attHorse!=null||defHorse!=null;
 	}
 
 	/**
-	 * É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½
+	 * É¾³ýËùÓÐ×°±¸
 	 */
 	public void removeALL(){
 		weapons = null;
@@ -54,7 +54,7 @@ public class EquipmentStructure {
 	}
 	
 	/**
-	 * ï¿½Ç·ï¿½Ã»ï¿½ï¿½×°ï¿½ï¿½
+	 * ÊÇ·ñÃ»ÓÐ×°±¸
 	 */
 	public boolean isEmpty(){
 		return weapons==null && armor == null && attHorse == null && defHorse == null;

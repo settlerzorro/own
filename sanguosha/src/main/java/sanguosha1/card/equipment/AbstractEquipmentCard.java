@@ -1,5 +1,7 @@
 package sanguosha1.card.equipment;
 
+import java.util.List;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.EquipmentCardIF;
 import sanguosha1.data.enums.Colors;
@@ -7,64 +9,62 @@ import sanguosha1.data.enums.EquipmentType;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ModuleManagement;
 import sanguosha1.service.ViewManagement;
-
-import java.util.List;
-
 /**
- * ×°ï¿½ï¿½ï¿½ÆµÄ³ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ×°±¸ÅÆµÄ³éÏóÀà
  * @author user
  *
  */
 public abstract class AbstractEquipmentCard extends AbstractCard implements EquipmentCardIF{
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½
+	//¹¥»÷¾àÀë¼Ó³É
 	protected int attDistance = 0;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½
+	//·ÀÓù¾àÀë¼Ó³É
 	protected int defDistance = 0;
-	//×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//×°±¸ÀàÐÍ
 	protected EquipmentType equipmentType;
 	
 	public AbstractEquipmentCard(){
 		//super();
 	}
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * ¹¹Ôì
 	 */
 	public AbstractEquipmentCard(int id, int number, Colors color){
 		super(id, number, color);
-		//ï¿½ï¿½ï¿½Ý³ï¿½Ê¼ï¿½ï¿½
+		//Êý¾Ý³õÊ¼»¯
 		init();
 	}
 	
 	/**
-	 * ï¿½ï¿½Ð´use
+	 * ÖØÐ´use
 	 */
 	@Override
 	public void use(AbstractPlayer p, List<AbstractPlayer> players) {
-		//ï¿½ï¿½ï¿½Õ½ï¿½ï¿½
+		//Çå¿ÕÕ½³¡
 		ModuleManagement.getInstance().getBattle().clear();
-		//ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//µ±Ç°³öÅÆÇøÓòÇå¿Õ
 		p.getState().getUsedCard().clear();
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
+		//ÊÖÅÆÖÐÉ¾³ý
 		p.getState().getCardList().remove(this);
-		//×°ï¿½ï¿½
+		//×°ÔØ
 		p.getAction().loadEquipmentCard(this);
-		//Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½
+		//Ê¹ÓÃÕßÊÖÅÆË¢ÐÂ
 		p.refreshView();
 	}
 	/**
-	 *  ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+	 *  ³õÊ¼»¯Êý¾Ý 
 	 */
 	protected  void init(){
 		
 	}
 
 	/**
-	 * ×°ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ×°ÔØµ½Íæ¼ÒÉÏ
 	 */
+	@Override
 	public void load(AbstractPlayer p) {
-		ViewManagement.getInstance().printBattleMsg(p.getInfo().getName()+"×°ï¿½ï¿½"+getName());
-		//ï¿½ï¿½ï¿½Ý²ï¿½Í¬ï¿½ï¿½ï¿½Í¶ï¿½Ó¦ï¿½ï¿½Í¬Î»ï¿½ï¿½
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½
+		ViewManagement.getInstance().printBattleMsg(p.getInfo().getName()+"×°ÔØ"+getName());
+		//¸ù¾Ý²»Í¬ÀàÐÍ¶ÔÓ¦²»Í¬Î»ÖÃ
+		//Èç¹ûÒÑÓÐ×°±¸£¬ÏÈÐ¶ÔØÔÙ×°ÔØ
 		AbstractEquipmentCard old;
 		switch(equipmentType){
 		case WUQI:
@@ -101,8 +101,9 @@ public abstract class AbstractEquipmentCard extends AbstractCard implements Equi
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½
+	 * ´ÓÍæ¼ÒÐ¶ÔØ
 	 */
+	@Override
 	public void unload(AbstractPlayer p) {
 		switch(equipmentType){
 		case WUQI:
@@ -119,13 +120,13 @@ public abstract class AbstractEquipmentCard extends AbstractCard implements Equi
 			break;
 		}
 		this.throwIt(p);
-		//ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Ø´ï¿½ï¿½ï¿½
+		//µ÷ÓÃÐ¶ÔØ´¥·¢
 		p.getTrigger().afterUnloadEquipmentCard();
 		p.refreshView();
 	}
 	
 	/**
-	 * Ä¿ï¿½ï¿½ï¿½ï¿½
+	 * Ä¿±ê¼ì²â
 	 *//*
 	@Override
 	public void targetCheck(Panel_HandCards ph) {
@@ -155,6 +156,7 @@ public abstract class AbstractEquipmentCard extends AbstractCard implements Equi
 	public void setEquipmentType(EquipmentType equipmentType) {
 		this.equipmentType = equipmentType;
 	}
+	@Override
 	public void beginInit() {
 		
 	}

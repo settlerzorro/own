@@ -4,71 +4,71 @@ import sanguosha1.card.AbstractCard;
 import sanguosha1.card.base.Card_Sha;
 
 /**
- * ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Ó¿ï¿½
+ * Íæ¼Ò¶¯×÷ÐÐÎª½Ó¿Ú
  * @author user
  *
  */
 public interface Player_ActionIF {
 
 
-	//Ê¹ï¿½ï¿½É±
+	//Ê¹ÓÃÉ±
 	boolean sha(AbstractPlayer p);
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É±
+	//´ø¼¼ÄÜÉ±
 	void shaWithSkill();
 	
-	//ï¿½ï¿½×°ï¿½ï¿½É±
+	//´ø×°±¸É±
 	void shaWithEquipment();
 	
-	//Ê¹ï¿½ï¿½ï¿½ï¿½
+	//Ê¹ÓÃÉÁ
 	void shan();
 	
-	//Ê¹ï¿½ï¿½ï¿½ï¿½
+	//Ê¹ÓÃÌÒ
 	void tao();
 	
-	//ï¿½Ç·ï¿½Ø±ï¿½É±
+	//ÊÇ·ñ»Ø±ÜÉ±
 	boolean avoidSha(AbstractPlayer murder, Card_Sha card);
-
-	//ï¿½ï¿½ï¿½ï¿½
+	
+	//¾ö¶·
 	boolean jueDou(AbstractPlayer p);
-
-	//ï¿½ï¿½ï¿½ï¿½
-	void taoSave(AbstractPlayer p);
-
-	//ï¿½ï¿½Ñª
+	
+	//¾ÈÈË
+	void taoSave(AbstractPlayer p); 
+	
+	//¼ÓÑª
 	void addHP(int num);
-
-	//ï¿½ï¿½Ñª
+	
+	//¿ÛÑª
 	void loseHP(int num, AbstractPlayer murderer);
 	
-	//ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//½«ÖÆ¶¨ÅÆÌí¼Óµ½ÊÖÅÆÖÐ
 	void addCardToHandCard(AbstractCard c);
 	
-	//ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½
+	//´ÓÅÆ¶ÑÃþ1ÕÅÅÆ
 	void addOneCardFromList();
 	
-	//ï¿½ï¿½Ê§ï¿½ï¿½ï¿½ï¿½
+	//¶ªÊ§ÊÖÅÆ
 	void loseHandCard(int num);
 	
-	//É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//É¾³ýÊÖÅÆ
 	void removeCard(int index);
 	
-	//É¾ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//É¾³ýÖ¸¶¨ÊÖÅÆ
 	void removeCard(AbstractCard c);
 	
-	//×°ï¿½ï¿½×°ï¿½ï¿½
+	//×°ÔØ×°±¸
 	void loadEquipmentCard(AbstractCard c);
 	
-	//ï¿½ï¿½Ê§×°ï¿½ï¿½
+	//¶ªÊ§×°±¸
 	void unloadEquipmentCard(AbstractCard c);
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
+	//·¢¶¯½õÄÒÐ§¹û
 	void magic();
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
+	//´¦ÀíÅÐ¶¨ÅÆ
 	AbstractCard dealWithCheckCard(AbstractCard c);
 	
-	//ï¿½ï¿½ï¿½ï¿½
+	//ËÀÍö
 	void dead(AbstractPlayer murderer);
 
 }

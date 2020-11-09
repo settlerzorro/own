@@ -5,7 +5,7 @@ import sanguosha1.data.enums.Colors;
 import sanguosha1.gui.main.Panel_HandCards;
 
 /**
- * ï¿½ï¿½ï¿½ì»­ï¿½
+ * ·½Ìì»­êª
  * 
  * @author user
  * 
@@ -17,7 +17,7 @@ public class Card_FangTianHuaJi extends AbstractWeaponCard implements
 		super(id, number, color);
 	}
 	/**
-	 * ï¿½ï¿½Òªï¿½ï¿½ï¿½ã£º 1ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½É± 3ï¿½ï¿½É±ï¿½Ñ¾ï¿½Ñ¡ï¿½ï¿½
+	 * ÐèÒªÂú×ã£º 1£¬×îºóÒ»ÕÅÅÆ 2£¬×îºóÒ»ÕÅÊÇÉ± 3£¬É±ÒÑ¾­Ñ¡ÖÐ
 	 */
 	@Override
 	public boolean onClick_open(Panel_HandCards ph) {

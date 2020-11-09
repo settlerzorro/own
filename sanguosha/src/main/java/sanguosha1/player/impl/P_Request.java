@@ -1,5 +1,10 @@
 package sanguosha1.player.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.data.constant.Const_Game;
 import sanguosha1.gui.main.Panel_Control;
@@ -10,28 +15,24 @@ import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.ChangeCardIF;
 import sanguosha1.skills.SkillIF;
 
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦Êµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½Îª
+ * Íæ¼ÒÏìÓ¦ÊµÏÖÀà ·â×°ÁËÍæ¼ÒÏìÓ¦ÇëÇó³öÄ³ÖÖÅÆµÄÐÐÎª
  * 
  * @author user
  * 
  */
 public class P_Request implements Player_RequestIF {
-	// ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+	// ÈËÎïÄ£ÐÍ
 	AbstractPlayer player;
-	//ï¿½ï¿½Ç°ï¿½ï¿½Òªï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//µ±Ç°ÐèÒªÏìÓ¦µÄÅÆÐÍ
 	int curType;
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ¹¹ÔìÆ÷
 	public P_Request(AbstractPlayer p) {
 		this.player = p;
 	}
 
 	/**
-	 * Ñ¯ï¿½ï¿½ï¿½Ç·ï¿½ï¿½É±
+	 * Ñ¯ÎÊÊÇ·ñ³öÉ±
 	 */
 	@Override
 	public boolean requestSha() {
@@ -70,19 +71,19 @@ public class P_Request implements Player_RequestIF {
 	}
 
 	/**
-	 * Ñ¯ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
+	 * Ñ¯ÎÊÊÇ·ñ³öÉÁ
 	 */
 	@Override
 	public boolean requestShan() {
 		//player.getState().setRequest(true);
 		player.setRequest(true, Const_Game.SHAN);
 		player.refreshView();
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½
+		// Íæ¼ÒÊÖÖÐËùÓÐµÄÉÁ
 		List<AbstractCard> listShan = hasCard(Const_Game.SHAN);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó·ï¿½ï¿½ï¿½false
+		// Èç¹ûÓÐÉÁÔò·ÖAIºÍÍæ¼ÒÇé¿ö´¦Àí£¬Ã»ÓÐÔòÖ±½Ó·µ»Øfalse
 		if (checkHasCardByType(Const_Game.SHAN)
 				| checkHasCardByTypeWithSkill(Const_Game.SHAN)) {
-			// ï¿½ï¿½ï¿½ï¿½ï¿½AIï¿½ï¿½ï¿½ï¿½ï¿½Ð¾Í³ï¿½
+			// Èç¹ûÊÇAI£¬ÔòÓÐ¾Í³ö
 			if (player.getState().isAI) {
 				sleep(1000);
 				if (listShan.isEmpty()) {
@@ -113,7 +114,7 @@ public class P_Request implements Player_RequestIF {
 	}
 
 	/**
-	 * Ñ¯ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
+	 * Ñ¯ÎÊÊÇ·ñ³öÌÒ
 	 */
 	@Override
 	public boolean requestTao() {
@@ -148,7 +149,7 @@ public class P_Request implements Player_RequestIF {
 	}
 
 	/**
-	 * Ñ¯ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½É»ï¿½
+	 * Ñ¯ÎÊÊÇ·ñ³öÎÞÐ¸¿É»÷
 	 */
 	@Override
 	public boolean requestWuXie() {
@@ -178,13 +179,13 @@ public class P_Request implements Player_RequestIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ÆµÄ¼ï¿½ï¿½ï¿½
+	 * ¼ì²âÊÖÅÆÖÐÊÇ·ñÓÐÄ³ÖÖÅÆµÄ¼¯ºÏ
 	 */
 	private List<AbstractCard> hasCard(int type) {
 		List<AbstractCard> list = new ArrayList<AbstractCard>();
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ±éÀúÊÖÅÆ »ñµÃËùÓÐÉÁ
 		for (int i = 0; i < player.getState().getCardList().size(); i++) {
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			// Èç¹ûÊÇÉÁÔòÌí¼Óµ½¼¯ºÏÖÐ
 			if (player.getState().getCardList().get(i).getType() == type) {
 				list.add(player.getState().getCardList().get(i));
 			}
@@ -193,17 +194,17 @@ public class P_Request implements Player_RequestIF {
 	}
 
 	/**
-	 * ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
+	 * µÈ´ýÍæ¼ÒÏìÓ¦
 	 */
 	private boolean waitPlayerDo(final List<AbstractCard> list, final int type) {
 
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò£ï¿½ï¿½ò¿ª·ï¿½Ñ¡ï¿½ñ£¬²ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
+		// Èç¹ûÊÇÍæ¼Ò£¬Ôò¿ª·ÅÑ¡Ôñ£¬²¢ÌáÊ¾³öÅÆ
 		//player.getState().setRequest(true);
 		player.setRequest(true, type);
 		final Panel_Control pc = (Panel_Control) player.getPanel();
-		// ï¿½ï¿½ï¿½ï¿½Í£Ö¹ï¿½ï¿½Ç°ï¿½ß³ï¿½
+		// ²âÊÔÍ£Ö¹µ±Ç°Ïß³Ì
 		// Thread.currentThread().interrupt();
-		System.out.println("ï¿½È´ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½" + "ï¿½ï¿½Ç°ï¿½ß³Ì¡ï¿½ï¿½ï¿½"
+		System.out.println("µÈ´ýÍæ¼ÒÑ¡Ôñ£º" + "µ±Ç°Ïß³Ì¡ª¡ª"
 				+ Thread.currentThread().getName());
 
 		SwingUtilities.invokeLater(new Runnable() {
@@ -217,7 +218,7 @@ public class P_Request implements Player_RequestIF {
 				ph.setTargetCheck(false);
 				if (type == Const_Game.WUXIEKEJI) {
 					ViewManagement.getInstance().getPrompt().show_Message(
-							"ï¿½Ç·ñ·¢¶ï¿½ï¿½ï¿½Ð¸ï¿½É»ï¿½");
+							"ÊÇ·ñ·¢¶¯ÎÞÐ¸¿É»÷");
 				} else {
 					ViewManagement.getInstance().getPrompt().show_RemindToUse(
 							type, 1);
@@ -247,7 +248,7 @@ public class P_Request implements Player_RequestIF {
 				return b;
 			}
 			if (res == Const_Game.CANCEL) {
-				// ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				// Çå¿ÕÌáÊ¾³öÅÆµÄÏûÏ¢²¢·µ»Ø
 				ViewManagement.getInstance().getPrompt().clear();
 				break;
 			}
@@ -268,7 +269,7 @@ public class P_Request implements Player_RequestIF {
 						pc.getHand().remindToUse(type);
 						if (type == Const_Game.WUXIEKEJI) {
 							ViewManagement.getInstance().getPrompt()
-									.show_Message("ï¿½Ç·ñ·¢¶ï¿½ï¿½ï¿½Ð¸ï¿½É»ï¿½");
+									.show_Message("ÊÇ·ñ·¢¶¯ÎÞÐ¸¿É»÷");
 						} else {
 							ViewManagement.getInstance().getPrompt()
 									.show_RemindToUse(type, 1);
@@ -302,7 +303,7 @@ public class P_Request implements Player_RequestIF {
 	}
 
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ¼ì²âÊÇ·ñÓµÓÐÂú×ãÄ³ÖÖÀàÐÍÌõ¼þµÄÅÆ
 	 */
 	private boolean checkHasCardByType(int type) {
 		List<AbstractCard> list = hasCard(type);
@@ -310,7 +311,7 @@ public class P_Request implements Player_RequestIF {
 	}
 
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ð±ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½
+	 * ¼ì²âÊÇ·ñÓÐ±äÅÆ¼¼ÄÜ
 	 */
 	private boolean checkHasCardByTypeWithSkill(int type) {
 		boolean hasChangCradSkill = false;
@@ -327,7 +328,7 @@ public class P_Request implements Player_RequestIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦×´Ì¬
+	 * Çå¿ÕÏìÓ¦×´Ì¬
 	 */
 	public  void clear(){
 		player.getState().setRequest(false);

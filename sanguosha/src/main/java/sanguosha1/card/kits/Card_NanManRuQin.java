@@ -1,12 +1,13 @@
 package sanguosha1.card.kits;
 
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.gui.main.PaintService;
 import sanguosha1.gui.main.Panel_Player;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ViewManagement;
-
-import javax.swing.*;
-import java.util.List;
 
 /**
  * ��������

@@ -1,5 +1,19 @@
 package sanguosha1.gui.main;
 
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.List;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import sanguosha1.data.constant.Const_Game;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.skills.LockingSkillIF;
@@ -7,15 +21,8 @@ import sanguosha1.skills.SkillIF;
 import sanguosha1.skills.SkillMultiIF;
 import sanguosha1.util.ImgUtil;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.List;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÜºÍ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÜµÄ°ï¿½Å¥ Ä¬ï¿½ï¿½ï¿½È¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½ï¿½Ù¼ï¿½ï¿½Ø±ï¿½ï¿½ï¿½
+ * ¼¼ÄÜÀ¸Ãæ°å °üº¬ÁËÖ÷¶¯¼¼ÄÜºÍ±»¶¯¼¼ÄÜµÄ°´Å¥ Ä¬ÈÏÏÈ¼ÓÔØÖ÷¶¯¼¼ÄÜ£¬ÔÙ¼ÓÔØ±»¶¯
  * 
  * @author user
  * 
@@ -35,16 +42,16 @@ public class Panel_Skill extends JPanel implements RefreshbleIF {
 		loadSkills();
 	}
 
-	// ×°ï¿½Ø¼ï¿½ï¿½ï¿½
+	// ×°ÔØ¼¼ÄÜ
 	private void loadSkills() {
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//Ö÷¶¯¼¼ÄÜ
 		List<SkillIF> skills = p.getState().getSkill();
 		if (!skills.isEmpty()) {
 			for (int i = 0; i < skills.size(); i++) {
 				add(new Skill(p.getState().getSkill().get(i)));
 			}
 		}
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ±»¶¯¼¼ÄÜ
 		List<LockingSkillIF> lSkills = p.getState().getLockingSkill();
 		if (!lSkills.isEmpty()) {
 			for (int i = 0; i < lSkills.size(); i++) {
@@ -63,7 +70,7 @@ public class Panel_Skill extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * Ë¢ï¿½ï¿½
+	 * Ë¢ÐÂ
 	 */
 	@Override
 	public void refresh() {
@@ -72,7 +79,7 @@ public class Panel_Skill extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * ï¿½Ú²ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ÜµÄ°ï¿½Å¥
+	 * ÄÚ²¿Àà ¼¼ÄÜµÄ°´Å¥
 	 */
 	class Skill extends JPanel {
 		private static final long serialVersionUID = -5187604468743452501L;
@@ -86,16 +93,16 @@ public class Panel_Skill extends JPanel implements RefreshbleIF {
 		Image curImg;
 		MouseListener listener = new skillListener();
 		SkillIF skill ;
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ¹¹ÔìÆ÷
 		public Skill(SkillIF skill) {
 			this.skill = skill;
 			this.name = skill.getName();
 			createUI();
-			// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			// ³õÊ¼²»¿ÉÓÃ
 			this.enableToUse();
 		}
 
-		// ï¿½ï¿½ï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ÖØÔØ£¬¹¹ÔìËø¶¨¼¼Ãæ°å
 		public Skill(String name, int type) {
 			this.name = name;
 			createUI();
@@ -106,7 +113,7 @@ public class Panel_Skill extends JPanel implements RefreshbleIF {
 			this.setSize(100, 50);
 			this.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			curImg = imgEnable;
-			Font f = new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 22);
+			Font f = new Font("¿¬Ìå", Font.BOLD, 22);
 			text.setFont(f);
 			text.setForeground(Color.white);
 			text.setText(name);
@@ -114,7 +121,7 @@ public class Panel_Skill extends JPanel implements RefreshbleIF {
 		}
 
 		/**
-		 * ï¿½ï¿½ï¿½Ã°ï¿½Å¥
+		 * ½ûÓÃ°´Å¥
 		 */
 		public void unableToClick() {
 			this.curImg = imgUnable;
@@ -124,7 +131,7 @@ public class Panel_Skill extends JPanel implements RefreshbleIF {
 		}
 
 		/**
-		 * ï¿½ï¿½ï¿½Ã°ï¿½Å¥
+		 * ÆôÓÃ°´Å¥
 		 */
 		public void enableToUse() {
 			this.curImg = imgEnable;
@@ -135,7 +142,7 @@ public class Panel_Skill extends JPanel implements RefreshbleIF {
 		}
 
 		/**
-		 * ï¿½ï¿½ï¿½ï¿½
+		 * »æÖÆ
 		 */
 		public void paint(Graphics g) {
 			g.drawImage(curImg, 0, 0, this.getWidth(), this.getHeight(), null);
@@ -144,7 +151,7 @@ public class Panel_Skill extends JPanel implements RefreshbleIF {
 		}
 
 		/**
-		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		 * Êó±ê¼àÌýÀà
 		 * 
 		 * @author user
 		 * 
@@ -164,20 +171,20 @@ public class Panel_Skill extends JPanel implements RefreshbleIF {
 			}
 			
 			/**
-			 * ï¿½ï¿½ï¿½Ü·ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½
-			 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ã¶¼ï¿½ï¿½Ò»ï¿½ï¿½runnable
-			 * ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½×¶Î£ï¿½Ö±ï¿½ï¿½newÒ»ï¿½ï¿½threadï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½
-			 * ï¿½Ú³ï¿½ï¿½Æ½×¶Î£ï¿½ï¿½ï¿½ÒªÍ¨ï¿½ï¿½ï¿½Åºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½processï¿½àµ±Ç°ï¿½ï¿½Ê²Ã´
-			 * ï¿½ï¿½ï¿½ï¿½È½ï¿½ï¿½Åºï¿½ï¿½ï¿½ï¿½ï¿½Îªskillï¿½ï¿½processï¿½ï¿½ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªprocessï¿½Ð½ï¿½ï¿½Üµï¿½skillï¿½ï¿½ï¿½ÅºÅºï¿½
-			 * ï¿½ï¿½Ö±ï¿½Óµï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ÐµÄµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½skillï¿½Æµï¿½ï¿½Ð±ï¿½ï¿½Ò»ï¿½ï¿½È¥
+			 * ¼¼ÄÜ·¢¶¯µÄÔ­Àí£º
+			 * Ö÷¶¯¼¼ÄÜÒ»°ã¶¼ÊÇÒ»¸örunnable
+			 * ÔÚ±»¶¯ÏìÓ¦½×¶Î£¬Ö±½ÓnewÒ»¸öthreadÔËÐÐ¼¼ÄÜ
+			 * ÔÚ³öÅÆ½×¶Î£¬ÐèÒªÍ¨¹ýÐÅºÅÀ´¸æËßprocessÀàµ±Ç°×öÊ²Ã´
+			 * Òò´ËÏÈ½«ÐÅºÅÉèÖÃÎªskill£¬process½«Ëø×¡£¬ÓÖÒòÎªprocessÖÐ½ÓÊÜµ½skillµÄÐÅºÅºó
+			 * ÊÇÖ±½Óµ÷ÓÃ¼¼ÄÜÁÐ±íÖÐµÄµÚÒ»¸ö£¬Òò´ËÔÚµã»÷ÊÂ¼þ´¥·¢Ê±£¬½«µ±Ç°´ú±íµÄskillÒÆµ½ÁÐ±íµÚÒ»¸öÈ¥
 			 * 
-			 * ï¿½ï¿½×¢ï¿½ï¿½
-			 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½Ç»ï¿½ï¿½Úµï¿½Ç°ï¿½Ü¹ï¿½ï¿½Âµï¿½Ò»ï¿½ï¿½Ñ¡ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å·ï¿½ï¿½ï¿½
-			 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×©ï¿½ï¿½ï¿½ï¿½
+			 * ¡¾×¢¡¿
+			 * Õâ¸öÉè¼ÆÖ»²»¹ýÊÇ»ùÓÚµ±Ç°¼Ü¹¹ÏÂµÄÒ»¸öÑ¡Ôñ£¬Î´±ØÊÇ×îÓÅ·½°¸
+			 * ÔÝÇÒÈç´Ë£¬Ï£ÍûÄÜÅ××©ÒýÓñ
 			 */
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				// ·¢¶¯¼¼ÄÜ
 				p.getState().getSkill().remove(skill);
 				p.getState().getSkill().add(0, skill);
 				if (p.getState().isRequest()) {

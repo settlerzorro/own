@@ -1,14 +1,14 @@
 package sanguosha1.card;
 /**
- * я┐╜╙│┘╜я┐╜я┐╜╥╜╙┐я┐╜
+ * ╤╙│┘╜ї─╥╜╙┐┌
  * @author user
  *
  */
 public interface DelayKitIF {
-	//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+	//╖в╢п╝╝─▄
 	void doKit();
-	//я┐╜я┐╜╚бя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+	//╗ё╚б╜ї─╥└р╨═
 	int getKitCardType();
-	//я┐╜я┐╜╚бя┐╜я┐╜я┐╜я┐╜я┐╜╩╛я┐╜╓╖я┐╜
+	//╗ё╚б├ц░х╧╘╩╛╫╓╖√
 	String getShowNameInPanel();
 }

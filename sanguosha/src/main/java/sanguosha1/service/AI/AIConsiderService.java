@@ -3,7 +3,7 @@ package sanguosha1.service.AI;
 import sanguosha1.player.AbstractPlayer;
 
 /**
- * О©╫О©╫О©╫О©╫О©╫О©╫AIО©╫О©╫р╩п╘О©╫О©╫к╪О©╫О©╫О©╫О©╫О©╫п╤О©╫
+ * ╨╜╦гакAI╣др╩п╘╪Р╣╔к╪©╪╨меп╤о
  * @author user
  *
  */

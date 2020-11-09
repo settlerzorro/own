@@ -1,5 +1,8 @@
 package sanguosha1.player.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.DelayKitIF;
 import sanguosha1.data.enums.Identity;
@@ -7,55 +10,52 @@ import sanguosha1.data.types.EquipmentStructure;
 import sanguosha1.skills.LockingSkillIF;
 import sanguosha1.skills.SkillIF;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 /**
- * ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½
- * ï¿½ï¿½×°ï¿½ï¿½Ï·Ê±ï¿½ï¿½ÒµÄ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * Íæ¼Ò×´Ì¬Àà
+ * ·â×°ÓÎÏ·Ê±Íæ¼ÒµÄ¸÷ÏîÊý¾Ý
  * @author user
  *
  */
 public class P_State {
-	//ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½
+	//Íæ¼ÒµÄÉí·Ý
 	protected Identity id ;
-	//ï¿½ï¿½Ç°Ñªï¿½ï¿½
+	//µ±Ç°ÑªÁ¿
 	protected int curHP;
-	//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ÊÇ·ñËÀÍö
 	protected boolean isDead;
-	//ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½
+	//ÊÖÅÆ¼¯ºÏ
 	protected List<AbstractCard> cardList ;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ÃâÒßÅÆ
 	protected List<Integer> immuneCards;
-	//ï¿½Ç·ï¿½ÎªAI
+	//ÊÇ·ñÎªAI
 	protected boolean isAI;
-	//×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//×°±¸¼¯ºÏ
 	protected EquipmentStructure equipment;
-	//ï¿½ï¿½ï¿½Ðµï¿½ï¿½Ð¶ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½
+	//ËùÖÐµÄÅÐ¶¨ÅÆ¼¯ºÏ
 	protected List<AbstractCard> checkedCardList;
-	//ï¿½Øºï¿½ï¿½Ðµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//»ØºÏÖÐµ±Ç°´ò³öµÄÅÆ
 	protected List<AbstractCard> usedCard;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//¹¥»÷¾àÀë
 	protected int attDistance ;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//·ÀÓù¾àÀë
 	protected int defDistance ;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Ö÷¶¯¼¼ÄÜ
 	protected List<SkillIF> skill;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Ëø¶¨¼¼ÄÜ
 	protected List<LockingSkillIF> lockingSkill;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½Öµ
+	//¶îÍâÉËº¦Öµ
 	protected int extDamage;
-	//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½É±
+	//ÊÇ·ñ³ö¹ýÉ±
 	protected boolean usedSha ;
-	//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½×´Ì¬
+	//ÊÇ·ñ´¦ÓÚÏìÓ¦ËûÈË×´Ì¬
 	protected boolean isRequest;
-	//ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ËµÄ½ï¿½ï¿½
+	//ÏìÓ¦ËûÈËµÄ½á¹û
 	protected int res;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ê±ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½
+	//µ±½øÈëÑ¡ÅÆÊ±ºò£¬Ñ¡ÔñµÄÅÆ
 	protected AbstractCard selectCard;
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * ¹¹Ôì
 	 * @param info
 	 */
 	public P_State(P_Info info){
@@ -74,13 +74,13 @@ public class P_State {
 
 	
 	/**
-	 * ï¿½ØºÏ¿ï¿½Ê¼Ç°ï¿½ï¿½Ò»Ð©×´Ì¬ï¿½ï¿½ï¿½
+	 * »ØºÏ¿ªÊ¼Ç°µÄÒ»Ð©×´Ì¬Çå¿Õ
 	 */
 	public void reset(){
 		
 	}
 	/**
-	 * ï¿½Ç·ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Ó³Ù½ï¿½ï¿½ï¿½
+	 * ÊÇ·ñÖÐÄ³¸öÑÓ³Ù½õÄÒ
 	 * @param type
 	 * @return
 	 */

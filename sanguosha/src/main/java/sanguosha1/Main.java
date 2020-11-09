@@ -2,27 +2,26 @@ package sanguosha1;
 
 import sanguosha1.gui.Frame_Main;
 import sanguosha1.gui.start.Frame_Load;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ³ÌÐòÈë¿Ú
  * 
  * @author wangfuyuan
- * @authorID Ë®ï¿½Â·ï¿½Ëªï¿½ï¿½
+ * @authorID Ë®ÔÂ·çËª¡­
  * @version alpha-0.5.11
  */
 public class Main {
 	public static String version = "alpha-0.5.11";
-	//ï¿½Ç·ï¿½ï¿½ï¿½É¼ï¿½ï¿½ï¿½
+	//ÊÇ·ñÍê³É¼ÓÔØ
 	public static boolean isFinished;
 	public static void main(String[] args) {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {				
-				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				//Æô¶¯½çÃæ
 				new Frame_Load();
 			}
 		}).start();
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//Ö÷½çÃæ
 		new Frame_Main();
 	}
 }

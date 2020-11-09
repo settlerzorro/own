@@ -6,8 +6,8 @@ import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.LockingSkillIF;
 
 /**
- * ï¿½ï¿½è¤¼ï¿½ï¿½Ü¡ï¿½Ó¢ï¿½Ë¡ï¿½
- * ï¿½ï¿½ï¿½Æ½×¶Î¿ï¿½ï¿½ï¿½ï¿½ï¿½3ï¿½ï¿½ï¿½ï¿½
+ * ÖÜè¤¼¼ÄÜ¡¾Ó¢×Ë¡¿
+ * ÃþÅÆ½×¶Î¿ÉÒÔÃþ3ÕÅÅÆ
  * @author user
  *
  */
@@ -18,18 +18,18 @@ public class ZhouYu_yingzi extends P_Process implements LockingSkillIF{
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Æ½×¶ï¿½
+	 * ÖØÐ´ÃþÅÆ½×¶Î
 	 */
 	@Override
 	public void stage_addCards() {
 		super.stage_addCards();
-		ViewManagement.getInstance().printBattleMsg("ï¿½ï¿½è¤¡ï¿½Ó¢ï¿½Ë¡ï¿½ï¿½ï¿½ï¿½ï¿½");
+		ViewManagement.getInstance().printBattleMsg("ÖÜè¤¡¾Ó¢×Ë¡¿´¥·¢");
 		player.getAction().addOneCardFromList();
 	}
 
 	@Override
 	public String getName() {
-		return "Ó¢ï¿½ï¿½";
+		return "Ó¢×Ë";
 	}
 	
 }

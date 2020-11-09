@@ -1,5 +1,7 @@
 package sanguosha1.card.equipment;
 
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.data.constant.Const_Game;
 import sanguosha1.data.enums.Colors;
@@ -8,15 +10,12 @@ import sanguosha1.gui.main.Panel_HandCards;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ViewManagement;
 
-import javax.swing.*;
-
 /**
- * ����˫�ɽ�
+ * 雌雄双股剑
  * @author user
  *
  */
 public class Card_CiXiongShuangGuJian extends AbstractWeaponCard{
-	//����ѡ��trueΪ���ƣ�falseΪ����
 	final boolean MOPAI = true;
 	final boolean QIPAI = false;
 	boolean flag ;
@@ -33,7 +32,7 @@ public class Card_CiXiongShuangGuJian extends AbstractWeaponCard{
 	}
 
 	/**
-	 * ��дɱǰ����
+	 * 杀前的技能
 	 */
 	@Override
 	public void useSkillBeforeSha(AbstractPlayer p, AbstractPlayer target) {
@@ -48,13 +47,11 @@ public class Card_CiXiongShuangGuJian extends AbstractWeaponCard{
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			//Ŀ��������ֱ������
 			if(target.getState().getCardList().size()==0){
 				execute(p,target,MOPAI);
 				return;
 			}else{
-				//Ĭ��AIֻ���������
-				if(target.getState().isAI()){					
+				if(target.getState().isAI()){
 					execute(p,target,MOPAI);
 				}else{
 					pc = (Panel_Control) target.getPanel();

@@ -1,23 +1,23 @@
 package sanguosha1.data.enums;
 /**
- * 锟斤拷锟斤拷锟斤拷识锟矫伙拷一些锟斤拷效锟斤拷锟斤拷锟斤拷锟斤拷息
+ * 用来标识用户一些无效操作的信息
  * @author user
  *
  */
 public enum ErrorMessageType {
-	//锟窖撅拷使锟矫癸拷
+	//已经使用过
 	hasUsed,
-	//锟窖撅拷使锟矫癸拷杀
+	//已经使用过杀
 	hasUsed_Sha,
-	//未锟斤拷锟斤拷锟斤拷时锟斤拷
+	//未到发动时机
 	cannotUseNow,
-	//锟睫凤拷使锟斤拷锟斤拷为锟斤拷锟斤拷血
+	//无法使用因为：满血
 	cannotUseCause_FullHP,
-	//锟睫凤拷使锟斤拷锟斤拷为锟斤拷没锟斤拷锟斤拷锟斤拷
+	//无法使用因为：没有手牌
 	cannotUseCause_NoneHandCard,
-	//锟睫凤拷使锟斤拷锟斤拷为锟斤拷没锟斤拷装锟斤拷
+	//无法使用因为：没有装备
 	cannotUseCause_NoneEquipmentCard,
-	//锟睫凤拷使锟斤拷锟斤拷为锟斤拷没锟斤拷目锟斤拷
+	//无法使用因为：没有目标
 	cannotUseCause_NoneTarget,
 	
 }

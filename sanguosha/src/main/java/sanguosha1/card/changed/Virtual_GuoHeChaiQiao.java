@@ -1,5 +1,7 @@
 package sanguosha1.card.changed;
 
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.EffectCardIF;
 import sanguosha1.card.VirtualCardIF;
@@ -12,10 +14,8 @@ import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.util.ImgUtil;
 
-import javax.swing.*;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½Ó²ï¿½ï¿½ï¿½
+ * ÐéÄâµÄ¹ýºÓ²ðÇÅ
  * @author user
  *
  */
@@ -24,7 +24,7 @@ public class Virtual_GuoHeChaiQiao extends Card_GuoHeChaiQiao implements Virtual
 	
 	public Virtual_GuoHeChaiQiao(AbstractCard real){
 		this.realCard = real;
-		this.name = "ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½";
+		this.name = "¹ýºÓ²ðÇÅ";
 		this.effectImage = ImgUtil.getPngImgByName("ef_guohechaiqiao");
 	}
 	
@@ -38,16 +38,16 @@ public class Virtual_GuoHeChaiQiao extends Card_GuoHeChaiQiao implements Virtual
 		return realCard;
 	}
 
-	//Ê¹ï¿½ï¿½
+	//Ê¹ÓÃ
 	@Override
 	public void use(final AbstractPlayer p, final AbstractPlayer toP) {
-		System.out.println("ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½ß³Ì£ï¿½"+Thread.currentThread().getName());
-		//ï¿½ï¿½ï¿½ï¿½
+		System.out.println("¹ýºÓ²ðÇÅÏß³Ì£º"+Thread.currentThread().getName());
+		//»æÖÆ
 		drawEffect(p, toP);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½return
+		// Èç¹ûÎÞÐ¸£¬Ôòreturn
 		askWuXieKeJi(p, null );
 		if (isWuXie) {
-			ViewManagement.getInstance().printBattleMsg(getName() + "ï¿½ï¿½Ð§");
+			ViewManagement.getInstance().printBattleMsg(getName() + "ÎÞÐ§");
 			ViewManagement.getInstance().refreshAll();
 			return;
 		}
@@ -65,11 +65,11 @@ public class Virtual_GuoHeChaiQiao extends Card_GuoHeChaiQiao implements Virtual
 	
 	}
 
-	//ï¿½ï¿½ï¿½ï¿½
+	//»æÖÆ
 	protected void drawEffect(final AbstractPlayer p, final AbstractPlayer toP) {
 		ViewManagement.getInstance().printBattleMsg(
-				p.getInfo().getName() + "ï¿½ï¿½" + toP.getInfo().getName()
-						+ "Ê¹ï¿½ï¿½ï¿½ï¿½"+getName());
+				p.getInfo().getName() + "¶Ô" + toP.getInfo().getName()
+						+ "Ê¹ÓÃÁË"+getName());
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {

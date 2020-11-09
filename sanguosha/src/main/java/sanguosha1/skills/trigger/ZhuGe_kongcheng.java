@@ -1,15 +1,15 @@
 package sanguosha1.skills.trigger;
 
+import java.util.Arrays;
+
 import sanguosha1.data.constant.Const_Game;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.player.impl.P_Trigger;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.LockingSkillIF;
 
-import java.util.Arrays;
-
 /**
- * ï¿½ï¿½ð¡¾¿Õ³Ç¡ï¿½
+ * Öî¸ð¡¾¿Õ³Ç¡¿
  * @author user
  *
  */
@@ -23,7 +23,7 @@ public class ZhuGe_kongcheng extends P_Trigger implements LockingSkillIF{
 	public void afterLoseHandCard() {
 		super.afterLoseHandCard();
 		if(player.getState().getCardList().isEmpty()){
-			ViewManagement.getInstance().printBattleMsg("ï¿½ï¿½ï¿½Õ³Ç¡ï¿½ï¿½ï¿½ï¿½ï¿½");
+			ViewManagement.getInstance().printBattleMsg("¡¾¿Õ³Ç¡¿´¥·¢");
 			player.getState().getImmuneCards().addAll(Arrays.asList(cards));
 		}
 	}
@@ -38,7 +38,7 @@ public class ZhuGe_kongcheng extends P_Trigger implements LockingSkillIF{
 
 	@Override
 	public String getName() {
-		return "ï¿½Õ³ï¿½";
+		return "¿Õ³Ç";
 	}
 
 }

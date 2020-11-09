@@ -1,14 +1,10 @@
 package novel.SpiderWeb;
 
 import java.io.*;
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Date;
 
 import novel.INovel;
-import novel.SpiderNovel;
+import inte.SpiderNovel;
 import novel.entity.NovelAttribute;
 import novel.mongodb.NovelImpl;
 import org.jsoup.Jsoup;
@@ -23,6 +19,9 @@ import org.jsoup.select.Elements;
  * @date : 14:04 2020/9/30
  */
 public class Dingdian extends SpiderNovel {
+    public Dingdian(String url){
+        super(url);
+    }
     public void run() {
         INovel iNovel = (INovel) new NovelImpl();
         Long startTime, endTime;
@@ -50,7 +49,7 @@ public class Dingdian extends SpiderNovel {
     }
 
     @Override
-    protected void writeToBD(INovel iNovel,NovelAttribute novelAttribute,Element e){
+    public void writeToBD(INovel iNovel,NovelAttribute novelAttribute,Element e){
         String fictionChapter = e.text();
         String fictionUrl = e.attr("href");
         novelAttribute.setFictionUrl(getUrl() + fictionUrl);
@@ -63,7 +62,7 @@ public class Dingdian extends SpiderNovel {
     }
 
     @Override
-    protected Elements getElements(NovelAttribute novelAttribute) {
+    public Elements getElements(NovelAttribute novelAttribute) {
         Document document = getDocByJsoup(getUrl(), "GBK");
         String fictionName = document.select("div>h1").text();
         novelAttribute.setFictionName(fictionName);

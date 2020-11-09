@@ -5,9 +5,8 @@ import sanguosha1.data.enums.Colors;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ModuleManagement;
 import sanguosha1.service.ViewManagement;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * °ËØÔÕó
  * @author user
  *
  */
@@ -18,14 +17,14 @@ public class Card_BaGuaZhen extends AbstractEquipmentCard implements ArmorIF{
 		super(id, number, color);
 	}
 	/**
-	 * ï¿½ï¿½ï¿½ß¼ï¿½ï¿½
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ğ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô»Ø±Ü¸Ã´Î¹ï¿½ï¿½ï¿½
+	 * ÃâÒß¼ì²â
+	 * Èç¹ûÉúĞ§£¬Ôò¿ÉÒÔ»Ø±Ü¸Ã´Î¹¥»÷
 	 */
 	@Override
 	public boolean check(AbstractCard card,AbstractPlayer player) {
 		AbstractCard cc = ModuleManagement.getInstance().showOneCheckCard();
 		if(player.getFunction().checkRollCard(cc, Colors.HONGXIN)){
-			ViewManagement.getInstance().printBattleMsg(player.getInfo().getName()+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ§");
+			ViewManagement.getInstance().printBattleMsg(player.getInfo().getName()+"°ËØÔÕóÉúĞ§");
 			return true;
 		}
 		return false;

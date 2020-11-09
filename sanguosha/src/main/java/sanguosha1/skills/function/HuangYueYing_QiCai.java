@@ -5,7 +5,7 @@ import sanguosha1.player.impl.P_Function;
 import sanguosha1.skills.LockingSkillIF;
 
 /**
- * ï¿½ï¿½ï¿½ï¿½Ó¢ï¿½ï¿½ï¿½ï¿½Å¡ï¿½
+ * »ÆÔÂÓ¢¡¾Ææ²Å¡¿
  * @author user
  *
  */
@@ -16,7 +16,7 @@ public class HuangYueYing_QiCai extends P_Function implements LockingSkillIF{
 	}
 	
 	/**
-	 * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã·ï¿½Î§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÖØÐ´½õÄÒÊ¹ÓÃ·¶Î§£ºÎÞÏÞÖÆ
 	 */
 	@Override
 	public int getKitUseDistance() {
@@ -25,6 +25,6 @@ public class HuangYueYing_QiCai extends P_Function implements LockingSkillIF{
 	
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½";
+		return "Ææ²Å";
 	}
 }

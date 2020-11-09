@@ -2,9 +2,8 @@ package sanguosha1.card.equipment;
 
 import sanguosha1.data.enums.Colors;
 import sanguosha1.player.AbstractPlayer;
-
 /**
- * ï¿½ï¿½Ö½ï¿½
+ * Çà¸Ö½£
  * @author user
  *
  */
@@ -19,9 +18,9 @@ public class Card_QingGangJian extends AbstractWeaponCard{
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
-	 * ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½
-	 * ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½false
+	 * ·À¾ßÅÐ¶¨
+	 * ÎÞÊÓ·À¾ß
+	 * ÓÀÔ¶·µ»Øfalse
 	 */
 	@Override
 	public boolean checkArmor(AbstractPlayer p, AbstractPlayer target) {

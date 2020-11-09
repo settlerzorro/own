@@ -3,10 +3,9 @@ package sanguosha1.skills.active;
 import sanguosha1.gui.Frame_Main;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.skills.SkillIF;
-
 /**
- * ï¿½Æ¸Ç¡ï¿½ï¿½ï¿½ï¿½â¡¿
- * ï¿½ï¿½1ï¿½ï¿½Ñªï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * »Æ¸Ç¡¾¿àÈâ¡¿
+ * ¿Û1µãÑªµÃ2ÕÅÊÖÅÆ
  * @author user
  *
  */
@@ -16,24 +15,24 @@ public class HuangGai_kurou implements Runnable,SkillIF{
 		this.player = p;
 	}
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½Ê±ï¿½ï¿½
-	 * ï¿½ï¿½1ï¿½ï¿½Ñªï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½
+	 * µ±µã»÷Ê¹ÓÃµÄÊ±ºò
+	 * ¿Û1µãÑª£¬ÈôÃ»ËÀ¾ÍµÃÕÅÅÆ
 	 */
 	@Override
 	public void run() {
-		//ï¿½ï¿½1ï¿½ï¿½Ñª
+		//¿Û1µãÑª
 		player.getAction().loseHP(1, null);
 		if(!player.getState().isDead()){			
-			//ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½
+			//»ñµÃ2ÕÅÅÆ
 			player.getAction().addOneCardFromList();
 			player.getAction().addOneCardFromList();
 			player.refreshView();
 		}
-		//ï¿½ï¿½ï¿½ï¿½
+		//½âËø
 		synchronized (player.getProcess()) {
 			player.getState().setRes(0);
 			player.getProcess().notify();
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//Èç¹ûËÀÍö¾ÍÆúÅÆ
 			if(player.getState().isDead()&&!Frame_Main.isGameOver){
 				player.setSkip(true);
 			}
@@ -42,7 +41,7 @@ public class HuangGai_kurou implements Runnable,SkillIF{
 
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½ï¿½";
+		return "¿àÈâ";
 	}
 
 	@Override

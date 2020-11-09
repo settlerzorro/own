@@ -1,29 +1,33 @@
 package sanguosha1.util;
 
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Properties;
+import java.util.Random;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.CardFactory;
 
-import java.util.*;
-
 
 /**
- * ï¿½ÆµÄ¹ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ÅÆµÄ¹¤¾ßÀà
  * 
- * --ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
- * --Ï´ï¿½ï¿½
+ * --´´½¨ÅÆ¶Ñ
+ * --Ï´ÅÆ
  * @author user
  *
  */
 public class CardUtil {
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
+	 * ´´½¨ÅÆ¶Ñ
 	 */
 	@SuppressWarnings("unchecked")
 	public static List<AbstractCard> createCards(){
 		List<AbstractCard> list =new ArrayList<AbstractCard>();
 
-		//ï¿½ï¿½È¡ï¿½Æ¶ï¿½ï¿½Ð±ï¿½
+		//»ñÈ¡ÅÆ¶ÑÁÐ±í
 		Properties p = ConfigFileReadUtil.getCardList();
 		Enumeration<String> en = (Enumeration<String>) p.propertyNames();
 		while (en.hasMoreElements()) {
@@ -36,15 +40,15 @@ public class CardUtil {
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¡ï¿½
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ¡¾²âÊÔÓÃ¡¿
+	 * ·¢¶îÍâµÄÅÆ
 	 */
 	@SuppressWarnings("unchecked")
 	public static List<AbstractCard> createTestCards(){
 
 		List<AbstractCard> list =new ArrayList<AbstractCard>();
 
-		//ï¿½ï¿½È¡ï¿½Æ¶ï¿½ï¿½Ð±ï¿½
+		//»ñÈ¡ÅÆ¶ÑÁÐ±í
 		Properties p = ConfigFileReadUtil.getTestCardList();
 		Enumeration<String> en = (Enumeration<String>) p.propertyNames();
 		while (en.hasMoreElements()) {
@@ -56,7 +60,7 @@ public class CardUtil {
 	
 	}
 	/**
-	 * Ï´ï¿½ï¿½
+	 * Ï´ÅÆ
 	 */
 	public static List<AbstractCard> washCards(List<AbstractCard> list){
 		for (int i = 0; i < list.size(); i++) {

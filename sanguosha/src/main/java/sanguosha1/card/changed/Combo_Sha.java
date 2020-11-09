@@ -1,5 +1,8 @@
 package sanguosha1.card.changed;
 
+import java.awt.Image;
+import java.util.List;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.ComboCardIF;
 import sanguosha1.card.base.Card_Sha;
@@ -7,11 +10,8 @@ import sanguosha1.data.constant.Const_Game;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.util.ImgUtil;
 
-import java.awt.*;
-import java.util.List;
-
 /**
- * ï¿½ï¿½ÏµÄ¡ï¿½É±ï¿½ï¿½
+ * ×éºÏµÄ¡¾É±¡¿
  * @author user
  *
  */

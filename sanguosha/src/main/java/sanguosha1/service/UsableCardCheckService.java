@@ -1,18 +1,18 @@
 package sanguosha1.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.data.constant.Const_Game;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.player.PlayerIF;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ 
- * AIï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½Îªï¿½Î¿ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½
+ * ¼ì²â¿ÉÓÃÅÆ 
+ * ¸ù¾ÝÍæ¼Ò×´Ì¬ºÍÊÖÅÆ ·µ»ØÒ»×é¿ÉÓÃµÄÊÖÅÆ¼¯ºÏ 
+ * AIºÍÍæ¼Ò¶¼½«ÒÔ·µ»ØµÄÕâ×éÊÖÅÆ¼¯ºÏÎª²Î¿¼½øÐÐ²Ù×÷
  * 
  * @author user
  * 
@@ -23,12 +23,12 @@ public class UsableCardCheckService {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½Ø¿ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½
+	 * ·µ»Ø¿ÉÓÃÅÆ¼¯ºÏ
 	 */
 	public List<AbstractCard> getAvailableCard(List<AbstractCard> list,
 			AbstractPlayer p) {
 		List<AbstractCard> list2 = new ArrayList<AbstractCard>(list);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒµÄ½×¶ï¿½ï¿½Ð¶ï¿½
+		// ¸ù¾ÝÍæ¼ÒµÄ½×¶ÎÅÐ¶¨
 		switch (p.getStageNum()) {
 		case PlayerIF.STAGE_BEGIN:
 			break;
@@ -37,13 +37,13 @@ public class UsableCardCheckService {
 		case PlayerIF.STAGE_ADDCARDS:
 			break;
 		case PlayerIF.STAGE_USECARDS:
-			// ï¿½Þ³ï¿½ï¿½ï¿½
+			// ÌÞ³ýÉÁ
 			removeAllCardsByType(list2, Const_Game.SHAN);
-			// ï¿½ï¿½ï¿½ï¿½ï¿½Ñªï¿½ï¿½ï¿½Þ³ï¿½ï¿½ï¿½
+			// Èç¹ûÂúÑªÔòÌÞ³ýÌÒ
 			if (p.getFunction().isFullHP()) {
 				removeAllCardsByType(list2, Const_Game.TAO);
 			}
-			//ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Þ³ï¿½É±
+			//¸ù¾Ý¿ª¹ØÌÞ³ýÉ±
 			if(p.getState().isUsedSha()){
 				removeAllCardsByType(list2, Const_Game.SHA);
 			}
@@ -60,16 +60,16 @@ public class UsableCardCheckService {
 		return list2;
 	}
 
-	// ï¿½Þ³ï¿½ï¿½Ð±ï¿½ï¿½Ðµï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ÌÞ³ýÁÐ±íÖÐµÄÄ³ÖÖÅÆÐÍ
 	private void removeAllCardsByType(List<AbstractCard> list, int type) {
 		List<AbstractCard> listType = new ArrayList<AbstractCard>();
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// »ñµÃËùÓÐÂú×ãÌÞ³ýÌõ¼þµÄÅÆ
 		for (AbstractCard c : list) {
 			if (c.getType() == type) {
 				listType.add(c);
 			}
 		}
-		// ï¿½Þ³ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½
+		// ÌÞ³ýÖ¸¶¨ÀàÐÍµÄËùÓÐ
 		list.removeAll(listType);
 	}
 

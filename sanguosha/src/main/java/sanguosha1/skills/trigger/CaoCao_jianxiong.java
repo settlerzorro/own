@@ -8,10 +8,10 @@ import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.LockingSkillIF;
 
 /**
- * ï¿½Ü²Ù¼ï¿½ï¿½Ü¡ï¿½ï¿½ï¿½ï¿½Û¡ï¿½
- * ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * ï¿½ï¿½Ò´ï¿½ï¿½ï¿½ï¿½ï¿½
- * --ï¿½ï¿½Ğ´ï¿½ï¿½ï¿½Ë´ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ ï¿½ï¿½Ñªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ²Ü²Ù¼¼ÄÜ¡¾¼éĞÛ¡¿
+ * ÊÜÉËºó½«Ôì³ÉÉËº¦µÄÅÆÊÕÈëÊÕÅÆ
+ * Íæ¼Ò´¥·¢Àà
+ * --ÖØĞ´ÊÜÉË´¥·¢ÊÂ¼ş£º ¿ÛÑªºó½«Ôì³ÉÉËº¦µÄÅÆÊÕÈëÊÖÅÆÖĞ
  * @author user
  *
  */
@@ -21,14 +21,14 @@ public class CaoCao_jianxiong extends P_Trigger implements LockingSkillIF{
 		this.player = p;
 	}
 	/**
-	 * ï¿½ï¿½Ğ´ï¿½ï¿½Ñªï¿½ï¿½ï¿½ï¿½
+	 * ÖØĞ´¿ÛÑª´¥·¢
 	 */
 	@Override
 	public void afterLoseHP(AbstractPlayer murderer) {
 		if(murderer==null || murderer.getState().getUsedCard().isEmpty())return;
-		//ï¿½ï¿½Ó¡ï¿½ï¿½Ï¢
-		ViewManagement.getInstance().printBattleMsg(player.getInfo().getName()+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¡ï¿½"+getName()+"ï¿½ï¿½");
-		//ï¿½ï¿½ï¿½ï¿½ï¿½Ö³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//´òÓ¡ÏûÏ¢
+		ViewManagement.getInstance().printBattleMsg(player.getInfo().getName()+"·¢¶¯¼¼ÄÜ¡¾"+getName()+"¡¿");
+		//½«Ğ×ÊÖ³öµÄÅÆÊÕ×ß
 		for (AbstractCard c  : murderer.getState().getUsedCard()) {
 			player.getAction().addCardToHandCard(c);
 			ModuleManagement.getInstance().getGcList().remove(c);
@@ -37,6 +37,6 @@ public class CaoCao_jianxiong extends P_Trigger implements LockingSkillIF{
 	
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½ï¿½";
+		return "¼éĞÛ";
 	}
 }

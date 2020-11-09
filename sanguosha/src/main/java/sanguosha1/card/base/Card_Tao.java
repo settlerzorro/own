@@ -1,5 +1,11 @@
 package sanguosha1.card.base;
 
+import java.awt.Image;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.CardIF;
 import sanguosha1.card.EffectCardIF;
@@ -10,13 +16,8 @@ import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.util.ImgUtil;
 
-import javax.swing.*;
-import java.awt.*;
-import java.lang.reflect.InvocationTargetException;
-import java.util.List;
-
 /**
- * ï¿½ï¿½
+ * ÌÒ
  * @author user
  *
  */
@@ -27,7 +28,7 @@ public class Card_Tao extends AbstractCard implements EffectCardIF{
 	public Card_Tao(int id, int number, Colors color) {
 		
 		super(id, number, color);
-		this.name = "ï¿½ï¿½";
+		this.name = "ÌÒ";
 		this.type = Const_Game.TAO;
 		this.targetType = CardIF.NONE;
 	}
@@ -40,7 +41,7 @@ public class Card_Tao extends AbstractCard implements EffectCardIF{
 	public void use(AbstractPlayer p, List<AbstractPlayer> players) {
 		super.use(p, players);
 		// TODO Auto-generated method stub
-		ViewManagement.getInstance().printBattleMsg(p.getInfo().getName()+"Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+		ViewManagement.getInstance().printBattleMsg(p.getInfo().getName()+"Ê¹ÓÃÁËÌÒ");
 		p.getAction().tao();
 		p.getPanel().refresh();
 	}

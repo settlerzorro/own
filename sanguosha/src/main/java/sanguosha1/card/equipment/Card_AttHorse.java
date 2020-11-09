@@ -3,8 +3,8 @@ package sanguosha1.card.equipment;
 import sanguosha1.data.enums.Colors;
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * -1ï¿½ï¿½
+ * ½ø¹¥Âí
+ * -1Âí
  * @author user
  *
  */

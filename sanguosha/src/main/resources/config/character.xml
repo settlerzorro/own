@@ -21,8 +21,8 @@
 		<headimg>P_caocao</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<active>org.sanguosha1.sanguosha1.skills.active.CaoCao_HuJia_Boss</active>
-			<trigger>org.sanguosha1.sanguosha1.skills.trigger.CaoCao_jianxiong</trigger>
+			<active>sanguosha1.skills.active.CaoCao_HuJia_Boss</active>
+			<trigger>sanguosha1.skills.trigger.CaoCao_jianxiong</trigger>
 		</skill>
 	</character>
 	<character id="simayi">
@@ -33,8 +33,8 @@
 		<headimg>P_simayi</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<trigger>org.sanguosha1.sanguosha1.skills.trigger.Simayi_fankui</trigger>
-			<action>org.sanguosha1.sanguosha1.skills.action.Simayi_guicai</action>
+			<trigger>sanguosha1.skills.trigger.Simayi_fankui</trigger>
+			<action>sanguosha1.skills.action.Simayi_guicai</action>
 		</skill>
 	</character>
 	<character id="guojia">
@@ -45,7 +45,7 @@
 		<headimg>P_guojia</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<trigger>org.sanguosha1.sanguosha1.skills.trigger.GuoJia_yiji_tiandu
+			<trigger>sanguosha1.skills.trigger.GuoJia_yiji_tiandu
             </trigger>
 		</skill>
 	</character>
@@ -57,7 +57,7 @@
 		<headimg>P_zhangliao</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<process>org.sanguosha1.sanguosha1.skills.process.ZhangLiao_tuxi</process>
+			<process>sanguosha1.skills.process.ZhangLiao_tuxi</process>
 		</skill>
 	</character>
 	<character id="zhenji">
@@ -68,8 +68,8 @@
 		<headimg>P_zhenji</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<active>org.sanguosha1.sanguosha1.skills.active.Zhenji_qingguo</active>
-			<process>org.sanguosha1.sanguosha1.skills.process.ZhenJi_luoshen</process>
+			<active>sanguosha1.skills.active.Zhenji_qingguo</active>
+			<process>sanguosha1.skills.process.ZhenJi_luoshen</process>
 		</skill>
 	</character>
 	<character id="xuchu">
@@ -80,9 +80,9 @@
 		<headimg>P_xuchu</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-		<active>org.sanguosha1.sanguosha1.skills.active.HuaTuo_jijiu</active>
-			<trigger>org.sanguosha1.sanguosha1.skills.trigger.ZhangFei_paoxiao</trigger>
-			<process>org.sanguosha1.sanguosha1.skills.process.XuChu_luoyi</process>
+		<active>sanguosha1.skills.active.HuaTuo_jijiu</active>
+			<trigger>sanguosha1.skills.trigger.ZhangFei_paoxiao</trigger>
+			<process>sanguosha1.skills.process.XuChu_luoyi</process>
 		</skill>
 	</character>
 	<character id="xiahoudun">
@@ -93,7 +93,7 @@
 		<headimg>P_xiahoudun</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<trigger>org.sanguosha1.sanguosha1.skills.trigger.XiaHouDun_ganglie
+			<trigger>sanguosha1.skills.trigger.XiaHouDun_ganglie
             </trigger>
 		</skill>
 	</character>
@@ -105,8 +105,8 @@
 		<headimg>P_liubei</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<active>org.sanguosha1.sanguosha1.skills.active.LiuBei_rende</active>
-			<active>org.sanguosha1.sanguosha1.skills.active.LiuBei_JiJiang_Boss</active>
+			<active>sanguosha1.skills.active.LiuBei_rende</active>
+			<active>sanguosha1.skills.active.LiuBei_JiJiang_Boss</active>
 		</skill>
 	</character>
 	<character id="zhaoyun">
@@ -117,7 +117,7 @@
 		<headimg>P_zhaoyun</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<active>org.sanguosha1.sanguosha1.skills.active.ZhaoYun_longdan</active>
+			<active>sanguosha1.skills.active.ZhaoYun_longdan</active>
 		</skill>
 	</character>
 	<character id="machao">
@@ -128,8 +128,8 @@
 		<headimg>P_machao</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<action>org.sanguosha1.sanguosha1.skills.action.MaChao_tieji</action>
-			<function>org.sanguosha1.sanguosha1.skills.function.MaChao_mashu</function>
+			<action>sanguosha1.skills.action.MaChao_tieji</action>
+			<function>sanguosha1.skills.function.MaChao_mashu</function>
 		</skill>
 	</character>
 	<character id="guanyu">
@@ -140,7 +140,7 @@
 		<headimg>P_guanyu</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<active>org.sanguosha1.sanguosha1.skills.active.GuanYu_wusheng</active>
+			<active>sanguosha1.skills.active.GuanYu_wusheng</active>
 		</skill>
 	</character>
 	<character id="zhugeliang">
@@ -151,8 +151,8 @@
 		<headimg>P_zhugeliang</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<trigger>org.sanguosha1.sanguosha1.skills.trigger.ZhuGe_kongcheng</trigger>
-			<process>org.sanguosha1.sanguosha1.skills.process.ZhuGe_GuanXing</process>
+			<trigger>sanguosha1.skills.trigger.ZhuGe_kongcheng</trigger>
+			<process>sanguosha1.skills.process.ZhuGe_GuanXing</process>
 		</skill>
 	</character>
 	<character id="zhangfei">
@@ -163,7 +163,7 @@
 		<headimg>P_zhangfei</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<trigger>org.sanguosha1.sanguosha1.skills.trigger.ZhangFei_paoxiao</trigger>
+			<trigger>sanguosha1.skills.trigger.ZhangFei_paoxiao</trigger>
 		</skill>
 	</character>
 	<character id="huangyueying">
@@ -174,9 +174,9 @@
 		<headimg>P_huangyueying</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<trigger>org.sanguosha1.sanguosha1.skills.trigger.HuangYueYing_jizhi
+			<trigger>sanguosha1.skills.trigger.HuangYueYing_jizhi
             </trigger>
-			<function>org.sanguosha1.sanguosha1.skills.function.HuangYueYing_QiCai
+			<function>sanguosha1.skills.function.HuangYueYing_QiCai
             </function>
 		</skill>
 	</character>
@@ -188,7 +188,7 @@
 		<headimg>P_sunquan</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<active>org.sanguosha1.sanguosha1.skills.active.SunQuan_zhiheng</active>
+			<active>sanguosha1.skills.active.SunQuan_zhiheng</active>
 		</skill>
 	</character>
 	<character id="huanggai">
@@ -199,7 +199,7 @@
 		<headimg>P_huanggai</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<active>org.sanguosha1.sanguosha1.skills.active.HuangGai_kurou</active>
+			<active>sanguosha1.skills.active.HuangGai_kurou</active>
 		</skill>
 	</character>
 	<character id="zhouyu">
@@ -210,8 +210,8 @@
 		<headimg>P_zhouyu</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<process>org.sanguosha1.sanguosha1.skills.process.ZhouYu_yingzi</process>
-			<active>org.sanguosha1.sanguosha1.skills.active.ZhouYu_fanjian</active>
+			<process>sanguosha1.skills.process.ZhouYu_yingzi</process>
+			<active>sanguosha1.skills.active.ZhouYu_fanjian</active>
 		</skill>
 	</character>
 	<character id="luxun">
@@ -222,8 +222,8 @@
 		<headimg>P_luxun</headimg>
 		<immuneCard>20,120</immuneCard>
 		<skill>
-			<trigger>org.sanguosha1.sanguosha1.skills.trigger.LuXun_lianying</trigger>
-			<other>org.sanguosha1.sanguosha1.skills.other.LuXun_qianxun</other>
+			<trigger>sanguosha1.skills.trigger.LuXun_lianying</trigger>
+			<other>sanguosha1.skills.other.LuXun_qianxun</other>
 		</skill>
 	</character>
 	<character id="ganning">
@@ -234,7 +234,7 @@
 		<headimg>P_ganning</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<active>org.sanguosha1.sanguosha1.skills.active.GanNing_qixi</active>
+			<active>sanguosha1.skills.active.GanNing_qixi</active>
 		</skill>
 	</character>
 	<character id="lvmeng">
@@ -245,7 +245,7 @@
 		<headimg>P_lvmeng</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<process>org.sanguosha1.sanguosha1.skills.process.LvMeng_keji</process>
+			<process>sanguosha1.skills.process.LvMeng_keji</process>
 		</skill>
 	</character>
 	<character id="sunshangxiang">
@@ -256,8 +256,8 @@
 		<headimg>P_sunshangxiang</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<active>org.sanguosha1.sanguosha1.skills.active.SunShangXiang_jieyin</active>
-			<trigger>org.sanguosha1.sanguosha1.skills.trigger.SunShangXiang_xiaoji
+			<active>sanguosha1.skills.active.SunShangXiang_jieyin</active>
+			<trigger>sanguosha1.skills.trigger.SunShangXiang_xiaoji
             </trigger>
 		</skill>
 	</character>
@@ -269,8 +269,8 @@
 		<headimg>P_daqiao</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<action>org.sanguosha1.sanguosha1.skills.action.DaQiao_liuli</action>
-			<active>org.sanguosha1.sanguosha1.skills.active.DaQiao_GuoSe</active>
+			<action>sanguosha1.skills.action.DaQiao_liuli</action>
+			<active>sanguosha1.skills.active.DaQiao_GuoSe</active>
 		</skill>
 	</character>
 	<character id="huatuo">
@@ -281,8 +281,8 @@
 		<headimg>P_huatuo</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-		<active>org.sanguosha1.sanguosha1.skills.active.HuaTuo_qingnang</active>
-		<active>org.sanguosha1.sanguosha1.skills.active.HuaTuo_jijiu</active>
+		<active>sanguosha1.skills.active.HuaTuo_qingnang</active>
+		<active>sanguosha1.skills.active.HuaTuo_jijiu</active>
 		</skill>
 	</character>
 	<character id="lvbu">
@@ -293,7 +293,7 @@
 		<headimg>P_lvbu</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<action>org.sanguosha1.sanguosha1.skills.action.Lvbu_wushuang</action>
+			<action>sanguosha1.skills.action.Lvbu_wushuang</action>
 		</skill>
 	</character>
 	<character id="diaochan">
@@ -304,8 +304,8 @@
 		<headimg>P_diaochan</headimg>
 		<immuneCard></immuneCard>
 		<skill>
-			<process>org.sanguosha1.sanguosha1.skills.process.DiaoChan_biyue</process>
-			<active>org.sanguosha1.sanguosha1.skills.active.DiaoChan_lijian</active>
+			<process>sanguosha1.skills.process.DiaoChan_biyue</process>
+			<active>sanguosha1.skills.active.DiaoChan_lijian</active>
 		</skill>
 	</character>
 </root>

@@ -1,5 +1,7 @@
 package sanguosha1.card.kits;
 
+import java.util.List;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.DelayKitIF;
 import sanguosha1.data.constant.Const_Game;
@@ -10,10 +12,8 @@ import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ModuleManagement;
 import sanguosha1.service.ViewManagement;
 
-import java.util.List;
-
 /**
- * ï¿½Ö²ï¿½Ë¼ï¿½ï¿½
+ * ÀÖ²»Ë¼Êñ
  * @author user
  *
  */
@@ -23,7 +23,7 @@ public class Card_LeBuSiShu extends AbstractKitCard implements DelayKitIF{
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´use
+	 * ÖØÐ´use
 	 */
 	@Override
 	public void use(final AbstractPlayer p, List<AbstractPlayer> players) {
@@ -31,23 +31,23 @@ public class Card_LeBuSiShu extends AbstractKitCard implements DelayKitIF{
 		final AbstractPlayer target = players.get(0);
 		owner = target;
 
-		//ï¿½Æ¶ï¿½ï¿½Õ»ï¿½
+		//ÅÆ¶ÑÊÕ»Ø
 		ModuleManagement.getInstance().getGcList().remove(this);
-		//Ä¿ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//Ä¿±êÅÐ¶¨ÇøÌí¼Ó
 		target.getState().getCheckedCardList().add(this);
 		p.refreshView();
 		target.refreshView();
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½Ò·ï¿½ï¿½ï¿½
+	 * ½õÄÒ·¢¶¯
 	 */
 	@Override
 	public void doKit() {
-		//ï¿½ï¿½Ð¸
+		//ÎÞÐ¸
 		askWuXieKeJi(owner, null);
 		if (isWuXie) {
-			ViewManagement.getInstance().printBattleMsg(getName() + "ï¿½ï¿½Ð§");
+			ViewManagement.getInstance().printBattleMsg(getName() + "ÎÞÐ§");
 			ViewManagement.getInstance().refreshAll();
 			owner.getProcess().setCanUseCard(true);
 			owner.getState().getCheckedCardList().remove(this);
@@ -64,7 +64,7 @@ public class Card_LeBuSiShu extends AbstractKitCard implements DelayKitIF{
 		if(flag){			
 			ViewManagement.getInstance().printBattleMsg(getName()+"Ê§Ð§");
 		}else{
-			ViewManagement.getInstance().printBattleMsg(getName()+"ï¿½ï¿½Ð§");
+			ViewManagement.getInstance().printBattleMsg(getName()+"ÉúÐ§");
 		}
 		owner.getProcess().setCanUseCard(flag);
 		owner.getState().getCheckedCardList().remove(this);
@@ -73,7 +73,7 @@ public class Card_LeBuSiShu extends AbstractKitCard implements DelayKitIF{
 
 	@Override
 	public String getShowNameInPanel() {
-		return "ï¿½ï¿½";
+		return "ÀÖ";
 	}
 	
 	@Override

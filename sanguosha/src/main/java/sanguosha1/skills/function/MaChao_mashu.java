@@ -5,7 +5,7 @@ import sanguosha1.player.impl.P_Function;
 import sanguosha1.skills.LockingSkillIF;
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * Âí³¬¡¾ÂíÊõ¡¿
  * @author user
  *
  */
@@ -22,7 +22,7 @@ public class MaChao_mashu extends P_Function implements LockingSkillIF{
 
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½ï¿½";
+		return "ÂíÊõ";
 	}
 
 }

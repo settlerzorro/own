@@ -1,14 +1,17 @@
 package sanguosha1.gui.main;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Point;
+import java.util.List;
+
 import sanguosha1.data.enums.GameOver;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.util.ImgUtil;
 
-import java.awt.*;
-import java.util.List;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
+ * »æÖÆÌØÐ§Àà
  * 
  * @author user
  * 
@@ -16,16 +19,16 @@ import java.util.List;
 public class PaintService {
 	public static Panel_Main main;
 	public static final int SLEEPTIME= 1000;
-	// ï¿½ï¿½Ê¼ï¿½ï¿½
+	// ³õÊ¼»¯
 	public static void createMain(Panel_Main pm) {
 		main = pm;
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½Ö®ï¿½ä»­Ò»ï¿½ï¿½ï¿½ï¿½
-	 * Ä¬ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * Íæ¼ÒÖ®¼ä»­Ò»ÌõÏß
+	 * Ä¬ÈÏÊ±¼äÃëºóÇå³ý
 	 * @param p
-	 * @param toP
+	 * @param p2
 	 */
 	public static void drawLine(AbstractPlayer p, AbstractPlayer toP) {
 		drawLineOnly(p,toP);
@@ -33,7 +36,7 @@ public class PaintService {
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ä»­ï¿½ï¿½
+	 * ´ÓÍæ¼Òµ½Íæ¼Ò×éÖ®¼ä»­Ïß
 	 */
 	public static void drawLine(AbstractPlayer p, List<AbstractPlayer> players) {
 		for (int i = 0; i < players.size(); i++) {
@@ -43,8 +46,8 @@ public class PaintService {
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½Ê±Ã»ï¿½Òµï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Ø²Ä£ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½Î´Ê¹ï¿½Ãµï¿½ï¿½ï¿½
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¶ï¿½ï¿½ï¿½
+	 * ¡¾ÔÝÊ±Ã»ÕÒµ½ºÏÊÊµÄËØ²Ä£¬ËùÒÔ±¾·½·¨Î´Ê¹ÓÃµ½¡¿
+	 * »æÖÆÊÜÉË¶¯»­
 	 */
 	public static void drawHurt(AbstractPlayer p){
 		Graphics g = main.getGraphics();
@@ -54,7 +57,7 @@ public class PaintService {
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½Ð§ï¿½ï¿½Í¼
+	 * »æÖÆÅÆµÄÐ§¹ûÍ¼
 	 * @param img
 	 */
 	public static void drawEffectImage(Image img,AbstractPlayer p){
@@ -64,7 +67,7 @@ public class PaintService {
 	
 	
 	/*
-	 * ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	 * ÄÚ²¿·½·¨ »­Ïß
 	 * @param p
 	 * @param toP
 	 */
@@ -79,7 +82,7 @@ public class PaintService {
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½Æ½ï¿½ï¿½ï¿½
+	 * »æÖÆ½áÊø
 	 */
 	public static void paintGameOver(GameOver go){
 		main.removeAll();
@@ -89,8 +92,8 @@ public class PaintService {
 	}
 	
 	/**
-	 * Nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	 * ï¿½ï¿½ï¿½n<=0ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * NÃëºóÇå³ý
+	 * Èç¹ûn<=0£¬ÔòÊ¹ÓÃÄ¬ÈÏÉèÖÃ
 	 */
 	public static void clearAfter(int n){
 		int sleep = n>0?n:SLEEPTIME;

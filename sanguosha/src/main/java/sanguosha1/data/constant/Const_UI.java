@@ -2,40 +2,40 @@ package sanguosha1.data.constant;
 
 
 /**
- * ï¿½ï¿½ï¿½à¶¨ï¿½ï¿½Ò»Ð©UIï¿½Ä³ï¿½ï¿½ï¿½
+ * ´ËÀà¶¨ÒåÒ»Ð©UIµÄ³£Á¿
  * @author user
  *
  */
 public class Const_UI {
 	
-	//ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ÈºÍ¸ß¶ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½
+	//´°ÌåµÄ¿í¶ÈºÍ¸ß¶ÈÒÔ¼°×ø±ê
 	public static final int FRAME_WIDTH = 1000;
 	public static final int FRAME_HEIGHT = 700;
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ä¿ï¿½ÈºÍ¸ß¶ï¿½
+	//´úÀí¶ÔÏóÍ¼ÏñµÄ¿í¶ÈºÍ¸ß¶È
 	
 	public static final int PROXYWIDTH = 160;
 	public static final int PROXYHEIGHT = 200;
-	//ï¿½ÆµÄ¸ß¶ÈºÍ¿ï¿½ï¿½
+	//ÅÆµÄ¸ß¶ÈºÍ¿í¶È
 	public static final int CARD_WIDTH = 100;
 	public static final int CARD_HEIGHT = 200;
 	
-	//ï¿½ï¿½Ì§ï¿½ï¿½Ä¸ß¶ï¿½
+	//ÅÆÌ§ÆðµÄ¸ß¶È
 	public static final int CARD_UP = 50;
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ÈºÍ¸ß¶ï¿½
+	//ÈËÎï°æÃæµÄ¿í¶ÈºÍ¸ß¶È
 	public static final int PLAYER_PANEL_WIDTH = 170;
 	public static final int PLAYER_PANEL_HEIGHT = 200;
 	
-	//Ñªï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ÈºÍ³ï¿½ï¿½ï¿½
+	//ÑªÌõÃæ°åµÄ¿í¶ÈºÍ³¤¶È
 	public static final int HPPANEL_WIDTH = 20;
 	public static final int HPPANEL_HEIGHT = 120;
 	
-	//È·ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½Å¥ï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½
+	//È·¶¨È¡ÏûÆúÅÆ°´Å¥µÄÆ«ÒÆÁ¿
 	public static final int BUTTON_OFFSET = 30;
 	public static final int BUTTON_OFFSET_SKIP = 50;
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ï¿½
+	//×é¼þ²»¿ÉÓÃÊ±µÄÍ¸Ã÷¶È
 	public static final float PANEL_UNABLE = .3f;
 	public static final float CARD_UNABLE = .5f;
 	

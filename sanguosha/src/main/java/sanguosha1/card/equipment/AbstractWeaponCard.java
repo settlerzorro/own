@@ -6,7 +6,7 @@ import sanguosha1.data.enums.Colors;
 import sanguosha1.player.AbstractPlayer;
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ³éÏóÎäÆ÷Àà
  * 
  * @author user
  * 
@@ -23,26 +23,26 @@ public abstract class AbstractWeaponCard extends AbstractEquipmentCard
 	}
 
 	/**
-	 * ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½É± ï¿½ï¿½ï¿½ï¿½Ò»Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ÐµÄ²ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Êµï¿½ï¿½ï¿½ä¼¼ï¿½ï¿½ï¿½ï¿½Ð§
+	 * ´ø×°±¸³öÉ± °üº¬Ò»ÏµÁÐÁ÷³Ì ¸÷¸ö×ÓÀàÎäÆ÷½«ÖØÐ´ÆäÖÐµÄ²¿·ÖµÄÁ÷³Ì À´ÊµÏÖÆä¼¼ÄÜÌØÐ§
 	 */
 	@Override
 	public void shaWithEquipment(AbstractPlayer p, AbstractPlayer target,
 			AbstractCard card) {
-		// É±ï¿½ï¿½ï¿½ï¿½Ö®Ç°ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// É±½áËãÖ®Ç°µÄ´¥·¢¼¼ÄÜ
 		useSkillBeforeSha(p, target);
-		// ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Îªï¿½ï¿½Ð§ï¿½ò·µ»ï¿½
+		// Èç¹û¶Ô·½ÓÐ·À¾ßÇÒÅÐ¶¨ÎªÉúÐ§Ôò·µ»Ø
 		if (checkArmor(p, target)) {
 			falseTrigger(p, target);
 			return;
 		}
-		// ï¿½ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ß±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½Ó¦ï¿½Ä´ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+		// Ôì³ÉÉËº¦»òÕß±»ÉÁµôµ÷ÓÃ¶ÔÓ¦µÄ´¥·¢ÊÂ¼þ
 		if (callSha(p, target)) {
 			damageTrigger(p, target);
 		} else {
 			System.out.println("chufa");
 			falseTrigger(p, target);
 		}
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+		// ½áËãÍêºóµÄ´¥·¢ÊÂ¼þ
 		afterSha(p, target);
 		
 	}
@@ -59,11 +59,11 @@ public abstract class AbstractWeaponCard extends AbstractEquipmentCard
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
+	 * ·À¾ßÅÐ¶¨
 	 */
 	@Override
 	public boolean checkArmor(AbstractPlayer p, AbstractPlayer target) {
-		// ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ÅÐ¶¨·À¾ß
 		ArmorIF am = (ArmorIF) target.getState().getEquipment().getArmor();
 		if (am==null || !am.check(this,target)) {
 			return false;

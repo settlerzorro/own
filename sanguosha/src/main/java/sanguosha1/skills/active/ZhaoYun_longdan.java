@@ -1,5 +1,7 @@
 package sanguosha1.skills.active;
 
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.changed.Virtual_Sha;
 import sanguosha1.data.constant.Const_Game;
@@ -10,11 +12,9 @@ import sanguosha1.player.PlayerIF;
 import sanguosha1.skills.ChangeCardIF;
 import sanguosha1.skills.SkillIF;
 
-import javax.swing.*;
-
 /**
- * ï¿½ï¿½ï¿½Æ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * É±==ï¿½ï¿½
+ * ÕÔÔÆ¡¾Áúµ¨¡¿
+ * É±==ÉÁ
  * @author user
  * 
  */
@@ -26,28 +26,28 @@ public class ZhaoYun_longdan implements Runnable, SkillIF ,ChangeCardIF{
 	}
 	
 	/**
-	 * ï¿½Ú³ï¿½ï¿½Æ»ØºÏ£ï¿½
-	 * 		ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½É±&ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É±
-	 * ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Ë£ï¿½
-	 * 		ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½É±&ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É±orï¿½ï¿½ï¿½ï¿½Öµ
+	 * ÔÚ³öÅÆ»ØºÏ£º
+	 * 		ÏÔÊ¾ËùÓĞÉ±&ÉÁ£¬µ÷ÓÃĞéÄâÉ±
+	 * ÔÚÏìÓ¦ËûÈË£º
+	 * 		ÏÔÊ¾ËùÓĞÉ±&ÉÁ£¬¸ù¾İÇé¿ö·µ»ØÉ±orÉÁµÄÖµ
 	 */
 	@Override
 	public void run() {
 		 pc = (Panel_Control) player.getPanel();
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+		//Èç¹ûÔÚÏìÓ¦ÇëÇóÊ±ºò
 		if(player.getState().isRequest()){
 			useAsRequest();
 			return;
 		}
-		//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½É±&ï¿½ï¿½
+		//ÏÔÊ¾ËùÓĞÉ±&ÉÁ
 		SwingUtilities.invokeLater(showShaAndShan);
-		//ï¿½È´ï¿½Ñ¡ï¿½ï¿½
+		//µÈ´ıÑ¡Ôñ
 		while(true){
 			if(player.getState().getRes()==Const_Game.OK){
 				AbstractCard c = pc.getHand().getSelectedList().get(0).getCard();
-				//Ô­ï¿½Ğµï¿½ï¿½Æ¶ï¿½ï¿½ï¿½
+				//Ô­ÓĞµÄÅÆ¶ªÆú
 				c.throwIt(player);
-				//ï¿½Â³ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É±
+				//ĞÂ³öÒ»ÕÅĞéÄâÉ±
 				new Virtual_Sha(c).use(player, pc.getHand().getTarget().getList().get(0));
 				break;
 			}
@@ -56,7 +56,7 @@ public class ZhaoYun_longdan implements Runnable, SkillIF ,ChangeCardIF{
 				break;
 			}
 		}
-		//ï¿½ï¿½ï¿½ï¿½Ú»Øºï¿½ï¿½Ğ£ï¿½ï¿½Í½ï¿½Øºï¿½ï¿½ï¿½
+		//Èç¹ûÔÚ»ØºÏÖĞ£¬¾Í½â»ØºÏËø
 		if(player.getStageNum()==PlayerIF.STAGE_USECARDS){
 			synchronized (player.getProcess()) {
 				player.getState().setRes(0);
@@ -66,19 +66,19 @@ public class ZhaoYun_longdan implements Runnable, SkillIF ,ChangeCardIF{
 	}
 
 	/*
-	 * ï¿½ï¿½Ó¦ï¿½×¶Îµï¿½Ê¹ï¿½ï¿½
+	 * ÏìÓ¦½×¶ÎµÄÊ¹ÓÃ
 	 */
 	private void useAsRequest() {
-		// ï¿½ï¿½×¡ï¿½ï¿½Ó¦
+		// Ëø×¡ÏìÓ¦
 		player.getState().setRes(Const_Game.SKILL);
-		// ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ğ·ï¿½ï¿½Ïµï¿½ï¿½ï¿½
+		// ÏÔÊ¾ËùÓĞ·ûºÏµÄÅÆ
 		SwingUtilities.invokeLater(showShaAndShan);
-		// ï¿½È´ï¿½Ñ¡ï¿½ï¿½
+		// µÈ´ıÑ¡Ôñ
 		while (true) {
 			if (player.getState().getRes() == Const_Game.OK) {
 				/*AbstractCard c = pc.getHand().getSelectedList().get(0)
 						.getCard();*/
-				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				// ¸üĞÂÊÖÅÆ
 				pc.getHand().updateCards();
 				player.getState().setRes(getResultType());
 				break;
@@ -95,7 +95,7 @@ public class ZhaoYun_longdan implements Runnable, SkillIF ,ChangeCardIF{
 	
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½ï¿½";
+		return "Áúµ¨";
 	}
 
 	@Override

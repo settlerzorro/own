@@ -1,12 +1,11 @@
 package sanguosha1.card.kits;
 
-import sanguosha1.player.AbstractPlayer;
-import sanguosha1.service.ViewManagement;
-
 import java.util.List;
 
+import sanguosha1.player.AbstractPlayer;
+import sanguosha1.service.ViewManagement;
 /**
- * ï¿½ï¿½ï¿½ï¿½
+ * ¾ö¶·
  * @author user
  *
  */
@@ -18,27 +17,27 @@ public class Card_JueDou extends AbstractKitCard{
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´useï¿½ï¿½ï¿½ï¿½
+	 * ÖØÐ´use·½·¨
 	 */
 	@Override
 	public void use( AbstractPlayer p, List<AbstractPlayer> players) {
 		super.use(p, players);
-		//ViewManagement.getInstance().printBattleMsg(p.getInfo().getName()+"Ê¹ï¿½ï¿½"+this.name);
+		//ViewManagement.getInstance().printBattleMsg(p.getInfo().getName()+"Ê¹ÓÃ"+this.name);
 		AbstractPlayer p2 = players.get(0);
 		player1 = p;
 		player2 = p2;
-		//ï¿½ï¿½ï¿½ï¿½
+		//´¥·¢
 		p.getTrigger().afterMagic();
-		//ï¿½ï¿½Ð¸
-		// ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½return
+		//ÎÞÐ¸
+		// Èç¹ûÎÞÐ¸£¬Ôòreturn
 		askWuXieKeJi(p, players);
 		if (isWuXie) {
-			ViewManagement.getInstance().printBattleMsg(getName() + "ï¿½ï¿½Ð§");
+			ViewManagement.getInstance().printBattleMsg(getName() + "ÎÞÐ§");
 			ViewManagement.getInstance().refreshAll();
 			return;
 		}
 		p.refreshView();
-		//Ö»Òªï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½ï¿½Í½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¾ï¿½ï¿½ï¿½
+		//Ö»ÒªÂú×ãÃ»³öÊ¤¸º£¬¾Í½»»»Éí·Ý¾ö¶·
 		while(p.getAction().jueDou(p2)){
 			AbstractPlayer tmp = p;
 			p=p2;

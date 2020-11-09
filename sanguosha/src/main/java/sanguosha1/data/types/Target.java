@@ -1,37 +1,37 @@
 package sanguosha1.data.types;
 
-import sanguosha1.player.AbstractPlayer;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import sanguosha1.player.AbstractPlayer;
+
 
 /**
- * ï¿½ï¿½×°ï¿½ï¿½ï¿½Æµï¿½Ê¹ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ·â×°ÁËÅÆµÄÊ¹ÓÃÄ¿±ê¶ÔÏó
  * @author user
  *
  */
 public class Target {
-	//ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+	//´æ´¢ÈËÎïÄ£ĞÍ
 	List<AbstractPlayer> list;
-	//Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Ä¿±êÉÏÏŞ
 	int limit =1;
-	//ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½
+	//ÊÇ·ñĞèÒª¼ì²â
 	boolean needCheck ;
 	
-	//ï¿½ï¿½ï¿½ï¿½
+	//¹¹Ôì
 	public Target(int limit){
 		list = new ArrayList<AbstractPlayer>();
 		this.limit = limit;
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+	 * Ìí¼ÓÒ»¸ö
 	 */
 	public void add(AbstractPlayer p){
-		//ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ò·µ»ï¿½
+		//Èç¹ûÖØ¸´Ôò·µ»Ø
 		if(list.contains(p))return;
-		//ï¿½ï¿½ï¿½ïµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//Èô´ïµ½ÉÏÏŞÔòÉ¾³ıµÚÒ»¸öÔÙÌí¼Ó
 		if(list.size()>=limit){
 			list.remove(0);
 			list.add(p);
@@ -40,7 +40,7 @@ public class Target {
 		}
 	}
     /**
-     * ï¿½Ğ¶ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½
+     * ÅĞ¶ÏÊÇ·ñÎª¿Õ
      * @return
      */
 	public boolean isEmpty(){

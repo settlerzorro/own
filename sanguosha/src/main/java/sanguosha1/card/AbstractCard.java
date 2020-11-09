@@ -1,5 +1,8 @@
 package sanguosha1.card;
 
+import java.awt.Image;
+import java.util.List;
+
 import sanguosha1.data.enums.Colors;
 import sanguosha1.gui.main.Panel_HandCards;
 import sanguosha1.gui.main.Panel_Player;
@@ -8,47 +11,44 @@ import sanguosha1.service.ModuleManagement;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.util.ImgUtil;
 
-import java.awt.*;
-import java.util.List;
-
 /**
- * ï¿½ÆµÄ³ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ÅÆµÄ³éÏóÀà
  * 
  * @author user
  * 
  */
 public abstract class AbstractCard implements CardIF {
-	// ï¿½Æµï¿½id
+	// ÅÆµÄid
 	protected int id;
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+	// ÅÆÃæÊýÖµ
 	protected int number;
-	// ï¿½ÆµÄ»ï¿½É«
+	// ÅÆµÄ»¨É«
 	protected Colors color;
 
-	// ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½
+	// ÅÆµÄÃû³Æ
 	protected String name;
-	// ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½
+	// ÅÆµÄÀàÐÍ
 	protected int type;
-	// Ê¹ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// Ê¹ÓÃÄ¿±êÀàÐÍ
 	protected int targetType;
-	// Ê¹ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½
+	// Ê¹ÓÃÊÇ·ñÐèÒªÉä³Ì
 	protected boolean needRange;
 
-	// ï¿½ÆµÄ»ï¿½É«Í¼ï¿½ï¿½
+	// ÅÆµÄ»¨É«Í¼°¸
 	protected Image colorImg;
-	// ï¿½Æµï¿½Í¼ï¿½ï¿½
+	// ÅÆµÄÍ¼Ïñ
 	protected Image cardImg;
-	// ï¿½Æµï¿½Ð§ï¿½ï¿½Í¼
+	// ÅÆµÄÐ§¹ûÍ¼
 	protected Image effectImage;
 
-	// Ê¹ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½
+	// Ê¹ÓÃ·þÎñÀà
 	// protected CardUseServiceIF useService;
 
 	public AbstractCard() {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ö¸ï¿½ï¿½id,ï¿½ï¿½Öµ,ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½
+	 * ´´½¨Ò»ÕÅÖ¸¶¨id,ÊýÖµ,»¨É«µÄÅÆ
 	 * 
 	 * @param id
 	 * @param number
@@ -62,7 +62,7 @@ public abstract class AbstractCard implements CardIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ì·½ï¿½ï¿½
+	 * ¹¹Ôì·½·¨
 	 * 
 	 * @param id
 	 * @param number
@@ -86,8 +86,8 @@ public abstract class AbstractCard implements CardIF {
 	}
 
 	/**
-	 * ï¿½ï¿½Ê¾Í¼Æ¬ ï¿½ï¿½×¢ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½getCardImg(),ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½Ð»ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Üµï¿½ï¿½ÛºÜ·Ñ½ï¿½;
-	 * ï¿½ë²»Òªï¿½ï¿½ï¿½Ö£ï¿½Ö®ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ÔµÃ¶ï¿½Ë£ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¸Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÏÔÊ¾Í¼Æ¬ ¡¾×¢¡¿¸Ã·½·¨µÈÐ§ÓÚgetCardImg(),±¾ÏîÄ¿ÖÐ»á¶à´Î³öÏÖÕâ¸ö·½·¨µÄµ÷ÓÃ£¬¿´ÆðÀ´ºÜµ°ÌÛºÜ·Ñ½â;
+	 * Çë²»Òª¼û¹Ö£¬Ö®ËùÒÔ»áÏÔµÃ¶à´Ë£¬ÍêÈ«ÊÇÔçÆÚ·¸¶þµÄ²úÎï ÀÁµÃ¸Ä¶¯£¬¾ÍÑØÓÃÏÂÀ´
 	 * 
 	 * @return
 	 */
@@ -96,7 +96,7 @@ public abstract class AbstractCard implements CardIF {
 	}
 
 	/**
-	 * Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÄ¿ï¿½ê£¬ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ ï¿½ï¿½ï¿½Ã´Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½Ä¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Í¬Ê±ï¿½ï¿½ï¿½ï¿½UI ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Ê±Ê¹ï¿½Ã¡ï¿½
+	 * Ä¿±ê¼ì²â Èç¹û¸ÃÅÆÐèÒªÄ¿±ê£¬Ôòµ±ÅÆ±»µã»÷µÄÊ±ºò µ÷ÓÃ´Ë·½·¨£¬À´¹ýÂËµô²»·ûºÏµÄÄ¿±ê ×ÓÀà¾ßÌåÊµÏÖÊ±£¬»áÍ¬Ê±¸üÐÂUI Ö÷Òª¹©Íæ¼Òµã»÷Ê±Ê¹ÓÃ¡£
 	 */
 	public void targetCheck(Panel_HandCards ph) {
 		if (targetType == CardIF.NONE) {
@@ -108,7 +108,7 @@ public abstract class AbstractCard implements CardIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¶Ï¸ï¿½ï¿½ï¿½ï¿½Ü·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ targetCheckï¿½Ð¿ï¿½ï¿½Ü»ï¿½ï¿½ï¿½Ã´Ë·ï¿½ï¿½ï¿½ AIï¿½ï¿½Ò»Ð©ï¿½Ð¶ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ã´Ë·ï¿½ï¿½ï¿½
+	 * µ¥¶À ÅÐ¶Ï¸ÃÅÆÄÜ·ñÂú×ãÌõ¼þ¶ÔÄ³¸öÍæ¼ÒÊ¹ÓÃ targetCheckÖÐ¿ÉÄÜ»áµ÷ÓÃ´Ë·½·¨ AIµÄÒ»Ð©ÅÐ¶ÏÒ²»áµ÷ÓÃ´Ë·½·¨
 	 */
 	public boolean targetCheck4SinglePlayer(AbstractPlayer user,
 			AbstractPlayer target) {
@@ -116,90 +116,93 @@ public abstract class AbstractCard implements CardIF {
 	}
 
 	/**
-	 * ï¿½Æµï¿½useï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹©Ò»Ð©Í¨ï¿½Ã²ï¿½ï¿½ï¿½
+	 * ÅÆµÄuse·½·¨£¬Ìá¹©Ò»Ð©Í¨ÓÃ²Ù×÷
 	 */
+	@Override
 	public void use(AbstractPlayer p, List<AbstractPlayer> players) {
-		// ï¿½ï¿½ï¿½Õ½ï¿½ï¿½
+		// Çå¿ÕÕ½³¡
 		ModuleManagement.getInstance().getBattle().clear();
-		// ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// µ±Ç°³öÅÆÇøÓòÇå¿Õ
 		p.getState().getUsedCard().clear();
-		// ï¿½ï¿½ï¿½ëµ±Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ·ÅÈëµ±Ç°³öÅÆÇø
 		p.getState().getUsedCard().add(this);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
+		// ÊÖÅÆÖÐÉ¾³ý
 		p.getAction().removeCard(this);
-		// Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// Õ½³¡ÖÐÌí¼Ó
 		ModuleManagement.getInstance().getBattle().addOneCard(this);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
+		// ¶ªÈëÆúÅÆ¶Ñ
 		gc();
-		// Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½
-		// ï¿½Ë´ï¿½×¢ï¿½Íµï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½Â£ï¿½ï¿½ï¿½ï¿½Ò»Ð©×´Ì¬ï¿½ï¿½Öµï¿½ï¿½Ë¢ï¿½ï¿½
-		// ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Öµï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// Ê¹ÓÃÕßÊÖÅÆË¢ÐÂ
+		// ´Ë´¦×¢ÊÍµôµÄÔ­ÒòÊÇÈç¹ûÔÚÕâÀïË¢ÐÂ£¬»á°ÑÒ»Ð©×´Ì¬ÊýÖµ¸øË¢µô
+		// ËùÒÔË¢ÐÂÁôµ½×ÓÀà¾ßÌåÊµÏÖµÄÊ±ºòÊÓÇé¿öÔÙÓÃ
 		// p.refreshView();
 		drawEffect(p, players);
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½
+	 * ±»¶¯ÏìÓ¦´ò³ö
 	 */
+	@Override
 	public boolean requestUse(final AbstractPlayer p,
 			List<AbstractPlayer> players) {
-		// ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// µ±Ç°³öÅÆÇøÓòÇå¿Õ
 		p.getState().getUsedCard().clear();
-		// ï¿½ï¿½ï¿½ëµ±Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ·ÅÈëµ±Ç°³öÅÆÇø
 		p.getState().getUsedCard().add(this);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
+		// ÊÖÅÆÖÐÉ¾³ý
 		p.getAction().removeCard(this);
-		// Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// Õ½³¡ÖÐÌí¼Ó
 		ModuleManagement.getInstance().getBattle().addOneCard(this);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
+		// ¶ªÈëÆúÅÆ¶Ñ
 		gc();
-		// ï¿½ï¿½Ó¡ï¿½ï¿½Ï¢
+		// ´òÓ¡ÏûÏ¢
 		ViewManagement.getInstance().printBattleMsg(
-				p.getInfo().getName() + "ï¿½ï¿½ï¿½" + this.toString());
-		// Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½
+				p.getInfo().getName() + "´ò³ö" + this.toString());
+		// Ê¹ÓÃÕßÊÖÅÆË¢ÐÂ
 		p.refreshView();
 		return true;
 
 	}
 
 	/**
-	 * ï¿½ÆµÄ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹©Ò»Ð©Í¨ï¿½Ã²ï¿½ï¿½ï¿½
+	 * ÅÆµÄ¶ªÆú·½·¨£¬Ìá¹©Ò»Ð©Í¨ÓÃ²Ù×÷
 	 */
 	public void throwIt(AbstractPlayer p) {
-		// ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// µ±Ç°³öÅÆÇøÓòÇå¿Õ
 		p.getState().getUsedCard().clear();
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
+		// ÊÖÅÆÖÐÉ¾³ý
 		p.getAction().removeCard(this);
 		if (!p.getState().isAI())
 			p.updateCards();
-		// ï¿½ï¿½ï¿½ëµ±Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ·ÅÈëµ±Ç°³öÅÆÇø
 		// p.getState().getUsedCard().add(this);
-		// Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// Õ½³¡ÖÐÌí¼Ó
 		ModuleManagement.getInstance().getBattle().addOneCard(this);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
+		// ¶ªÈëÆúÅÆ¶Ñ
 		gc();
-		// ï¿½ï¿½Ó¡ï¿½ï¿½Ï¢
+		// ´òÓ¡ÏûÏ¢
 		ViewManagement.getInstance().printMsg(
-				p.getInfo().getName() + "ï¿½ï¿½ï¿½ï¿½" + this.toString());
+				p.getInfo().getName() + "¶ªÆú" + this.toString());
 	}
 
 	/**
-	 * ï¿½Æ´ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ò´ï¿½ï¿½Ý¸ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÅÆ´ÓÒ»¸öÍæ¼Ò´«µÝ¸øÁíÒ»¸öÍæ¼Ò
 	 */
+	@Override
 	public void passToPlayer(AbstractPlayer fromP, AbstractPlayer receiverP) {
 		fromP.getAction().removeCard(this);
 		receiverP.getAction().addCardToHandCard(this);
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶Ñ»ï¿½ï¿½ï¿½
+	 * ¶ªÈëÅÆ¶Ñ»ØÊÕ
 	 */
 	public void gc() {
 		ModuleManagement.getInstance().getGcList().add(this);
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ê½
+	 * ·µ»ØÅÆÃæ´óÐ¡µÄ×Ö·û´®ÐÎÊ½
 	 * 
 	 * @return
 	 */
@@ -219,7 +222,7 @@ public abstract class AbstractCard implements CardIF {
 	}
 
 	/**
-	 * Í¨ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½
+	 * Í¨ÓÃ·½·¨ ·µ»ØÅÆµÄÃèÊö
 	 * 
 	 * @return
 	 */
@@ -230,7 +233,7 @@ public abstract class AbstractCard implements CardIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ê¹ï¿½Ã·ï¿½Î§ï¿½ï¿½
+	 * ¼ì²âÊÇ·ñÔÚÊ¹ÓÃ·¶Î§ÄÚ
 	 */
 	public boolean isInRange(AbstractPlayer user, AbstractPlayer target) {
 		int p2p = user.getFunction().getDistance(target);
@@ -241,7 +244,7 @@ public abstract class AbstractCard implements CardIF {
 	}
 
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
+	 * »æÖÆÌØÐ§
 	 */
 	protected void drawEffect(AbstractPlayer p, List<AbstractPlayer> players) {
 

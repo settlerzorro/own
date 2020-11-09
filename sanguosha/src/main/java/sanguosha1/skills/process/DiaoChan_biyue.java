@@ -4,10 +4,9 @@ import sanguosha1.player.AbstractPlayer;
 import sanguosha1.player.impl.P_Process;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.LockingSkillIF;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¡ï¿½
- * ï¿½ØºÏ½ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * õõ²õ¡¾±ÕÔÂ¡¿
+ * »ØºÏ½áÊøµÃ1ÕÅÊÖÅÆ
  * @author user
  *
  */
@@ -18,7 +17,7 @@ public class DiaoChan_biyue extends P_Process implements LockingSkillIF{
 	}
 	
 	/**
-	 * ï¿½ï¿½Ð´ï¿½ØºÏ½ï¿½ï¿½ï¿½
+	 * ÖØÐ´»ØºÏ½áÊø
 	 */
 	@Override
 	public void stage_end() {
@@ -27,12 +26,12 @@ public class DiaoChan_biyue extends P_Process implements LockingSkillIF{
 		}
 		//player.refreshView();
 		super.stage_end();
-		ViewManagement.getInstance().printBattleMsg(player.getInfo().getName()+getName()+"ï¿½ï¿½ï¿½ï¿½");
+		ViewManagement.getInstance().printBattleMsg(player.getInfo().getName()+getName()+"´¥·¢");
 	}
 
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½ï¿½";
+		return "±ÕÔÂ";
 	}
 
 }

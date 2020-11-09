@@ -14,18 +14,18 @@ public class Command_UseCard implements Runnable {
 	@Override
 	public void run() {
 		System.out.println(Thread.currentThread().getName());
-		// ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
+		// Çå¿ÕÌáÊ¾ÏûÏ¢
 		ViewManagement.getInstance().getPrompt().clear();
-		// ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò·µ»ï¿½
+		// Èç¹ûÃ»ÓÐÑ¡Ôñ¶ÔÏóÔò·µ»Ø
 		if (ph.getTarget().isEmpty()
 				&& ph.getSelectedList().get(0).getCard().getTargetType() != CardIF.NONE) {
 			System.out.println("no select!"+ph.getSelectedList().get(0).getCard().toString());
 			return;
 		}
-		// ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½use
+		// µ÷ÓÃÅÆµÄuse
 		ph.getSelectedList().get(0).getCard().use(ph.getPlayer(),
 				ph.getTarget().getList());
-		// ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+		// Çå¿ÕÁÐ±í
 		ph.getSelectedList().clear();
 	}
 

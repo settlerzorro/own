@@ -1,25 +1,31 @@
 package sanguosha1.gui.main;
 
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 import sanguosha1.data.constant.Const_UI;
 import sanguosha1.data.enums.GameOver;
 import sanguosha1.util.ImgUtil;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-
 /**
- * ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ÓÎÏ·½áÊøÃæ°å
  * @author user
  *
  */
 public class Panel_GameOver extends JPanel{
 	private static final long serialVersionUID = -6807835044745693395L;
-	// ï¿½ï¿½ï¿½ï¿½Í¼
+	// ±³¾°Í¼
 	BufferedImage bgimg = ImgUtil.getJpgImgByName("bg");
 	JLabel jl_words = new JLabel("",SwingConstants.CENTER);
 	JLabel jl_winner = new JLabel("",SwingConstants.CENTER);
-	Font font = new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 100);
+	Font font = new Font("¿¬Ìå", Font.BOLD, 100);
 	GameOver go ;
 	public Panel_GameOver(GameOver go){
 		this.go = go;
@@ -50,7 +56,7 @@ public class Panel_GameOver extends JPanel{
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * »æÖÆ²»¿ÉÓÃ
 	 * 
 	 * @param g
 	 */

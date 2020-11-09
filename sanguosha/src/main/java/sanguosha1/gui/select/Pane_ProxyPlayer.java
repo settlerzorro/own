@@ -1,18 +1,23 @@
 package sanguosha1.gui.select;
 
-import sanguosha1.data.constant.Const_UI;
-import sanguosha1.util.ImgUtil;
-
-import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.border.Border;
+
+import sanguosha1.data.constant.Const_UI;
+import sanguosha1.util.ImgUtil;
+
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ä½«ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ´úÀíÎä½«µÄÃæ°å
  * @author user
  *
  */
@@ -37,7 +42,7 @@ public class Pane_ProxyPlayer extends JLabel{
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * »æÖÆ
 	 */
 	public void paint(Graphics g){
 		super.paint(g);
@@ -56,7 +61,7 @@ public class Pane_ProxyPlayer extends JLabel{
 		setBorder(border);
 	}
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * Êó±ê¼àÌý
 	 */
 	MouseListener listen = new MouseAdapter() {
 		final Border border2 = BorderFactory.createLineBorder(Color.red, 5);

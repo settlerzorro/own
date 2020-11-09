@@ -1,5 +1,7 @@
 package sanguosha1.skills.active;
 
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.base.Card_Sha;
 import sanguosha1.data.constant.Const_Game;
@@ -8,10 +10,8 @@ import sanguosha1.gui.main.Panel_HandCards;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.skills.SkillIF;
 
-import javax.swing.*;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * Áõ±¸¡¾¼¤½«¡¿
  * 
  * @author user
  * 
@@ -28,7 +28,7 @@ public class LiuBei_JiJiang_Boss implements Runnable, SkillIF {
 	@Override
 	public void run() {
 		pc = (Panel_Control) player.getPanel();
-		// ï¿½ï¿½Ó¦ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
+		// ÏìÓ¦Ëø×¡³öÅÆÏß³Ì
 		if (player.getState().isRequest()) {
 			//player.getProcess().setSkilling(true);
 			isRequestUse = true;
@@ -36,7 +36,7 @@ public class LiuBei_JiJiang_Boss implements Runnable, SkillIF {
 		SwingUtilities.invokeLater(ask);
 		while (true) {
 			if (player.getState().getRes() == Const_Game.OK) {
-				// ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½
+				// Èç¹ûÓÐÍ¬ÊÆÁ¦
 				for (AbstractPlayer p : player.getSameCountryPlayers()) {
 					if (p.getRequest().requestSha()) {
 						AbstractCard c = p.getState().getUsedCard().get(0);
@@ -44,7 +44,7 @@ public class LiuBei_JiJiang_Boss implements Runnable, SkillIF {
 						if (isRequestUse) {
 							player.getState().setRes(Const_Game.SHA);
 							try {
-								//ï¿½ï¿½Í£1ï¿½ï¿½È·ï¿½ï¿½ï¿½ÅºÅ±ï¿½ï¿½ï¿½ï¿½Üµï¿½
+								//ÔÝÍ£1ÃëÈ·±£ÐÅºÅ±»½ÓÊÜµ½
 								Thread.sleep(1000);
 							} catch (InterruptedException e) {
 								e.printStackTrace();
@@ -56,7 +56,7 @@ public class LiuBei_JiJiang_Boss implements Runnable, SkillIF {
 						break;
 					}
 				}
-				//Ã»ï¿½Ë³ï¿½É±
+				//Ã»ÈË³öÉ±
 				if(isRequestUse){
 					player.getState().setRes(Const_Game.REDO);
 					return;
@@ -82,7 +82,7 @@ public class LiuBei_JiJiang_Boss implements Runnable, SkillIF {
 
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½ï¿½";
+		return "¼¤½«";
 	}
 
 	@Override

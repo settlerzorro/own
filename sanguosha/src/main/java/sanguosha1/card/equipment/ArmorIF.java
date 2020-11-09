@@ -4,11 +4,11 @@ import sanguosha1.card.AbstractCard;
 import sanguosha1.player.AbstractPlayer;
 
 /**
- * ï¿½ï¿½ï¿½ß½Ó¿ï¿½
+ * ·À¾ß½Ó¿Ú
  * @author user
  *
  */
 public interface ArmorIF {
-	//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ß¸ï¿½ï¿½ï¿½
+	//ÊÇ·ñÃâÒß¸ÃÅÆ
 	boolean check(AbstractCard card, AbstractPlayer player);
 }

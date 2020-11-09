@@ -4,22 +4,22 @@ import sanguosha1.data.enums.EquipmentType;
 import sanguosha1.player.AbstractPlayer;
 
 /**
- * 装锟斤拷锟狡接匡拷
+ * 装备牌接口
  * @author user
  *
  */
 public interface EquipmentCardIF {
 	
-	//装锟斤拷
+	//装载
 	void load(AbstractPlayer p);
-	//卸锟斤拷
+	//卸载
 	void unload(AbstractPlayer p);
-	//锟斤拷取锟斤拷锟斤拷锟斤拷锟斤拷
+	//获取攻击距离
 	int getAttDistance() ;
-	//锟斤拷取锟斤拷锟斤拷锟斤拷锟斤拷
+	//获取防御距离
 	int getDefDistance();
-	//锟斤拷取锟斤拷锟斤拷
+	//获取类型
 	EquipmentType getEquipmentType();
-	//锟截合筹拷始锟斤拷
+	//回合初始化
 	void beginInit();
 }

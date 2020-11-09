@@ -1,20 +1,23 @@
 package sanguosha1.gui.main;
 
-import sanguosha1.card.AbstractCard;
-import sanguosha1.service.ModuleManagement;
-import sanguosha1.util.ImgUtil;
-
-import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+
+import sanguosha1.card.AbstractCard;
+import sanguosha1.service.ModuleManagement;
+import sanguosha1.util.ImgUtil;
+
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¡ï¿½ï¿½ï¿½ï¿½
- * ×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½Õ²ï¿½ï¿½ï¿½
+ * Öî¸ðÁÁ¡¾¹ÛÐÇ¡¿Ãæ°å
+ * ×¢£º´ËÃæ°åÊÇÓ²±àÂë¿Õ²¼¾Ö
  * @author user
  *
  */
@@ -22,20 +25,20 @@ public class Panel_GuanXing extends JPanel{
 	private static final long serialVersionUID = 916877278591539946L;
 	private static final Border BD_NORMAL = BorderFactory.createLineBorder(Color.darkGray,2);
 	private static final Border BD_SELECT = BorderFactory.createLineBorder(Color.red,2);
-	// ï¿½Æµï¿½ï¿½ï¿½Ê¾ï¿½ß´ï¿½
+	// ÅÆµÄÏÔÊ¾³ß´ç
 	private static final int CARDWIDTH = 100;
 	private static final int CARDHEIGHT = 150;
-	//ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
+	//ÐèÒª´¦ÀíµÄÅÆ¶Ñ
 	List<AbstractCard> cardList ;
-	//ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½
+	//µ±Ç°ÈËÊý
 	int n;
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½å¼¯ï¿½ï¿½
+	//ÉÏ²ãµÄÅÆÃæ°å¼¯ºÏ
 	List<Panel_Card> upList = new ArrayList<Panel_Card>();
-	//ï¿½Â²ï¿½ï¿½ï¿½ï¿½å¼¯ï¿½ï¿½
+	//ÏÂ²ãµÄÃæ°å¼¯ºÏ
 	List<Panel_Card> downList = new ArrayList<Panel_Card>();
-	//ï¿½ï¿½Ç°Ñ¡ï¿½Ðµï¿½ï¿½ï¿½ï¿½
+	//µ±Ç°Ñ¡ÖÐµÄÃæ°å
 	Panel_Card curPanel ;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Ö÷Ãæ°åÒýÓÃ
 	Panel_Main pm;
 	public Panel_GuanXing(Panel_Main pm){
 		this.pm = pm;
@@ -43,11 +46,11 @@ public class Panel_GuanXing extends JPanel{
 		createUI();
 	}
 	/*
-	 * ï¿½ï¿½È¡Nï¿½ï¿½ï¿½ï¿½
+	 * ³éÈ¡NÕÅÅÆ
 	 */
 	private void getCards(){
 		cardList = new ArrayList<AbstractCard>();
-		//ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½
+		//»ñÈ¡µ±Ç°ÈËÊý
 		n = ModuleManagement.getInstance().getPlayerList().size();
 		n = n>=5?5:n;
 		for (int i = 0; i < n; i++) {
@@ -56,12 +59,12 @@ public class Panel_GuanXing extends JPanel{
 	}
 	
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½UI
+	 * ´´½¨UI
 	 */
 	private void createUI(){
 		this.setLayout(null);
 		this.setSize(CARDWIDTH * 5 + 50, CARDHEIGHT * 2 + 50);
-		//ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//»æÖÆÈ¡³öµÄÅÆ
 		for (int i = 0; i < n; i++) {
 			Panel_Card pc = new Panel_Card(cardList.get(i), CARDWIDTH, CARDHEIGHT-10, true);
 			pc.setLocation((CARDWIDTH+5)*i+10, 20);
@@ -70,7 +73,7 @@ public class Panel_GuanXing extends JPanel{
 			upList.add(pc);
 			add(pc);
 		}
-		//ï¿½ï¿½ï¿½Æµ×²ï¿½nï¿½ï¿½
+		//»æÖÆµ×²ãnÕÅ
 		for (int i = 0; i < n; i++) {
 			Panel_Card pc = new Panel_Card(null, CARDWIDTH, CARDHEIGHT-10, true);
 			pc.setLocation((CARDWIDTH+5)*i+10, CARDHEIGHT+20);
@@ -82,10 +85,10 @@ public class Panel_GuanXing extends JPanel{
 	}
 	
 	/**
-	 * ï¿½ï¿½É¹ï¿½ï¿½Ç£ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ÃºÃµï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
+	 * Íê³É¹ÛÐÇ£¬½«ÅÆ°´ÉèÖÃºÃµÄË³Ðò·ÅÈëÅÆ¶Ñ
 	 */
 	public void finish(){
-		//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½
+		//ÉÏ²ã²å½øÅÆ¶ÑÉÏ
 		List<AbstractCard> list = new ArrayList<AbstractCard>();
 		for (int i = 0; i < upList.size(); i++) {
 			AbstractCard c = upList.get(i).getCard();
@@ -94,7 +97,7 @@ public class Panel_GuanXing extends JPanel{
 			}
 		}
 		ModuleManagement.getInstance().getCardList().addAll(0, list);
-		//ï¿½Â²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
+		//ÏÂ²ãÌîÈëÅÆ¶Ñ
 		list = new ArrayList<AbstractCard>();
 		for (int i = 0; i < downList.size(); i++) {
 			AbstractCard c = downList.get(i).getCard();
@@ -108,7 +111,7 @@ public class Panel_GuanXing extends JPanel{
 		pm.repaint();
 	}
 	/**
-	 * ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½
+	 * »æÖÆ±³¾°
 	 */
 	public void paintComponent(Graphics g) {
 		g.drawImage(ImgUtil.getJpgImgByName("bg_selectcard"), 0, 0, getWidth(),
@@ -116,7 +119,7 @@ public class Panel_GuanXing extends JPanel{
 	}
 	
 	/**
-	 * ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÄÚ²¿Êó±ê¼àÌýÀà
 	 * @author user
 	 *
 	 */
@@ -132,11 +135,11 @@ public class Panel_GuanXing extends JPanel{
 				curPanel = pc;
 				pc.setBorder(BD_SELECT);
 			}else{
-				//ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½
+				//½»»»2ÕÅÅÆ
 				AbstractCard c = pc.getCard();
 				pc.setCard(curPanel.getCard());
 				curPanel.setCard(c);
-				//ï¿½ï¿½ï¿½×´Ì¬
+				//Çå¿Õ×´Ì¬
 				curPanel.setBorder(BD_NORMAL);
 				pc.setBorder(BD_NORMAL);
 				curPanel =null;

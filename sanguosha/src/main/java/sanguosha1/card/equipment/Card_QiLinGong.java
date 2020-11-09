@@ -1,16 +1,17 @@
 package sanguosha1.card.equipment;
 
+import java.lang.reflect.InvocationTargetException;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.data.enums.Colors;
 import sanguosha1.gui.main.Panel_Control;
 import sanguosha1.gui.main.Panel_Main;
 import sanguosha1.gui.main.Panel_SelectCard;
 import sanguosha1.player.AbstractPlayer;
 
-import javax.swing.*;
-import java.lang.reflect.InvocationTargetException;
-
 /**
- * ï¿½ï¿½ï¿½ë¹­
+ * ÷è÷ë¹­
  * 
  * @author user
  * 
@@ -25,13 +26,13 @@ public class Card_QiLinGong extends AbstractWeaponCard {
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´ É±ï¿½ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
+	 * ÖØÐ´ É±Ôì³ÉÉËº¦ºóµÄ´¥·¢
 	 */
 	@Override
 	public void damageTrigger(final AbstractPlayer p,
 			final AbstractPlayer target) {
 		super.damageTrigger(p, target);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// Èç¹ûÓÐÂë
 		if (target.getState().getEquipment().hasHorse()) {
 			if (p.getState().isAI()) {
 				return;
@@ -57,7 +58,7 @@ public class Card_QiLinGong extends AbstractWeaponCard {
 				} catch (InvocationTargetException e) {
 					e.printStackTrace();
 				}
-				//ï¿½ï¿½×¡
+				//Ëø×¡
 				synchronized (p.getProcess()) {
 					try {
 						p.getProcess().wait();

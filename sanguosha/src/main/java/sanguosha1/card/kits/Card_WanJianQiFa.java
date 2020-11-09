@@ -1,16 +1,17 @@
 package sanguosha1.card.kits;
 
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.gui.main.PaintService;
 import sanguosha1.gui.main.Panel_Player;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ViewManagement;
 
-import javax.swing.*;
-import java.util.List;
-
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ë·¢
+ * Íò¼ýÆë·¢
  * @author user
  *
  */
@@ -18,17 +19,17 @@ public class Card_WanJianQiFa extends AbstractKitCard{
 	public Card_WanJianQiFa(){}
 	
 	/**
-	 * ï¿½ï¿½Ð´useï¿½ï¿½ï¿½ï¿½
+	 * ÖØÐ´use·½·¨
 	 */
 	@Override
 	public void use(final AbstractPlayer p, List<AbstractPlayer> players) {
 		super.use(p, players);
-		//ï¿½ï¿½ï¿½ï¿½
+		//´¥·¢
 		p.getTrigger().afterMagic();
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÄ¿ï¿½ï¿½
+		//½«ËùÓÐÍæ¼Ò×÷ÎªÄ¿±ê
 		players = p.getFunction().getAllPlayers();
 		AbstractPlayer tmp;
-		//ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ê£¬Ñ¯ï¿½Ê³ï¿½ï¿½ï¿½
+		//±éÀúÄ¿±ê£¬Ñ¯ÎÊ³öÉÁ
 		for (int i = 0; i < players.size(); i++) {
 			try {
 				Thread.sleep(800);
@@ -36,22 +37,22 @@ public class Card_WanJianQiFa extends AbstractKitCard{
 				e.printStackTrace();
 			}
 			tmp = players.get(i);
-			//ï¿½ï¿½ï¿½Æ±ß¿ï¿½
+			//»æÖÆ±ß¿ò
 			if(tmp.getState().isAI()){
 				Panel_Player pp = (Panel_Player) tmp.getPanel();
 				pp.setPanelState(Panel_Player.SELECTED);
 				pp.repaint();
 			}
-			//Ñ¯ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½É»ï¿½
+			//Ñ¯ÎÊÎÞÐ¸¿É»÷
 			askWuXieKeJi(p, players);
 			if(isWuXie){
 				isWuXie = false;
 				tmp.refreshView();
 				continue;
 			}
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//Èç¹û²»³öÉÁ
 			if(!tmp.getRequest().requestShan()){
-				//ï¿½ï¿½1ï¿½ï¿½Ñª
+				//¿Û1µãÑª
 				tmp.getAction().loseHP(1, p);
 				tmp.refreshView();
 			}
@@ -60,14 +61,14 @@ public class Card_WanJianQiFa extends AbstractKitCard{
 	}
 	
 	/**
-	 * ï¿½ï¿½Ð´Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÖØÐ´Ð§¹û»æÖÆ
 	 */
 	@Override
 	protected void drawEffect(final AbstractPlayer p,
 			List<AbstractPlayer> players) {
 		final List<AbstractPlayer> list = p.getFunction().getAllPlayers();
 		ViewManagement.getInstance().printBattleMsg(
-				p.getInfo().getName() + "Ê¹ï¿½ï¿½" + this.name);
+				p.getInfo().getName() + "Ê¹ÓÃ" + this.name);
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {

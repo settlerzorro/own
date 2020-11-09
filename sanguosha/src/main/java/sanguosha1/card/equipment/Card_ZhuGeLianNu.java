@@ -4,12 +4,12 @@ import sanguosha1.data.enums.Colors;
 import sanguosha1.player.AbstractPlayer;
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * Öî¸ðÁ¬åó
  * @author user
  *
  */
 public class Card_ZhuGeLianNu extends AbstractWeaponCard{
-	//ï¿½ï¿½Ê±ï¿½æ´¢É±ï¿½Ä¿ï¿½ï¿½ï¿½
+	//ÁÙÊ±´æ´¢É±µÄ¿ª¹Ø
 	boolean useSha ;
 	public Card_ZhuGeLianNu(){}
 	public Card_ZhuGeLianNu(int id, int number, Colors color) {
@@ -17,7 +17,7 @@ public class Card_ZhuGeLianNu extends AbstractWeaponCard{
 	}
 	
 	/**
-	 * ï¿½ï¿½Ð´×°ï¿½ï¿½
+	 * ÖØÐ´×°ÔØ
 	 */
 	@Override
 	public void load(AbstractPlayer p) {
@@ -26,7 +26,7 @@ public class Card_ZhuGeLianNu extends AbstractWeaponCard{
 		p.getState().setUsedSha(false);
 	}
 	/**
-	 * ï¿½ï¿½Ð´Ð¶ï¿½ï¿½
+	 * ÖØÐ´Ð¶ÔØ
 	 */
 	@Override
 	public void unload(AbstractPlayer p) {
@@ -35,8 +35,8 @@ public class Card_ZhuGeLianNu extends AbstractWeaponCard{
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
-	 * ï¿½ï¿½Ð´É±ï¿½ï¿½ï¿½ï¿½
+	 * ¼¼ÄÜÊµÏÖ
+	 * ÖØÐ´É±ºó´¦Àí
 	 */
 	@Override
 	public void afterSha(AbstractPlayer p, AbstractPlayer target) {

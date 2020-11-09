@@ -1,32 +1,34 @@
 package sanguosha1.gui.main;
 
-import sanguosha1.card.AbstractCard;
-import sanguosha1.data.constant.Const_UI;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JPanel;
+
+import sanguosha1.card.AbstractCard;
+import sanguosha1.data.constant.Const_UI;
+
 /**
- * Õ½ï¿½ï¿½ï¿½ï¿½ï¿½
- * ï¿½Ú·Å¸ï¿½ï¿½ï¿½ï¿½Æµï¿½
+ * Õ½³¡Ãæ°å
+ * °Ú·Å¸÷ÖÖÅÆµÈ
  * @author user
  *
  */
 public class Panel_Battlefield extends JPanel implements RefreshbleIF{
 
 	private static final long serialVersionUID = 966033103314447302L;
-	//ï¿½ï¿½ï¿½ï¿½Æµï¿½Ä£ï¿½ï¿½
+	//´ò³öÅÆµÄÄ£ÐÍ
 	List<AbstractCard> cards = new ArrayList<AbstractCard>();
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½
+	//´ò³öµÄÅÆµÄ×é¼þ
 	List<Panel_Card> cardList = new ArrayList<Panel_Card>();
-	//ï¿½ï¿½ï¿½ï¿½Æµï¿½Í¼ï¿½ï¿½ 
+	//´ò³öÅÆµÄÍ¼Ïñ 
 	List<Image> cardImgs = new ArrayList<Image>();
-	//Ð§ï¿½ï¿½Í¼
+	//Ð§¹ûÍ¼
 	Image effectImg ;
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * µ¥Àý¹¹Ôì
 	 */
 	private static Panel_Battlefield instance ;
 	private Panel_Battlefield(){
@@ -44,7 +46,7 @@ public class Panel_Battlefield extends JPanel implements RefreshbleIF{
 	}
 	
 	/**
-	 * ï¿½Ø»ï¿½
+	 * ÖØ»æ
 	 */
 	public void paintComponent1(Graphics g){
 		for (int i = 0; i < cards.size(); i++) {
@@ -55,7 +57,7 @@ public class Panel_Battlefield extends JPanel implements RefreshbleIF{
 	}
 	
 	/**
-	 * ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
+	 * ÏòÕ½³¡¶ª³öÒ»ÕÅÅÆ
 	 */
 	public void addOneCard(AbstractCard c){
 		cards.add(c);	
@@ -67,10 +69,10 @@ public class Panel_Battlefield extends JPanel implements RefreshbleIF{
 		//showCard();
 	}
 	/**
-	 * ï¿½ï¿½Ê¾ï¿½ï¿½
+	 * ÏÔÊ¾ÅÆ
 	 */
 	public void showCard(){
-		//ï¿½ï¿½ï¿½ï¿½cardsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//¸ù¾Ýcards£¬´´½¨²¢»æÖÆ
 		/*for (int i = 0; i < cards.size(); i++) {
 			Panel_Card pc = new Panel_Card(cards.get(i), null, false);
 			this.add(pc);
@@ -80,7 +82,7 @@ public class Panel_Battlefield extends JPanel implements RefreshbleIF{
 	}
 	
 	/**
-	 * ï¿½ï¿½Ãµï¿½Ç°Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * »ñµÃµ±Ç°Õ½³¡µÄÅÆ×é
 	 * @return
 	 */
 	public List<AbstractCard> getCards() {
@@ -88,7 +90,7 @@ public class Panel_Battlefield extends JPanel implements RefreshbleIF{
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½Õ½ï¿½ï¿½
+	 * Çå¿ÕÕ½³¡
 	 */
 	public void clear(){
 		cards.clear();
@@ -97,7 +99,7 @@ public class Panel_Battlefield extends JPanel implements RefreshbleIF{
 	}
 	
 	/**
-	 * Ë¢ï¿½ï¿½
+	 * Ë¢ÐÂ
 	 */
 	@Override
 	public void refresh() {

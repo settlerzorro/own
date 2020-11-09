@@ -3,14 +3,14 @@ package sanguosha1.skills;
 import java.util.List;
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½Ä½Ó¿ï¿½
- * ï¿½ï¿½Òªï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ð³ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Öµï¿½ï¿½ï¿½ï¿½
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½
+ * ¼¼ÄÜÀà¶àÖØÐ§¹ûµÄ½Ó¿Ú
+ * Ö÷ÒªÕë¶ÔÒ»¸öÀàÖÐ³öÏÖ¶à¸ö¼¼ÄÜÊµÏÖµÄÇé¿ö
+ * ±ÈÈç¹ù¼ÎµÄÁ½¸ö¼¼ÄÜ£¬¶¼ÊÇÐ´ÔÚ´¥·¢ÀàÖÐµÄ
  * 
  * @author user
  *
  */
 public interface SkillMultiIF {
-	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+	//»ñÈ¡¼¼ÄÜÃû³ÆÁÐ±í
 	List<String> getNameList();
 }

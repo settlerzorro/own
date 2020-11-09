@@ -1,12 +1,12 @@
 package sanguosha1.data.enums;
 
-import sanguosha1.util.ImgUtil;
+import java.awt.Image;
 
-import java.awt.*;
+import sanguosha1.util.ImgUtil;
 
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½
+ * Íæ¼ÒÉí·ÝÃ¶¾Ù
  * 
  * @author user
  * 

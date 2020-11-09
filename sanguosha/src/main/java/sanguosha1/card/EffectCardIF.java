@@ -1,14 +1,14 @@
 package sanguosha1.card;
 
-import java.awt.*;
+import java.awt.Image;
 
 /**
- * 锟斤拷效锟接匡拷
- * 实锟街该接口碉拷锟斤拷锟结供一锟斤拷锟斤拷效image锟斤拷锟斤拷锟节伙拷锟斤拷
+ * 特效接口
+ * 实现该接口的牌提供一个特效image，用于绘制
  * @author user
  *
  */
 public interface EffectCardIF {
-	//锟斤拷取锟斤拷效图片
+	//获取特效图片
 	Image getEffectImage();
 }

@@ -6,8 +6,8 @@ import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.LockingSkillIF;
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½É¼ï¿½ï¿½ï¿½
- * ï¿½ï¿½Ê§×°ï¿½ï¿½ï¿½ó£¬»ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ËïÉÐÏãµÄ¡¾èÉ¼§¡¿
+ * ¶ªÊ§×°±¸ºó£¬»ñµÃ2ÕÅÊÖÅÆ
  * @author user
  *
  */
@@ -18,11 +18,11 @@ public class SunShangXiang_xiaoji extends P_Trigger implements LockingSkillIF{
 	}
 	
 	/**
-	 * ï¿½ï¿½Ð´Ð¶ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÖØÐ´Ð¶ÔØ×°±¸´¥·¢
 	 */
 	@Override
 	public void afterUnloadEquipmentCard() {
-		ViewManagement.getInstance().printBattleMsg("ï¿½ï¿½ï¿½É¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü´ï¿½ï¿½ï¿½");
+		ViewManagement.getInstance().printBattleMsg("¡¾èÉ¼§¡¿¼¼ÄÜ´¥·¢");
 		for (int i = 0; i < NUMBER; i++) {
 			player.getAction().addOneCardFromList();			
 		}
@@ -30,7 +30,7 @@ public class SunShangXiang_xiaoji extends P_Trigger implements LockingSkillIF{
 
 	@Override
 	public String getName() {
-		return "ï¿½É¼ï¿½";
+		return "èÉ¼§";
 	}
 	
 }

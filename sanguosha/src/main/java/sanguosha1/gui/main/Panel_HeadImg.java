@@ -1,21 +1,25 @@
 package sanguosha1.gui.main;
 
-import sanguosha1.data.constant.Const_UI;
-import sanguosha1.player.AbstractPlayer;
-import sanguosha1.util.ImgUtil;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import sanguosha1.data.constant.Const_UI;
+import sanguosha1.player.AbstractPlayer;
+import sanguosha1.util.ImgUtil;
+
 /**
- * ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * --Í·ï¿½ï¿½Í¼Æ¬
- * --ï¿½ï¿½ï¿½ï¿½
- * --Ñªï¿½ï¿½
- * --ï¿½ï¿½ï¿½
+ * Íæ¼ÒÍ·ÏñÃæ°åÇøÓò
+ * --Í·ÏñÍ¼Æ¬
+ * --¼¼ÄÜ
+ * --ÑªÁ¿
+ * --Éí·Ý
  * @author user
  *
  */
@@ -25,20 +29,20 @@ public class Panel_HeadImg extends JPanel implements RefreshbleIF{
 	 */
 	private static final long serialVersionUID = 1541397598002315656L;
 	AbstractPlayer player;
-	//ï¿½ß¿ï¿½Í¼ï¿½ï¿½
+	//±ß¿òÍ¼Ïñ
 	Image border;
-	//Í·ï¿½ï¿½Í¼ï¿½ï¿½
+	//Í·ÏñÍ¼Ïñ
 	Image img ;
-	//Ñªï¿½ï¿½ï¿½ï¿½
+	//ÑªÌõ°å
 	Panel_HP jp_HP ;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Éí·ÝÃæ°å
 	JLabel jl_id ;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//¼¼ÄÜÃæ°å
 	Panel_Skill skill;
-	//ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Íæ¼Ò¿ØÖÆÃæ°å
 	Panel_Control pc;
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ¹¹ÔìÆ÷
 	 * @param p
 	 */
 	public Panel_HeadImg(AbstractPlayer p,Panel_Control pc){
@@ -56,12 +60,12 @@ public class Panel_HeadImg extends JPanel implements RefreshbleIF{
 		jl_id.setLocation(jp_HP.getX()-jl_id.getWidth(), 8);
 		skill = new Panel_Skill(p);
 		this.add(skill);
-		//ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½
+		//²âÊÔ¼àÌý
 		addMouseListener(listen);
 	}
 	
 	/**
-	 * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½
+	 * ÖØÐ´»æÖÆ·½·¨
 	 */
 	public void paint(Graphics g){
 		if(img!=null){
@@ -70,11 +74,11 @@ public class Panel_HeadImg extends JPanel implements RefreshbleIF{
 		if(border!=null){
 			g.drawImage(border, 0, 0,this.getWidth(),this.getHeight(), null);
 		}
-		//ï¿½ï¿½ï¿½ï¿½Ú»Øºï¿½ï¿½ï¿½
+		//Èç¹ûÔÚ»ØºÏÖÐ
 		/*if(player.getStageNum()!=PlayerIF.STAGE_END){
 			g.drawImage(ImgUtil.getPngImgByName("bd_cur"), 10, 10, this.getWidth(),this.getHeight(),null);
 		}
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
+		//Èç¹ûÔÚÏìÓ¦
 		if(player.getState().isRequest()){
 			g.drawImage(ImgUtil.getPngImgByName("bd_select"), 10, 10, this.getWidth(),this.getHeight(),null);
 		}*/
@@ -82,19 +86,19 @@ public class Panel_HeadImg extends JPanel implements RefreshbleIF{
 	}
 	
 	/**
-	 * Êµï¿½ï¿½Ë¢ï¿½Â·ï¿½ï¿½ï¿½
+	 * ÊµÏÖË¢ÐÂ·½·¨
 	 */
 	@Override
 	public void refresh() {
-		//Ñªï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½
+		//ÑªÌõ°åË¢ÐÂ
 		jp_HP.refresh();
-		//ï¿½ï¿½ï¿½Ü°ï¿½Ë¢ï¿½ï¿½
+		//¼¼ÄÜ°åË¢ÐÂ
 		skill.refresh();
 		repaint();
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * ¼àÌý
 	 */
 	MouseListener listen = new MouseAdapter() {
 

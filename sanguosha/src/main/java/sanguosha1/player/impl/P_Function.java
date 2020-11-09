@@ -1,15 +1,15 @@
 package sanguosha1.player.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.data.enums.Colors;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.player.Player_FunctionIF;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½Òµï¿½Ò»Ð©Í¨ï¿½Ã²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ·â×°ÁËÍæ¼ÒµÄÒ»Ð©Í¨ÓÃ²Ù×÷º¯Êý
  * @author user
  *
  */
@@ -19,7 +19,7 @@ public class P_Function implements Player_FunctionIF{
 		this.player = player;
 	}
 	/**
-	 * ï¿½ï¿½È¡ï¿½Ï¼ï¿½
+	 * »ñÈ¡ÉÏ¼Ò
 	 * @return
 	 */
 	public AbstractPlayer getLastPlayer() {
@@ -31,7 +31,7 @@ public class P_Function implements Player_FunctionIF{
 	}
 
 	/**
-	 * ï¿½Ç·ï¿½ï¿½ï¿½Ñª
+	 * ÊÇ·ñÂúÑª
 	 * 
 	 * @return
 	 */
@@ -40,7 +40,7 @@ public class P_Function implements Player_FunctionIF{
 	}
 
 	/**
-	 * ï¿½ï¿½Ñª
+	 * ¿ÕÑª
 	 * 
 	 * @return
 	 */
@@ -49,8 +49,8 @@ public class P_Function implements Player_FunctionIF{
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½
-	 * ï¿½ï¿½ï¿½ß¸ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ã£¬È¡ï¿½ï¿½Ð¡Öµ
+	 * ¼ÆËãÁ½¸öÍæ¼ÒÖ®¼äµÄ¾àÀë
+	 * Á½Õß¸÷°´ÄæÊ±Õë¼ÆËã£¬È¡×îÐ¡Öµ
 	 */
 	public int getDistance(AbstractPlayer p){
 		AbstractPlayer pNext = player.getNextPlayer();
@@ -68,7 +68,7 @@ public class P_Function implements Player_FunctionIF{
 		return i<=j?i:j;
 	}
 	/**
-	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * »ñÈ¡³¡ÉÏÈ«²¿Íæ¼Ò
 	 */
 	@Override
 	public List<AbstractPlayer> getAllPlayers() {
@@ -82,7 +82,7 @@ public class P_Function implements Player_FunctionIF{
 	}
 	
 	/**
-	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * »ñÈ¡³¡ÉÏÍæ¼ÒËùÓÐÊÖÅÆ
 	 */
 	public List<String> getAllPlayersHandCard(){
 		List<String> listRes = new ArrayList<String>();
@@ -99,29 +99,29 @@ public class P_Function implements Player_FunctionIF{
 	}
 	
 	/**
-	 *ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+	 *»ñÈ¡¹¥»÷¾àÀë 
 	 */
 	public int getAttackDistance(){
 		return player.getState().getAttDistance();
 	}
 	
 	/**
-	 *ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½ 
+	 *»ñÈ¡·ÀÊØ¾àÀë 
 	 */
 	public int getDefenceDistance(){
 		return player.getState().getDefDistance();
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã¾ï¿½ï¿½ï¿½
-	 * Ä¬ï¿½ï¿½ï¿½ë¹¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬
+	 * ½õÄÒÊ¹ÓÃ¾àÀë
+	 * Ä¬ÈÏÓë¹¥»÷¾àÀëÏàÍ¬
 	 */
 	public int getKitUseDistance(){
 		return getAttackDistance();
 	}
 	
 	/**
-	 * ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½É«
+	 * ·­Ò»ÕÅÅÆÅÐ¶¨»¨É«
 	 */
 	@Override
 	public boolean checkRollCard(AbstractCard card,Colors... color) {
@@ -132,13 +132,13 @@ public class P_Function implements Player_FunctionIF{
 				break;
 			}
 		}
-		//ï¿½Ð¶ï¿½ï¿½Æ´ï¿½ï¿½ï¿½
+		//ÅÐ¶¨ÅÆ´¥·¢
 		player.getTrigger().afterCheck(card, result);
 		return result;
 	}
 	
 	/**
-	 * ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½Öµ
+	 * ·­Ò»ÕÅÅÆÅÐ¶¨ÊýÖµ
 	 */
 	@Override
 	public boolean checkRollCard(AbstractCard card, int max, int min) {
@@ -147,7 +147,7 @@ public class P_Function implements Player_FunctionIF{
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ê¹ï¿½Ã·ï¿½Î§ï¿½ï¿½
+	 * ¼ì²âÊÇ·ñÔÚÊ¹ÓÃ·¶Î§ÄÚ
 	 */
 	@Override
 	public boolean isInRange(AbstractPlayer target){
@@ -158,7 +158,7 @@ public class P_Function implements Player_FunctionIF{
 		
 	}
 	/**
-	 * ï¿½Ç·ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½
+	 * ÊÇ·ñÍ¬Ò»¹ú¼Ò
 	 */
 	@Override
 	public boolean isSameCountry(AbstractPlayer target) {
@@ -166,7 +166,7 @@ public class P_Function implements Player_FunctionIF{
 	}
 	
 	/**
-	 * ï¿½Ç·ï¿½Í¬ï¿½ï¿½
+	 * ÊÇ·ñÍ¬ÐÔ
 	 */
 	@Override
 	public boolean isSameSex(AbstractPlayer target) {

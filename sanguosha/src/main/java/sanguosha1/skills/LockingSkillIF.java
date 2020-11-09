@@ -1,10 +1,10 @@
 package sanguosha1.skills;
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½
+ * Ëø¶¨¼¼½Ó¿Ú
  * @author user
  *
  */
 public interface LockingSkillIF {
-	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
+	//»ñÈ¡Ãû³Æ
 	String getName();
 }

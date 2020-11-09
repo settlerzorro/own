@@ -5,9 +5,8 @@ import sanguosha1.player.AbstractPlayer;
 import sanguosha1.player.impl.P_Process;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.skills.LockingSkillIF;
-
 /**
- * ï¿½ï¿½ï¿½É¼ï¿½ï¿½Ü¡ï¿½ï¿½Ë¼ï¿½ï¿½ï¿½
+ * ÂÀÃÉ¼¼ÄÜ¡¾¿Ë¼º¡¿
  * @author user
  *
  */
@@ -18,8 +17,8 @@ public class LvMeng_keji extends P_Process implements LockingSkillIF{
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½
-	 * ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½É±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÖØÐ´ÆúÅÆ
+	 * Èç¹ûÃ»³ö¹ýÉ±£¬²»ÓÃÆúÅÆ
 	 */
 	@Override
 	public void stage_throwCrads() {
@@ -29,11 +28,11 @@ public class LvMeng_keji extends P_Process implements LockingSkillIF{
 		}
 		if(player.getState().isAI())return;
 		if(!player.getState().isUsedSha()){
-			//System.out.println(player.getInfo().getName()+"ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½");
+			//System.out.println(player.getInfo().getName()+"²»ÐèÒªÆúÅÆ");
 			ViewManagement.getInstance().ask(player, getName());
 			while(true){
 				if(player.getState().getRes()==Const_Game.OK){
-					ViewManagement.getInstance().printBattleMsg(player.getInfo().getName()+"ï¿½ï¿½ï¿½ï¿½"+getName());
+					ViewManagement.getInstance().printBattleMsg(player.getInfo().getName()+"·¢¶¯"+getName());
 					ViewManagement.getInstance().getPrompt().clear();
 					player.getState().setRes(0);
 					return;
@@ -52,6 +51,6 @@ public class LvMeng_keji extends P_Process implements LockingSkillIF{
 
 	@Override
 	public String getName() {
-		return "ï¿½Ë¼ï¿½";
+		return "¿Ë¼º";
 	}
 }

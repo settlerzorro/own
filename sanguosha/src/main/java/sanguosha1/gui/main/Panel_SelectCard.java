@@ -1,5 +1,18 @@
 package sanguosha1.gui.main;
 
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.VirtualCardIF;
 import sanguosha1.card.equipment.AbstractEquipmentCard;
@@ -10,25 +23,19 @@ import sanguosha1.service.ModuleManagement;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.util.ImgUtil;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 /**
- * ï¿½Æµï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½
- * ï¿½Ú¡ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½Å¡ï¿½ï¿½ï¿½Ë³ï¿½ï¿½Ç£ï¿½ò¡¿µÈ·ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+ * ÅÆµÄÑ¡ÔñÃæ°å
+ * ÔÚ¡¾¹ýºÓ²ðÇÅ¡¿¡¾Ë³ÊÖÇ£Ñò¡¿µÈ·¢¶¯Ê±ºò¹©Íæ¼ÒÑ¡Ôñ
+ * »òÕßÆäËûÐèÒªÍæ¼ÒÑ¡ÔñµÄÊ±ºò
  * @author user
  * 
  */
 public class Panel_SelectCard extends JPanel {
 	private static final long serialVersionUID = 7833183629398050914L;
-	//ï¿½Æµï¿½ï¿½ï¿½Ê¾ï¿½ß´ï¿½
+	//ÅÆµÄÏÔÊ¾³ß´ç
 	private static final int CARDWIDTH = 100;
 	private static final int CARDHEIGHT = 150;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½Ë³
+	//Ãæ°åµÄÀàÐÍ£¬²ð»¹ÊÇË³
 	public static final int CHAI = 0;
 	public static final int SHUN = 1;
 	
@@ -40,10 +47,10 @@ public class Panel_SelectCard extends JPanel {
 	JPanel jp_handCard = new JPanel();
 	JPanel jp_eqCard = new JPanel();
 	JPanel jp_checkCard = new JPanel();
-	//ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½Ë³
+	//ÀàÐÍ²ð»¹ÊÇË³
 	int type ;
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * ¹¹Ôì
 	 * @param p_select
 	 * @param p_target
 	 */
@@ -60,7 +67,7 @@ public class Panel_SelectCard extends JPanel {
 
 	
 	/**
-	 * ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ì£¬Ö»ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½
+	 * ÖØÔØ¹¹Ôì£¬Ö»ÐèÒªÊÖÅÆ
 	 */
 	public Panel_SelectCard(AbstractPlayer p_select , AbstractPlayer p_target,int type,int cardType){
 		this.p_select = p_select;
@@ -80,11 +87,11 @@ public class Panel_SelectCard extends JPanel {
 		}
 	}
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ´´½¨Ãæ°å
 	 */
 	private void createUI_hand() {
 		
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò²¼¾ï¿½
+		//ÊÖÅÆÇøÓò²¼¾Ö
 		jp_handCard.setLayout(null);
 		jp_handCard.setOpaque(false);
 		int interval = CARDWIDTH;
@@ -105,7 +112,7 @@ public class Panel_SelectCard extends JPanel {
 		this.add(jp_handCard);
 		
 	}
-	//ï¿½Ð¶ï¿½ï¿½ï¿½
+	//ÅÐ¶¨ÅÆ
 	private void createUI_check() {
 		jp_checkCard.setLayout(null);
 		jp_checkCard.setOpaque(false);
@@ -122,7 +129,7 @@ public class Panel_SelectCard extends JPanel {
 		this.add(jp_checkCard);
 	}
 	private void createUI_eq(){
-		//×°ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½
+		//×°±¸ÅÆ²¼¾Ö
 		jp_eqCard.setLayout(null);
 		jp_eqCard.setOpaque(false);
 		Card4Select[] ec = new Card4Select[4];
@@ -141,14 +148,14 @@ public class Panel_SelectCard extends JPanel {
 		this.add(jp_eqCard);
 	}
 	/**
-	 * ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½
+	 * »æÖÆ±³¾°
 	 */
 	public void paintComponent(Graphics g){
 		g.drawImage(ImgUtil.getJpgImgByName("bg_selectcard"), 0, 0, getWidth(), getHeight(), null);
 	}
 	
 	/**
-	 * Î´Öªï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½
+	 * Î´ÖªÊÖÅÆµÄÏÔÊ¾Ãæ°å
 	 * @author user
 	 *
 	 */
@@ -192,7 +199,7 @@ public class Panel_SelectCard extends JPanel {
 	}
 	//---------------------------------
 	/**
-	 * ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ¿ÉÑ¡ÅÆÃæ°å
 	 */
 	class Card4Select extends JPanel{
 		private static final long serialVersionUID = -1524971965915633649L;
@@ -213,7 +220,7 @@ public class Panel_SelectCard extends JPanel {
 			}
 			this.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
 		}
-		//ï¿½ï¿½ï¿½ï¿½
+		//»æÖÆ
 		public void paintComponent(Graphics g){
 			if(c!=null){
 				g.drawImage(c.showImg(),0, 0, getWidth(), getHeight(), null);
@@ -237,12 +244,12 @@ public class Panel_SelectCard extends JPanel {
 				pm.validate();
 				pm.repaint();
 				if(type==CHAI){
-					//ï¿½Ë´ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
+					//´Ë´¦ÓëÐ¶ÔØÊÂ¼þÖØ¸´ËùÒÔÅÐ¶ÏÏÂ
 					if(!(c instanceof AbstractEquipmentCard)){	
 						sleep(300);
 						ModuleManagement.getInstance().getBattle().addOneCard(c);						
 						c.gc();
-						ViewManagement.getInstance().printBattleMsg(p_select.getInfo().getName()+"ï¿½ï¿½ï¿½ï¿½"+c.toString());
+						ViewManagement.getInstance().printBattleMsg(p_select.getInfo().getName()+"¶ªÆú"+c.toString());
 					}
 				}else if(type == SHUN){
 					sleep(300);

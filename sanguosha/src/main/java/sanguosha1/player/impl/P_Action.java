@@ -1,5 +1,7 @@
 package sanguosha1.player.impl;
 
+import java.util.List;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.base.Card_Sha;
 import sanguosha1.card.equipment.AbstractEquipmentCard;
@@ -9,29 +11,27 @@ import sanguosha1.gui.Frame_Main;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.player.PlayerIF;
 import sanguosha1.player.Player_ActionIF;
-import sanguosha1.service.AI.AISpeakService;
 import sanguosha1.service.ModuleManagement;
 import sanguosha1.service.ViewManagement;
-
-import java.util.List;
+import sanguosha1.service.AI.AISpeakService;
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½Òµï¿½Ò»Ð©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * Íæ¼ÒÐÐÎªµÄÊµÏÖÀà ·â×°ÁËÍæ¼ÒµÄÒ»Ð©»ù±¾¶¯×÷
  * 
  * @author user
  * 
  */
 public class P_Action implements Player_ActionIF {
-	// ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+	// ÈËÎïÄ£ÐÍ
 	protected AbstractPlayer player;
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ¹¹ÔìÆ÷
 	public P_Action(AbstractPlayer p) {
 		this.player = p;
 	}
 
 	/**
-	 * ï¿½ï¿½Ò¼ï¿½Ñª -- ï¿½ï¿½ï¿½Ã¼ï¿½Ñªï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+	 * Íæ¼Ò¼ÓÑª -- µ÷ÓÃ¼ÓÑª´¥·¢ÊÂ¼þ
 	 */
 	@Override
 	public void addHP(int num) {
@@ -39,26 +39,26 @@ public class P_Action implements Player_ActionIF {
 		if (player.getState().curHP > player.getInfo().maxHP) {
 			player.getState().curHP = player.getInfo().maxHP;
 		}
-		// ï¿½ï¿½ï¿½Ã¼ï¿½Ñªï¿½ï¿½ï¿½ï¿½
+		// µ÷ÓÃ¼ÓÑª´¥·¢
 		player.getTrigger().afterAddHP();
 	}
 
 	/**
-	 * ×°ï¿½ï¿½×°ï¿½ï¿½
+	 * ×°ÔØ×°±¸
 	 */
 	@Override
 	public void loadEquipmentCard(AbstractCard c) {
 		AbstractEquipmentCard ceq = (AbstractEquipmentCard) c;
 		ceq.load(player);
-		//ï¿½ï¿½ï¿½ï¿½
+		//´¥·¢
 		player.getTrigger().afterLoadEquipmentCard();
 	}
 
 	/**
-	 * ï¿½ï¿½Ò¿ï¿½Ñª -- ï¿½ï¿½ï¿½Ã¿ï¿½Ñªï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+	 * Íæ¼Ò¿ÛÑª -- µ÷ÓÃ¿ÛÑª´¥·¢ÊÂ¼þ
 	 * 
-	 * @param ï¿½ï¿½Ñªï¿½ï¿½ï¿½ï¿½
-	 * @param ï¿½ï¿½ï¿½ï¿½
+	 * @param ¿ÛÑªÊýÁ¿
+	 * @param Ð×ÊÖ
 	 */
 	@Override
 	public void loseHP(int num, AbstractPlayer murderer) {
@@ -66,12 +66,12 @@ public class P_Action implements Player_ActionIF {
 		hp -= num;
 		player.getState().setCurHP(hp);
 		ViewManagement.getInstance().printMsg(
-				player.getInfo().getName() + "ï¿½Üµï¿½" + num + "ï¿½ï¿½ï¿½Ëºï¿½");
+				player.getInfo().getName() + "ÊÜµ½" + num + "µãÉËº¦");
 		player.refreshView();
-		// TODO ï¿½ï¿½ï¿½Ñªï¿½ï¿½ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+		// TODO Èç¹ûÑªÁ¿²»×ã£¬Ôò¿ªÊ¼ÇóÌÒ
 		hp:
 		while(player.getState().getCurHP() <= 0) {
-			// ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½
+			// ÏÈÇó×Ô¼º
 			if (player.getRequest().requestTao()) {
 				player.getAction().taoSave(player);
 				if(player.getState().getCurHP()>0){
@@ -80,11 +80,11 @@ public class P_Action implements Player_ActionIF {
 					continue;
 				}
 			}
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			// ÔÙÇóÆäËûÈË
 			List<AbstractPlayer> list = player.getFunction().getAllPlayers();
 			for (int i = 0; i < list.size(); i++) {
-				// ï¿½ï¿½Îªï¿½Ð¿ï¿½ï¿½ï¿½bugï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-				// ï¿½ï¿½ï¿½Ð¾ï¿½Îªswingï¿½ÐµÄ¶ï¿½ï¿½ß³ï¿½ï¿½ï¿½ï¿½ï¿½ 2013-4-5ï¿½Ñ½ï¿½ï¿½
+				// ÒòÎªÓÐ¿¨ËÀbug£¬ÔÝÊ±²»ÎÊÐ×ÊÖÇóÌÒ
+				// ¾­ÑÐ¾¿ÎªswingÖÐµÄ¶àÏß³ÌÎÊÌâ 2013-4-5ÒÑ½â¾ö
 				// if(list.get(i)==murderer)continue;
 				if (list.get(i).getRequest().requestTao()) {
 					player.getAction().taoSave(player);
@@ -95,7 +95,7 @@ public class P_Action implements Player_ActionIF {
 			return;
 		}
 
-		// ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+		// µ÷ÓÃ´¥·¢ÊÂ¼þ
 		this.player.getTrigger().afterLoseHP(murderer);
 		player.refreshView();
 		if (murderer != null)
@@ -115,7 +115,7 @@ public class P_Action implements Player_ActionIF {
 	}
 
 	/**
-	 * ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ -- É± ï¿½ï¿½ï¿½ï¿½pÎªï¿½ï¿½É±ï¿½ß£ï¿½ playerï¿½ï¿½ï¿½Ç³ï¿½É±ï¿½ï¿½ 2013-3-27ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bug
+	 * Íæ¼Ò¶¯×÷ -- É± ²ÎÊýpÎª±»É±Õß£¡ player²ÅÊÇ³öÉ±Õß 2013-3-27ÔøÒò»ìÏý³ö¹ýbug
 	 */
 	@Override
 	public boolean sha(AbstractPlayer p) {
@@ -124,9 +124,9 @@ public class P_Action implements Player_ActionIF {
 			p.getAction().loseHP(1 + player.getState().getExtDamage(), player);
 			flag = true;
 		}
-		// ï¿½ï¿½ï¿½ï¿½
+		// ¿ª¹Ø
 		player.getState().setUsedSha(true);
-		// ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+		// µ÷ÓÃ´¥·¢ÊÂ¼þ
 		player.getTrigger().afterSha();
 		return flag;
 	}
@@ -138,87 +138,87 @@ public class P_Action implements Player_ActionIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ ï¿½ï¿½1ï¿½ï¿½Ñª
+	 * ÌÒ ¼Ó1µãÑª
 	 */
 	@Override
 	public void tao() {
 		player.getAction().addHP(1);
-		//ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½
+		//µ÷ÓÃ´¥·¢
 		player.getTrigger().afterAddHP();
 	}
 
 	/**
-	 * Ð¶ï¿½ï¿½×°ï¿½ï¿½
+	 * Ð¶ÔØ×°±¸
 	 */
 	@Override
 	public void unloadEquipmentCard(AbstractCard c) {
 		AbstractEquipmentCard aec = (AbstractEquipmentCard) c;
-		//ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½
+		//´¥·¢ÒÑ¾­ÔÚÎäÆ÷Ð¶ÔØÖÐµ÷ÓÃ
 		aec.unload(player);
 	}
 
 	/**
-	 * ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ½«Ö¸¶¨µÄÅÆÌí¼Óµ½ÊÖÅÆÖÐ
 	 */
 	@Override
 	public void addCardToHandCard(AbstractCard c) {
 		ViewManagement.getInstance().printMsg(
-				player.getInfo().getName() + "ï¿½ï¿½ï¿½ï¿½ï¿½" + c.toString());
+				player.getInfo().getName() + "»ñµÃÁË" + c.toString());
 		player.getState().getCardList().add(c);
-		//ï¿½ï¿½ï¿½ï¿½
+		//´¥·¢
 		player.getTrigger().afterGetHandCard();
 	}
 
 	/**
-	 * ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+	 * ÅÆ¶ÑÖÐÃþÒ»ÕÅ
 	 */
 	@Override
 	public void addOneCardFromList() {
 
 		player.getState().getCardList().add(
 				ModuleManagement.getInstance().getOneCard());
-		//ï¿½ï¿½ï¿½ï¿½
+		//´¥·¢
 		player.getTrigger().afterGetHandCard();
 	}
 
 	/**
-	 * É¾ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½
+	 * É¾³ýÖ¸¶¨ÐòÁÐµÄÊÖÅÆ
 	 */
 	@Override
 	public void removeCard(int index) {
 		player.getState().getCardList().remove(index);
-		// ï¿½ï¿½Ê§ï¿½ï¿½ï¿½Æ´ï¿½ï¿½ï¿½
+		// ¶ªÊ§ÊÖÅÆ´¥·¢
 		player.getTrigger().afterLoseHandCard();
 	}
 
 	/**
-	 * É¾ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½
+	 * É¾³ýÖ¸¶¨µÄÄ³ÕÅÅÆ
 	 */
 	public void removeCard(AbstractCard c) {
 		player.getState().getCardList().remove(c);
-		// ï¿½ï¿½Ê§ï¿½ï¿½ï¿½Æ´ï¿½ï¿½ï¿½
+		// ¶ªÊ§ÊÖÅÆ´¥·¢
 		player.getTrigger().afterLoseHandCard();
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÈËÎïËÀÍö
 	 */
 	@Override
 	public void dead(AbstractPlayer murderer) {
-		// È«ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½É¾ï¿½ï¿½
+		// È«¾ÖÁÐ±íÖÐÉ¾³ý
 		ModuleManagement.getInstance().getPlayerList().remove(player);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
+		// ÉèÖÃËÀÍö×´Ì¬
 		player.getState().setDead(true);
 		player.getState().setCurHP(0);
-		// É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// É¾³ýÊÖÅÆ
 		for (AbstractCard c : player.getState().getCardList()) {
 			c.gc();
 		}
 		player.getState().getCardList().clear();
-		// ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ÉÏÏÂ¼ÒÖØÖÃ
 		player.getFunction().getLastPlayer().setNextPlayer(
 				player.getNextPlayer());
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½Ï·
+		//¼ì²â¸ÃÈËÎïËÀÍöÊÇ·ñÖÕÖ¹ÓÎÏ·
 		if(player.getState().getId() == Identity.ZHUGONG){
 			if(getFanZei()>0){
 				Frame_Main.me.gameOver(GameOver.FANZEI_WIN);
@@ -229,23 +229,23 @@ public class P_Action implements Player_ActionIF {
 		}
 		if(player.getState().getId() == Identity.FANZEI || player.getState().getId() == Identity.NEIJIAN){
 			int alive = getFanZeiOrNeiJian();
-			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼é»¹Ê£ï¿½ï¿½"+alive+"ï¿½ï¿½");
+			System.out.println("·´Ôô»òÄÚ¼é»¹Ê££º"+alive+"¸ö");
 			if(alive==0){
 				Frame_Main.me.gameOver(GameOver.ZHUGONG_WIN);
 				return;
 			}
 		}
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+		// ËÀÍö´¥·¢ÊÂ¼þ
 		player.getTrigger().afterDead();
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä½ï¿½ï¿½ï¿½
+		//ËÀÍöºóµÄ½±³Í
 		if (murderer != null) {
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö»ï¿½ï¿½3ï¿½ï¿½ï¿½ï¿½
+			// Èç¹ûËÀÍöÕßÊÇ·´Ôô Ð×ÊÖ»ñµÃ3ÕÅÅÆ
 			if (player.getState().getId() == Identity.FANZEI) {
 				for (int i = 0; i < 3; i++) {
 					murderer.getAction().addOneCardFromList();
 				}
 			}
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É±ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//Ö÷¹«ÎóÉ±ÖÒ³¼Ôòµô¹âËùÓÐÅÆ
 			if(player.getState().getId() == Identity.ZHONGCHEN &&
 					murderer.getState().getId()==Identity.ZHUGONG){
 				murderer.getState().getCardList().clear();
@@ -255,7 +255,7 @@ public class P_Action implements Player_ActionIF {
 			player.refreshView();
 			murderer.refreshView();
 		}
-		//ï¿½ï¿½ï¿½ï¿½Ú»Øºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ØºÏ£ï¿½ï¿½Â¼Ò¿ï¿½Ê¼
+		//Èç¹ûÔÚ»ØºÏÖÐËÀÍö£¬Ö±½ÓÌø³ö»ØºÏ£¬ÏÂ¼Ò¿ªÊ¼
 		if(player.getStageNum()!= PlayerIF.STAGE_END){
 			System.out.println("dead"+Thread.currentThread().getName());
 			player.getNextPlayer().process();
@@ -282,12 +282,12 @@ public class P_Action implements Player_ActionIF {
 		return alive;
 	}
 	/**
-	 * ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½
+	 * ÌÒ-¾ÈÈË
 	 */
 	@Override
 	public void taoSave(AbstractPlayer p) {
 		player.getAction().tao();
-		//ï¿½ï¿½ï¿½ï¿½
+		//´¥·¢
 		player.getTrigger().afterAddHP();
 	}
 
@@ -304,7 +304,7 @@ public class P_Action implements Player_ActionIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½Ê²Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ´¦ÀíÅÐ¶¨ÅÆ Ä¬ÈÏÊ²Ã´¶¼²»×ö·µ»Ø
 	 */
 	@Override
 	public AbstractCard dealWithCheckCard(AbstractCard c) {
@@ -312,7 +312,7 @@ public class P_Action implements Player_ActionIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½É±ï¿½ï¿½ï¿½ò·µ»ï¿½true
+	 * ¾ö¶· Èç¹ûÄ¿±ê³öÉ±£¬Ôò·µ»Øtrue
 	 */
 	@Override
 	public boolean jueDou(AbstractPlayer p) {
@@ -325,7 +325,7 @@ public class P_Action implements Player_ActionIF {
 	}
 
 	/**
-	 * ï¿½Ç·ï¿½Ø±ï¿½É±
+	 * ÊÇ·ñ»Ø±ÜÉ±
 	 */
 	@Override
 	public boolean avoidSha(AbstractPlayer murder, Card_Sha card) {

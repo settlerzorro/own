@@ -1,17 +1,24 @@
 package sanguosha1.gui;
 
-import sanguosha1.card.AbstractCard;
-import sanguosha1.player.AbstractPlayer;
-import sanguosha1.service.ModuleManagement;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+import sanguosha1.card.AbstractCard;
+import sanguosha1.player.AbstractPlayer;
+import sanguosha1.service.ModuleManagement;
+
 /**
- * debugï¿½ï¿½ï¿½ï¿½
+ * debug´°¿Ú
  * 
  * @author user
  * 
@@ -39,9 +46,9 @@ public class Frame_Debug extends JFrame {
 		add(jsp2);
 		add(jsp3);
 		add(jbUpdate);
-		jsp.setBorder(BorderFactory.createTitledBorder("ï¿½ï¿½Ç°ï¿½Æ¶Ñ£ï¿½"));
-		jsp2.setBorder(BorderFactory.createTitledBorder("ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶Ñ£ï¿½"));
-		jsp3.setBorder(BorderFactory.createTitledBorder("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½"));
+		jsp.setBorder(BorderFactory.createTitledBorder("µ±Ç°ÅÆ¶Ñ£º"));
+		jsp2.setBorder(BorderFactory.createTitledBorder("¶ªÆúÅÆ¶Ñ£º"));
+		jsp3.setBorder(BorderFactory.createTitledBorder("³¡ÉÏÊÖÅÆ£º"));
 		jbUpdate.addActionListener(new ActionListener() {
 
 			@Override
@@ -52,7 +59,7 @@ public class Frame_Debug extends JFrame {
 	}
 
 	public void update() {
-		//ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
+		//¸üÐÂÅÆ¶Ñ
 		List<AbstractCard> list = ModuleManagement.getInstance().getCardList();
 		if (list != null) {
 			mod.removeAllElements();
@@ -61,7 +68,7 @@ public class Frame_Debug extends JFrame {
 			}
 		}
 		listCards.updateUI();
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
+		//¸üÐÂÆúÅÆ¶Ñ
 		list = ModuleManagement.getInstance().getGcList();
 		if (list != null) {
 			mod2.removeAllElements();
@@ -71,11 +78,11 @@ public class Frame_Debug extends JFrame {
 		}
 		listCards2.updateUI();
 		
-		//ï¿½ï¿½ï¿½Â³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//¸üÐÂ³¡ÉÏËùÓÐÈËÊÖÅÆ
 		txt.setText(null);
 		List<AbstractPlayer> listP = ModuleManagement.getInstance().getPlayerList();
 		for (int i = 1; i < listP.size(); i++) {
-			txt.append(listP.get(i).getInfo().getName()+"ï¿½ï¿½ï¿½Æ£ï¿½"+"\n");
+			txt.append(listP.get(i).getInfo().getName()+"ÊÖÅÆ£º"+"\n");
 			for (AbstractCard c : listP.get(i).getState().getCardList()) {
 				txt.append("----"+c.toString()+"\n");
 			}

@@ -1,5 +1,8 @@
 package sanguosha1.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.CardFactory;
 import sanguosha1.data.constant.Const_Game;
@@ -11,21 +14,18 @@ import sanguosha1.gui.select.Panel_Select;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.util.CardUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½Ä£ï¿½Í¹ï¿½ï¿½ï¿½ï¿½ï¿½ Ê¹ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
- * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ò²ï¿½ï¿½Öªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½ 
- * ï¿½ï¿½Ç°ï¿½ï¿½ËµÒ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ÏµÍ³ï¿½Ç²ï¿½Ó¦ï¿½Ã³ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½
- * È·Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ï¿½ï¿½Ä·ï¿½×°ï¿½ï¿½
- * ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½Ë£ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸Ð¾ï¿½ï¿½ï¿½ï¿½ï¿½
+ * Êý¾ÝÄ£ÐÍ¹ÜÀíÀà Ê¹ÓÃµ¥Àý¹¹Ôì 
+ * ÓÃ×÷Ò»¸öÈ«¾Ö±äÁ¿¼¯ºÏ¹ÜÀíÆ÷ ÎÒÒ²²»ÖªµÀÕâÑù×ö¿ÆÑ§·ñ 
+ * ÓÐÇ°±²ËµÒ»¸öÉè¼ÆÁ¼ºÃµÄÏµÍ³ÊÇ²»Ó¦¸Ã³öÏÖÈ«¾ÖÀàµÄ
+ * È·Êµ£¬ÕâÑù»á´òÆÆÃæÏò¶ÔÏóË¼ÏëµÄ·â×°ÐÔ
+ * µ«ÎÒ»¹ÊÇÕâÃ´×öÁË£¬Ô­ÒòÎÞËû£¬¾ÍÊÇ¸Ð¾õ·½±ã
  * 
  * @author user
  * 
  */
 public class ModuleManagement {
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// µ¥Àý¹¹Ôì
 	private static ModuleManagement instance;
 
 	public static ModuleManagement getInstance() {
@@ -36,41 +36,41 @@ public class ModuleManagement {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * ÖØÖÃ
 	 */
 	public static void reset() {
 		instance = new ModuleManagement();
 	}
 
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Î±ï¿½
+	 * ·¢ÅÆÓÎ±ê
 	 */
 	int index = 0;
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+	 * ËùÓÐÍæ¼ÒÁÐ±í
 	 */
 	List<AbstractPlayer> playerList = new ArrayList<AbstractPlayer>();
 	/*
-	 * ï¿½Æ¶Ñ¼ï¿½ï¿½ï¿½
+	 * ÅÆ¶Ñ¼¯ºÏ
 	 */
 	List<AbstractCard> cardList = new ArrayList<AbstractCard>(CardUtil
 			.createCards());
 	/*
-	 * ï¿½ï¿½ï¿½Æ¶Ñ¼ï¿½ï¿½ï¿½
+	 * ÆúÅÆ¶Ñ¼¯ºÏ
 	 */
 	List<AbstractCard> gcList = new ArrayList<AbstractCard>();
 	/*
-	 * Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * Õ½³¡Ãæ°åµÄÒýÓÃ
 	 */
 	Panel_Battlefield battle = Panel_Battlefield.getInstance();
 
 	/*
-	 * Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * Ä¿±ê¶ÔÏó
 	 */
 	Target target;
 
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ï¿½ï¿½
+	 * ¹¹ÔìÆ÷ ³õÊ¼»¯Íæ¼Ò¼¯ºÏ
 	 */
 	private ModuleManagement() {
 		init();
@@ -78,7 +78,7 @@ public class ModuleManagement {
 	}
 
 	/**
-	 * ï¿½ï¿½Ê¼ï¿½ï¿½
+	 * ³õÊ¼»¯
 	 * 
 	 * TODO
 	 */
@@ -87,7 +87,7 @@ public class ModuleManagement {
 	}
 
 	/**
-	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½
+	 * ³éÈ¡Éí·Ý
 	 * 
 	 */
 	private void setId() {
@@ -99,7 +99,7 @@ public class ModuleManagement {
 	}
 
 	/**
-	 * AIï¿½ï¿½Î»
+	 * AI¾ÍÎ»
 	 */
 	private void setAI() {
 		for (int i = 1; i <= 4; i++) {
@@ -108,18 +108,18 @@ public class ModuleManagement {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ´´½¨ÈËÎï
 	 */
 	public void createCharacter() {
 		playerList = Panel_Select.list;
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼Ò¹ï¿½Ïµ
+		// ÉèÖÃÉÏÏÂ¼Ò¹ØÏµ
 		for (int i = 0; i < playerList.size(); i++) {
 			if (i < 4) {
 				playerList.get(i).setNextPlayer(playerList.get(i + 1));
 			} else {
 				playerList.get(i).setNextPlayer(playerList.get(0));
 			}
-			// ï¿½ï¿½Ê¼ï¿½ï¿½4ï¿½ï¿½ï¿½ï¿½
+			// ³õÊ¼¸ø4ÕÅÅÆ
 			List<AbstractCard> list = new ArrayList<AbstractCard>();
 			for (int j = 0; j < 4; j++) {
 				list.add(getOneCard());
@@ -127,20 +127,20 @@ public class ModuleManagement {
 			}
 			playerList.get(i).getState().setCardList(list);
 		}
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ÉèÖÃÉí·Ý
 		setId();
-		// ï¿½ï¿½ï¿½ï¿½AI
+		// ÉèÖÃAI
 		setAI();
-		// ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½ï¿½
+		// ²âÊÔ¸øÅÆ
 		testSet();
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	 * ²âÊÔ ¸øÅÆ
 	 */
 	private void testSet() {
 		playerList.get(4).getState().getCardList().add(CardFactory.newCard(1,1,Colors.HEITAO,Const_Game.WUXIEKEJI));
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ¸ù¾ÝÅäÖÃ Ìí¼Ó²âÊÔÓÃÅÆ
 		List<AbstractCard> list = CardUtil.createTestCards();
 		for (int i = 0; i < list.size(); i++) {
 			playerList.get(0).getState().getCardList().add(list.get(i));
@@ -148,7 +148,7 @@ public class ModuleManagement {
 	}
 
 	/**
-	 * ï¿½Æ¶ï¿½ï¿½ï¿½È¡Ò»ï¿½ï¿½ï¿½ï¿½
+	 * ÅÆ¶ÑÖÐÈ¡Ò»ÕÅÅÆ
 	 * 
 	 * @return
 	 */
@@ -156,7 +156,7 @@ public class ModuleManagement {
 		AbstractCard c = cardList.get(0);
 		/*
 		 * index++; if (index >= cardList.size()) { index = 0;
-		 * System.out.println("Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê£ºï¿½ï¿½Ç°ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + cardList.size()); }
+		 * System.out.println("Ò»ÂÖÅÆÓÃÍê£ºµ±Ç°ÅÆ¶ÑÊýÁ¿£º" + cardList.size()); }
 		 */
 		cardList.remove(c);
 		if (cardList.isEmpty()) {
@@ -171,27 +171,27 @@ public class ModuleManagement {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
+	 * ·­³öÒ»ÕÅÅÐ¶¨ÅÆ
 	 * 
 	 * @return
 	 */
 	public AbstractCard showOneCheckCard() {
-		// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+		// ·­³öÒ»ÕÅ
 		AbstractCard check = getOneCard();
-		// ï¿½ï¿½Ê¾
-		ViewManagement.getInstance().printBattleMsg("ï¿½Ð¶ï¿½ï¿½ï¿½Îªï¿½ï¿½" + check.toString());
+		// ÏÔÊ¾
+		ViewManagement.getInstance().printBattleMsg("ÅÐ¶¨ÅÆÎª£º" + check.toString());
 		ModuleManagement.getInstance().getBattle().addOneCard(check);
 
-		// ï¿½Æ¶ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½
+		// ÅÆ¶ÑÖÐÉ¾³ý´Ë
 		cardList.remove(check);
-		// Ë¢ï¿½ï¿½
+		// Ë¢ÐÂ
 		// ModuleManagement.getInstance().getBattle().refresh();
 		AbstractCard check2 = check;
-		// Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë´ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
+		// Ñ¯ÎÊËùÓÐÈË´¦ÀíÅÐ¶¨
 		for (int i = 0; i < playerList.size(); i++) {
 			check2 = playerList.get(i).getAction().dealWithCheckCard(check2);
 		}
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
+		// ·µ»Ø×îºóµÄÅÐ¶¨
 		return check2;
 	}
 

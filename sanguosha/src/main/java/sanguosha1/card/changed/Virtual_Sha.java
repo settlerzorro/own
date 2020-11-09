@@ -1,5 +1,9 @@
 package sanguosha1.card.changed;
 
+import java.lang.reflect.InvocationTargetException;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.VirtualCardIF;
 import sanguosha1.card.base.Card_Sha;
@@ -7,11 +11,8 @@ import sanguosha1.gui.main.PaintService;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ViewManagement;
 
-import javax.swing.*;
-import java.lang.reflect.InvocationTargetException;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½É±ï¿½ï¿½
+ * ÐéÄâµÄ¡¾É±¡¿
  * @author user
  *
  */
@@ -22,14 +23,14 @@ public class Virtual_Sha implements VirtualCardIF{
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½Ê¹ï¿½ï¿½
+	 * ÐéÄâÅÆµÄÊ¹ÓÃ
 	 */
 	public void use(final AbstractPlayer p,final AbstractPlayer toP){
 		final Card_Sha cs = new Card_Sha();
-		// ï¿½ï¿½ï¿½ï¿½É±
+		// µ÷ÓÃÉ±
 		ViewManagement.getInstance().printBattleMsg(
-				p.getInfo().getName() + "ï¿½ï¿½" + toP.getInfo().getName()
-				+ "Ê¹ï¿½ï¿½ï¿½ï¿½É±" );
+				p.getInfo().getName() + "¶Ô" + toP.getInfo().getName()
+				+ "Ê¹ÓÃÁËÉ±" );
 		try {
 			SwingUtilities.invokeAndWait(new Runnable() {
 				@Override

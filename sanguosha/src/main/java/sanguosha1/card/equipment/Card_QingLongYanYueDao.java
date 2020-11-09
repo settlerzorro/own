@@ -1,5 +1,10 @@
 package sanguosha1.card.equipment;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.data.constant.Const_Game;
 import sanguosha1.data.enums.Colors;
 import sanguosha1.gui.main.Panel_Control;
@@ -7,12 +12,8 @@ import sanguosha1.gui.main.Panel_HandCards;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ViewManagement;
 
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½
+ * ÇàÁúÙÈÔÂµ¶
  * @author user
  *
  */
@@ -28,20 +29,20 @@ public class Card_QingLongYanYueDao extends AbstractWeaponCard {
 
 	
 	/**
-	 * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
+	 * ÖØÐ´±»ÉÁºóµÄ´¥·¢
 	 */
 	@Override
 	public void falseTrigger(AbstractPlayer p, AbstractPlayer target) {
-		//ï¿½ï¿½ï¿½ï¿½ï¿½É±ï¿½ï¿½Ñ¯ï¿½ï¿½
+		//Èç¹ûÓÐÉ±ÔòÑ¯ÎÊ
 		if(!p.hasCard(Const_Game.SHA)){
 			return;
 		}
-		//AIï¿½ï¿½Ê±ï¿½ï¿½Ð§
+		//AIÔÝÊ±ÎÞÐ§
 		if(p.getState().isAI()){
 			return;
 		}
 		pc = (Panel_Control) p.getPanel();
-		//ï¿½ï¿½×¡ï¿½ï¿½ï¿½ß³ï¿½
+		//Ëø×¡Ö÷Ïß³Ì
 		p.getProcess().setSkilling(true);
 		try {
 			Thread.sleep(500);
@@ -66,7 +67,7 @@ public class Card_QingLongYanYueDao extends AbstractWeaponCard {
 				break;
 			}
 		}
-		//ï¿½ï¿½ï¿½ï¿½
+		//½âËø
 		synchronized (p.getProcess()) {
 			ViewManagement.getInstance().getPrompt().clear();
 			p.getProcess().setSkilling(false);
@@ -82,7 +83,7 @@ public class Card_QingLongYanYueDao extends AbstractWeaponCard {
 			ph.disableClick();
 			ph.unableToUseCard();
 			ph.enableOKAndCancel();
-			ViewManagement.getInstance().getPrompt().show_Message("ï¿½Ç·ñ·¢¶ï¿½"+getName());
+			ViewManagement.getInstance().getPrompt().show_Message("ÊÇ·ñ·¢¶¯"+getName());
 		}
 	};
 }

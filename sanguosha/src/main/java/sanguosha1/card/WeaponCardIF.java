@@ -3,26 +3,26 @@ package sanguosha1.card;
 import sanguosha1.player.AbstractPlayer;
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½
- * Óµï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É±ï¿½Ä·ï¿½ï¿½ï¿½
+ * ÎäÆ÷½Ó¿Ú
+ * ÓµÓÐÒ»¸ö´øÎäÆ÷³öÉ±µÄ·½·¨
  * @author user
  *
  */
 public interface WeaponCardIF {
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//´øÎäÆ÷³öÉ±£¬°üº¬ÒÔÏÂ¼¸¸öÁ÷³Ì
 	void shaWithEquipment(AbstractPlayer p, AbstractPlayer target, AbstractCard card);
-
-	//É±Ç°ï¿½Ä¼ï¿½ï¿½ï¿½
+	
+	//É±Ç°µÄ¼¼ÄÜ
 	void useSkillBeforeSha(AbstractPlayer p, AbstractPlayer target);
-	//ï¿½Ô·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
+	//¶Ô·½·À¾ßÅÐ¶¨
 	boolean checkArmor(AbstractPlayer p, AbstractPlayer target);
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É±
+	//µ÷ÓÃÈËÎïµÄÉ±
 	boolean callSha(AbstractPlayer p, AbstractPlayer target);
-	//ï¿½ï¿½ï¿½É±ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Èç¹ûÉ±³É¹¦´¥·¢
 	void damageTrigger(AbstractPlayer p, AbstractPlayer target);
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Èç¹û±»ÉÁ´¥·¢
 	void falseTrigger(AbstractPlayer p, AbstractPlayer target);
-	//É±ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
+	//É±ÍêºóµÄ´¥·¢
 	void afterSha(AbstractPlayer p, AbstractPlayer target);
 	
 }

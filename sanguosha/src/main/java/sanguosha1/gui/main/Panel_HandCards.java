@@ -1,5 +1,20 @@
 package sanguosha1.gui.main;
 
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.DelayKitIF;
 import sanguosha1.data.constant.Const_Game;
@@ -11,17 +26,8 @@ import sanguosha1.player.PlayerIF;
 import sanguosha1.service.UsableCardCheckService;
 import sanguosha1.util.ImgUtil;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ÊÖÅÆÇøÓò
  * 
  * @author user
  * 
@@ -31,32 +37,32 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 	 * 
 	 */
 	private static final long serialVersionUID = -7517229300815663345L;
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ×ÜÃæ°åµÄÒýÓÃ
 	Panel_Main main;
-	// ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+	// ÈËÎïÄ£ÐÍ
 	AbstractPlayer player;
-	// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
+	// ÅÆÃæ°åµÄ¼¯ºÏ
 	List<Panel_Card> cards = new ArrayList<Panel_Card>();
-	// ï¿½Æµï¿½Ä£ï¿½ÍµÄ¼ï¿½ï¿½ï¿½
+	// ÅÆµÄÄ£ÐÍµÄ¼¯ºÏ
 	List<AbstractCard> cardsModule = new ArrayList<AbstractCard>();
-	// ï¿½ï¿½Ç°ï¿½É³ï¿½ï¿½ÆµÄ¼ï¿½ï¿½ï¿½
+	// µ±Ç°¿É³öÅÆµÄ¼¯ºÏ
 	List<AbstractCard> useList = new ArrayList<AbstractCard>();
-	// ï¿½ï¿½Ç°Ñ¡ï¿½ï¿½ï¿½ï¿½
+	// µ±Ç°Ñ¡ÖÐÅÆ
 	List<Panel_Card> selectedList = new ArrayList<Panel_Card>();
-	// ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ¿ÉÑ¡ÔñµÄÅÆÊý
 	int selectLimit = 1;
-	// Ñ¡ï¿½ï¿½ï¿½ï¿½Æµï¿½Ä¿ï¿½ï¿½
+	// Ñ¡Ôñ³öÅÆµÄÄ¿±ê
 	Target target = new Target(1);
-	// ï¿½Ç·ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½
+	// ÊÇ·ñ¿ªÆôÄ¿±ê¼ì²é
 	boolean targetCheck = true;
-	// ï¿½ï¿½ï¿½Æ°ï¿½Å¥
-	UsePanel useP = new UsePanel("È·ï¿½ï¿½", 1);
-	UsePanel cancelP = new UsePanel("È¡ï¿½ï¿½", 2);
-	UsePanel skipP = new UsePanel("ï¿½ï¿½ï¿½ï¿½", 3);
-	// ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½
+	// ³öÅÆ°´Å¥
+	UsePanel useP = new UsePanel("È·¶¨", 1);
+	UsePanel cancelP = new UsePanel("È¡Ïû", 2);
+	UsePanel skipP = new UsePanel("ÆúÅÆ", 3);
+	// ÊÖÅÆ¼ì²âÆ÷
 	UsableCardCheckService check = new UsableCardCheckService();
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ¹¹ÔìÆ÷
 	public Panel_HandCards(AbstractPlayer p, Panel_Main main) {
 		this.setLayout(null);
 		this.main = main;
@@ -75,16 +81,16 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ Ë¢ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½
+	 * ¸ù¾ÝÄ£ÐÍ Ë¢ÐÂÅÆµÄ×é¼þ
 	 */
 	public synchronized void updateCards() {
 		cardsModule = this.player.getState().getCardList();
-		// ï¿½ï¿½Ô­ï¿½ÈµÄ±ï¿½Ç©ï¿½ï¿½ï¿½
+		// ½«Ô­ÏÈµÄ±êÇ©Çå¿Õ
 		for (int i = 0; i < cards.size(); i++) {
 			this.remove(cards.get(i));
 		}
 		cards.clear();
-		// ï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½ï¿½ï¿½Ç©
+		// ÖØÐÂ´´½¨±êÇ©
 		for (int i = 0; i < cardsModule.size(); i++) {
 			cards.add(new Panel_Card(cardsModule.get(i), this, false));
 		}
@@ -92,20 +98,20 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 			this.add(cards.get(i));
 		}
 		this.repaint();
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ÕûÀíÅÆ
 		carding();
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ïµ±Ç°×´Ì¬ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ÆµÄ¿ï¿½ï¿½ï¿½×´Ì¬ï¿½Í°ï¿½Å¥×´Ì¬
+		// ¸ù¾ÝÈËÎïµ±Ç°×´Ì¬£¬Ñ¡ÔñÊÖÅÆµÄ¿ÉÓÃ×´Ì¬ºÍ°´Å¥×´Ì¬
 		selectShowCardAndClick();
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * »æÖÆ
 	 * 
 	 * @param g
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
+		// »æÖÆÅÐ¶¨Çø
 		if (!player.getState().getCheckedCardList().isEmpty()) {
 			for (int i = 0; i < player.getState().getCheckedCardList().size(); i++) {
 				DelayKitIF d = (DelayKitIF) player.getState()
@@ -117,7 +123,7 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½5ï¿½Å¾Í²ï¿½ï¿½ï¿½ï¿½Ê¾
+	 * ÕûÀíÅÆ Èç¹û³¬¹ý5ÕÅ¾Í²ãµþÏÔÊ¾
 	 */
 	public void carding() {
 		int interval = Const_UI.CARD_WIDTH;
@@ -132,7 +138,7 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½Æºó£¬½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÆúÅÆºó£¬½ûÓÃËùÓÐÅÆ
 	 */
 	public void unableToUseCard() {
 		for (final Panel_Card pc : cards) {
@@ -142,12 +148,12 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½
+	 * ÏÔÊ¾ËùÓÐÄÜÓÃµÄÅÆ
 	 */
 	public void showAvailableCards() {
-		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½
+		// »ñÈ¡¿ÉÓÃÊÖÅÆ¼¯ºÏ
 		List<AbstractCard> listA = check.getAvailableCard(cardsModule, player);
-		// ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½Ãµï¿½ï¿½ï¿½
+		// ÏÔÊ¾ËùÓÐ¿ÉÓÃµÄÅÆ
 		for (Panel_Card pc : cards) {
 			if (listA.contains(pc.getCard())) {
 				pc.setEnableToUse(true);
@@ -165,10 +171,10 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Æ¿ï¿½ï¿½ï¿½×´Ì¬
+	 * Ñ¡ÔñÊÖÅÆ¿ÉÓÃ×´Ì¬
 	 */
 	public void selectShowCardAndClick() {
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ØºÏ£ï¿½È«ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½
+		// Èô²»ÔÚ×Ô¼º»ØºÏ£¬È«½ûÓÃ£»·ñÔòÏÔÊ¾¿ÉÓÃµÄÅÆ
 		/*
 		 * if (player.isSkip()) { unableToUseCard(); disableClick(); } else {
 		 * showAvailableCards(); skipP.enableToUse(); }
@@ -180,7 +186,7 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½Æºï¿½ ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½Ð°ï¿½Å¥
+	 * ÆúÅÆºó ½ûÖ¹ËùÓÐ°´Å¥
 	 */
 	public void disableClick() {
 		useP.unableToClick();
@@ -190,7 +196,7 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½
+	 * ¿ª·ÅÈ·¶¨ºÍÈ¡Ïû
 	 */
 	public void enableOKAndCancel() {
 		useP.enableToUse();
@@ -198,14 +204,14 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * Ö»ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½
+	 * Ö»¿ª·ÅÈ¡Ïû
 	 */
 	public void enableCancel() {
 		cancelP.enableToUse();
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ú£ï¿½Ö»ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ³öÅÆÊ±ÆÚ£¬Ö»ÓÐÈ¡ÏûºÍÆúÅÆ
 	 */
 	public void enableToClick() {
 		// useP.enableToUse();
@@ -216,7 +222,7 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îºï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÌáÊ¾³öÅÆ ÎÞÈÎºÎÏÞÖÆ
 	 */
 	public void remindToUseALL() {
 		for (int i = 0; i < cards.size(); i++) {
@@ -226,7 +232,7 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì§ï¿½ï¿½ï¿½Ò¿ï¿½ï¿½Å°ï¿½Å¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÌáÊ¾³öÅÆ ÔÚÏìÓ¦ÆäËûÍæ¼Ò³öµÄÅÆÊ±£¬Èç¹û´æÔÚ·ûºÏÌõ¼þµÄ ½«ÅÆÌ§Æð²¢ÇÒ¿ª·Å°´Å¥ ²ÎÊý£ºÆ¥ÅäÀàÐÍ
 	 */
 	public void remindToUse(Integer... type) {
 		List<Integer> types = Arrays.asList(type);
@@ -242,7 +248,7 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì§ï¿½ï¿½ï¿½Ò¿ï¿½ï¿½Å°ï¿½Å¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ä»¨É«
+	 * ÌáÊ¾³öÅÆ ÔÚÏìÓ¦ÆäËûÍæ¼Ò³öµÄÅÆÊ±£¬Èç¹û´æÔÚ·ûºÏÌõ¼þµÄ ½«ÅÆÌ§Æð²¢ÇÒ¿ª·Å°´Å¥ ²ÎÊý£ºÆ¥Åä»¨É«
 	 */
 	public void remindToUse(Colors... color) {
 		List<Colors> listColor = Arrays.asList(color);
@@ -257,23 +263,23 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
+	 * ¿ª·ÅÑ¡Ôñ
 	 */
 	public void waitSelect(int limit) {
-		// ï¿½ï¿½ï¿½Ã¿É³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ÉèÖÃ¿É³öµÄÅÆÊýÁ¿
 		this.selectLimit = limit;
-		// ï¿½ï¿½Ê¾ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ÏÔÊ¾¿ÉÑ¡ÔñµÄÅÆ
 		selectShowCardAndClick();
 	}
 
 	/**
 	 * ------------------------------------------------------------------------
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½à°´Å¥ï¿½Ô¼ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï±È½Ï·ï¿½ï¿½ï¿½
+	 * ¸ÃÀàÖÐ»¹°üº¬ÁËÄÚ²¿Àà°´Å¥ÒÔ¼°°´Å¥µÄÄÚ²¿¼àÌýÀà Ö®ËùÒÔÕâÑùÊÇÒòÎªÄÚ²¿ÀàµÄÐÎÊ½ÔÚ±äÁ¿·ÃÎÊÉÏ±È½Ï·½±ã
 	 * ----------------------------------------------------------------------
 	 */
 
 	/**
-	 * ï¿½Ú²ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ÆµÄ°ï¿½Å¥
+	 * ÄÚ²¿Àà ³öÅÆµÄ°´Å¥
 	 */
 	class UsePanel extends JPanel {
 		private static final long serialVersionUID = -5187604468743452501L;
@@ -290,13 +296,13 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 		Image curImg;
 		MouseListener listener;
 
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ¹¹ÔìÆ÷
 		public UsePanel(String name, int type) {
 			this.setSize(100, 45);
 			this.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			// ³õÊ¼²»¿ÉÓÃ
 			this.unableToClick();
-			Font f = new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 30);
+			Font f = new Font("¿¬Ìå", Font.BOLD, 30);
 			text.setFont(f);
 			text.setForeground(Color.white);
 			text.setText(name);
@@ -316,7 +322,7 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 		}
 
 		/**
-		 * ï¿½ï¿½ï¿½Ã°ï¿½Å¥
+		 * ½ûÓÃ°´Å¥
 		 */
 		public void unableToClick() {
 			this.curImg = imgUnable;
@@ -326,7 +332,7 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 		}
 
 		/**
-		 * ï¿½ï¿½ï¿½Ã°ï¿½Å¥
+		 * ÆôÓÃ°´Å¥
 		 */
 		public void enableToUse() {
 			this.curImg = imgEnable;
@@ -337,7 +343,7 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 		}
 
 		/**
-		 * ï¿½ï¿½ï¿½ï¿½
+		 * »æÖÆ
 		 */
 		public void paint(Graphics g) {
 			g.drawImage(curImg, 0, 0, this.getWidth(), this.getHeight(), null);
@@ -346,7 +352,7 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 		}
 
 		/**
-		 * ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		 * ÄÚ²¿ÀàµÄÄÚ²¿Àà¼àÌý
 		 * 
 		 * @author user
 		 * 
@@ -368,7 +374,7 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 			}
 
 			/*
-			 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+			 * Êó±êµã»÷ÊÂ¼þ
 			 */
 			private void clicked() {
 				player.getState().setRes(Const_Game.OK);
@@ -376,7 +382,7 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 					player.getState().setRes(Const_Game.OK);
 					return;
 				}
-				// ï¿½ï¿½ï¿½ï¿½Ç±ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½
+				// Èç¹ûÊÇ±»¶¯ÏìÓ¦µÄ
 				if (player.getState().isRequest()) {
 					//getPlayer().getState().setRequest(false);
 					//player.getRequest().clear();
@@ -391,14 +397,14 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 		}
 
 		/**
-		 * È¡ï¿½ï¿½ï¿½ï¿½Å¥ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ clickï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		 * È¡Ïû°´Å¥µÄ¼àÌýÀà clickµÄ×ÓÀà
 		 * 
 		 * @author user
 		 * 
 		 */
 		class cancelClick extends Click {
 			/*
-			 * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+			 * ÖØÐ´µã»÷ÊÂ¼þ
 			 */
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -409,14 +415,14 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 		}
 
 		/**
-		 * ï¿½ï¿½ï¿½Æ°ï¿½Å¥ clickï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		 * ÆúÅÆ°´Å¥ clickµÄ×ÓÀà
 		 * 
 		 * @author user
 		 * 
 		 */
 		class skipClick extends Click {
 			/*
-			 * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+			 * ÖØÐ´µã»÷ÊÂ¼þ
 			 */
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -437,20 +443,20 @@ public class Panel_HandCards extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * Êµï¿½ï¿½Ë¢ï¿½Â·ï¿½ï¿½ï¿½
+	 * ÊµÏÖË¢ÐÂ·½·¨
 	 */
 	@Override
 	public void refresh() {
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼
+		// ¸üÐÂÊÖÅÆÊÓÍ¼
 		updateCards();
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
+		// Çå¿ÕËùÓÐ×´Ì¬
 		selectedList.clear();
 		setSelectLimit(1);
-		// ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
+		// Çå¿ÕÑ¡Ôñ
 		target.setNeedCheck(true);
 		target.setLimit(1);
 		target.getList().clear();
-		// ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½
+		// ¿ªÆôÄ¿±ê¼ì²â
 		targetCheck = true;
 		if (player.getStageNum() == PlayerIF.STAGE_THROWCRADS) {
 			targetCheck = false;

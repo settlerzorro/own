@@ -1,21 +1,20 @@
 package sanguosha1;
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¡¿
- * ï¿½ï¿½Ö»ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½Òµï¿½ï¿½à¡¿
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½×¢ï¿½ÍºÛ¼ï¿½ ï¿½ï¿½ï¿½ï¿½Ê²Ã´ï¿½ï¿½Ã»ï¿½Ð¡ï¿½
+ * ¡¾ÇëÎÞÊÓÕâÀï¡¿
+ * ¡¾Ö»ÊÇÒ»¸ö±»µ±×öÊµÑéÊÒµÄÀà¡¿
+ * ¡¾³ýÁËÎÞÊý´ÎÊµÑéºóÁôÏÂµÄ×¢ÊÍºÛ¼£ ÆäËûÊ²Ã´¶¼Ã»ÓÐ¡¿
  */
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.Iterator;
+import java.util.Properties;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import sanguosha1.util.ConfigFileReadUtil;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.util.Iterator;
-import java.util.Properties;
 
 public class Test {
 
@@ -25,10 +24,10 @@ public class Test {
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		
-		//ï¿½ï¿½ï¿½ï¿½xmlï¿½ï¿½È¡cardï¿½ï¿½ï¿½ï¿½
-		//ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½È¡Ò»ï¿½ï¿½int
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½intï¿½ï¿½È¡xml
-		//ï¿½ï¿½È¡classï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½return
+		//²âÊÔxml¶ÁÈ¡cardÅäÖÃ
+		//´ÓÁÐ±íÀï¶ÁÈ¡Ò»¸öint
+		//¹¤³§¸ù¾Ýint¶ÁÈ¡xml
+		//»ñÈ¡class£¬ÊµÀý»¯£¬return
 		int type = 1;
 		SAXReader reader = new SAXReader();
 		Document doc = null;
@@ -43,9 +42,9 @@ public class Test {
 		} catch (DocumentException e1) {
 			e1.printStackTrace();
 		}
-		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½Úµï¿½
+		// »ñÈ¡¸ù½Úµã
 		Element root = doc.getRootElement();
-		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½Úµï¿½ï¿½Âµï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
+		// »ñÈ¡¸ù½ÚµãÏÂµÄÖ¸¶¨ÈËÎï½Úµã
 		Element e = root.element("card");
 		System.out.println(e.getName());
 		String clazz = null;
@@ -54,7 +53,7 @@ public class Test {
 			String code = elm.attribute("id").getText();
 			int codeInt = Integer.parseInt(code);
 			if (codeInt == type) {
-				System.out.println("Ñ¡ï¿½ï¿½ï¿½ï¿½" + elm.element("name").getText());
+				System.out.println("Ñ¡ÔñÁË" + elm.element("name").getText());
 				clazz = elm.attribute("class").getText();
 				System.out.println(clazz);
 				break;
@@ -95,7 +94,7 @@ public class Test {
 		 * System.out.println(Test.class.getResource(""));
 		 */
 		// System.out.println(Test.class.getResource("files/test.txt").toString().substring(6));
-		// //Classï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
+		// //ClassÎÄ¼þËùÔÚÂ·¾¶
 		// System.out.println(new File("/").getAbsolutePath());
 		// System.out.println(System.getProperty("user.dir"));
 		// System.out.println(ConfigFileReadService.class.getResource(""));
@@ -135,9 +134,9 @@ public class Test {
 		} catch (DocumentException e1) {
 			e1.printStackTrace();
 		}
-		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½Úµï¿½
+		// »ñÈ¡¸ù½Úµã
 		Element root2 = doc.getRootElement();
-		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½Úµï¿½ï¿½Âµï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
+		// »ñÈ¡¸ù½ÚµãÏÂµÄÖ¸¶¨ÈËÎï½Úµã
 		Element e2 = root.element("character");*/
 		/*
 		 * System.out.println(e.elementByID("caocao")); Element eid =
@@ -148,7 +147,7 @@ public class Test {
 			Element elm = (Element) it.next();
 			String code = elm.attribute("id").getText();
 			if (code.equals("lvmeng")) {
-				System.out.println("Ñ¡ï¿½ï¿½ï¿½ï¿½" + elm.element("name").getText());
+				System.out.println("Ñ¡ÔñÁË" + elm.element("name").getText());
 				break;
 			}
 		}*/

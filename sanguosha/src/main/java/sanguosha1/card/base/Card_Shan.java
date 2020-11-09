@@ -1,15 +1,16 @@
 package sanguosha1.card.base;
 
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.EffectCardIF;
 import sanguosha1.gui.main.PaintService;
 import sanguosha1.player.AbstractPlayer;
 
-import javax.swing.*;
-import java.util.List;
-
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½
+ * ¡°ÉÁ¡±ÅÆµÄÀà
  * 
  * @author user
  * 
@@ -20,7 +21,7 @@ public class Card_Shan extends AbstractCard implements EffectCardIF {
 	}
 
 	/**
-	 * ï¿½ï¿½Ó¦Ê¹ï¿½ï¿½
+	 * ÏìÓ¦Ê¹ÓÃ
 	 */
 	@Override
 	public boolean requestUse(AbstractPlayer p, List<AbstractPlayer> players) {
@@ -30,7 +31,7 @@ public class Card_Shan extends AbstractCard implements EffectCardIF {
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
+	 * ÖØÐ´»æÖÆÐ§¹û
 	 */
 	@Override
 	protected void drawEffect(final AbstractPlayer p,

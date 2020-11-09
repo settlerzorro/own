@@ -1,20 +1,21 @@
 package sanguosha1.util;
 
-import sanguosha1.card.CardIF;
-import sanguosha1.data.enums.Colors;
-
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
+
+import sanguosha1.card.CardIF;
+import sanguosha1.data.enums.Colors;
+
 /**
- * Í¼ï¿½ï¿½ï¿½È¡ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½
+ * Í¼Ïñ¶ÁÈ¡µÄ¹¤¾ßÀà
  * @author user
  *
  */
 public class ImgUtil {
 	/**
-	 * ï¿½ï¿½È¡jpgÍ¼ï¿½ñ·½·ï¿½
+	 * »ñÈ¡jpgÍ¼Ïñ·½·¨
 	 * @param name
 	 * @return
 	 */
@@ -29,7 +30,7 @@ public class ImgUtil {
 	}
 	
 	/**
-	 * ï¿½ï¿½È¡pngï¿½ñ·½·ï¿½
+	 * »ñÈ¡pngÏñ·½·¨
 	 * @param name
 	 * @return
 	 */
@@ -38,14 +39,14 @@ public class ImgUtil {
 		try {
 			bfimg = ImageIO.read(ClassLoader.getSystemResourceAsStream("img"+"/"+name+".png"));
 		} catch (Exception e) {
-			System.out.println("ï¿½ì³£name:"+name);
+			System.out.println("Òì³£name:"+name);
 			e.printStackTrace();
 		}
 		return bfimg;
 	}
 	
 	/**
-	 * ï¿½ï¿½È¡ï¿½ï¿½É«Í¼ï¿½ï¿½
+	 * »ñÈ¡»¨É«Í¼Ïñ
 	 * @param c
 	 * @return
 	 */

@@ -5,7 +5,7 @@ import sanguosha1.player.impl.P_Trigger;
 import sanguosha1.skills.LockingSkillIF;
 
 /**
- * ï¿½Å·É¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ÕÅ·É¡¾ÅØÏø¡¿
  * @author user
  *
  */
@@ -16,8 +16,8 @@ public class ZhangFei_paoxiao extends P_Trigger implements LockingSkillIF{
 	}
 	
 	/**
-	 * ï¿½ï¿½Ð´É±ï¿½ó´¥·ï¿½
-	 * È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÖØÐ´É±ºó´¥·¢
+	 * È¡Ïû¿ª¹Ø
 	 */
 	@Override
 	public void afterSha() {
@@ -27,7 +27,7 @@ public class ZhangFei_paoxiao extends P_Trigger implements LockingSkillIF{
 
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½ï¿½ï¿½";
+		return "ÅØÏø";
 	}
 
 }

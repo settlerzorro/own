@@ -1,9 +1,9 @@
 package sanguosha1.gui.start;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
 /**
- * ï¿½ï¿½Ê¼ï¿½Ä»ï¿½Ó­ï¿½ï¿½ï¿½ï¿½
+ * ¿ªÊ¼µÄ»¶Ó­½çÃæ
  * @author user
  *
  */

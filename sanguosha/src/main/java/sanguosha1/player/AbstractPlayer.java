@@ -1,23 +1,29 @@
 package sanguosha1.player;
 
-import sanguosha1.card.AbstractCard;
-import sanguosha1.gui.main.Panel_Control;
-import sanguosha1.gui.main.Panel_HandCards;
-import sanguosha1.gui.main.RefreshbleIF;
-import sanguosha1.player.impl.*;
-import sanguosha1.service.AI.AIProcessService;
-import sanguosha1.service.ViewManagement;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import sanguosha1.card.AbstractCard;
+import sanguosha1.gui.main.Panel_Control;
+import sanguosha1.gui.main.Panel_HandCards;
+import sanguosha1.gui.main.RefreshbleIF;
+import sanguosha1.player.impl.P_Action;
+import sanguosha1.player.impl.P_Function;
+import sanguosha1.player.impl.P_Info;
+import sanguosha1.player.impl.P_Process;
+import sanguosha1.player.impl.P_Request;
+import sanguosha1.player.impl.P_State;
+import sanguosha1.player.impl.P_Trigger;
+import sanguosha1.service.ViewManagement;
+import sanguosha1.service.AI.AIProcessService;
+
 /**
- * ï¿½ï¿½ÒµÄ³ï¿½ï¿½ï¿½ï¿½ï¿½
+ * Íæ¼ÒµÄ³éÏóÀà
  * 
- * ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢--ï¿½ï¿½ï¿½×´Ì¬ --ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ --ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ --ï¿½ï¿½Ò´ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ×éºÏÁË£ºÍæ¼ÒÐÅÏ¢--Íæ¼Ò×´Ì¬ --Íæ¼ÒÐÐÎªÀà --Íæ¼ÒÏìÓ¦Àà --Íæ¼Ò´¥·¢Àà
  * 
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ò»Ð©ï¿½ï¿½Òµï¿½Í¨ï¿½Ã·ï¿½ï¿½ï¿½
+ * °üº¬£º Ò»Ð©Íæ¼ÒµÄÍ¨ÓÃ·½·¨
  * 
  * @author Wangfuyuan
  * 
@@ -25,44 +31,44 @@ import java.util.Random;
 
 public abstract class AbstractPlayer implements PlayerIF {
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	// Íæ¼ÒÐÅÏ¢
 	protected P_Info info;
 
-	// ï¿½ï¿½ï¿½×´Ì¬
+	// Íæ¼Ò×´Ì¬
 	protected P_State state;
 	
-	// ï¿½ï¿½Ò»ØºÏ¶ï¿½ï¿½ï¿½ï¿½ï¿½
+	// Íæ¼Ò»ØºÏ¶¯×÷Àà
 	protected Player_ProcessIF process;
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½Îª
+	// Íæ¼ÒÐÐÎª
 	protected Player_ActionIF action;
 	
-	// ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
+	// Íæ¼ÒÏìÓ¦ÇëÇó
 	protected Player_RequestIF request;
 
-	// ï¿½ï¿½Ò´ï¿½ï¿½ï¿½
+	// Íæ¼Ò´¥·¢
 	protected Player_TriggerIF trigger;
 
-	// ï¿½ï¿½ÒµÄ¹ï¿½ï¿½Üºï¿½ï¿½ï¿½ï¿½ï¿½
+	// Íæ¼ÒµÄ¹¦ÄÜº¯ÊýÀà
 	protected Player_FunctionIF function;
 	
-	// ï¿½Â¼Òµï¿½ï¿½ï¿½ï¿½ï¿½
+	// ÏÂ¼ÒµÄÒýÓÃ
 	protected AbstractPlayer nextPlayer;
 
-	// AIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// AI¿ØÖÆÆ÷
 	protected AIProcessService AIsvr;
 
-	// ï¿½ï¿½ï¿½Æ¿ï¿½ï¿½ï¿½(ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Øºï¿½)
+	// ÆúÅÆ¿ØÖÆ(ÊÇ·ñÔÚ×Ô¼º»ØºÏ)
 	protected boolean isSkip = true;
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ØºÏ½×¶ï¿½
+	// Ëù´¦»ØºÏ½×¶Î
 	protected int stageNum = STAGE_END;
 	
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½
+	// ¹ØÁªµÄÏÔÊ¾Ãæ°å
 	protected RefreshbleIF panel;
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * ¹¹Ôì
 	 */
 	public AbstractPlayer() {
 		info = new P_Info();
@@ -70,7 +76,7 @@ public abstract class AbstractPlayer implements PlayerIF {
 	}
 
 	/**
-	 *  ï¿½ï¿½Ê¼ï¿½ï¿½×´Ì¬
+	 *  ³õÊ¼»¯×´Ì¬
 	 */
 	protected void initial() {
 		state = new P_State(info);
@@ -84,7 +90,7 @@ public abstract class AbstractPlayer implements PlayerIF {
 
 	@Override
 	public void process() {
-		/*// ï¿½ï¿½ï¿½ï¿½ï¿½AIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½process
+		/*// Èç¹ûÊÇAI£¬Ôòµ÷ÓÃAI·þÎñÀàµÄprocess
 		if (this.getState().isAI()) {
 			AIsvr.start();
 			return;
@@ -94,13 +100,13 @@ public abstract class AbstractPlayer implements PlayerIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ó·½·ï¿½ ï¿½ï¿½ï¿½ë¼¼ï¿½ï¿½
+	 * ³éÏó·½·¨ ÔØÈë¼¼ÄÜ
 	 */
 	public abstract void loadSkills(String name);
 	
 	
 	/**
-	 * Ë¢ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * Ë¢ÐÂÃæ°å
 	 * @return
 	 */
 	public void refreshView(){
@@ -108,7 +114,7 @@ public abstract class AbstractPlayer implements PlayerIF {
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÕûÀíË¢ÐÂÊÖÅÆ
 	 */
 	public void updateCards(){
 		Panel_Control pc = (Panel_Control) getPanel();
@@ -117,7 +123,7 @@ public abstract class AbstractPlayer implements PlayerIF {
 		ph.carding();
 	}
 	/**
-	 * ï¿½È´ï¿½Ñ¡ï¿½ï¿½
+	 * µÈ´ýÑ¡Ôñ
 	 * @return
 	 */
 	public AbstractCard toSelectCard(List<AbstractCard> list){
@@ -134,7 +140,7 @@ public abstract class AbstractPlayer implements PlayerIF {
 	}
 	
 	/**
-	 * ï¿½Ç·ï¿½Óµï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½
+	 * ÊÇ·ñÓµÓÐÄ³ÖÖÅÆ
 	 * @return
 	 */
 	public boolean hasCard(int type){
@@ -145,7 +151,7 @@ public abstract class AbstractPlayer implements PlayerIF {
 	}
 	
 	/**
-	 * ï¿½ï¿½È¡Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¼¯ï¿½ï¿½
+	 * »ñÈ¡Í¬ÊÆÁ¦ÈËÎï¼¯ºÏ
 	 * @return
 	 */
 	public List<AbstractPlayer> getSameCountryPlayers(){
@@ -161,8 +167,8 @@ public abstract class AbstractPlayer implements PlayerIF {
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦×´Ì¬
-	 * ï¿½ï¿½ï¿½ï¿½Îªtype
+	 * ÉèÖÃÊÇ·ñ´¦ÓÚÇëÇóÏìÓ¦×´Ì¬
+	 * ÅÆÐÍÎªtype
 	 * @param isRequest
 	 * @param type
 	 */

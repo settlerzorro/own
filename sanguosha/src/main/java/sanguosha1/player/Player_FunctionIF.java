@@ -1,54 +1,54 @@
 package sanguosha1.player;
 
+import java.util.List;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.data.enums.Colors;
 
-import java.util.List;
-
 /**
- * ï¿½ï¿½Òµï¿½Ò»Ð©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * Íæ¼ÒµÄÒ»Ð©²Ù×÷º¯Êý
  * 
  * @author user
  * 
  */
 public interface Player_FunctionIF {
-	// ï¿½ï¿½È¡ï¿½Ï¼ï¿½
+	// »ñÈ¡ÉÏ¼Ò
 	AbstractPlayer getLastPlayer();
 
-	// ï¿½Ç·ï¿½ï¿½ï¿½Ñª
+	// ÊÇ·ñÂúÑª
 	boolean isFullHP();
 
-	// ï¿½Ç·ï¿½ï¿½Ñª
+	// ÊÇ·ñ¿ÕÑª
 	void isNullHP();
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½
+	// ¼ÆËãÁ½¼ÒÖ®¼äµÄ¾àÀë
 	int getDistance(AbstractPlayer p);
 
-	// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½
+	// »ñÈ¡³¡ÉÏÈ«²¿Íæ¼Ò
 	List<AbstractPlayer> getAllPlayers();
 
-	// ï¿½ï¿½È¡È«ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½
+	// »ñÈ¡È«²¿Íæ¼ÒµÄÊÖÅÆ
 	List<String> getAllPlayersHandCard();
 
-	// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Æ½ï¿½ï¿½Ð»ï¿½É«ï¿½Ð¶ï¿½
+	// ·­¿ªÒ»ÕÅÅÐ¶¨ÅÆ½øÐÐ»¨É«ÅÐ¶¨
 	boolean checkRollCard(AbstractCard card, Colors... color);
 
-	// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Æ½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½Ð¶ï¿½
+	// ·­¿ªÒ»ÕÅÅÐ¶¨ÅÆ½øÐÐÊýÖµÅÐ¶¨
 	boolean checkRollCard(AbstractCard card, int max, int min);
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î§
+	//¹¥»÷·¶Î§
 	int getAttackDistance();
 
-	//ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
+	//·ÀÊØ¾àÀë
 	int getDefenceDistance();
 	
-	//ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã·ï¿½Î§
+	//½õÄÒÊ¹ÓÃ·¶Î§
 	int getKitUseDistance();
 	
 	boolean isInRange(AbstractPlayer target);
 	
-	//ï¿½Ç·ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½
+	//ÊÇ·ñÍ¬Ò»¹ú¼Ò
 	boolean isSameCountry(AbstractPlayer target);
-	//ï¿½Ç·ï¿½Í¬ï¿½Ô±ï¿½
+	//ÊÇ·ñÍ¬ÐÔ±ð
 	boolean isSameSex(AbstractPlayer target);
 }

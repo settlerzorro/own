@@ -1,5 +1,9 @@
 package sanguosha1.skills.active;
 
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.changed.Virtual_LeBuSiShu;
 import sanguosha1.data.constant.Const_Game;
@@ -10,11 +14,8 @@ import sanguosha1.player.AbstractPlayer;
 import sanguosha1.player.PlayerIF;
 import sanguosha1.skills.SkillIF;
 
-import javax.swing.*;
-import java.util.List;
-
 /**
- * ï¿½ï¿½ï¿½Ç¡ï¿½ï¿½ï¿½É«ï¿½ï¿½
+ * ´óÇÇ¡¾¹úÉ«¡¿
  * @author user
  *
  */
@@ -27,7 +28,7 @@ public class DaQiao_GuoSe implements Runnable,SkillIF{
 	@Override
 	public void run() {
 		final Panel_Control pc = (Panel_Control) player.getPanel();
-		//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½
+		//ÏÔÊ¾ËùÓÐ·½¿éÅÆ
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
@@ -46,13 +47,13 @@ public class DaQiao_GuoSe implements Runnable,SkillIF{
 				//pc.getHand().setSelectLimit(1);
 			}
 		});
-		//ï¿½È´ï¿½Ñ¡ï¿½ï¿½
+		//µÈ´ýÑ¡Ôñ
 		while(true){
 			if(player.getState().getRes()==Const_Game.OK){
 				AbstractCard c = pc.getHand().getSelectedList().get(0).getCard();
-				//Ô­ï¿½Ðµï¿½ï¿½Æ¶ï¿½ï¿½ï¿½
+				//Ô­ÓÐµÄÅÆ¶ªÆú
 				c.throwIt(player);
-				//ï¿½Â³ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö²ï¿½Ë¼ï¿½ï¿½
+				//ÐÂ³öÒ»ÕÅÐéÄâÀÖ²»Ë¼Êñ
 				//new Virtual_GuoHeChaiQiao(c).use(player, pc.getHand().getTarget().getList().get(0));
 				new Virtual_LeBuSiShu(c).use(player, pc.getHand().getTarget().getList().get(0));
 				break;
@@ -62,7 +63,7 @@ public class DaQiao_GuoSe implements Runnable,SkillIF{
 				break;
 			}
 		}
-		//ï¿½ï¿½ï¿½ï¿½Ú»Øºï¿½ï¿½Ð£ï¿½ï¿½Í½ï¿½Øºï¿½ï¿½ï¿½
+		//Èç¹ûÔÚ»ØºÏÖÐ£¬¾Í½â»ØºÏËø
 		if(player.getStageNum()==PlayerIF.STAGE_USECARDS){
 			synchronized (player.getProcess()) {
 				player.getState().setRes(0);
@@ -73,7 +74,7 @@ public class DaQiao_GuoSe implements Runnable,SkillIF{
 
 	@Override
 	public String getName() {
-		return "ï¿½ï¿½É«";
+		return "¹úÉ«";
 	}
 
 	@Override

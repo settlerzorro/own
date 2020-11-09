@@ -1,6 +1,6 @@
 package sanguosha1.data.constant;
 /**
- * 锟斤拷锟洁定锟斤拷一些锟斤拷戏锟斤拷锟斤拷锟侥筹拷锟斤拷
+ * 此类定义一些游戏参数的常量
  * @author user
  *
  */
@@ -11,7 +11,7 @@ public class Const_Game {
 	public static final int REDO = -4;
 	
 	/**
-	 * 锟狡的筹拷锟斤拷锟街讹拷
+	 * 牌的常量字段
 	 */	
 	public static final int SHA = 1;
 	public static final int SHAN = 2;

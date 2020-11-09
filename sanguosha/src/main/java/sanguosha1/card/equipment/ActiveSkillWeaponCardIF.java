@@ -3,12 +3,12 @@ package sanguosha1.card.equipment;
 import sanguosha1.gui.main.Panel_HandCards;
 
 public interface ActiveSkillWeaponCardIF {
-	//ï¿½ï¿½ï¿½Ê¹ï¿½Ã¼ï¿½ï¿½ï¿½
+	//µã»÷Ê¹ÓÃ¼¼ÄÜ
 	boolean onClick_open(Panel_HandCards ph);
-	//ï¿½ï¿½ï¿½ï¿½Ø±ï¿½
+	//µã»÷¹Ø±Õ
 	boolean onClick_close(Panel_HandCards ph);
-	//ï¿½ï¿½ï¿½ï¿½
+	//¿ªÆô
 	void enable();
-	//ï¿½Ø±ï¿½
+	//¹Ø±Õ
 	void disable();
 }

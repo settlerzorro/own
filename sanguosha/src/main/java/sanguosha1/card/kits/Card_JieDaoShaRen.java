@@ -1,5 +1,11 @@
 package sanguosha1.card.kits;
 
+import java.awt.Image;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.base.Card_Sha;
 import sanguosha1.card.equipment.AbstractEquipmentCard;
@@ -14,13 +20,8 @@ import sanguosha1.service.ModuleManagement;
 import sanguosha1.service.ViewManagement;
 import sanguosha1.util.ImgUtil;
 
-import javax.swing.*;
-import java.awt.*;
-import java.lang.reflect.InvocationTargetException;
-import java.util.List;
-
 /**
- * ï¿½èµ¶É±ï¿½ï¿½
+ * ½èµ¶É±ÈË
  * 
  * @author user
  * 
@@ -31,7 +32,7 @@ public class Card_JieDaoShaRen extends AbstractKitCard {
 	public Card_JieDaoShaRen(){}
 	public Card_JieDaoShaRen(int id, int number, Colors color) {
 		super(id, number, color);
-		this.name = "ï¿½èµ¶É±ï¿½ï¿½";
+		this.name = "½èµ¶É±ÈË";
 		this.type = Const_Game.JIEDAOSHAREN;
 		this.targetType = SELECT;
 	}
@@ -42,7 +43,7 @@ public class Card_JieDaoShaRen extends AbstractKitCard {
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´Ä¿ï¿½ï¿½ï¿½ï¿½
+	 * ÖØÐ´Ä¿±ê¼ì²â
 	 */
 	@Override
 	public void targetCheck(Panel_HandCards ph) {
@@ -51,7 +52,7 @@ public class Card_JieDaoShaRen extends AbstractKitCard {
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´use
+	 * ÖØÐ´use
 	 */
 	@Override
 	public void use(final AbstractPlayer p, List<AbstractPlayer> players) {
@@ -64,17 +65,17 @@ public class Card_JieDaoShaRen extends AbstractKitCard {
 		final AbstractPlayer p1 = players.get(0);
 		final AbstractPlayer p2 = players.get(1);
 		
-		//ï¿½ï¿½Òµï¿½ï¿½ï¿½Ó¦
+		//Íæ¼ÒµÄÏìÓ¦
 		AbstractCard res ;
-		//AIï¿½ï¿½Ñ¡ï¿½ï¿½
+		//AIµÄÑ¡Ôñ
 		if(p1.getState().isAI()){
 			res = null;
 		}else{
-			//ï¿½ï¿½Òµï¿½Ñ¡ï¿½ï¿½
-			//ï¿½ï¿½Ê±Ã»ï¿½ï¿½
+			//Íæ¼ÒµÄÑ¡Ôñ
+			//ÔÝÊ±Ã»ÓÐ
 			res = null;
 		}
-		//ï¿½ï¿½ï¿½ï¿½resï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//¸ù¾ÝresÀ´²Ù×÷
 		if(res!=null){
 			Card_Sha c = (Card_Sha) res;
 			c.executeSha(p1, p2);
@@ -96,12 +97,12 @@ public class Card_JieDaoShaRen extends AbstractKitCard {
 
 	@Override
 	protected void drawEffect(final AbstractPlayer p, List<AbstractPlayer> players) {
-		//ï¿½ï¿½ï¿½Æºï¿½ï¿½ï¿½Ï¢
+		//»æÖÆºÍÐÅÏ¢
 		final AbstractPlayer p1 = players.get(0);
 		final AbstractPlayer p2 = players.get(1);
 		ViewManagement.getInstance().printBattleMsg(
-				p.getInfo().getName() + "ï¿½ï¿½"
-				+ p1.getInfo().getName() + "Ê¹ï¿½ï¿½"
+				p.getInfo().getName() + "¶Ô"
+				+ p1.getInfo().getName() + "Ê¹ÓÃ"
 				+ getName());
 		try {
 			SwingUtilities.invokeAndWait(new Runnable() {

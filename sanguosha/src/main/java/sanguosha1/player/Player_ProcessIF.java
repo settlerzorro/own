@@ -1,6 +1,6 @@
 package sanguosha1.player;
 /**
- * ï¿½Øºï¿½6ï¿½×¶ï¿½
+ * »ØºÏ6½×¶Î
  * @author user
  *
  */

@@ -1,5 +1,9 @@
 package sanguosha1.card.kits;
 
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.EffectCardIF;
 import sanguosha1.gui.main.Panel_Control;
@@ -9,11 +13,8 @@ import sanguosha1.gui.main.Panel_SelectCard;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.service.ViewManagement;
 
-import javax.swing.*;
-import java.util.List;
-
 /**
- * Ë³ï¿½ï¿½Ç£ï¿½ï¿½
+ * Ë³ÊÖÇ£Ñò
  * 
  * @author user
  * 
@@ -28,12 +29,12 @@ public class Card_ShunShouQianYang extends AbstractKitCard implements EffectCard
 	@Override
 	public void use(final AbstractPlayer p, List<AbstractPlayer> players) {
 		super.use(p, players);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ´¥·¢¼¼ÄÜ
 		p.getTrigger().afterMagic();
-		// ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½return
+		// Èç¹ûÎÞÐ¸£¬Ôòreturn
 		askWuXieKeJi(p, players);
 		if (isWuXie) {
-			ViewManagement.getInstance().printBattleMsg(getName() + "ï¿½ï¿½Ð§");
+			ViewManagement.getInstance().printBattleMsg(getName() + "ÎÞÐ§");
 			ViewManagement.getInstance().refreshAll();
 			return;
 		}
@@ -49,8 +50,8 @@ public class Card_ShunShouQianYang extends AbstractKitCard implements EffectCard
 		} else {
 			pc = (Panel_Control) p.getPanel();
 			ps = new Panel_SelectCard(p, players.get(0), Panel_SelectCard.SHUN);
-			// ï¿½ï¿½Ê¾Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½
-			// ï¿½ß³ï¿½ï¿½ï¿½Í£
+			// ÏÔÊ¾Ñ¡ÔñÃæ°åµÈ´ý´¦Àí
+			// Ïß³ÌÔÝÍ£
 			SwingUtilities.invokeLater(run);
 
 		}
@@ -71,22 +72,22 @@ public class Card_ShunShouQianYang extends AbstractKitCard implements EffectCard
 
 	@Override
 	public void targetCheck(Panel_HandCards ph) {
-		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+		// ±éÀú ¼ì²â
 		List<Panel_Player> list = ph.getMain().getPlayers();
 		for (int i = 0; i < list.size(); i++) {
 			Panel_Player pp = list.get(i);
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			// Èç¹ûËÀÍö
 			if (pp.getPanelState() == Panel_Player.DEAD
 					|| pp.getPanelState() == Panel_Player.DISABLE) {
 				// System.out.println("this is dead");
 				continue;
 			}
-			// ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½
+			// Èç¹ûÐèÒªÉä³Ì
 			if (!this.isInRange(ph.getPlayer(), pp.getPlayer())) {
 				pp.disableToUse();
 				continue;
 			}
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½
+			// Èç¹ûÎÞÊÖÅÆ»òÕß×°±¸ÅÆ
 			if (pp.getPlayer().getState().getCardList().isEmpty()
 					&& pp.getPlayer().getState().getEquipment().isEmpty()) {
 				pp.disableToUse();
@@ -97,12 +98,12 @@ public class Card_ShunShouQianYang extends AbstractKitCard implements EffectCard
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ÖØÐ´Ä¿±ê¾àÀë¼ì²â
 	 */
 	@Override
 	public boolean isInRange(AbstractPlayer user, AbstractPlayer target) {
 		int p2p = user.getFunction().getDistance(target);
-		int att = user.getFunction().getKitUseDistance();// ï¿½Ë´ï¿½ï¿½ï¿½Ð´
+		int att = user.getFunction().getKitUseDistance();// ´Ë´¦ÖØÐ´
 		int def = target.getFunction().getDefenceDistance();
 		return (att - def) >= p2p;
 

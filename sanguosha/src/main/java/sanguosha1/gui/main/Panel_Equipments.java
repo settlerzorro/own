@@ -1,28 +1,34 @@
 package sanguosha1.gui.main;
 
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+
 import sanguosha1.card.equipment.AbstractEquipmentCard;
 import sanguosha1.card.equipment.ActiveSkillWeaponCardIF;
 import sanguosha1.data.types.EquipmentStructure;
 import sanguosha1.player.AbstractPlayer;
 import sanguosha1.util.ImgUtil;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-
 /**
- * ×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -- ï¿½ï¿½ï¿½ï¿½ -- ï¿½ï¿½ï¿½ï¿½ -- +1ï¿½ï¿½ -- -1ï¿½ï¿½
+ * ×°±¸ÇøÓòÃæ°å -- ÎäÆ÷ -- ·À¾ß -- +1Âí -- -1Âí
  * 
  * @author user
  * 
  */
 public class Panel_Equipments extends JPanel implements RefreshbleIF {
 	private static final long serialVersionUID = -5043769932933498212L;
-	// private static final String[] NUMBER= {"Ò»","ï¿½ï¿½","ï¿½ï¿½","ï¿½ï¿½","ï¿½ï¿½"};
+	// private static final String[] NUMBER= {"Ò»","¶þ","Èý","ËÄ","Îå"};
 	AbstractPlayer p;
 	Panel_Control pc;
 	EquipmentStructure eqs;
@@ -50,7 +56,7 @@ public class Panel_Equipments extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * Êµï¿½ï¿½Ë¢ï¿½Â·ï¿½ï¿½ï¿½
+	 * ÊµÏÖË¢ÐÂ·½·¨
 	 */
 	@Override
 	public void refresh() {
@@ -59,7 +65,7 @@ public class Panel_Equipments extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ¸üÐÂÊý¾Ý
 	 */
 	private void update() {
 		att.card = p.getState().getEquipment().getWeapons();
@@ -70,7 +76,7 @@ public class Panel_Equipments extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ¿ªÆôÎäÆ÷
 	 */
 	public void enableUseWeapons() {
 		if (att.card != null) {
@@ -79,7 +85,7 @@ public class Panel_Equipments extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½
+	 * »æÖÆ±³¾°
 	 */
 	public void paintComponent(Graphics g) {
 		g.drawImage(ImgUtil.getJpgImgByName("bg_eq"), 0, -1, getWidth(),
@@ -87,7 +93,7 @@ public class Panel_Equipments extends JPanel implements RefreshbleIF {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½
+	 * µ¥ÕÅ×°±¸ÅÆÔÚ×°±¸À¸µÄÏÔÊ¾°å
 	 * 
 	 * @author user
 	 * 
@@ -102,7 +108,7 @@ public class Panel_Equipments extends JPanel implements RefreshbleIF {
 		boolean isSelected;
 
 		/**
-		 * ï¿½ï¿½ï¿½ï¿½
+		 * ¹¹Ôì
 		 */
 		public CardEquipment(AbstractEquipmentCard c, int type, int size) {
 			this.type = type;
@@ -113,11 +119,11 @@ public class Panel_Equipments extends JPanel implements RefreshbleIF {
 			 */
 			this.setBorder(border);
 			this.setOpaque(false);
-			font = new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, size);
+			font = new Font("¿¬Ìå", Font.BOLD, size);
 		}
 
 		/**
-		 * ï¿½ï¿½ï¿½ï¿½
+		 * »æÖÆ
 		 */
 		public void paint(Graphics g) {
 			// g.drawImage(img, 0, 0,this.getWidth(),this.getHeight(), null);
@@ -125,22 +131,22 @@ public class Panel_Equipments extends JPanel implements RefreshbleIF {
 				return;
 			g.setFont(font);
 			g.setColor(Color.gray);
-			// ï¿½ï¿½ï¿½Æ»ï¿½É«
+			// »æÖÆ»¨É«
 			// g.drawImage(card.getColorImg(), this.getWidth()/5,
 			// 10,this.getHeight()/2,this.getHeight()/2, null);
 			g.drawImage(card.getColorImg(), this.getWidth() / 5, 8, font
 					.getSize(), font.getSize(), null);
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+			// »æÖÆÊýÖµ
 			g.drawString(card.getNumberToString(), this.getWidth() / 5 * 2 - 8,
 					this.getHeight() / 3 * 2 + 5);
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			// »æÖÆÃû³Æ
 			g.drawString(card.getName(), this.getWidth() / 2 - 8, this
 					.getHeight() / 3 * 2 + 5);
 			super.paintBorder(g);
 		}
 
 		/**
-		 * ï¿½ï¿½ï¿½ï¿½
+		 * ¿ªÆô
 		 */
 		public void enbaleUse() {
 			this.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -151,7 +157,7 @@ public class Panel_Equipments extends JPanel implements RefreshbleIF {
 		}
 
 		/*
-		 * ï¿½ï¿½ï¿½ï¿½
+		 * ¼àÌý
 		 */
 		MouseListener ml = new MouseAdapter() {
 			ActiveSkillWeaponCardIF asc;

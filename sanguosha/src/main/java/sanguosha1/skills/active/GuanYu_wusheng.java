@@ -1,5 +1,9 @@
 package sanguosha1.skills.active;
 
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import sanguosha1.card.AbstractCard;
 import sanguosha1.card.base.Card_Sha;
 import sanguosha1.card.changed.Virtual_Sha;
@@ -14,9 +18,6 @@ import sanguosha1.player.PlayerIF;
 import sanguosha1.service.MessageManagement;
 import sanguosha1.skills.ChangeCardIF;
 import sanguosha1.skills.SkillIF;
-
-import javax.swing.*;
-import java.util.List;
 
 /**
  * ���Թ����ܡ���ʥ��

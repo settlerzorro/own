@@ -1,32 +1,35 @@
 package sanguosha1.gui.main;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
 
 /**
- * ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ÏÔÊ¾²Ù×÷ÌáÊ¾ÐÅÏ¢µÄÃæ°å
  * 
  * @author user
  * 
  */
 public  class Panel_Prompt extends JPanel  {
 	private static final long serialVersionUID = 8764890627705088325L;
-	private static final String[] types = { "É±", "ï¿½ï¿½", "ï¿½ï¿½" };
+	private static final String[] types = { "É±", "ÉÁ", "ÌÒ" };
 	
-	private String message = "ï¿½ï¿½ï¿½ï¿½--ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½";
+	private String message = "²âÊÔ--ÌáÊ¾ÐÅÏ¢Ãæ°å";
 	private Font font;
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * ¹¹Ôì
 	 */
 	public Panel_Prompt() {
 		this.setSize(550, 40);
 		this.setOpaque(false);
-		this.font = new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 30);
+		this.font = new Font("¿¬Ìå", Font.BOLD, 30);
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * »æÖÆÄÚÈÝ
 	 */
 	public synchronized void paintComponent(Graphics g) {
 		g.setFont(font);
@@ -37,18 +40,18 @@ public  class Panel_Prompt extends JPanel  {
 	}
 
 	/**
-	 * ï¿½ï¿½Ð´paint
+	 * ÖØÐ´paint
 	 *//*
 	public void paint1(Graphics g) {
-		if (isPainting()) { // ï¿½ï¿½ï¿½Ýµï¿½Ç°Ö¡ï¿½ï¿½Ê¾ï¿½ï¿½Ç°Í¸ï¿½ï¿½ï¿½Èµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		if (isPainting()) { // ¸ù¾Ýµ±Ç°Ö¡ÏÔÊ¾µ±Ç°Í¸Ã÷¶ÈµÄÄÚÈÝ×é¼þ
 			float alpha = (float) index / (float) FRAMENUMBER;
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.setComposite(AlphaComposite.getInstance(
 					AlphaComposite.SRC_OVER, alpha));
-			// Rendererï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½
+			// RendereräÖÈ¾»úÖÆ
 			super.paint(g2d);
 		} else {
-			// ï¿½ï¿½ï¿½ï¿½Çµï¿½Ò»ï¿½Î£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+			// Èç¹ûÊÇµÚÒ»´Î£¬Æô¶¯¶¯»­Ê±ÖÓ
 			index = 0;
 			timer = new Timer(INTERVAL, this);
 			timer.start();
@@ -56,33 +59,33 @@ public  class Panel_Prompt extends JPanel  {
 	}*/
 
 	/**
-	 * ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nï¿½ï¿½
+	 * ÌáÊ¾£ºÐèÒª³öÄ³ÖÖÅÆÐÍnÕÅ
 	 * 
 	 * @param type
 	 * @param num
 	 */
 	public void show_RemindToUse(int type, int num) {
-		message = "ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½" + num + "ï¿½ï¿½" + types[type-1];
+		message = "ÄúÐèÒª³ö" + num + "ÕÅ" + types[type-1];
 		repaint();
 	}
 
 	/**
-	 * ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
+	 * ÌáÊ¾ÆúÅÆ
 	 */
 	public void show_RemindToThrow(int num) {
-		message = "ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½" + num + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+		message = "ÄúÐèÒª¶ªÆú" + num + "ÕÅÊÖÅÆ";
 		repaint();
 	}
 
 	/**
-	 * ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
+	 * ÏÔÊ¾ÏûÏ¢
 	 */
 	public void show_Message(String msg){
 		message = msg;
 		repaint();
 	}
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+	 * Çå¿ÕÌáÊ¾
 	 * 
 	 * @return
 	 */

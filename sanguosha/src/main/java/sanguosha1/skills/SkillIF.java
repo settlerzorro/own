@@ -1,14 +1,14 @@
 package sanguosha1.skills;
 /**
- * 锟斤拷锟斤拷锟斤拷锟杰的接匡拷
+ * 主动技能的接口
  * @author user
  *
  */
 public interface SkillIF {
-	//锟斤拷锟杰筹拷始锟斤拷
+	//技能初始化
 	void init();
-	//锟斤拷锟斤拷使锟斤拷锟斤拷锟斤拷
+	//技能使用允许
 	boolean isEnableUse();
-	//锟斤拷取锟斤拷锟斤拷锟斤拷锟斤拷
+	//获取技能名称
 	String getName();
 }

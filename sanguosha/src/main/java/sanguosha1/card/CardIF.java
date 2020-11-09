@@ -1,12 +1,12 @@
 package sanguosha1.card;
 
-import sanguosha1.player.AbstractPlayer;
-
 import java.util.List;
+
+import sanguosha1.player.AbstractPlayer;
 
 
 /**
- * ï¿½ÆµÄ½Ó¿ï¿½
+ * ÅÆµÄ½Ó¿Ú
  * 
  * @author user
  * 
@@ -14,7 +14,7 @@ import java.util.List;
 public interface CardIF {
 	
 	/**
-	 * ï¿½ï¿½É«Í¼Æ¬ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * »¨É«Í¼Æ¬µÄÎÄ¼þÃû³£Á¿
 	 */
 	public static final String HEITAO_FN = "color_heitao";
 	public static final String HONGXIN_FN = "color_hongxin";
@@ -22,7 +22,7 @@ public interface CardIF {
 	public static final String FANGKUAI_FN = "color_fangkuai";
 	
 	/**
-	 * Ê¹ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * Ê¹ÓÃÄ¿±êÀàÐÍ
 	 * 
 	 */
 	public static final int AOE = 0;
@@ -31,24 +31,24 @@ public interface CardIF {
 	
 
 	/**
-	 *  Ê¹ï¿½ï¿½
+	 *  Ê¹ÓÃ
 	 * 
 	 */
 	void use(AbstractPlayer p, List<AbstractPlayer> players);
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦Ê¹ï¿½ï¿½
+	 * ±»¶¯ÏìÓ¦Ê¹ÓÃ
 	 */
 	boolean requestUse(AbstractPlayer p, List<AbstractPlayer> players);
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½
+	 * ¶ªÆú
 	 */
 	void throwIt(AbstractPlayer p);
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ½»¸øÍæ¼Ò
 	 */
 	void passToPlayer(AbstractPlayer fromP, AbstractPlayer receiverP);
 	/**
-	 * ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½
+	 * ÊÇ·ñÐèÒªÉä³Ì
 	 */
 	boolean isNeedRange();
 }

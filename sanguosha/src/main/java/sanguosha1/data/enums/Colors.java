@@ -2,22 +2,22 @@ package sanguosha1.data.enums;
 
 
 /**
- * ï¿½ï¿½É«Ã¶ï¿½ï¿½
+ * »¨É«Ã¶¾Ù
  */
 public enum Colors {
 		HEITAO, HONGXIN, MEIHUA, FANGKUAI;
-		//ï¿½ï¿½Ð´toString
+		//ÖØÐ´toString
 		@Override
 		public String toString() {
 			switch (this) {
 			case HEITAO:
-				return "ï¿½ï¿½ï¿½ï¿½";
+				return "ºÚÌÒ";
 			case HONGXIN:
-				return "ï¿½ï¿½ï¿½ï¿½";
+				return "ºìÐÄ";
 			case MEIHUA:
-				return "Ã·ï¿½ï¿½";
+				return "Ã·»¨";
 			case FANGKUAI:
-				return "ï¿½ï¿½ï¿½ï¿½";
+				return "·½¿é";
 			}
 			return null;
 		}
